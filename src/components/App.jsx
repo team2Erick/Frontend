@@ -1,5 +1,6 @@
 import React from 'react';
-import '../assets/styles/App.scss';
+
+import '../assets/styles/styles.scss';
 
 const App = () => <h1>MusicApp</h1>;
 
