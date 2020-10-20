@@ -18,7 +18,6 @@ body {
   display: grid;
   grid-template-columns: 15% 85%;
   grid-template-rows: 15% 25% 20% 25% 15%;
-  margin: 0 15px 0 15px;
 }
 .container__header {
   grid-column: 2 / 3;
@@ -27,10 +26,12 @@ body {
 .container__menu {
   grid-column: 1 / 2;
   grid-row: 1 / 5;
+  margin-left: 15px;
 }
 .container__main {
   grid-column: 2 / 3;
   grid-row: 2 / 5;
+  margin-right: 15px;
 }
 .container__footer {
   grid-column: 1 / 3;
