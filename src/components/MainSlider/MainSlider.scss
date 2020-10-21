@@ -5,36 +5,36 @@
     padding: 5%;
 
     color: white;
-}
 
-.main-slider__subtitle {
-    font-size: 13px;
-    display: block;
-    font-weight: bold;
-    text-transform: uppercase;
-}
+    &__subtitle {
+        font-size: 13px;
+        display: block;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
 
-.main-slider__title {
-    display: block;
-    font-size: 40px;
-}
+    &__title {
+        display: block;
+        font-size: 40px;
+    }
 
-.main-slider__artist {
-    display: block;
-    font-size: 20px;
-}
+    &__artist {
+        display: block;
+        font-size: 20px;
+    }
 
-.main-slider__buttons {
-    margin-top: 50px;
-}
+    &__buttons {
+        margin-top: 50px;
+    }
 
-.main-slider__content {
-    width: 40%;
-}
+    &__content {
+        width: 40%;
+    }
 
-@media (max-width: 800px) {
-    .main-slider__content {
-        width: 100%;
+    @media (max-width: 800px) {
+        &__content {
+            width: 100%;
+        }
     }
 }
 

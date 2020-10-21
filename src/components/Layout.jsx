@@ -3,6 +3,8 @@ import React from 'react';
 import Header from './Header';
 import Menu from './Menu';
 import MainSlider from './MainSlider/MainSlider';
+import MusicItem from './components/MusicItem/MusicItem';
+import ScrollSlider from './components/ScrollSlider/ScrollSlider';
 
 const sliders = [
   {
@@ -22,12 +24,53 @@ const sliders = [
   }
 ]
 
+const musicList = [
+  {
+    image: "https://www.publicdomainpictures.net/pictures/320000/velka/background-image.png",
+    title: "Esta es una canción",
+    subtitle: "Artista"
+  },
+  {
+    image: "https://www.publicdomainpictures.net/pictures/320000/velka/background-image.png",
+    title: "Esta es una canción",
+    subtitle: "Artista"
+  },
+  {
+    image: "https://www.publicdomainpictures.net/pictures/320000/velka/background-image.png",
+    title: "Esta es una canción",
+    subtitle: "Artista"
+  },
+  {
+    image: "https://www.publicdomainpictures.net/pictures/320000/velka/background-image.png",
+    title: "Esta es una canción",
+    subtitle: "Artista"
+  },
+  {
+    image: "https://www.publicdomainpictures.net/pictures/320000/velka/background-image.png",
+    title: "Esta es una canción",
+    subtitle: "Artista"
+  },
+  {
+    image: "https://www.publicdomainpictures.net/pictures/320000/velka/background-image.png",
+    title: "Esta es una canción",
+    subtitle: "Artista"
+  },
+  {
+    image: "https://www.publicdomainpictures.net/pictures/320000/velka/background-image.png",
+    title: "Esta es una canción",
+    subtitle: "Artista"
+  }
+]
+
 const Layout = () => {
   return (
     <>
       <Header />
       <Menu />
-      <MainSlider sliders={sliders} />
+      <MusicItem item={musicList[0]} />
+      <br/>
+      <ScrollSlider title="Featured Tracks" items={musicList} />
+      {/* <MainSlider sliders={sliders} /> */}
     </>
   );
 }
