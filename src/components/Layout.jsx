@@ -5,6 +5,7 @@ import Menu from './Menu';
 import MainSlider from './MainSlider/MainSlider';
 import MusicItem from './components/MusicItem/MusicItem';
 import ScrollSlider from './components/ScrollSlider/ScrollSlider';
+import Table from './components/Table/Table';
 
 const sliders = [
   {
@@ -67,9 +68,10 @@ const Layout = () => {
     <>
       <Header />
       <Menu />
-      <MusicItem item={musicList[0]} />
-      <br/>
-      <ScrollSlider title="Featured Tracks" items={musicList} />
+      {/* <MusicItem item={musicList[0]} /> */}
+      {/* <br /> */}
+      {/* <ScrollSlider title="Featured Tracks" items={musicList} /> */}
+      <Table />
       {/* <MainSlider sliders={sliders} /> */}
     </>
   );
