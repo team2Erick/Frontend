@@ -2,10 +2,10 @@ import React from 'react';
 
 import Header from './Header';
 import Menu from './Menu';
-import MainSlider from './MainSlider/MainSlider';
-import MusicItem from './components/MusicItem/MusicItem';
-import ScrollSlider from './components/ScrollSlider/ScrollSlider';
-import Table from './components/Table/Table';
+import MainSlider from '../components/MainSlider/MainSlider';
+import MusicItem from '../components/MusicItem/MusicItem';
+import ScrollSlider from '../components/ScrollSlider/ScrollSlider';
+import Table from '../components/Table/Table';
 
 const sliders = [
   {
@@ -63,15 +63,16 @@ const musicList = [
   }
 ]
 
-const Layout = () => {
+const Layout = ({ children }) => {
   return (
     <>
-      <Header />
-      <Menu />
+      {children}
+      {/* <Header /> */}
+      {/* <Menu /> */}
       {/* <MusicItem item={musicList[0]} /> */}
       {/* <br /> */}
       {/* <ScrollSlider title="Featured Tracks" items={musicList} /> */}
-      <Table />
+      {/* <Table /> */}
       {/* <MainSlider sliders={sliders} /> */}
     </>
   );
