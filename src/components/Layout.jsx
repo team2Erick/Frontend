@@ -2,6 +2,7 @@ import React from 'react';
 
 import Header from './Header';
 import Menu from './Menu';
+import Playbar from './Playbar';
 
 const Layout = ({children}) => {
   return (
@@ -9,6 +10,7 @@ const Layout = ({children}) => {
       <Header />
       {children}
       <Menu />
+      <Playbar />
     </>
   );
 };
