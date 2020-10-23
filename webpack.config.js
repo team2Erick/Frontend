@@ -38,7 +38,14 @@ module.exports = {
           'sass-loader',
         ],
       },
+      {
+        test: /\.png|jpg|svg|jpeg|gif$/,
+        use: ["file-loader"],
+      },
     ],
+  },
+  devServer: {
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebPackPlugin({
