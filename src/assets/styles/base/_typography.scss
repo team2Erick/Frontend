@@ -1,3 +1,21 @@
+* {
+  box-sizing: border-box;
+  font-family: $base-font;
+  font-size: $base-fontSize;
+}
+
+html,
+body {
+  margin : 0;
+	padding : 0;
+	width : 100%;
+	background-color : transparent;
+	font-family : $base-font;
+	line-height : $lineheight;
+	color : $color-text;
+	font-size: $base-fontSize;
+}
+
 h1,
 h2,
 h3,
@@ -16,7 +34,12 @@ ol {
   padding : 0 0 0 0;
   list-style-type: none;
 }
+
 li ul,
 li ol {
 	margin : 0;
+}
+
+a {
+  text-decoration: none;
 }

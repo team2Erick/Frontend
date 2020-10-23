@@ -1,18 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;700&display=swap');
+
 $color-base: #F2F2F2;
-$color-primary: #979797;
-$color-footerItem: #0097db;
-$color-footerControl: #005ba3;
-$color-basefooterControls: #0f1e36;
+$color-primary: #005ba3;
+$color-secondary: #0097db;
+$color-acents: #0f1e36;
 
 $color-grey: #737373;
 $color-darkgrey: darken($color-grey, 25%);
 $color-lightgrey: lighten($color-grey, 25%);
 
 // Textures
-$color-alert: rgb(252, 228, 207);
-$color-error: rgb(218, 79, 207);
-$color-info: rgb(66, 184, 221);
-$color-success: rgb(91, 183, 91);
+$color-warning: #f8282f;
+$color-success: #0dbb66;
 
 // Typography
 $base-font: 'Source Sans Pro', sans-serif;
