@@ -3,13 +3,14 @@ import React from 'react';
 import Header from './Header';
 import Menu from './Menu';
 
-const Layout = () => {
+const Layout = ({children}) => {
   return (
     <>
       <Header />
+      {children}
       <Menu />
     </>
   );
-}
+};
 
 export default Layout;
