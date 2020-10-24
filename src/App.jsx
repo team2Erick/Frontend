@@ -7,7 +7,7 @@ import Home from './views/Home/Home';
 import Auth from "./views/Auth/Auth";
 
 const App = () => (
-  <HashRouter >
+  <HashRouter>
     <Switch>
       <Route path='/home'>
         <Layout>

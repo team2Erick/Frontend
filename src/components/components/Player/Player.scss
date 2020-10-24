@@ -1,0 +1,52 @@
+.player {
+
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    display: flex;
+
+    &__song {
+
+        background: #005BA3;
+        padding: 20px 40px;
+        display: flex;
+        min-width: 250px;
+
+        &__container {
+
+            width: 50px;
+            height: 50px;
+            overflow: hidden;
+            display: flex;
+            border-radius: 5px;
+            margin-right: 40px;
+
+            img {
+                width: 50px;
+            }
+
+        }
+
+        &__content {
+
+            strong {
+                color: white
+            }
+
+            p {
+                margin: 0px;
+                color: #0097DB
+            }
+
+        }
+
+    }
+
+    &__player {
+
+        background: #0F1E36;
+        width: 100%;
+
+    }
+
+}

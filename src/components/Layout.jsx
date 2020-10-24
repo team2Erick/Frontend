@@ -2,10 +2,13 @@ import React from 'react';
 
 import Header from './Header';
 import Menu from './Menu';
+
 import MainSlider from './MainSlider/MainSlider';
+
 import MusicItem from './components/MusicItem/MusicItem';
 import ScrollSlider from './components/ScrollSlider/ScrollSlider';
 import Table from './components/Table/Table';
+import Player from './components/Player/Player';
 
 const sliders = [
   {
@@ -22,6 +25,11 @@ const sliders = [
     image: "https://www.publicdomainpictures.net/pictures/320000/velka/background-image.png",
     title: "TRES",
     artist: "Mushi"
+  },
+  {
+    image: "https://www.publicdomainpictures.net/pictures/320000/velka/background-image.png",
+    title: "CUATRO",
+    artist: "Mushi"
   }
 ]
 
@@ -29,7 +37,7 @@ const musicList = [
   {
     image: "https://www.publicdomainpictures.net/pictures/320000/velka/background-image.png",
     title: "Esta es una canción",
-    subtitle: "Artista"
+    subtitle: "Artista",
   },
   {
     image: "https://www.publicdomainpictures.net/pictures/320000/velka/background-image.png",
@@ -71,8 +79,9 @@ const Layout = () => {
       {/* <MusicItem item={musicList[0]} /> */}
       {/* <br /> */}
       {/* <ScrollSlider title="Featured Tracks" items={musicList} /> */}
-      {/* <Table /> */}
-      <MainSlider sliders={sliders} />
+      {/* <Table  /> */}
+      {/* <MainSlider sliders={sliders} /> */}
+      <Player />
     </>
   );
 }

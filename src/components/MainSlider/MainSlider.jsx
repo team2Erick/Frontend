@@ -1,49 +1,49 @@
 import React, { useState, useEffect } from 'react';
-import './MainSlider.scss'
+import './MainSlider.scss';
 
 const MainSlider = ({ sliders }) => {
-    var [count, setCount] = useState(0);
+	var [count, setCount] = useState(0);
 
-    useEffect(() => {
-        setInterval(() => {
+	useEffect(() => {
+		setInterval(() => {
 
-            setCount((count) => {
-                return sliders.length < count + 2 ? 0 : count + 1;
-            })
+			setCount((count) => {
+				return sliders.length < count + 2 ? 0 : count + 1;
+			});
 
-        }, 5000);
-    }, []);
+		}, 2000);
+	}, []);
 
-    return (
-        <div>
-            {
-                sliders.map((slider, index) => {
-                    if (count == index)
-                        return (
-                            <div className="main-slider"
-                                key={index}
-                                style={{
-                                    background: `url(${slider.image})`,
-                                    backgroundSize: "cover"
-                                }}>
+	return (
+		<div>
+			{
+				sliders.map((slider, index) => {
+					if (count == index)
+						return (
+							<div className="main-slider"
+								key={index}
+								style={{
+									background: `url(${slider.image})`,
+									backgroundSize: "cover"
+								}}>
 
-                                <div className="main-slider__content">
-                                    <span className="main-slider__subtitle">// TRENDING</span>
-                                    <strong className="main-slider__title">{slider.title}</strong>
-                                    <span className="main-slider__artist">-{slider.artist}</span>
-                                    <div className="main-slider__buttons">
+								<div className="main-slider__content">
+									<span className="main-slider__subtitle">// TRENDING</span>
+									<strong className="main-slider__title">{slider.title}</strong>
+									<span className="main-slider__artist">-{slider.artist}</span>
+									<div className="main-slider__buttons">
 
-                                        <div className="btn" style={{ marginRight: "10px" }}>PLAY</div>
-                                        <div className="btn">SHERE</div>
+										<div className="btn" style={{ marginRight: "10px" }}>PLAY</div>
+										<div className="btn">SHERE</div>
 
-                                    </div>
-                                </div>
-                            </div>
-                        )
-                })
-            }
-        </div >
-    )
+									</div>
+								</div>
+							</div>
+						);
+				})
+			}
+		</div>
+	)
 }
 
 export default MainSlider;
