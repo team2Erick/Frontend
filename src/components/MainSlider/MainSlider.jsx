@@ -2,19 +2,17 @@ import React, { useState, useEffect } from 'react';
 import './MainSlider.scss'
 
 const MainSlider = ({ sliders }) => {
+    var [count, setCount] = useState(0);
 
     useEffect(() => {
         setInterval(() => {
-            console.log(count);
 
-            if (sliders.length < count + 2) {
-                setCount(0)
-            } else {
-                setCount(count + 1);
-            }
-        }, 2000);
-    });
-    var [count, setCount] = useState(0);
+            setCount((count) => {
+                return sliders.length < count + 2 ? 0 : count + 1;
+            })
+
+        }, 5000);
+    }, []);
 
     return (
         <div>
