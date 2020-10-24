@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import SidebarItems from './SidebarItems';
 import MyTracks from './MyTracks';
 import Modal from './Modal';
+import Successful from './Successful';
 import '../assets/styles/components/Menu.scss';
 
 const Menu = () => {
@@ -12,12 +13,13 @@ const Menu = () => {
     newPlaylist: {
       /* rock: new Set(), */
     },
+    success: '',
   });
 
   const newPlaylistRef = useRef(null);
   const newPlaylist = Object.keys(state.newPlaylist);
 
-  const addNewPlaylist = e => {
+  const addNewPlaylist = (e) => {
     e.preventDefault();
     const list = newPlaylistRef.current.value;
 
@@ -25,8 +27,11 @@ const Menu = () => {
       ...state,
       modal: false,
       newPlaylist: { ...state.newPlaylist, [list]: new Set() },
+      success: 'Playlist created successfully!',
     });
   };
+
+  const handleModal = () => setState({ ...state, modal: !state.modal });
 
   return (
     <section className="container__menu">
@@ -68,12 +73,7 @@ const Menu = () => {
       </div>
       <div className="menu">
         <ul className="menu__list">
-          <li
-            className="new-playlist"
-            onClick={() => {
-              setState({ ...state, modal: true })
-            }}
-          >
+          <li className="new-playlist" onClick={handleModal}>
             <h3 className="menu__subtitle"> New Playlist</h3>
           </li>
           {newPlaylist.map((item) => (
@@ -87,12 +87,7 @@ const Menu = () => {
               {item}
             </li>
           ))}
-          <Modal
-            show={state.modal}
-            close={() => {
-            setState({ ...state, modal: false });
-            }}
-          >
+          <Modal show={state.modal} close={handleModal}>
             <form onSubmit={addNewPlaylist}>
               <div className="title">Create a New PlayList</div>
               <div className="content-wrap">
@@ -107,6 +102,12 @@ const Menu = () => {
               </div>
             </form>
           </Modal>
+          <Successful
+            success={state.success}
+            close={() => {
+              setState({ ...state, success: '' })
+            }}
+          />
         </ul>
       </div>
     </section>
