@@ -73,8 +73,18 @@ const Menu = () => {
       </div>
       <div className="menu">
         <ul className="menu__list">
-          <li className="new-playlist" onClick={handleModal}>
-            <h3 className="menu__subtitle"> New Playlist</h3>
+          <li
+            className="new-playlist"
+            onClick={handleModal}
+          >
+            <div className="newPlaylist">
+              <h3 className="menu__subtitle"> New Playlist</h3>
+              <img
+                src="/src/assets/images/icons/playlist.svg"
+                className="menu__icon"
+                alt="Plus"
+              />
+            </div>
           </li>
           {newPlaylist.map((item) => (
             <li
@@ -84,6 +94,11 @@ const Menu = () => {
                 setState({ ...state, currentPlayList: item })
               }}
             >
+              <img
+                src="/src/assets/images/icons/newPlaylist.svg"
+                className="menu__icon"
+                alt="New Playlist"
+              />
               {item}
             </li>
           ))}

@@ -6,7 +6,7 @@ a {
 .menu__list li {
   margin-bottom: 10px;
   &.active {
-    border-left: 2px solid red;
+    border-left: 2px solid $color-secondary;
     padding-left: 18px;
   }
 }
@@ -20,6 +20,10 @@ a {
 }
 .new-playlist{
   cursor: pointer;
+}
+.newPlaylist{
+  display: flex;
+  justify-content: space-between;
 }
 
 form {
