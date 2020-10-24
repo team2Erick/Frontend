@@ -14,6 +14,7 @@ import './App.scss';
 const App = () => {
   return (
     <BrowserRouter>
+<<<<<<< HEAD
       <Route render={(props) => (
           <Switch>
             <Route path="/" exact component={Home} />
@@ -27,6 +28,17 @@ const App = () => {
           </Switch>
 
       )}/>
+=======
+      <Layout>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/home" exact component={Home} />
+          <Route path="/songs" component={Songs} />
+          <Route path="/albums" component={Albums} />
+          <Route path="/artists" component={Artists} />
+        </Switch>
+      </Layout>
+>>>>>>> develop
     </BrowserRouter>
   );
 };
