@@ -1,0 +1,31 @@
+@import '../lib/variables';
+@import '../lib/mixins';
+
+.fullwidthbanner {
+  display: flex;
+
+  justify-content: center;
+  width: 100%;
+  height: 342px;
+  background: linear-gradient(
+    179.22deg,
+    #0097db 10.23%,
+    #102638 108.63%,
+    rgba(0, 91, 163, 0) 108.64%,
+    #044d86 108.64%
+  );
+  overflow: hidden;
+  &__container {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h1 {
+      color: white;
+      font-size: 30px;
+    }
+    img {
+      width: 200px;
+    }
+  }
+}
