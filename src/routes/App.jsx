@@ -10,17 +10,15 @@ import './App.scss';
 const App = () => {
   return (
     <BrowserRouter>
-      <Route render={(props) => (
-        <Layout {...props}>
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/home" exact component={Home} />
-            <Route path="/songs" component={Songs} />
-            <Route path="/albums" component={Albums} />
-            <Route path="/artists" component={Artists} />
-          </Switch>
-        </Layout>
-      )}/>
+      <Layout>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/home" exact component={Home} />
+          <Route path="/songs" component={Songs} />
+          <Route path="/albums" component={Albums} />
+          <Route path="/artists" component={Artists} />
+        </Switch>
+      </Layout>
     </BrowserRouter>
   );
 };
