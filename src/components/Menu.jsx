@@ -1,71 +1,60 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import SidebarItems from './SidebarItems';
+import MyTracks from './MyTracks';
+import '../assets/styles/components/Menu.scss';
 
-const Menu = () => (
-  <>
-    <section className="container__menu">
+const Menu = () => {
+  const [state, setState] = useState({
+    currentPlayList: 'home',
+  });
+  return (
+    <section>
       <figure>
         <img src="/src/assets/images/icon.svg" alt="icon" />
       </figure>
       <div className="menu">
         <ul className="menu__list">
-          <li>
-            <img className="menu__list--icon" src="/src/assets/images/icons/discover.svg" alt="discover" />
-            Discover
-          </li>
-          <li>
-            <img className="menu__list--icon" src="/src/assets/images/icons/songs.svg" alt="Songs" />
-            Songs
-          </li>
-          <li>
-            <img className="menu__list--icon" src="/src/assets/images/icons/albums.svg" alt="Albums" />
-            Albums
-          </li>
-          <li>
-            <img className="menu__list--icon" src="/src/assets/images/icons/artists.svg" alt="Artists" />
-            Artists
-          </li>
+          {SidebarItems.map((item) => (
+            <li
+              key={item}
+              className={ item === state.currentPlayList ? 'active' : '' }
+              onClick={() => {setState({ ...state, currentPlayList: item})}}
+            >
+              <Link to={item.route}>
+                <img src={item.image} className="menu__icon" alt={item.alt} />
+                {item.name}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
-      <div>
-        <h3>My Tracks</h3>
+      <div className="menu">
+        <h3 className="menu__subtitle">My Tracks</h3>
         <ul className="menu__list">
-          <li>
-            <img className="menu__list--icon" src="/src/assets/images/icons/favourite.svg" alt="Favourite" />
-            Favourite
-          </li>
-          <li>
-            <img className="menu__list--icon" src="/src/assets/images/icons/history.svg" alt="Recent history" />
-            Recent History
-          </li>
-          <li>
-            <img className="menu__list--icon" src="/src/assets/images/icons/download.svg" alt="Download" />
-            Download Items
-          </li>
+          {MyTracks.map((item) => (
+            <li
+              key={item}
+              className={ item === state.currentPlayList ? 'active' : '' }
+              onClick={() => {setState({ ...state, currentPlayList: item})}}
+            >
+              <Link to={item.route}>
+                <img src={item.image} className="menu__icon" alt={item.alt} />
+                {item.name}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
-      <div>
-        <h3>PlayList</h3>
+      <div className="menu">
         <ul className="menu__list">
           <li>
-            <img className="menu__list--icon" src="/src/assets/images/icons/playlist.svg" alt="Playlist" />
-            Bangla
-          </li>
-          <li>
-            <img className="menu__list--icon" src="/src/assets/images/icons/playlist.svg" alt="Playlist" />
-            English
-          </li>
-          <li>
-            <img className="menu__list--icon" src="/src/assets/images/icons/playlist.svg" alt="Playlist" />
-            My Style
-          </li>
-          <li>
-            <img className="menu__list--icon" src="/src/assets/images/icons/playlist.svg" alt="Playlist" />
-            Hindi
+            <h3 className="menu__subtitle"> New Playlist</h3>
           </li>
         </ul>
       </div>
     </section>
-  </>
-);
+  );
+};
 
 export default Menu;

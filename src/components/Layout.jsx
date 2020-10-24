@@ -2,6 +2,7 @@ import React from 'react';
 
 import Header from './Header';
 import Menu from './Menu';
+import Playbar from './Playbar';
 
 import MainSlider from './MainSlider/MainSlider';
 
@@ -75,6 +76,7 @@ const Layout = () => {
   return (
     <>
       <Header />
+      {children}
       <Menu />
       {/* <MusicItem item={musicList[0]} /> */}
       {/* <br /> */}
@@ -84,6 +86,6 @@ const Layout = () => {
       <Player />
     </>
   );
-}
+};
 
 export default Layout;

@@ -1,0 +1,18 @@
+a {
+  text-decoration: none;
+}
+.menu__list li {
+  margin-bottom: 10px;
+  &.active {
+    border-left: 2px solid red;
+    padding-left: 18px;
+  }
+}
+
+.menu__icon {
+  margin-right: 15px;
+  margin-left: 20px;
+}
+.menu__subtitle {
+  margin-left: 20px;
+}
