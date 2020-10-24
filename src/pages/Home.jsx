@@ -1,9 +1,12 @@
 import React from 'react';
+import MainSlider from '../components/MainSlider';
+/* import ScrollSlider from '../components/ScrollSlider'; */
 import '../assets/styles/pages/Home.scss';
 
 const Home = () => (
   <main className="main">
-    <h1>Home</h1>
+    <MainSlider />
+    {/* <ScrollSlider title="Featured Tracks" /> */}
   </main>
 );
 
