@@ -3,6 +3,7 @@ import React from 'react';
 import Header from './components/Header/Header';
 import Menu from './components/Menu/Menu';
 import Player from '../Player/Player';
+import ScrollSlider from "../ScrollSlider/ScrollSlider"
 
 const playlist = [
   {
@@ -27,7 +28,7 @@ const playlist = [
     image: "https://homepages.cae.wisc.edu/~ece533/images/pool.png",
     song: "/src/components/HomeLayout/test.mp3",
     title: "Nombre de la canción 4",
-    artist: "Nombre del artista 4"
+    artist: "Nombre del artista 4",
   },
   {
     image: "https://homepages.cae.wisc.edu/~ece533/images/pool.png",
@@ -41,9 +42,13 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header />
-      {children}
+      <ScrollSlider title="test" items={playlist} />
+
+      {/* {children} */}
       <Menu />
       <Player playlist={playlist} />
+
+
     </>
   );
 };
