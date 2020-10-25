@@ -1,0 +1,96 @@
+body {
+  margin: 2px;
+  font-family: 'Muli', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.artist-item {
+  overflow: hidden;
+  position: relative;
+  margin-right: 10px;
+  cursor: pointer;
+  -webkit-transform-origin: center left;
+  transform-origin: center left;
+}
+
+.container {
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  margin-right: 10px;
+  cursor: pointer;
+  width: 650px;
+  height: 330px;
+  -webkit-transform-origin: center left;
+  transform-origin: center left;
+}
+
+.artist-item__img {
+  width: 650px;
+  height: 330px;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.artist-item__details {
+  font-size: 10px;
+  color: white;
+  font-weight: bold;
+  padding: 20px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  display: grid;
+  grid-template-columns: 15% 12% 12% 12% 49%;
+  grid-template-rows: 3fr 1fr 1fr;
+}
+
+.artist-profile {
+  display: grid;
+  grid-column: 1;
+  grid-row: 2 / span 3;
+  justify-content: center;
+  align-items: center;
+}
+
+.artist-profile__image {
+  width: 78px;
+  border-radius: 50px;
+}
+
+.artist-name__album {
+  display: grid;
+  grid-column: 2;
+  grid-row: 2;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.artist-name__followers {
+  display: grid;
+  grid-column: 2;
+  grid-row: 3;
+  justify-content: center;
+  align-items: center;
+}
+
+.artist-name__listener {
+  display: grid;
+  grid-column: 3;
+  grid-row: 3;
+  justify-content: center;
+  align-items: center;
+}
+
+.artist-name__songs {
+  display: grid;
+  grid-column: 4;
+  grid-row: 3;
+  justify-content: center;
+  align-items: center;
+}

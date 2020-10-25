@@ -1,9 +1,12 @@
 import React from 'react';
+import ArtistPlayList from '../components/ArtistPlayList';
 import '../assets/styles/pages/Artists.scss';
 
 const Artists = () => (
   <section className="main artists">
-    <h1>Artists</h1>
+    <div className="ArtistPlayList">
+      <ArtistPlayList />
+    </div>
   </section>
 );
 
