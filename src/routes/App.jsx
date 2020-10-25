@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Home from '../pages/Home';
-import Songs from '../pages/Songs';
-import Albums from '../pages/Albums';
-import Artists from '../pages/Artists';
-import Login from '../pages/Login'
-import SingUp from '../pages/SingUp'
-import FinishSingUp from '../pages/FinishSingUp'
+import Home from '../pages/Home/Home';
+import Songs from '../pages/Songs/Songs';
+import Albums from '../pages/Albums/Albums';
+import Artists from '../pages/Artists/Artists';
+import Login from '../pages/Login/Login'
+import SingUp from '../pages/SingUp/SingUp'
+import FinishSingUp from '../pages/FinishSingUp/FinishSingUp'
 
 import './App.scss';
 

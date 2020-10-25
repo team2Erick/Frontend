@@ -1,0 +1,24 @@
+.scroll-slider {
+  box-sizing: border-box;
+  margin-top: 0;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 100%;
+  max-width: 100%;
+  height: 220px;
+  overflow: scroll;
+  overflow-y: hidden;
+  &__table {
+  }
+  &__title {
+    margin: 0;
+    padding: 0;
+    width: 500px;
+    padding: 20px 30px;
+    display: block;
+  }
+}
