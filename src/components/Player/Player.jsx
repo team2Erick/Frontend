@@ -40,23 +40,23 @@ export default ({ url }) => {
 			</div>
 			<div className="player__player">
 				<div className="player__player__item">
-					<img src="./img/continue-icon.svg" />
+					<img src="/src/components/Player/img/continue-icon.svg" />
 				</div>
 				<div className="player__player__item">
-					<img src="./img/shuffle-icon.svg" />
+					<img src="/src/components/Player/img/shuffle-icon.svg" />
 				</div>
 				<div className="player__player__item">
-					<img src="./img/back-icon.svg" />
+					<img src="/src/components/Player/img/back-icon.svg" />
 				</div>
 				<div className="player__player__item">
 					<div onClick={playToggle} className="player__player__item-play">
 						{
-							playing ? <img src="./img/pause-icon.svg" /> : <img src="./img/play-icon.svg" />
+							playing ? <img src="/src/components/Player/img/pause-icon.svg" /> : <img src="/src/components/Player/img/play-icon.svg" />
 						}
 					</div>
 				</div>
 				<div className="player__player__item">
-					<img src="./img/next-icon.svg" />
+					<img src="/src/components/Player/img/next-icon.svg" />
 				</div>
 				<div className="player__player__item">
 					03:29
@@ -68,7 +68,7 @@ export default ({ url }) => {
 					03:29
 				</div>
 				<div className="player__player__item">
-					<img src="./img/volume-icon.svg" />
+					<img src="/src/components/Player/img/volume-icon.svg" />
 				</div>
 
 			</div>
