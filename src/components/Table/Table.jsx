@@ -1,5 +1,6 @@
 import React from 'react';
 import './Table.scss';
+import MyDatos from '../../pages/datos';
 
 const Table = ({ title }) => {
     return (
@@ -19,26 +20,20 @@ const Table = ({ title }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td></td>
-                        <td>Song Name</td>
-                        <td>Artist</td>
-                        <td>Daily Plays</td>
-                        <td>Time</td>
-                        <td>Option</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td></td>
-                        <td>Song Name</td>
-                        <td>Artist</td>
-                        <td>Daily Plays</td>
-                        <td>Time</td>
-                        <td>Option</td>
-                        <td></td>
-                    </tr>
+                    {MyDatos.map((list, id) => {
+                        return (
+                            <tr key={id}>
+                                <td>1</td>
+                                <td></td>
+                                <td>{list.title}</td>
+                                <td>{list.artist}</td>
+                                <td>Daily Plays</td>
+                                <td>{list.length}</td>
+                                <td>Option</td>
+                                <td></td>
+                            </tr>
+                        )
+                    })}
                 </tbody>
             </table>
         </div>
