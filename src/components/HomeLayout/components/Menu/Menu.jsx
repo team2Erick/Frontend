@@ -1,6 +1,7 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import '../../../../assets/styles/components/Menu.scss';
+import MyContext from '../../HomeLayout';
 
 // data
 import SidebarItems from './components/SidebarItems';
@@ -11,15 +12,12 @@ import Modal from '../../../Modal/Modal';
 import Successful from '../../../Alert/Alert';
 
 const Menu = () => {
-  const [state, setState] = useState({
-    currentPlayList: 'home',
+  const [MenuState, setState] = useState({
     modal: false,
-    newPlaylist: {
-      /* rock: new Set(), */
-    },
     success: '',
   });
 
+  const { state, dispatch } = useContext(MyContext);
   const newPlaylistRef = useRef(null);
   const newPlaylist = Object.keys(state.newPlaylist);
 
@@ -27,15 +25,15 @@ const Menu = () => {
     e.preventDefault();
     const list = newPlaylistRef.current.value;
 
+    dispatch({ type: 'ADD_PLAYLIST', newPlaylist: list });
     setState({
-      ...state,
+      ...MenuState,
       modal: false,
-      newPlaylist: { ...state.newPlaylist, [list]: new Set() },
       success: 'Playlist created successfully!',
     });
   };
 
-  const handleModal = () => setState({ ...state, modal: !state.modal });
+  const handleModal = () => setState({ ...MenuState, modal: !MenuState.modal });
 
   return (
     <section className="container__menu">
@@ -95,7 +93,7 @@ const Menu = () => {
               key={item}
               className={item === state.currentPlayList ? 'active' : ''}
               onClick={() => {
-                setState({ ...state, currentPlayList: item })
+                dispatch({ type: 'SET_PLAYLIST', newPlaylist: item })
               }}
             >
               <img
@@ -106,7 +104,7 @@ const Menu = () => {
               {item}
             </li>
           ))}
-          <Modal show={state.modal} close={handleModal}>
+          <Modal show={MenuState.modal} close={handleModal}>
             <form onSubmit={addNewPlaylist}>
               <div className="title">Create a New PlayList</div>
               <div className="content-wrap">
@@ -122,9 +120,9 @@ const Menu = () => {
             </form>
           </Modal>
           <Successful
-            success={state.success}
-            close={() => {
-              setState({ ...state, success: '' })
+            success={MenuState.success}
+             close={() => {
+               setState({ ...MenuState, success: '' })
             }}
           />
         </ul>
