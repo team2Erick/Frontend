@@ -1,10 +1,14 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import SidebarItems from './SidebarItems';
-import MyTracks from './MyTracks';
-import Modal from './Modal';
-import Successful from './Successful';
-import '../assets/styles/components/Menu.scss';
+import '../../../../assets/styles/components/Menu.scss';
+
+// data
+import SidebarItems from './components/SidebarItems';
+import MyTracks from './components/MyTracks';
+
+// components
+import Modal from '../../../Modal/Modal';
+import Successful from '../../../Alert/Alert';
 
 const Menu = () => {
   const [state, setState] = useState({
@@ -40,11 +44,11 @@ const Menu = () => {
       </figure>
       <div className="menu">
         <ul className="menu__list">
-          {SidebarItems.map((item) => (
+          {SidebarItems.map((item, index) => (
             <li
-              key={item}
-              className={ item === state.currentPlayList ? 'active' : '' }
-              onClick={() => {setState({ ...state, currentPlayList: item})}}
+              key={"menu_list" + index}
+              className={item === state.currentPlayList ? 'active' : ''}
+              onClick={() => { setState({ ...state, currentPlayList: item }) }}
             >
               <Link to={item.route}>
                 <img src={item.image} className="menu__icon" alt={item.alt} />
@@ -57,11 +61,11 @@ const Menu = () => {
       <div className="menu">
         <h3 className="menu__subtitle">My Tracks</h3>
         <ul className="menu__list">
-          {MyTracks.map((item) => (
+          {MyTracks.map((item, index) => (
             <li
-              key={item}
-              className={ item === state.currentPlayList ? 'active' : '' }
-              onClick={() => {setState({ ...state, currentPlayList: item})}}
+              key={"my_tracks" + index}
+              className={item === state.currentPlayList ? 'active' : ''}
+              onClick={() => { setState({ ...state, currentPlayList: item }) }}
             >
               <Link to={item.route}>
                 <img src={item.image} className="menu__icon" alt={item.alt} />

@@ -3,8 +3,10 @@
 a {
   text-decoration: none;
 }
+
 .menu__list li {
   margin-bottom: 10px;
+
   &.active {
     border-left: 3px solid $color-secondary;
     padding-left: 18px;
@@ -15,13 +17,16 @@ a {
   margin-right: 15px;
   margin-left: 20px;
 }
+
 .menu__subtitle {
   margin-left: 20px;
 }
-.new-playlist{
+
+.new-playlist {
   cursor: pointer;
 }
-.newPlaylist{
+
+.newPlaylist {
   display: flex;
   justify-content: space-between;
 }
@@ -38,11 +43,13 @@ form {
     border: none;
     cursor: pointer;
   }
+
   .title {
     margin: 0;
     margin-bottom: 35px;
     text-align: center;
   }
+
   input {
     margin-bottom: 20px;
     height: 35px;
@@ -51,6 +58,7 @@ form {
     width: 100%;
     color: black;
   }
+
   .content-wrap {
     margin: 0px auto;
     max-width: 250px;
