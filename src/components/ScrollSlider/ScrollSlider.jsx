@@ -4,6 +4,19 @@ import MusicItem from '../MusicItem/MusicItem';
 import './ScrollSlider.scss';
 
 const ScrollSlider = ({ items, title }) => {
+  /**
+   *  @param items: array [
+   *      {
+   *          title
+   *          image,
+   *          artist,
+   *          song
+   *      }
+   * ]
+   *
+   * @param title: string
+   */
+
   return (
     <div>
       <strong className="scroll-slider__title">{title}</strong>
