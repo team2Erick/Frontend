@@ -1,0 +1,10 @@
+.scroll-slider {
+    overflow: auto;
+    white-space: nowrap;
+    height: 270px;
+
+    &__title {
+        padding: 10px 0;
+        display: block;
+    }
+}

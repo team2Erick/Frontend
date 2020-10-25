@@ -1,5 +1,5 @@
 import React from 'react';
-import MainSlider from '../components/MainSlider';
+import MainSlider from '../components/MainSlider/MainSlider';
 /* import ScrollSlider from '../components/ScrollSlider'; */
 import '../assets/styles/pages/Home.scss';
 

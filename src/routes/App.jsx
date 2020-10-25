@@ -4,13 +4,13 @@ import Home from '../pages/Home';
 import Songs from '../pages/Songs';
 import Albums from '../pages/Albums';
 import Artists from '../pages/Artists';
-import Layout from '../components/Layout';
+import HomeLayout from '../components/HomeLayout/HomeLayout';
 import './App.scss';
 
 const App = () => {
   return (
     <BrowserRouter>
-      <Layout>
+      <HomeLayout>
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/home" exact component={Home} />
@@ -18,7 +18,7 @@ const App = () => {
           <Route path="/albums" component={Albums} />
           <Route path="/artists" component={Artists} />
         </Switch>
-      </Layout>
+      </HomeLayout>
     </BrowserRouter>
   );
 };

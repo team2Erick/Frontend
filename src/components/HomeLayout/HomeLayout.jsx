@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Header from './Header';
-import Menu from './Menu';
-import Playbar from './Playbar';
+import Header from './components/Header/Header';
+import Menu from './components/Menu/Menu';
+import Playbar from './components/Playbar/Playbar';
 
 const Layout = ({ children }) => {
   return (

@@ -29,15 +29,16 @@ export default ({ url }) => {
 	return (
 		<div className="player">
 			<div className="player__song">
-				<div class="player__song__container">
-					<img src="https://homepages.cae.wisc.edu/~ece533/images/pool.png" />
+				<div className="player__song__image" style={{
+					background: `url('https://homepages.cae.wisc.edu/~ece533/images/pool.png')`
+				}}>
 				</div>
 				<div className="player__song__content">
 					<strong>Titulos Canción</strong>
 					<p>Autores de la canción</p>
 				</div>
 			</div>
-			<div class="player__player">
+			<div className="player__player">
 				<div className="player__player__item">
 					<img src="/src/components/Player/img/continue-icon.svg" />
 				</div>
@@ -50,7 +51,7 @@ export default ({ url }) => {
 				<div className="player__player__item">
 					<div onClick={playToggle} className="player__player__item-play">
 						{
-							playing ? <img src="/src/components/Player/img/pause-icon.svg" /> : <img src="/src/components/components/Player/img/play-icon.svg" />
+							playing ? <img src="/src/components/Player/img/pause-icon.svg" /> : <img src="/src/components/Player/img/play-icon.svg" />
 						}
 					</div>
 				</div>
@@ -71,7 +72,7 @@ export default ({ url }) => {
 				</div>
 
 			</div>
-		</div>
+		</div >
 	)
 }
 
