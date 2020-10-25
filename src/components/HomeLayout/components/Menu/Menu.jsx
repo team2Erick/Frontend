@@ -1,7 +1,6 @@
 import React, { useState, useRef, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import '../../../../assets/styles/components/Menu.scss';
-import MyContext from '../../HomeLayout';
 
 // data
 import SidebarItems from './components/SidebarItems';
@@ -10,6 +9,7 @@ import MyTracks from './components/MyTracks';
 // components
 import Modal from '../../../Modal/Modal';
 import Successful from '../../../Alert/Alert';
+import { Context } from '../../HomeLayout';
 
 const Menu = () => {
   const [MenuState, setState] = useState({
@@ -17,7 +17,7 @@ const Menu = () => {
     success: '',
   });
 
-  const { state, dispatch } = useContext(MyContext);
+  const { state, dispatch } = useContext(Context);
   const newPlaylistRef = useRef(null);
   const newPlaylist = Object.keys(state.newPlaylist);
 
@@ -26,6 +26,7 @@ const Menu = () => {
     const list = newPlaylistRef.current.value;
 
     dispatch({ type: 'ADD_PLAYLIST', newPlaylist: list });
+
     setState({
       ...MenuState,
       modal: false,
@@ -42,9 +43,9 @@ const Menu = () => {
       </figure>
       <div className="menu">
         <ul className="menu__list">
-          {SidebarItems.map((item, index) => (
+          {SidebarItems.map((item) => (
             <li
-              key={"menu_list" + index}
+              key={item}
               className={item === state.currentPlayList ? 'active' : ''}
               onClick={() => { setState({ ...state, currentPlayList: item }) }}
             >
@@ -59,9 +60,9 @@ const Menu = () => {
       <div className="menu">
         <h3 className="menu__subtitle">My Tracks</h3>
         <ul className="menu__list">
-          {MyTracks.map((item, index) => (
+          {MyTracks.map((item) => (
             <li
-              key={"my_tracks" + index}
+              key={item}
               className={item === state.currentPlayList ? 'active' : ''}
               onClick={() => { setState({ ...state, currentPlayList: item }) }}
             >
@@ -121,8 +122,8 @@ const Menu = () => {
           </Modal>
           <Successful
             success={MenuState.success}
-             close={() => {
-               setState({ ...MenuState, success: '' })
+            close={() => {
+              setState({ ...MenuState, success: '' });
             }}
           />
         </ul>

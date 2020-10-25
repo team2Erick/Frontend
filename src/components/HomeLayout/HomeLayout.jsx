@@ -1,16 +1,16 @@
-import React, {useReducer, createContext} from 'react';
+import React, { createContext, useReducer } from 'react';
 import Header from './components/Header/Header';
 import Menu from './components/Menu/Menu';
 import Playbar from './components/Playbar/Playbar';
+import media from '../../media.json';
 
-export const MyContext = createContext(null);
+export const Context = createContext(null);
 const DEFAULT_PLAYLIST = 'home';
 
 const initialState = {
+  media,
   currentPlaylist: DEFAULT_PLAYLIST,
-  newPlaylist: {
-    /* rock: new Set(), */
-  },
+  newPlaylist: {},
 };
 
 const reducer = (state, action) => {
@@ -18,14 +18,13 @@ const reducer = (state, action) => {
     case 'ADD_PLAYLIST':
       return {
         ...state,
-        newPlaylists: { ...state.newPlaylist, [action.newPlaylist]: new Set() },
+        newPlaylist: { ...state.newPlaylist, [action.newPlaylist]: new Set() },
       };
     case 'SET_PLAYLIST':
       return { ...state, currentPlaylist: action.newPlaylist };
     default:
       break;
   }
-
   return state;
 };
 
@@ -34,12 +33,12 @@ const Layout = ({children}) => {
 
   return (
     <>
-      <MyContext.Provider value={{ state, dispatch }}>
+      <Context.Provider value={{ state, dispatch }}>
         <Header />
-        {children}
         <Menu />
+        {children}
         <Playbar />
-      </MyContext.Provider>
+      </Context.Provider>
     </>
   );
 };

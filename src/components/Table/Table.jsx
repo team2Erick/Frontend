@@ -1,9 +1,10 @@
 import React from 'react';
 import './Table.scss';
 
-const Table = () => {
+const Table = ({ title }) => {
     return (
         <div>
+            <h3>{title}</h3>
             <table>
                 <thead>
                     <tr>
