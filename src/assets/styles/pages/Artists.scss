@@ -4,7 +4,21 @@
   grid-template-rows: 3fr 1fr 1fr;
 }
 
+.container-artist {
+  display: inline;
+}
+
 .ArtistPlayList {
   display: grid;
   grid-row: 1;
+}
+
+.FilterArtist {
+  display: grid;
+  grid-row: 2;
+}
+
+.ScrollSlider {
+  display: grid;
+  grid-row: 3;
 }

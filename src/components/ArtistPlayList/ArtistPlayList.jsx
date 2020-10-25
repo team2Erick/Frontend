@@ -1,5 +1,6 @@
 import React from 'react';
-import '../assets/styles/components/ArtistPlayList.scss';
+import './ArtistPlayList.scss';
+import PlayArtist from './PlayArtist';
 
 const BackArtist = 'src/assets/images/ArtistPlayList/BackArtist.svg';
 const imgProfile =
@@ -8,7 +9,9 @@ const imgProfile =
 const ArtistPlayList = () => (
   <div className="artist-item">
     <div className="container">
-      <img className="artist-item__img" src={BackArtist} alt="" />
+      <div className="artist-item__imgen">
+        <img className="artist-item__img" src={BackArtist} alt="" />
+      </div>
       <div className="artist-item__details">
         <div className="artist-profile">
           <img
@@ -39,6 +42,11 @@ const ArtistPlayList = () => (
             Songs
             <br />
             78
+          </div>
+        </div>
+        <div className="container-artist-play__list">
+          <div className="artist-play__list">
+            <PlayArtist />
           </div>
         </div>
       </div>
