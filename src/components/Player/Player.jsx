@@ -11,7 +11,6 @@ export default ({ playlist }) => {
 	const [audio, updateAudio] = useState(new Audio(currentTrack.song))
 	const [currentTime, updateCurrentTime] = useState(0)
 
-
 	useEffect(() => {
 		audio.addEventListener("ended", () => {
 			updatePlaying(false)
@@ -43,6 +42,26 @@ export default ({ playlist }) => {
 		updatePlaying(false)
 		updateCurrentTime(0)
 		updateAudio(new Audio(currentTrack.song))
+	}
+
+	const prev = () => {
+		audio.pause();
+		updateCurrentIndexTrack((value) => value - 1);
+		updateCurrentTrack((value) => playlist[currentIndexTrack]);
+		updatePlaying(false)
+		updateCurrentTime(0)
+		updateAudio(new Audio(currentTrack.song))
+	}
+
+	const secondsToString = (seconds) => {
+		seconds = parseInt(seconds)
+		var hour = Math.floor(seconds / 3600);
+		hour = (hour < 10) ? '0' + hour : hour;
+		var minute = Math.floor((seconds / 60) % 60);
+		minute = (minute < 10) ? '0' + minute : minute;
+		var second = seconds % 60;
+		second = (second < 10) ? '0' + second : second;
+		return minute + ':' + second;
 	}
 
 	return (
@@ -89,7 +108,7 @@ export default ({ playlist }) => {
 
 				<div className="player__controls__progress">
 					<span>
-						03:29
+						{secondsToString(currentTime)}
 					</span>
 					<input type="range"
 						value={currentTime}
@@ -98,7 +117,7 @@ export default ({ playlist }) => {
 						onChange={event => updateTime(event)}
 					></input>
 					<span>
-						03:29
+						{secondsToString(audio.duration - currentTime || 0)}
 					</span>
 				</div>
 
@@ -110,7 +129,7 @@ export default ({ playlist }) => {
 					value={audio.volume * 100}
 					max={100}
 					className="player__controls__progress__bar"
-					onChange={event => audio.volume = (event.target.value / 100)}
+					onChange={event => audio.volume = ((event.target.value / 100).toString())}
 				></input>
 			</div>
 		</div >
