@@ -3,7 +3,6 @@ import './Table.scss';
 import MyDatos from '../../pages/datos';
 
 const Table = ({ title }) => {
-  let count = 0;
   return (
         <div>
             <h3>{title}</h3>
@@ -24,7 +23,7 @@ const Table = ({ title }) => {
                     {MyDatos.map((list, id) => {
                         return (
                             <tr key={id}>
-                                <td>{count += 1}</td>
+                                <td>{id+1}</td>
                                 <td><img src="/src/assets/images/icons/favourite.svg" alt="favourite" /></td>
                                 <td>{list.title}</td>
                                 <td>{list.artist}</td>

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import '../../../../assets/styles/components/Menu.scss';
 
@@ -9,15 +9,17 @@ import MyTracks from './components/MyTracks';
 // components
 import Modal from '../../../Modal/Modal';
 import Successful from '../../../Alert/Alert';
-import { Context } from '../../HomeLayout';
 
 const Menu = () => {
-  const [MenuState, setState] = useState({
+  const [state, setState] = useState({
+    currentPlayList: 'home',
     modal: false,
+    newPlaylist: {
+      /* rock: new Set(), */
+    },
     success: '',
   });
 
-  const { state, dispatch } = useContext(Context);
   const newPlaylistRef = useRef(null);
   const newPlaylist = Object.keys(state.newPlaylist);
 
@@ -25,16 +27,15 @@ const Menu = () => {
     e.preventDefault();
     const list = newPlaylistRef.current.value;
 
-    dispatch({ type: 'ADD_PLAYLIST', newPlaylist: list });
-
     setState({
-      ...MenuState,
+      ...state,
       modal: false,
+      newPlaylist: { ...state.newPlaylist, [list]: new Set() },
       success: 'Playlist created successfully!',
     });
   };
 
-  const handleModal = () => setState({ ...MenuState, modal: !MenuState.modal });
+  const handleModal = () => setState({ ...state, modal: !state.modal });
 
   return (
     <section className="container__menu">
@@ -43,9 +44,9 @@ const Menu = () => {
       </figure>
       <div className="menu">
         <ul className="menu__list">
-          {SidebarItems.map((item) => (
+          {SidebarItems.map((item, index) => (
             <li
-              key={item}
+              key={"menu_list" + index}
               className={item === state.currentPlayList ? 'active' : ''}
               onClick={() => { setState({ ...state, currentPlayList: item }) }}
             >
@@ -60,9 +61,9 @@ const Menu = () => {
       <div className="menu">
         <h3 className="menu__subtitle">My Tracks</h3>
         <ul className="menu__list">
-          {MyTracks.map((item) => (
+          {MyTracks.map((item, index) => (
             <li
-              key={item}
+              key={"my_tracks" + index}
               className={item === state.currentPlayList ? 'active' : ''}
               onClick={() => { setState({ ...state, currentPlayList: item }) }}
             >
@@ -94,7 +95,7 @@ const Menu = () => {
               key={item}
               className={item === state.currentPlayList ? 'active' : ''}
               onClick={() => {
-                dispatch({ type: 'SET_PLAYLIST', newPlaylist: item })
+                setState({ ...state, currentPlayList: item })
               }}
             >
               <img
@@ -105,7 +106,7 @@ const Menu = () => {
               {item}
             </li>
           ))}
-          <Modal show={MenuState.modal} close={handleModal}>
+          <Modal show={state.modal} close={handleModal}>
             <form onSubmit={addNewPlaylist}>
               <div className="title">Create a New PlayList</div>
               <div className="content-wrap">
@@ -121,9 +122,9 @@ const Menu = () => {
             </form>
           </Modal>
           <Successful
-            success={MenuState.success}
+            success={state.success}
             close={() => {
-              setState({ ...MenuState, success: '' });
+              setState({ ...state, success: '' })
             }}
           />
         </ul>
