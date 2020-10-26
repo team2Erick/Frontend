@@ -12,7 +12,9 @@ const Albums = () => (
     <div className="album">
       <div className="album__image">
         <h2>Kamelia</h2>
-        <img src={Singer}/>
+        <div className="album__image__contentimg">
+          <img src={Singer}/>
+        </div>
       </div>
       <div className="album__table">
         <h4>// Album</h4>

@@ -1,4 +1,5 @@
 .scroll-slider {
+  padding: 0 20px;
   box-sizing: border-box;
   margin-top: 0;
   margin-bottom: 20px;
@@ -12,6 +13,7 @@
   height: 220px;
   overflow: scroll;
   overflow-y: hidden;
+  // border: 1px solid red;
   &__table {
   }
   &__title {

@@ -1,6 +1,8 @@
 @import '../../assets/styles/lib/variables';
 @import '../../assets/styles/lib/mixins';
-
+.container__menu {
+  border-right: $color-border;
+}
 a {
   text-decoration: none;
 }

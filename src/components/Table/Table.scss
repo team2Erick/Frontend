@@ -1,21 +1,22 @@
 table {
-    width: 100%;
+  width: 100%;
+  //   border: 1px solid blue;
 
-    th {
-        text-align: left;
-        padding: 10px;
-    }
+  th {
+    text-align: left;
+    padding: 10px;
+  }
 
-    td {
-        padding: 10px;
+  td {
+    padding: 10px;
+  }
+  tbody {
+    tr {
+      font-size: 14px;
     }
-    tbody {
-        tr {
-            font-size: 14px;
-        }
-        tr:hover {
-            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
-            border-radius: 3px;
-        }
+    tr:hover {
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+      border-radius: 3px;
     }
+  }
 }
