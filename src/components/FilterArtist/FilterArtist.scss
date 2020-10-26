@@ -1,12 +1,8 @@
-.filter-container {
-  width: 100%;
-  max-width: 1024px;
-}
-
 .filter-container__title {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  width: 100%;
+  max-width: 1024px;
 }
 
 .filter-container__title h1 {
@@ -17,9 +13,7 @@
 
 .filter-container__spacetime {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-right: 30px;
+  align-items: flex-end;
 }
 
 .filter-container__spacetime div {
@@ -32,11 +26,12 @@
 .filter-container__gender {
   display: flex;
   flex-wrap: wrap;
-  align-content: flex-start;
+  width: 100%;
+  max-width: 1024px;
 }
 
 .filter-container__gender div {
-  margin: 6px;
+  margin: 1px 5px 5px;
   padding: 1px 5px;
   border: 1px solid black;
   border-radius: 5px;

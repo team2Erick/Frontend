@@ -2,6 +2,7 @@ import React from 'react';
 import ArtistPlayList from '../components/ArtistPlayList/ArtistPlayList';
 import FilterArtist from '../components/FilterArtist/FilterArtist';
 import ScrollSlider from '../components/ScrollSlider/ScrollSlider';
+import HomeLayout from '../components/HomeLayout/HomeLayout';
 import '../assets/styles/pages/Artists.scss';
 
 const playList = [
@@ -38,19 +39,25 @@ const playList = [
 ];
 
 const Artists = () => (
-  <section className="main artists">
-    <div className="container-artist">
-      <div className="ArtistPlayList">
-        <ArtistPlayList />
-      </div>
-      <div className="FilterArtist">
-        <FilterArtist />
-      </div>
-      <div className="ScrollSlider">
-        <ScrollSlider title="test" items={playList} />
+  <HomeLayout>
+    <div className="container-Artist-hide-scroll">
+      <div className="container-Artist-viewport">
+        <div className="artists">
+          <div className="container-artist">
+            <div className="ArtistPlayList">
+              <ArtistPlayList />
+            </div>
+            <div className="FilterArtist">
+              <FilterArtist />
+            </div>
+            <div className="ScrollSlider">
+              <ScrollSlider title="Artist" items={playList} />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+  </HomeLayout>
 );
 
 export default Artists;
