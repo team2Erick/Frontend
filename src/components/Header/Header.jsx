@@ -9,7 +9,7 @@ const imgProfile =
 const Header = () => (
   <header className="container__header">
     <nav className="navbar">
-      <div className="navbar__mobile-button menu-off">
+      <div className="navbar__mobile-button">
           <button><img src={Burguer}/></button>
       </div>
       <div>
