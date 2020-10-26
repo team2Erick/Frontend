@@ -5,6 +5,18 @@ import './ScrollSlider.scss'
 
 const ScrollSlider = ({ items, title }) => {
 
+    /** 
+     *  @param items: array [
+     *      {
+     *          title
+     *          image,
+     *          artist,
+     *          song
+     *      }
+     * ]
+     * 
+     * @param title: string
+    */
 
     return (
         <div>
