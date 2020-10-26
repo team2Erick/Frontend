@@ -3,7 +3,7 @@ import React from 'react';
 import Header from './components/Header/Header';
 import Menu from './components/Menu/Menu';
 import Player from '../Player/Player';
-import ScrollSlider from "../ScrollSlider/ScrollSlider"
+import ScrollSlider from "../ScrollSlider/ScrollSlider";
 
 const playlist = [
   {
@@ -36,19 +36,16 @@ const playlist = [
     title: "Nombre de la canción 5",
     artist: "Nombre del artista 5"
   }
-]
+];
 
 const Layout = ({ children }) => {
   return (
     <>
       <Header />
       <ScrollSlider title="test" items={playlist} />
-
-      {/* {children} */}
+      {children}
       <Menu />
       <Player playlist={playlist} />
-
-
     </>
   );
 };
