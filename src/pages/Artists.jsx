@@ -51,7 +51,7 @@ const Artists = () => (
               <FilterArtist />
             </div>
             <div className="ScrollSlider">
-              <ScrollSlider title="Artist" items={playList} />
+              <ScrollSlider title="Artist" items={playList} rounded={true} />
             </div>
           </div>
         </div>
