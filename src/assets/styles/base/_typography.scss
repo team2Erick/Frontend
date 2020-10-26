@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+  font-family: $base-font;
+  font-size: $base-fontSize;
+}
+
+html,
+body {
+  margin : 0;
+	padding : 0;
+	width : 100%;
+	background-color : transparent;
+	font-family : $base-font;
+	line-height : $lineheight;
+	color : $color-text;
+	font-size: $base-fontSize;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin : 0;
+	font-family : $baseheadingfont;
+	font-weight : $baseheadingfontweight;
+  text-rendering : optimizelegibility;
+}
+
+ul,
+ol {
+	margin : 0 0 $lineheight 0;
+  padding : 0 0 0 0;
+  list-style-type: none;
+}
+
+li ul,
+li ol {
+	margin : 0;
+}
+
+a {
+  text-decoration: none;
+}

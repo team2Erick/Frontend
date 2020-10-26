@@ -1,0 +1,44 @@
+.filter-container__title {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1024px;
+}
+
+.filter-container__title h1 {
+  font-size: 20px;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+.filter-container__spacetime {
+  display: flex;
+  align-items: flex-end;
+}
+
+.filter-container__spacetime div {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 1px 5px;
+  margin: 6px;
+}
+
+.filter-container__gender {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1024px;
+}
+
+.filter-container__gender div {
+  margin: 1px 5px 5px;
+  padding: 1px 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.filter-container__gender div:hover {
+  background-color: #005ba3;
+  color: white;
+}

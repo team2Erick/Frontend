@@ -21,8 +21,10 @@
   },
   "homepage": "https://github.com/team2Erick/Frontend#readme",
   "dependencies": {
+    "file-loader": "^6.1.1",
     "react": "^16.14.0",
-    "react-dom": "^16.14.0"
+    "react-dom": "^16.14.0",
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",

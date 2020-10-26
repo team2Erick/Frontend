@@ -1,0 +1,30 @@
+.container-Artist-hide-scroll {
+  overflow: hidden;
+  width: 100%;
+}
+
+.container-Artist-viewport {
+  overflow: auto;
+  height: 100%;
+  margin-right: -100px;
+  padding-right: 100px;
+}
+.artists {
+  // background-color: white;
+}
+
+.container-artist {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.ArtistPlayList {
+  padding-left: 30px;
+  padding-top: 20px;
+}
+
+.FilterArtist {
+  padding-left: 30px;
+  padding-top: 20px;
+}
