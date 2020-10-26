@@ -42,8 +42,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header />
-      <ScrollSlider title="test" items={playlist} />
-      {children}
+      {/* {children} */}
       <Menu />
       <Player playlist={playlist} />
     </>

@@ -3,7 +3,7 @@ import MusicItem from "../MusicItem/MusicItem"
 
 import './ScrollSlider.scss'
 
-const ScrollSlider = ({ items, title }) => {
+const ScrollSlider = ({ items, title, rounded }) => {
 
     /** 
      *  @param items: array [
@@ -26,7 +26,7 @@ const ScrollSlider = ({ items, title }) => {
 
                     items.map((item, index) => {
                         return (
-                            <MusicItem key={index} item={item} />
+                            <MusicItem rounded={rounded} key={index} item={item} />
                         )
                     })
 
