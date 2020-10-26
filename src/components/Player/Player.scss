@@ -7,9 +7,13 @@
 	width: 100%;
 	display: flex;
 
+
+
 	&__song {
 
-		background: $color-primary;
+		background: rgba(10, 91, 191, 0.8);
+		backdrop-filter: blur(5px);
+
 		padding: 20px 40px;
 		display: flex;
 		min-width: 350px;
@@ -40,7 +44,7 @@
 
 			p {
 				margin: 0px;
-				color: $color-secondary
+				color: white
 			}
 
 		}
@@ -53,8 +57,9 @@
 		align-items: center;
 		justify-content: center;
 
-
-		background: $color-acents;
+		background: rgba(5, 5, 5, .8);
+		backdrop-filter: blur(5px);
+		// background: $color-acents;
 
 		&__buttons {
 
@@ -142,10 +147,12 @@
 	}
 
 	&__volume {
-		background: $color-primary;
+		// background: $color-primary;
+		background: rgba(5, 5, 5, .8);
+		backdrop-filter: blur(5px);
 		padding: 20px 40px;
 		display: flex;
-		min-width: 350px;
+		// min-width: 350px;
 		align-items: center;
 		justify-content: space-between;
 	}

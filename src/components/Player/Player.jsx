@@ -11,7 +11,6 @@ export default ({ playlist }) => {
 	const [audio, updateAudio] = useState(new Audio(currentTrack.song))
 	const [currentTime, updateCurrentTime] = useState(0)
 
-
 	useEffect(() => {
 		audio.addEventListener("ended", () => {
 			updatePlaying(false)
@@ -39,6 +38,15 @@ export default ({ playlist }) => {
 	const next = () => {
 		audio.pause();
 		updateCurrentIndexTrack((value) => value + 1);
+		updateCurrentTrack((value) => playlist[currentIndexTrack]);
+		updatePlaying(false)
+		updateCurrentTime(0)
+		updateAudio(new Audio(currentTrack.song))
+	}
+
+	const prev = () => {
+		audio.pause();
+		updateCurrentIndexTrack((value) => value - 1);
 		updateCurrentTrack((value) => playlist[currentIndexTrack]);
 		updatePlaying(false)
 		updateCurrentTime(0)
