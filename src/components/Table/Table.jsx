@@ -40,4 +40,4 @@ const Table = ({ title }) => {
     );
 };
 
-export default Table
+export default Table;

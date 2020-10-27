@@ -1,20 +1,41 @@
-import React from 'react';
-import MusicItem from '../Musicitem/MusicItem';
-import MusicList from '../datos/MusicList';
+import React from "react"
+import MusicItem from "../MusicItem/MusicItem"
 
-import './ScrollSlider.scss';
+import './ScrollSlider.scss'
 
-const ScrollSlider = ({ title }) => {
-  return (
-    <div className="scroll-container">
-      <strong className="scroll-slider__title">{title}</strong>
-      <div className="scroll-slider">
-        {MusicList.map((item) => {
-          return <MusicItem key={item} item={item} />;
-        })}
-      </div>
-    </div>
-  );
-};
+const ScrollSlider = ({ items, title, rounded }) => {
 
-export default ScrollSlider;
+    /** 
+     *  @param items: array [
+     *      {
+     *          title
+     *          image,
+     *          artist,
+     *          song
+     *      }
+     * ]
+     * 
+     * @param title: string
+    */
+
+    return (
+        <div>
+            <strong className="scroll-slider__title">{title}</strong>
+            <div className="scroll-slider">
+                {
+
+                    items.map((item, index) => {
+                        return (
+                            <MusicItem rounded={rounded} key={index} item={item} />
+                        )
+                    })
+
+                }
+
+            </div>
+        </div>
+    )
+
+}
+
+export default ScrollSlider

@@ -1,77 +1,138 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './Player.scss';
 
 
-export default ({ url }) => {
+export default ({ playlist }) => {
 
-	var audio = new Audio(url);
+	const [currentIndexTrack, updateCurrentIndexTrack] = useState(0)
+	const [currentTrack, updateCurrentTrack] = useState(playlist[currentIndexTrack])
 
 	const [playing, updatePlaying] = useState(false)
+	const [audio, updateAudio] = useState(new Audio(currentTrack.song))
+	const [currentTime, updateCurrentTime] = useState(0)
+
+	useEffect(() => {
+		audio.addEventListener("ended", () => {
+			updatePlaying(false)
+		})
+		audio.addEventListener("timeupdate", () => {
+			updateCurrentTime(audio.currentTime)
+		})
+	}, [audio]);
 
 	const playToggle = () => {
-
-		console.log("before", playing);
-
-		updatePlaying(!playing)
-
-		console.log("after", playing);
-
 		if (playing) {
+			updatePlaying(false)
 			audio.pause();
 		} else {
+			updatePlaying(true)
 			audio.play();
 		}
-
 	}
 
-	// audio.addEventListener("ended", playToggle)
+	const updateTime = (event) => {
+		updateCurrentTime(event.target.value)
+		audio.currentTime = event.target.value
+	}
+
+	const next = () => {
+		audio.pause();
+		updateCurrentIndexTrack((value) => value + 1);
+		updateCurrentTrack((value) => playlist[currentIndexTrack]);
+		updatePlaying(false)
+		updateCurrentTime(0)
+		updateAudio(new Audio(currentTrack.song))
+	}
+
+	const prev = () => {
+		audio.pause();
+		updateCurrentIndexTrack((value) => value - 1);
+		updateCurrentTrack((value) => playlist[currentIndexTrack]);
+		updatePlaying(false)
+		updateCurrentTime(0)
+		updateAudio(new Audio(currentTrack.song))
+	}
+
+	const secondsToString = (seconds) => {
+		seconds = parseInt(seconds)
+		var hour = Math.floor(seconds / 3600);
+		hour = (hour < 10) ? '0' + hour : hour;
+		var minute = Math.floor((seconds / 60) % 60);
+		minute = (minute < 10) ? '0' + minute : minute;
+		var second = seconds % 60;
+		second = (second < 10) ? '0' + second : second;
+		return minute + ':' + second;
+	}
 
 	return (
 		<div className="player">
 			<div className="player__song">
-				<div class="player__song__container">
-					<img src="https://homepages.cae.wisc.edu/~ece533/images/pool.png" />
+				<div className="player__song__image" style={{
+					background: `url('${currentTrack.image}')`,
+					backgroundSize: 'cover',
+					backgroundPosition: 'center'
+				}}>
 				</div>
 				<div className="player__song__content">
-					<strong>Titulos Canción</strong>
-					<p>Autores de la canción</p>
+					<strong>{currentTrack.title}</strong>
+					<p>{currentTrack.artist}</p>
 				</div>
 			</div>
-			<div class="player__player">
-				<div className="player__player__item">
-					<img src="/src/components/Player/img/continue-icon.svg" />
+
+			<div className="player__controls">
+				<div className="player__controls__buttons">
+
+					<button>
+						<img src="/src/components/Player/img/shuffle-icon.svg" />
+					</button>
+					<button>
+						<img src="/src/components/Player/img/back-icon.svg" />
+					</button>
+
+					<button>
+						<div onClick={playToggle} className="play">
+							{
+								playing ? <img src="/src/components/Player/img/pause-icon.svg" /> : <img src="/src/components/Player/img/play-icon.svg" />
+							}
+						</div>
+					</button>
+
+					<button onClick={next}>
+						<img src="/src/components/Player/img/next-icon.svg" />
+					</button>
+					<button>
+						<img src="/src/components/Player/img/continue-icon.svg" />
+					</button>
+
 				</div>
-				<div className="player__player__item">
-					<img src="/src/components/Player/img/shuffle-icon.svg" />
-				</div>
-				<div className="player__player__item">
-					<img src="/src/components/Player/img/back-icon.svg" />
-				</div>
-				<div className="player__player__item">
-					<div onClick={playToggle} className="player__player__item-play">
-						{
-							playing ? <img src="/src/components/Player/img/pause-icon.svg" /> : <img src="/src/components/components/Player/img/play-icon.svg" />
-						}
-					</div>
-				</div>
-				<div className="player__player__item">
-					<img src="/src/components/Player/img/next-icon.svg" />
-				</div>
-				<div className="player__player__item">
-					03:29
-				</div>
-				<div className="player__player__item">
-					<div className="player__player__item__progress"></div>
-				</div>
-				<div className="player__player__item">
-					03:29
-				</div>
-				<div className="player__player__item">
-					<img src="/src/components/Player/img/volume-icon.svg" />
+
+				<div className="player__controls__progress">
+					<span>
+						{secondsToString(currentTime)}
+					</span>
+					<input type="range"
+						value={currentTime}
+						max={audio.duration || 0}
+						className="player__controls__progress__bar"
+						onChange={event => updateTime(event)}
+					></input>
+					<span>
+						{secondsToString(audio.duration - currentTime || 0)}
+					</span>
 				</div>
 
 			</div>
-		</div>
+
+			<div className="player__volume">
+				<img src="/src/components/Player/img/volume-icon.svg" alt="" />
+				<input type="range"
+					value={audio.volume * 100}
+					max={100}
+					className="player__controls__progress__bar"
+					onChange={event => audio.volume = ((event.target.value / 100).toString())}
+				></input>
+			</div>
+		</div >
 	)
 }
 

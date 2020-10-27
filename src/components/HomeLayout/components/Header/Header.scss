@@ -1,0 +1,53 @@
+@import '/src/assets/styles/lib/variables';
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+input[type=search] {
+  outline: none;
+  box-sizing: content-box;
+  background: $color-base url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+  border: solid 1px $color-grey;
+  border-radius: $border-radius*7;
+  transition: all .5s;
+  padding: 6px 10px 6px 32px;
+  width: 350px;
+
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button {
+    display: none;
+  }
+
+  &:focus {
+    width: 550px;
+    background-color: white;
+    border-color: #413c59;
+    box-shadow: 0 0 5px rgba(65, 60, 89, .5);
+  }
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+
+  &__container {
+    margin: 0;
+    padding-left: 5px;
+    margin-right: 20px;
+
+    &--image {
+      border-radius: $border-radius * 16.66;
+      height: 50px;
+      width: 50px;
+      object-fit: cover;
+    }
+
+    &--account {
+      margin: 0;
+    }
+  }
+}

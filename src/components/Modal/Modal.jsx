@@ -12,7 +12,7 @@ const Modal = ({ children, show, close }) => {
           className="Modal__content--image"
           alt="X"
           onClick={close}
-          />
+        />
         {children}
       </div>
     </div>

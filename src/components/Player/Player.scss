@@ -1,15 +1,25 @@
+@import '../../assets/styles/lib/variables';
+
 .player {
   position: fixed;
   bottom: 0px;
-  left: 0;
   width: 100%;
   display: flex;
 
   &__song {
-    background: #005ba3;
+    background: rgba(10, 91, 191, 0.8);
+    backdrop-filter: blur(5px);
+
     padding: 20px 40px;
     display: flex;
     min-width: 350px;
+
+    &__image {
+      width: 60px;
+      height: 60px;
+      border-radius: 5px;
+      margin-right: 20px;
+    }
 
     &__container {
       width: 50px;
@@ -27,44 +37,107 @@
 
       p {
         margin: 0px;
-        color: #0097db;
+        color: white;
       }
     }
   }
 
-  &__player {
-    display: flex;
-    background: #0f1e36;
+  &__controls {
     width: 100%;
-    justify-content: space-between;
 
-    &__item {
-      text-align: center;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(5, 5, 5, 0.8);
+    backdrop-filter: blur(5px);
+    // background: $color-acents;
+
+    &__buttons {
       display: flex;
-      align-items: center;
       justify-content: center;
-      padding: 20px;
+      align-items: center;
 
-      color: #ffffff;
+      button {
+        outline-style: none;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px;
+        background: none;
+        border: none;
+        border-radius: 50%;
 
-      &__progress {
-        background: #fff;
-        width: 100px;
-        height: 4px;
+        img {
+          width: 20px;
+        }
+
+        .play {
+          display: flex;
+
+          align-items: center;
+          justify-content: center;
+
+          border: solid 5px $color-secondary;
+          background: #5aaed6;
+          border-radius: 50%;
+          width: 50px;
+          height: 50px;
+        }
+      }
+
+      button:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        transition: 0.4s;
       }
     }
 
-    &__item-play {
+    &__progress {
       display: flex;
-
+      color: $color-grey;
       align-items: center;
       justify-content: center;
 
-      border: solid 5px #0097db;
-      background: #5aaed6;
-      border-radius: 50%;
-      width: 70px;
-      height: 70px;
+      &__bar {
+        -webkit-appearance: none;
+
+        width: 70%;
+        height: 3px;
+        border-radius: 3px;
+        margin: 0 10px;
+      }
+
+      &__bar::-webkit-slider-runnable-track {
+        height: 3px;
+        background: $color-base;
+        border: none;
+      }
+
+      &__bar::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        border: none;
+        height: 16px;
+        width: 16px;
+        border-radius: 50%;
+        background: $color-base;
+        margin-top: -7px;
+      }
+
+      &__bar::-ms-fill-lower {
+        background: #777;
+        border-radius: 10px;
+      }
     }
+  }
+
+  &__volume {
+    // background: $color-primary;
+    background: rgba(5, 5, 5, 0.8);
+    backdrop-filter: blur(5px);
+    padding: 20px 40px;
+    display: flex;
+    // min-width: 350px;
+    align-items: center;
+    justify-content: space-between;
   }
 }
