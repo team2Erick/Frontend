@@ -1,5 +1,6 @@
 import React from 'react';
 import './Albums.scss';
+import MyDatos from '../../pages/Datos/datos';
 import Layout from '../../components/Layout/Layout'
 import ScrollSlider from '../../components/ScrollSlider/ScrollSlider'
 import Table from '../../components/Table/Table'
@@ -8,7 +9,7 @@ import Singer from '../../assets/images/singer.jpg'
 const Albums = () => (
   <Layout>
      <section className="main albums">
-    <ScrollSlider title="Featured Tracks"/>
+    <ScrollSlider title="Featured Tracks" items={MyDatos} />
     <div className="album">
       <div className="album__image">
         <h2>Kamelia</h2>

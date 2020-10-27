@@ -1,7 +1,8 @@
-@import '../../assets/styles/lib/variables';
+@import '../../../../assets/styles/lib/variables';
 
 .player {
   position: fixed;
+  left: 0;
   bottom: 0px;
   width: 100%;
   display: flex;
