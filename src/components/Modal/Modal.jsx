@@ -1,6 +1,6 @@
 import React from 'react';
 import './Modal.scss';
-import CloseButton from '../../assets/images/icons/close.svg'
+import CloseButton from '../../assets/images/icons/close.svg';
 
 const Modal = ({ children, show, close }) => {
   if (!show) return null;

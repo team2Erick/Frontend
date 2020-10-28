@@ -113,7 +113,7 @@ const Menu = () => {
                   required
                 />
                 <br />
-                <button type="submit">Create</button>
+                <button type="submit" className="content-wrap__button" >Create</button>
               </div>
             </form>
           </Modal>
