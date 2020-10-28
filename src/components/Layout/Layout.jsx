@@ -11,9 +11,11 @@ const Layout = ({ children }) => {
         <div className="layout__menu menuinactive" id="sidemenu">
           <Menu />
         </div>
+        <div className="layout__mainsection">
         <Header />
         {children}
         <Player />
+        </div>
       </div>
     </>
   );
