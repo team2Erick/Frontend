@@ -1,14 +1,10 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import '../../../../assets/styles/components/Menu.scss';
-
-// data
-import SidebarItems from './components/SidebarItems';
-import MyTracks from './components/MyTracks';
-
-// components
+import SidebarItems from '../../../../components/datos/SidebarItems';
+import MyTracks from '../../../../components/datos/MyTracks';
 import Modal from '../../../Modal/Modal';
 import Successful from '../../../Alert/Alert';
+import './Menu.scss';
 
 const Menu = () => {
   const [state, setState] = useState({
@@ -40,15 +36,15 @@ const Menu = () => {
   return (
     <section className="container__menu">
       <figure>
-        <img src="/src/assets/images/icon.svg" alt="icon" />
+        <img src="/src/assets/images/icons/cday-n.svg" alt="icon" />
       </figure>
       <div className="menu">
         <ul className="menu__list">
-          {SidebarItems.map((item, index) => (
+          {SidebarItems.map((item) => (
             <li
-              key={"menu_list" + index}
-              className={item === state.currentPlayList ? 'active' : ''}
-              onClick={() => { setState({ ...state, currentPlayList: item }) }}
+              key={item}
+              className={ item === state.currentPlayList ? 'active' : '' }
+              onClick={() => {setState({ ...state, currentPlayList: item})}}
             >
               <Link to={item.route}>
                 <img src={item.image} className="menu__icon" alt={item.alt} />
@@ -61,11 +57,11 @@ const Menu = () => {
       <div className="menu">
         <h3 className="menu__subtitle">My Tracks</h3>
         <ul className="menu__list">
-          {MyTracks.map((item, index) => (
+          {MyTracks.map((item) => (
             <li
-              key={"my_tracks" + index}
-              className={item === state.currentPlayList ? 'active' : ''}
-              onClick={() => { setState({ ...state, currentPlayList: item }) }}
+              key={item}
+              className={ item === state.currentPlayList ? 'active' : '' }
+              onClick={() => {setState({ ...state, currentPlayList: item})}}
             >
               <Link to={item.route}>
                 <img src={item.image} className="menu__icon" alt={item.alt} />

@@ -1,11 +1,11 @@
 import React from 'react';
+import ArtistPlayList from '../../components/ArtistPlayList/ArtistPlayList';
+import FilterArtist from '../../components/FilterArtist/FilterArtist';
+import ScrollSlider from '../../components/ScrollSlider/ScrollSlider';
+import Layout from '../../components/Layout/Layout';
+import './Artists.scss';
 
-import Header from './components/Header/Header';
-import Menu from './components/Menu/Menu';
-import Player from '../Player/Player';
-import ScrollSlider from '../ScrollSlider/ScrollSlider';
-
-const playlist = [
+const playList = [
   {
     image: 'https://homepages.cae.wisc.edu/~ece533/images/pool.png',
     song: '/src/components/HomeLayout/test.mp3',
@@ -38,16 +38,26 @@ const playlist = [
   },
 ];
 
-const Layout = ({ children }) => {
-  return (
-    <>
-      <Header />
-      {/* <ScrollSlider title="test" items={playlist} /> */}
-      {children}
-      <Menu />
-      <Player playlist={playlist} />
-    </>
-  );
-};
+const Artists = () => (
+  <Layout>
+    <div className="container-Artist-hide-scroll">
+      <div className="container-Artist-viewport">
+        <div className="artists">
+          <div className="container-artist">
+            <div className="ArtistPlayList">
+              <ArtistPlayList />
+            </div>
+            <div className="FilterArtist">
+              <FilterArtist />
+            </div>
+            <div className="ScrollSlider">
+              <ScrollSlider title="Artist" items={playList} rounded={true} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Layout>
+);
 
-export default Layout;
+export default Artists;

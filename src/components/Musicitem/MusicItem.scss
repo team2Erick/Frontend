@@ -1,0 +1,38 @@
+.music-item--rounded {
+    display: inline-block;
+    margin-right: 20px;
+    text-align: center;
+}
+
+.music-item {
+    display: inline-block;
+    margin-right: 20px;
+
+    &__image {
+        width: 160px;
+        height: 160px;
+        border-radius: 5px;
+    }
+
+    &__image--rounded {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+    }
+
+    &__title {
+        font-weight: bold;
+        font-size: 15px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        margin-top: 15px;
+    }
+
+    &__subtitle {
+        margin-top: 10px;
+        font-size: 13px;
+        font-weight: bold;
+        color: grey;
+    }
+}

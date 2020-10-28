@@ -1,4 +1,11 @@
 import React, { useState, useEffect } from "react";
+import ShuffleIcon from './img/shuffle-icon.svg';
+import BackIcon from './img/back-icon.svg';
+import PauseIcon from './img/pause-icon.svg';
+import PlayIcon from './img/play-icon.svg';
+import NextIcon from './img/next-icon.svg';
+import ContinueIcon from './img/continue-icon.svg';
+import VolumeIcon from './img/volume-icon.svg'
 import './Player.scss';
 
 
@@ -53,6 +60,17 @@ export default ({ playlist }) => {
 		updateAudio(new Audio(currentTrack.song))
 	}
 
+	const secondsToString = (seconds) => {
+		seconds = parseInt(seconds)
+		var hour = Math.floor(seconds / 3600);
+		hour = (hour < 10) ? '0' + hour : hour;
+		var minute = Math.floor((seconds / 60) % 60);
+		minute = (minute < 10) ? '0' + minute : minute;
+		var second = seconds % 60;
+		second = (second < 10) ? '0' + second : second;
+		return minute + ':' + second;
+	}
+
 	return (
 		<div className="player">
 			<div className="player__song">
@@ -72,32 +90,32 @@ export default ({ playlist }) => {
 				<div className="player__controls__buttons">
 
 					<button>
-						<img src="/src/components/Player/img/shuffle-icon.svg" />
+						<img src={ShuffleIcon} />
 					</button>
 					<button>
-						<img src="/src/components/Player/img/back-icon.svg" />
+						<img src={BackIcon} />
 					</button>
 
 					<button>
 						<div onClick={playToggle} className="play">
 							{
-								playing ? <img src="/src/components/Player/img/pause-icon.svg" /> : <img src="/src/components/Player/img/play-icon.svg" />
+								playing ? <img src={PauseIcon} /> : <img src={PlayIcon} />
 							}
 						</div>
 					</button>
 
 					<button onClick={next}>
-						<img src="/src/components/Player/img/next-icon.svg" />
+						<img src={NextIcon} />
 					</button>
 					<button>
-						<img src="/src/components/Player/img/continue-icon.svg" />
+						<img src={ContinueIcon} />
 					</button>
 
 				</div>
 
 				<div className="player__controls__progress">
 					<span>
-						03:29
+						{secondsToString(currentTime)}
 					</span>
 					<input type="range"
 						value={currentTime}
@@ -106,19 +124,19 @@ export default ({ playlist }) => {
 						onChange={event => updateTime(event)}
 					></input>
 					<span>
-						03:29
+						{secondsToString(audio.duration - currentTime || 0)}
 					</span>
 				</div>
 
 			</div>
 
 			<div className="player__volume">
-				<img src="/src/components/Player/img/volume-icon.svg" alt="" />
+				<img src={VolumeIcon} alt="Volume" />
 				<input type="range"
 					value={audio.volume * 100}
 					max={100}
 					className="player__controls__progress__bar"
-					onChange={event => audio.volume = (event.target.value / 100)}
+					onChange={event => audio.volume = ((event.target.value / 100).toString())}
 				></input>
 			</div>
 		</div >
