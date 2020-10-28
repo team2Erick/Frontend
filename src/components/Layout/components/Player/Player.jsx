@@ -8,7 +8,6 @@ import ContinueIcon from './img/continue-icon.svg';
 import VolumeIcon from './img/volume-icon.svg'
 import './Player.scss';
 
-import currentPlaylist from "../../../../services/currentPlaylist"
 
 
 export default () => {
