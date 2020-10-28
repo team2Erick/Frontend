@@ -1,5 +1,6 @@
 import React from 'react';
-import Header from './components/Header/Header';
+/* import Header from './components/Header/Header'; */
+import Header from '../Header/Header';
 import Menu from './components/Menu/Menu';
 import Player from './components/Player/Player';
 import './layout.scss';
@@ -12,9 +13,9 @@ const Layout = ({ children }) => {
           <Menu />
         </div>
         <div className="layout__mainsection">
-        <Header />
-        {children}
-        <Player />
+          <Header />
+          {children}
+          <Player />
         </div>
       </div>
     </>
