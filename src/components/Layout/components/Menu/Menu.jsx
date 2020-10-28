@@ -35,6 +35,7 @@ const Menu = () => {
 
   return (
     <section className="container__menu">
+      <button id="closemenu"><img src="/src/assets/images/icons/close.svg"/></button>
       <figure>
         <img src="/src/assets/images/icons/cday-n.svg" alt="icon" />
       </figure>

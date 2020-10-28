@@ -6,6 +6,7 @@
   bottom: 0px;
   width: 100%;
   display: flex;
+  z-index: 2;
 
   &__song {
     background: rgba(10, 91, 191, 0.8);

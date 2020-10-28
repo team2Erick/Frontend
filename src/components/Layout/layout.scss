@@ -8,9 +8,14 @@
   &__menu {
     width: 190px;
     border-right: 1px solid $color-border;
+    z-index: 1;
+    background-color: white;
+
     @media screen and (max-width: 700px) {
-      position: absolute;
-      transform: translateX(-190px);
+      width: 50%;
+      height: 100%;
+      position: fixed;
+      transition: 0.5s;
     }
   }
   &__mainsection {
@@ -23,5 +28,16 @@
     @media screen and (max-width: 700px) {
       width: 100%;
     }
+  }
+}
+
+.menuactive {
+  @media screen and (max-width: 700px) {
+    left: 0;
+  }
+}
+.menuinactive {
+  @media screen and (max-width: 700px) {
+    left: -60%;
   }
 }

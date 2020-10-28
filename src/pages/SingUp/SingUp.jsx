@@ -14,7 +14,7 @@ const Login = () => (
             <article className="login__form">
                 <h3 className="login__form__title">Welcome to cday The best music online</h3>
                 <h4 className="login__form__secondary-title">Subcribe to our page, is free!</h4>
-                <form className="form">
+                <form className="forminfo">
                     <input type="text" className="form__name" required placeholder="Your name"/>
                     <input type="email" className="form__mail" required placeholder="Your e-mail"/>
                     <div className="form__separator"></div>

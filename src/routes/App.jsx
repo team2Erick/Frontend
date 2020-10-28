@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from '../pages/Home/Home';
 import Songs from '../pages/Songs/Songs';
 import Albums from '../pages/Albums/Albums';
@@ -12,7 +12,7 @@ import './App.scss';
 
 const App = () => {
   return (
-    <HashRouter>
+    <BrowserRouter>
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/home" exact component={Home} />
@@ -23,7 +23,7 @@ const App = () => {
           <Route path="/login" component={Login} />
           <Route path="/finishsingup" component={FinishSingUp} />
         </Switch>
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 
