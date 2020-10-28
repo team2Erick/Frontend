@@ -1,23 +1,12 @@
-.music-item--rounded {
-    display: inline-block;
-    margin-right: 20px;
-    text-align: center;
-}
-
 .music-item {
+    width: 160px;
     display: inline-block;
-    margin-right: 20px;
+    padding-right: 20px;
 
     &__image {
         width: 160px;
         height: 160px;
         border-radius: 5px;
-    }
-
-    &__image--rounded {
-        width: 160px;
-        height: 160px;
-        border-radius: 50%;
     }
 
     &__title {

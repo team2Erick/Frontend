@@ -1,12 +1,12 @@
 import React from 'react';
-
 import './MusicItem.scss'
 
-const MusicItem = ({ item, rounded }) => {
+const MusicItem = ({ item, rounded, key, playlist }) => {
     return (
-        <div className={
-            rounded ? "music-item--rounded" : "music-item"
-        }>
+        <div
+            className={
+                rounded ? "music-item--rounded" : "music-item"
+            }>
             <div className={
                 rounded ? "music-item__image--rounded" : "music-item__image"
             } style={{ background: `url('${item.image}')`, backgroundSize: "cover" }}></div>
@@ -16,4 +16,4 @@ const MusicItem = ({ item, rounded }) => {
     )
 }
 
-export default MusicItem
+export default MusicItem;
