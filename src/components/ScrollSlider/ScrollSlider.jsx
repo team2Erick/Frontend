@@ -1,11 +1,10 @@
-import React from "react";
-import MusicItem from "../Musicitem/MusicItem";
+import React from 'react';
+import MusicItem from '../Musicitem/MusicItem';
 
 import './ScrollSlider.scss';
 
 const ScrollSlider = ({ items, title, rounded }) => {
-
-  /** 
+  /**
    *  @param items: array [
    *      {
    *          title
@@ -14,10 +13,10 @@ const ScrollSlider = ({ items, title, rounded }) => {
    *          song
    *      }
    * ]
-   * 
+   *
    * @param title: string
    * @param rounded bolean
-  */
+   */
 
   return (
     <div>
