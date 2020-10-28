@@ -40,15 +40,9 @@ const playlist = [
 const Layout = ({ children }) => {
   return (
     <>
-      <div className="layout">
-        <div className="layout__menu">
-          <Menu />
-        </div>
-        <div className="layout__mainsection">
-          <Header />
-          {children}
-          <Player playlist={playlist} />
-        </div>
+    <div className="layout">
+      <div className="layout__menu menuinactive" id="sidemenu">
+       <Menu />
       </div>
     </>
   );

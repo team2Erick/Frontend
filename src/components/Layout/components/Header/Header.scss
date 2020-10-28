@@ -11,6 +11,13 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 0;
+  background: white;
+  &__search {
+    button {
+      display: flex;
+      align-items: center;
+    }
+  }
   &__mobile-button {
     display: none;
     button {

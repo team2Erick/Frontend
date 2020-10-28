@@ -2,6 +2,30 @@
 @import '../../../../assets/styles/lib/mixins';
 .container__menu {
   border-right: $color-border;
+  position: relative;
+  figure {
+    margin-left: 20px;
+    img {
+      max-width: 80px;
+    }
+  }
+  button {
+    color: $color-grey;
+    display: none;
+    @media screen and (max-width: 700px) {
+      display: block;
+      position: absolute;
+
+      width: 25px;
+      height: 25px;
+      right: 15px;
+      top: 20px;
+      background: none;
+      border: none;
+      outline: none;
+      cursor: pointer;
+    }
+  }
 }
 a {
   text-decoration: none;

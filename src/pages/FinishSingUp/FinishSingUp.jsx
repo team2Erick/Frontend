@@ -12,7 +12,7 @@ const FinishSingUp = () => (
                     <div className="googlesingup__section">
                         <h1>To finish your registration, please, give us this information</h1>
                         <div className="googlesingup__register">
-                            <form className="form">
+                            <form className="forminfo">
                                 <input type="text" className="form__name" required placeholder="Your name"/>
                                 <input type="email" className="form__mail" required placeholder="Your e-mail"/>
                                 <div className="form__separator"></div>
@@ -34,8 +34,6 @@ const FinishSingUp = () => (
                                     <option value="Brazil">Brazil</option>
                                     <option value="China">China</option>
                                 </select>
-                                <input type="password" required placeholder="create password"/>
-                                <input type="password" required placeholder="confirm password"/>
                                 <button>SING UP</button>
                             </form>
                             <div className="googlesingup__photo">
