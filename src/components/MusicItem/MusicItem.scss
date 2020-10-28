@@ -1,27 +1,43 @@
+.music-item--rounded {
+  display: inline-block;
+  width: 160px;
+  padding-right: 20px;
+  width: 160px;
+  margin: 0 10px;
+  text-align: center;
+}
+
 .music-item {
   display: inline-block;
   width: 160px;
   padding-right: 20px;
   width: 160px;
   margin: 0 10px;
+
   &__image {
     width: 160px;
     height: 160px;
     border-radius: 5px;
   }
 
-    &__title {
-        font-weight: bold;
-        font-size: 15px;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-        margin-top: 15px;
+  &__image--rounded {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+  }
 
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+  &__title {
+    font-weight: bold;
+    font-size: 15px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-top: 15px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
   &__subtitle {
     margin-top: 10px;

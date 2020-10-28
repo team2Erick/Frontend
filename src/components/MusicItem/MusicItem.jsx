@@ -1,7 +1,7 @@
 import React from 'react';
 import './MusicItem.scss'
 
-const MusicItem = ({ item, rounded, key, playlist }) => {
+const MusicItem = ({ item, rounded }) => {
     return (
         <div
             className={
