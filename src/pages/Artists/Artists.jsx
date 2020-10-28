@@ -2,10 +2,11 @@ import React from 'react';
 import ArtistPlayList from '../../components/ArtistPlayList/ArtistPlayList';
 import FilterArtist from '../../components/FilterArtist/FilterArtist';
 import ScrollSlider from '../../components/ScrollSlider/ScrollSlider';
+import MyDatos from '../Datos/datos';
 import Layout from '../../components/Layout/Layout';
 import './Artists.scss';
 
-const playList = [
+/* const playList = [
   {
     image: 'https://homepages.cae.wisc.edu/~ece533/images/pool.png',
     song: '/src/components/HomeLayout/test.mp3',
@@ -36,7 +37,7 @@ const playList = [
     title: 'Nombre de la canción 5',
     artist: 'Nombre del artista 5',
   },
-];
+]; */
 
 const Artists = () => (
   <Layout>
@@ -51,7 +52,7 @@ const Artists = () => (
               <FilterArtist />
             </div>
             <div className="ScrollSlider">
-              <ScrollSlider title="Artist" items={playList} rounded={true} />
+              <ScrollSlider title="Artist" items={MyDatos} rounded={true} />
             </div>
           </div>
         </div>

@@ -8,15 +8,12 @@ import ContinueIcon from './img/continue-icon.svg';
 import VolumeIcon from './img/volume-icon.svg'
 import './Player.scss';
 
-
 export default ({ playlist }) => {
-
-	const [currentIndexTrack, updateCurrentIndexTrack] = useState(0)
-	const [currentTrack, updateCurrentTrack] = useState(playlist[currentIndexTrack])
-
-	const [playing, updatePlaying] = useState(false)
-	const [audio, updateAudio] = useState(new Audio(currentTrack.song))
-	const [currentTime, updateCurrentTime] = useState(0)
+	const [currentIndexTrack, updateCurrentIndexTrack] = useState(0);
+	const [currentTrack, updateCurrentTrack] = useState(playlist[currentIndexTrack]);
+	const [playing, updatePlaying] = useState(false);
+	const [audio, updateAudio] = useState(new Audio(currentTrack.song));
+	const [currentTime, updateCurrentTime] = useState(0);
 
 	useEffect(() => {
 		audio.addEventListener("ended", () => {
@@ -140,6 +137,5 @@ export default ({ playlist }) => {
 				></input>
 			</div>
 		</div >
-	)
-}
-
+	);
+};

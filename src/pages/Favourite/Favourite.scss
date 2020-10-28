@@ -1,0 +1,12 @@
+.container-favourite {
+  padding: 10px;
+  grid-template-columns: minmax(auto, 1024px);
+  display: grid;
+  justify-content: center;
+}
+.container-playlistFav {
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1rem;
+  grid-row-gap: 5em;
+  display: grid;
+}

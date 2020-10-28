@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './Alert.scss';
+import './Successful.scss';
 
 const Successful = ({ success, close }) => {
   useEffect(() => {
@@ -12,7 +12,7 @@ const Successful = ({ success, close }) => {
     };
 
     closeSuccessful();
-
+    
     return () => {
       clearTimeout(closeSuccessful);
     }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import sliders from '../datos/Sliders';
 import './MainSlider.scss';
 
 const MainSlider = ({ sliders }) => {
