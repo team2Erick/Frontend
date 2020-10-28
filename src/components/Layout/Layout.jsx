@@ -41,7 +41,7 @@ const Layout = ({children}) => {
   return (  
     <>
     <div className="layout">
-      <div className="layout__menu">
+      <div className="layout__menu menuinactive" id="sidemenu">
        <Menu />
       </div>
     <div className="layout__mainsection">
