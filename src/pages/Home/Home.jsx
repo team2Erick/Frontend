@@ -10,11 +10,11 @@ import './Home.scss';
 const Home = () => (
   <Layout>
     <main className="main">
-      <MainSlider sliders ={Sliders} />
+      <MainSlider sliders={Sliders} />
       <ScrollSlider title="Canciones" items={MyDatos} />
       <div className="main__table">
         <h1 className="main__title">Top Tracks</h1>
-        <Table />
+        <Table title="Tabla" />
       </div>
     </main>
   </Layout>

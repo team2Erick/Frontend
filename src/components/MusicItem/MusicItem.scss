@@ -10,18 +10,18 @@
     border-radius: 5px;
   }
 
-    &__title {
-        font-weight: bold;
-        font-size: 15px;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-        margin-top: 15px;
+  &__title {
+      font-weight: bold;
+      font-size: 15px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      margin-top: 15px;
 
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+  }
 
   &__subtitle {
     margin-top: 10px;
