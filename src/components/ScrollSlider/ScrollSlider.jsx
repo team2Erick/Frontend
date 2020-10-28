@@ -1,5 +1,5 @@
 import React from 'react';
-import MusicItem from '../Musicitem/MusicItem';
+import MusicItem from '../MusicItem/MusicItem';
 
 import './ScrollSlider.scss';
 
