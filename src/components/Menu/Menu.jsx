@@ -109,18 +109,18 @@ const Menu = () => {
                 <input
                   type="text"
                   placeholder="My Playlist"
-                  required
                   ref={newPlaylistRef}
+                  required
                 />
                 <br />
-                <button type="submit">create</button>
+                <button type="submit">Create</button>
               </div>
             </form>
           </Modal>
           <Successful
             success={state.success}
             close={() => {
-              setState({ ...state, success: '' })
+              setState({ ...state, success: '' });
             }}
           />
         </ul>
