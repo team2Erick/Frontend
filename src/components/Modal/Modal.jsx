@@ -1,5 +1,6 @@
 import React from 'react';
 import './Modal.scss';
+import CloseButton from '../../assets/images/icons/close.svg'
 
 const Modal = ({ children, show, close }) => {
   if (!show) return null;
@@ -8,7 +9,7 @@ const Modal = ({ children, show, close }) => {
     <div className="Modal">
       <div className="Modal__content">
         <img
-          src=""
+          src={CloseButton}
           className="Modal__content--image"
           alt="X"
           onClick={close}
