@@ -15,7 +15,7 @@ const MainSlider = ({ sliders }) => {
 				return sliders.length < count + 2 ? 0 : count + 1;
 			});
 
-		}, 2000);
+		}, 4000);
 	}, []);
 
 	return (
