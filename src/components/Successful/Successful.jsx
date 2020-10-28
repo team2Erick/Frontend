@@ -19,7 +19,11 @@ const Successful = ({ success, close }) => {
   }, [success]);
   if (!success) return null;
 
-  return <div className="success">{success}</div>;
+  return (
+  <div className="successcontainer">
+    <div className="success">{success}</div>
+  </div>
+  );
 };
 
 export default Successful;
