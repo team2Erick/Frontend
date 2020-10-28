@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './components/Header/Header';
 import Menu from './components/Menu/Menu';
 import Player from './components/Player/Player';
-import './layout.scss'
+import './layout.scss';
 
 const Layout = ({ children }) => {
   return (
@@ -11,11 +11,9 @@ const Layout = ({ children }) => {
         <div className="layout__menu menuinactive" id="sidemenu">
           <Menu />
         </div>
-        <div className="layout__mainsection">
-          <Header />
-          {children}
-          <Player />
-        </div>
+        <Header />
+        {children}
+        <Player />
       </div>
     </>
   );

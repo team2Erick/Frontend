@@ -16,4 +16,4 @@ const MusicItem = ({ item, rounded, key, playlist }) => {
     )
 }
 
-export default MusicItem
+export default MusicItem;

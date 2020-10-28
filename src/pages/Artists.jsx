@@ -1,12 +1,11 @@
 import React from 'react';
-import ArtistPlayList from '../../components/ArtistPlayList/ArtistPlayList';
-import FilterArtist from '../../components/FilterArtist/FilterArtist';
-import ScrollSlider from '../../components/ScrollSlider/ScrollSlider';
-import MyDatos from '../Datos/datos';
-import Layout from '../../components/Layout/Layout';
-import './Artists.scss';
+import ArtistPlayList from '../components/ArtistPlayList/ArtistPlayList';
+import FilterArtist from '../components/FilterArtist/FilterArtist';
+import ScrollSlider from '../components/ScrollSlider/ScrollSlider';
+import HomeLayout from '../components/HomeLayout/HomeLayout';
+import '../assets/styles/pages/Artists.scss';
 
-/* const playList = [
+const playList = [
   {
     image: 'https://homepages.cae.wisc.edu/~ece533/images/pool.png',
     song: '/src/components/HomeLayout/test.mp3',
@@ -37,10 +36,10 @@ import './Artists.scss';
     title: 'Nombre de la canción 5',
     artist: 'Nombre del artista 5',
   },
-]; */
+];
 
 const Artists = () => (
-  <Layout>
+  <HomeLayout>
     <div className="container-Artist-hide-scroll">
       <div className="container-Artist-viewport">
         <div className="artists">
@@ -52,13 +51,13 @@ const Artists = () => (
               <FilterArtist />
             </div>
             <div className="ScrollSlider">
-              <ScrollSlider title="Artist" items={MyDatos} rounded={true} />
+              <ScrollSlider title="Artist" items={playList} rounded={true} />
             </div>
           </div>
         </div>
       </div>
     </div>
-  </Layout>
+  </HomeLayout>
 );
 
 export default Artists;

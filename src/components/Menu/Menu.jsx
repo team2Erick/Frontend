@@ -1,9 +1,9 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import SidebarItems from '../../../../components/datos/SidebarItems';
-import MyTracks from '../../../../components/datos/MyTracks';
-import Modal from '../../../Modal/Modal';
-import Successful from '../../../Successful/Successful';
+import SidebarItems from '../datos/SidebarItems';
+import MyTracks from '../datos/MyTracks';
+import Modal from '../Modal/Modal';
+import Successful from '../Successful/Successful';
 import './Menu.scss';
 
 const Menu = () => {
@@ -35,15 +35,14 @@ const Menu = () => {
 
   return (
     <section className="container__menu">
-      <button id="closemenu"><img src="/src/assets/images/icons/close.svg"/></button>
       <figure>
         <img src="/src/assets/images/icons/cday-n.svg" alt="icon" />
       </figure>
       <div className="menu">
         <ul className="menu__list">
-          {SidebarItems.map((item, index) => (
+          {SidebarItems.map((item) => (
             <li
-              key={index}
+              key={item}
               className={ item === state.currentPlayList ? 'active' : '' }
               onClick={() => {setState({ ...state, currentPlayList: item})}}
             >
@@ -58,9 +57,9 @@ const Menu = () => {
       <div className="menu">
         <h3 className="menu__subtitle">My Tracks</h3>
         <ul className="menu__list">
-          {MyTracks.map((item, index) => (
+          {MyTracks.map((item) => (
             <li
-              key={index}
+              key={item}
               className={ item === state.currentPlayList ? 'active' : '' }
               onClick={() => {setState({ ...state, currentPlayList: item})}}
             >
@@ -87,9 +86,9 @@ const Menu = () => {
               />
             </div>
           </li>
-          {newPlaylist.map((item, index) => (
+          {newPlaylist.map((item) => (
             <li
-              key={index}
+              key={item}
               className={item === state.currentPlayList ? 'active' : ''}
               onClick={() => {
                 setState({ ...state, currentPlayList: item })

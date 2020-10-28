@@ -141,6 +141,5 @@ export default () => {
 				></input>
 			</div>
 		</div >
-	)
-}
-
+	);
+};
