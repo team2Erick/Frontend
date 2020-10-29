@@ -8,24 +8,21 @@ import Favourite from '../pages/Favourite/Favourite';
 import Login from '../pages/Login/Login';
 import SingUp from '../pages/SingUp/SingUp';
 import FinishSingUp from '../pages/FinishSingUp/FinishSingUp';
-import StaticContext from '../context/StaticContext';
 
 import './App.scss';
 
-import Store, { stateData } from "../store"
-
-
+import Store, { stateData } from "../store";
 
 const App = () => {
-
   const [state, setState] = useState(stateData);
   const value = {
-    state, setState: data => {
+    state,
+    setState: (data) => {
       setState({
         ...state,
-        ...data
-      })
-    }
+        ...data,
+      });
+    },
   };
 
   return (
