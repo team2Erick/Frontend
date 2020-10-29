@@ -19,7 +19,7 @@ const MainSlider = ({ sliders }) => {
       setCount((count) => {
         return sliders.length < count + 2 ? 0 : count + 1;
       });
-    }, 4000);
+    }, 6000);
   }, []);
 
   const { state, setState } = useContext(Store);

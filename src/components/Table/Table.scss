@@ -10,13 +10,18 @@ table {
   td {
     padding: 10px;
   }
+
   tbody {
     tr {
       font-size: 14px;
+      transition: .2s;
+
     }
+
     tr:hover {
       box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
       border-radius: 3px;
+      transition: .2s;
     }
   }
 }
