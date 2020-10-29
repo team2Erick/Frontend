@@ -18,6 +18,12 @@
   background: white;
   transition: 1s;
 }
+.logoscroll {
+  padding-left: 30px;
+  img {
+    width: 70px;
+  }
+}
 .navbar {
   height: 70px;
   display: flex;
@@ -31,6 +37,7 @@
       position: absolute;
       width: calc(100% - 190px);
       top: 7px;
+      left: 190px;
       height: 60px;
       width: calc(100% - 190px);
       background: rgb(235, 231, 227);
