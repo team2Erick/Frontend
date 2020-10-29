@@ -8,7 +8,7 @@ const MusicItem = ({ item, rounded }) => {
                 rounded ? "music-item--rounded" : "music-item"
             }>
             <div className={
-                rounded ? "music-item__image--rounded" : "music-item__image"
+                rounded ? "music-item--rounded__image" : "music-item__image"
             } style={{ background: `url('${item.image}')`, backgroundSize: "cover" }}></div>
             <div className="music-item__title">{item.title}</div>
             <div className="music-item__subtitle">{item.artist}</div>
