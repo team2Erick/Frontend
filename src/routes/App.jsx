@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { HashRouter, Switch, Route } from 'react-router-dom';
 import Home from '../pages/Home/Home';
 import Songs from '../pages/Songs/Songs';
@@ -12,9 +12,24 @@ import StaticContext from '../context/StaticContext';
 
 import './App.scss';
 
+import Store, { stateData } from "../store"
+
+
+
 const App = () => {
+
+  const [state, setState] = useState(stateData);
+  const value = {
+    state, setState: data => {
+      setState({
+        ...state,
+        ...data
+      })
+    }
+  };
+
   return (
-    <StaticContext.Provider value={{nombre: 'Mauricio'}} >
+    <Store.Provider value={value}>
       <HashRouter>
         <Switch>
           <Route path="/" exact component={Home} />
@@ -23,12 +38,12 @@ const App = () => {
           <Route path="/albums" component={Albums} />
           <Route path="/artists" component={Artists} />
           <Route path="/Favourite" component={Favourite} />
-          <Route path="/singup" component={SingUp} />
+          <Route path="/signup" component={SingUp} />
           <Route path="/login" component={Login} />
           <Route path="/finishsingup" component={FinishSingUp} />
         </Switch>
       </HashRouter>
-    </StaticContext.Provider>
+    </Store.Provider>
   );
 };
 

@@ -2,8 +2,12 @@ import React from 'react';
 import './Table.scss';
 import MyDatos from '../../pages/Datos/datos';
 import Favourite from '../../assets/images/icons/favourite.svg';
+import Favorite from '../../assets/images/icons/favorite.svg';
+import StaticContext from '../../context/StaticContext';
 
 const Table = ({ title }) => {
+  const { state, dispatch} = useContext(StaticContext);
+
   return (
     <div>
       <h3>{title}</h3>
@@ -20,24 +24,24 @@ const Table = ({ title }) => {
             <th></th>
           </tr>
         </thead>
-          <tbody>
-            {MyDatos.map((list, id) => {
-              return (
-                <tr key={id}>
-                  <td>{id+1}</td>
-                  <td>
-                    <img src={Favourite} alt="favourite" />
-                  </td>
-                  <td>{list.title}</td>
-                  <td>{list.artist}</td>
-                  <td>Daily Plays</td>
-                  <td>{list.length}</td>
-                  <td>Option</td>
-                  <td></td>
-                </tr>
-              )
-            })}
-          </tbody>
+        <tbody>
+          {MyDatos.map((list, id) => {
+            return (
+              <tr key={list}>
+                <td>{id+1}</td>
+                <td>
+                  isFavorite ? <img src={Favourite} alt="favourite" /> : <img src={Favorite} alt="favourite" />
+                </td>
+                <td>{list.title}</td>
+                <td>{list.artist}</td>
+                <td>Daily Plays</td>
+                <td>{list.length}</td>
+                <td>Option</td>
+                <td></td>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
     </div>
   );

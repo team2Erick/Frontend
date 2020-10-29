@@ -7,20 +7,20 @@
   display: grid;
   grid-column: 1 / 3;
   width: 100%;
-  height: 100vh;
-  background: linear-gradient(
-    179.22deg,
-    #0097db 10.23%,
-    #102638 108.63%,
-    rgba(0, 91, 163, 0) 108.64%,
-    #044d86 108.64%
-  );
+  min-height: 100vh;
+  background: linear-gradient(179.22deg,
+      #0097db 10.23%,
+      #102638 108.63%,
+      rgba(0, 91, 163, 0) 108.64%,
+      #044d86 108.64%);
+
   &__title {
     max-width: 450px;
     font-size: 35px;
     line-height: 38px;
     padding-bottom: 10px;
   }
+
   &__secondary-title {
     max-width: 450px;
     font-size: 18px;
@@ -28,12 +28,14 @@
     padding-bottom: 30px;
     line-height: 20px;
   }
+
   &__container {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
   }
+
   &__form {
     color: $color-text;
     display: flex;
@@ -45,11 +47,13 @@
     border-radius: 25px;
     padding: 30px;
     box-shadow: 0px 7px 5px -6px rgba(0, 0, 0, 0.47);
+
     &__titleform {
       color: #4a4a4a;
       font-size: 19px;
       font-weight: 600;
     }
+
     &__secondary-titleform {
       color: #0097db;
       font-size: 17px;
@@ -57,9 +61,11 @@
       padding-bottom: 20px;
     }
   }
+
   &__logo {
     padding-top: 40px;
     margin: 0;
+
     img {
       width: 200px;
     }
@@ -69,6 +75,7 @@
 .forminfo {
   position: relative;
   padding: 10px 20px;
+
   input {
     background: none;
     border: none;
@@ -77,20 +84,24 @@
     padding-bottom: 10px;
     width: 100%;
     outline: none;
+
     &::placeholder {
       font-size: 18px;
       color: #545663;
     }
   }
-  input[type='date' i] {
+
+  input[type='date'i] {
     font-size: 18px;
     font-family: $base-font;
     color: #545663;
   }
+
   label {
     margin-top: 20px;
     color: #545663;
   }
+
   button {
     background-color: $color-secondary;
     border: none;
@@ -102,6 +113,7 @@
     letter-spacing: 3px;
     border-radius: 10px;
   }
+
   select {
     width: 47%;
     padding: 10px 0px;
@@ -110,6 +122,7 @@
     margin-top: 10px;
     margin: 3px;
   }
+
   &__separator {
     padding-top: 8px;
   }
@@ -118,6 +131,7 @@
 .inscription {
   padding-top: 20px;
   display: flex;
+
   button {
     display: flex;
     align-items: center;
@@ -138,9 +152,11 @@
   position: relative;
   display: flex;
   align-items: flex-end;
+
   &__image {
     position: absolute;
     right: -320px;
+
     @media screen and (max-width: 700px) {
       display: none;
     }
