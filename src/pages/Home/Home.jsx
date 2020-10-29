@@ -1,16 +1,13 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import MainSlider from '../../components/MainSlider/MainSlider';
 import MyDatos from '../../pages/Datos/datos';
 import Sliders from '../../components/datos/Sliders';
 import ScrollSlider from '../../components/ScrollSlider/ScrollSlider';
 import Table from '../../components/Table/Table';
 import Layout from '../../components/Layout/Layout';
-import StaticContext from '../../context/StaticContext';
 import './Home.scss';
 
 const Home = () => {
-  const context = useContext(StaticContext);
-  console.log(context);
   return (
     <Layout>
       <main className="main">

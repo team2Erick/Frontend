@@ -1,25 +1,24 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from 'react';
 import ShuffleIcon from './img/shuffle-icon.svg';
 import BackIcon from './img/back-icon.svg';
 import PauseIcon from './img/pause-icon.svg';
 import PlayIcon from './img/play-icon.svg';
 import NextIcon from './img/next-icon.svg';
 import ContinueIcon from './img/continue-icon.svg';
-import VolumeIcon from './img/volume-icon.svg'
-import PlaylistIcon from './img/playlist-icon.svg'
+import VolumeIcon from './img/volume-icon.svg';
+import PlaylistIcon from './img/playlist-icon.svg';
 import './Player.scss';
 
-import Playlist from './components/Playlist'
+import Playlist from './components/Playlist';
 
-import Store from "../../../../store"
+import Store from '../../../../store';
 
 export default () => {
-
 	const { state, setState } = useContext(Store);
 
 	if (state.playlist.length < 1) return <></>
 
-	const [currentTrack, updateCurrentTrack] = useState(state.playlist[state.indexSong])
+	const [currentTrack, updateCurrentTrack] = useState(state.playlist[state.indexSong]);
 
 	useEffect(() => {
 		updateCurrentTrack(state.playlist[state.indexSong])

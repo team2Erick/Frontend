@@ -1,14 +1,11 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import MyDatos from '../Datos/datos';
 import MusicItem from '../../components/MusicItem/MusicItem';
 import Layout from '../../components/Layout/Layout';
-import StaticContext from '../../context/StaticContext';
 
 import './Favourite.scss';
 
 const Favourite = () => {
-  const context = useContext(StaticContext);
-  console.log(context);
   return (
     <Layout>
       <section className="main Favourite">
