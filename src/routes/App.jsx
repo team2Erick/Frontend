@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useReducer} from 'react';
 import { HashRouter, Switch, Route } from 'react-router-dom';
 import Home from '../pages/Home/Home';
 import Songs from '../pages/Songs/Songs';
@@ -12,9 +12,26 @@ import StaticContext from '../context/StaticContext';
 
 import './App.scss';
 
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'ADD_PLAYLIST':
+      return {
+        ...state,
+        newPlaylist: { ...state.newPlaylist, [action.newPlaylist]: new Set() },
+      };
+    case 'SET_PLAYLIST':
+      return { ...state, currentPlaylist: action.newPlaylist };
+    default:
+      break;
+  }
+  return state;
+};
+
 const App = () => {
+  const [state, dispatch] = useReducer(reducer, StaticContext);
+
   return (
-    <StaticContext.Provider value={{nombre: 'Mauricio'}} >
+    <StaticContext.Provider value={{ state, dispatch }}>
       <HashRouter>
         <Switch>
           <Route path="/" exact component={Home} />
