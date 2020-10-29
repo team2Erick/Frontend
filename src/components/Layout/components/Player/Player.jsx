@@ -6,7 +6,10 @@ import PlayIcon from './img/play-icon.svg';
 import NextIcon from './img/next-icon.svg';
 import ContinueIcon from './img/continue-icon.svg';
 import VolumeIcon from './img/volume-icon.svg'
+import PlaylistIcon from './img/playlist-icon.svg'
 import './Player.scss';
+
+import Playlist from './components/Playlist'
 
 import Store from "../../../../store"
 
@@ -14,6 +17,7 @@ export default () => {
 
 	const { state, setState } = useContext(Store);
 
+	if (state.playlist.length < 1) return <></>
 
 	const [currentTrack, updateCurrentTrack] = useState(state.playlist[state.indexSong])
 
@@ -86,9 +90,15 @@ export default () => {
 		return minute + ':' + second;
 	}
 
+
+	const [showPlaylist, setShowPlaylist] = useState(false)
+
 	return (
 		<div className="player">
+			<Playlist show={showPlaylist} close={() => { setShowPlaylist(false) }} />
+
 			<div className="player__song">
+
 				<div className="player__song__image" style={{
 					background: `url('${currentTrack.image}')`,
 					backgroundSize: 'cover',
@@ -98,6 +108,7 @@ export default () => {
 				<div className="player__song__content">
 					<strong>{currentTrack.title}</strong>
 					<p>{currentTrack.artist}</p>
+					<img onClick={() => { setShowPlaylist(!showPlaylist) }} src={PlaylistIcon} />
 				</div>
 			</div>
 
@@ -154,6 +165,7 @@ export default () => {
 					onChange={event => audio.volume = ((event.target.value / 100).toString())}
 				></input>
 			</div>
-		</div >
+
+		</div>
 	);
 };

@@ -7,14 +7,18 @@ const Modal = ({ children, show, close }) => {
 
   return (
     <div className="Modal">
-      <div className="Modal__content">
+      <div className="Modal__card">
         <img
           src={CloseButton}
-          className="Modal__content--image"
+          className="Modal__card--image"
           alt="X"
           onClick={close}
         />
-        {children}
+        <br />
+
+        <div className="Modal__card__content">
+          {children}
+        </div>
       </div>
     </div>
   );

@@ -18,13 +18,12 @@ import MusicItem from '../MusicItem/MusicItem';
 import './ScrollSlider.scss';
 
 import Store from "../../store"
-
 const ScrollSlider = ({ items, title, rounded }) => {
 
   const { state, setState } = useContext(Store);
 
   const setPlaylist = (index) => {
-    setState({ playlist: items, indexSong: index })
+    setState({ playlist: items, playlistTitle: title, indexSong: index })
   }
 
   return (
