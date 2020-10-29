@@ -1,4 +1,4 @@
-import React, {useReducer} from 'react';
+import React, { useState } from 'react';
 import { HashRouter, Switch, Route } from 'react-router-dom';
 import Home from '../pages/Home/Home';
 import Songs from '../pages/Songs/Songs';
@@ -8,30 +8,25 @@ import Favourite from '../pages/Favourite/Favourite';
 import Login from '../pages/Login/Login';
 import SingUp from '../pages/SingUp/SingUp';
 import FinishSingUp from '../pages/FinishSingUp/FinishSingUp';
-import StaticContext from '../context/StaticContext';
 
 import './App.scss';
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'ADD_PLAYLIST':
-      return {
-        ...state,
-        newPlaylist: { ...state.newPlaylist, [action.newPlaylist]: new Set() },
-      };
-    case 'SET_PLAYLIST':
-      return { ...state, currentPlaylist: action.newPlaylist };
-    default:
-      break;
-  }
-  return state;
-};
+import Store, { stateData } from "../store";
 
 const App = () => {
-  const [state, dispatch] = useReducer(reducer, StaticContext);
+  const [state, setState] = useState(stateData);
+  const value = {
+    state,
+    setState: (data) => {
+      setState({
+        ...state,
+        ...data,
+      });
+    },
+  };
 
   return (
-    <StaticContext.Provider value={{ state, dispatch }}>
+    <Store.Provider value={value}>
       <HashRouter>
         <Switch>
           <Route path="/" exact component={Home} />
@@ -40,12 +35,12 @@ const App = () => {
           <Route path="/albums" component={Albums} />
           <Route path="/artists" component={Artists} />
           <Route path="/Favourite" component={Favourite} />
-          <Route path="/singup" component={SingUp} />
+          <Route path="/signup" component={SingUp} />
           <Route path="/login" component={Login} />
           <Route path="/finishsingup" component={FinishSingUp} />
         </Switch>
       </HashRouter>
-    </StaticContext.Provider>
+    </Store.Provider>
   );
 };
 

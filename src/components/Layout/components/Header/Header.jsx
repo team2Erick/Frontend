@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import Burguer from '../../../../assets/images/icons/menu-burguer.svg';
 import Search from '../../../../assets/images/icons/search.svg';
 import Arrow from '../../../../assets/images/icons/arrow-left.svg';
