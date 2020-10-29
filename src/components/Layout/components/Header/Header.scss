@@ -5,7 +5,19 @@
   // border: 1px solid blue;
   border-bottom: 1px solid $color-border;
 }
-
+.scroll {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 70px;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  transition: 1s;
+}
 .navbar {
   height: 70px;
   display: flex;
@@ -58,7 +70,6 @@
       span {
         padding-left: 10px;
         @media screen and (max-width: 700px) {
-          display: none;
         }
       }
     }
@@ -103,4 +114,29 @@
 
 .inactive {
   display: none;
+}
+.userinfo {
+  position: fixed;
+  top: 80px;
+  right: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 150px;
+  color: white;
+  background: rgba($color: black, $alpha: 0.8);
+  border-radius: 7px;
+  transition: 1s;
+  &__closeinfo {
+    background: none;
+    width: 25px;
+    height: 25px;
+    border: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    outline: none;
+  }
 }
