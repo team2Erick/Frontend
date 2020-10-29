@@ -3,7 +3,8 @@ import React from 'react'
 export const stateData = {
     playlist: [],
     indexSong: 0,
-    playlistTitle: ""
+    playlistTitle: "",
+
 }
 
 export default React.createContext({
