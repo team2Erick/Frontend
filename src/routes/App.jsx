@@ -37,7 +37,7 @@ const App = () => {
           <Route path="/albums" component={Albums} />
           <Route path="/artists" component={Artists} />
           <Route path="/Favourite" component={Favourite} />
-          <Route path="/singup" component={SingUp} />
+          <Route path="/signup" component={SingUp} />
           <Route path="/login" component={Login} />
           <Route path="/finishsingup" component={FinishSingUp} />
         </Switch>
