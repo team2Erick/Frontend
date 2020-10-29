@@ -8,24 +8,27 @@ import Favourite from '../pages/Favourite/Favourite';
 import Login from '../pages/Login/Login';
 import SingUp from '../pages/SingUp/SingUp';
 import FinishSingUp from '../pages/FinishSingUp/FinishSingUp';
+import StaticContext from '../context/StaticContext';
 
 import './App.scss';
 
 const App = () => {
   return (
-    <HashRouter>
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/home" exact component={Home} />
-        <Route path="/songs" component={Songs} />
-        <Route path="/albums" component={Albums} />
-        <Route path="/artists" component={Artists} />
-        <Route path="/Favourite" component={Favourite} />
-        <Route path="/singup" component={SingUp} />
-        <Route path="/login" component={Login} />
-        <Route path="/finishsingup" component={FinishSingUp} />
-      </Switch>
-    </HashRouter>
+    <StaticContext.Provider value={{nombre: 'Mauricio'}} >
+      <HashRouter>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/home" exact component={Home} />
+          <Route path="/songs" component={Songs} />
+          <Route path="/albums" component={Albums} />
+          <Route path="/artists" component={Artists} />
+          <Route path="/Favourite" component={Favourite} />
+          <Route path="/singup" component={SingUp} />
+          <Route path="/login" component={Login} />
+          <Route path="/finishsingup" component={FinishSingUp} />
+        </Switch>
+      </HashRouter>
+    </StaticContext.Provider>
   );
 };
 
