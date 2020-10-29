@@ -1,34 +1,32 @@
 .artist-item {
-  overflow: hidden;
-  position: relative;
-  margin-right: 10px;
-  -webkit-transform-origin: center left;
-  transform-origin: center left;
+  display: flex;
+  overflow-x: scroll;
+  margin: 10px;
+  padding: 5px;
 }
 
 .container {
-  border-radius: 10px;
-  overflow: hidden;
   position: relative;
-  margin-right: 10px;
-  width: 100%;
-  max-width: 650px;
-  height: 330px;
-  -webkit-transform-origin: center left;
-  transform-origin: center left;
+  width: 900px;
+  // height: 100vh;
+  max-height: 350px;
+  margin-right: 20px;
+  border-radius: 18px;
 }
 
 .artist-item__imgen {
   background-color: rgba(6, 12, 21, 0.9);
   filter: brightness(0.7);
+  border-radius: 18px;
 }
 
 .artist-item__img {
-  width: 100%;
-  max-width: 650px;
-  height: 330px;
+  width: 900px;
+  max-height: 350px;
+  height: 100vh;
   -o-object-fit: cover;
   object-fit: cover;
+  border-radius: 18px;
 }
 
 .artist-item__details {
@@ -102,11 +100,13 @@
   right: 0;
   top: 0;
   background-color: rgba(6, 12, 21, 0.9);
+  border-radius: 10px;
   display: grid;
   grid-column: 5;
   grid-row: 1 / span 3;
 }
 
 .artist-play__list div {
+  display: flex;
   color: white;
 }
