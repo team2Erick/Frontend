@@ -1,7 +1,7 @@
 @import '../../assets/styles/lib/variables';
 @import '../../assets/styles/lib/mixins';
 
-.loginpage {
+.singup {
   font-family: $base-font;
   color: $color-base;
   display: grid;
@@ -37,7 +37,9 @@
     justify-content: center;
     @media screen and (max-width: 700px) {
       flex-direction: column;
-      padding-left: 30px;
+      justify-content: flex-start;
+      padding-left: 40px;
+      padding-right: 30px;
     }
   }
 
@@ -165,7 +167,7 @@
   }
 }
 
-.cel {
+.imagesingup {
   img {
     width: 100%;
   }
@@ -173,9 +175,13 @@
     display: none;
   }
 }
-.presentation {
+
+.presentationsingup {
+  padding-right: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  @media screen and (max-width: 700px) {
+  }
 }

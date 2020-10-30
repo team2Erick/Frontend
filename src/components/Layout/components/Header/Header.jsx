@@ -20,7 +20,7 @@ const Header = () => {
       const UserModal = document.getElementById('usermodal');
       const CloseModalInfo = document.getElementById('closemodalinfo');
       const Navbar = document.getElementById('navbar');
-      const LogoScroll = document.getElementById('logoscroll')
+      const LogoScroll = document.getElementById('logoscroll');
 
       MobileMenu.addEventListener('click', () => {
         if(SideMenu.classList.contains('menuinactive')) {
@@ -75,12 +75,9 @@ const Header = () => {
         }
       })
       window.addEventListener('scroll', () => {
-        if(window.scrollY >= 100) {
-          LogoScroll.style.display = 'block'
-
-        } else {
-          LogoScroll.style.display = 'none'
-        }
+        window.scrollY >= 100 ? 
+        LogoScroll.style.display = 'block' 
+        : LogoScroll.style.display = 'none';
       })
   })
   return(

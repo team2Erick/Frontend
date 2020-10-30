@@ -1,19 +1,24 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import '../Login/login.scss';
+import './SingUp.scss';
 
-const Login = () => (
-    <section className="login">
-        <div className="login__container">
-            <figure className="login__logo">
-                <img src="/src/assets/images/icons/cday.svg" alt="logo cday" />
-            </figure>
-            <h1 className="login__title">Listening anytime, anywhere</h1>
-            <h4 className="login__secondary-title">The artists we represent are one of the most successful in Romania and also were a huge breakthrough.</h4>
+const SingUp = () => (
+    <section className="singup">
+        <div className="singup__container">
+            <div className="presentationsingup">
+                <figure className="singup__logo">
+                    <img src="/src/assets/images/icons/cday.svg" alt="logo cday" />
+                </figure>
+                <h1 className="singup__title">Listening anytime, anywhere</h1>
+                <h4 className="singup__secondary-title">The artists we represent are one of the most successful in Romania and also were a huge breakthrough.</h4>
+                <div className="imagesingup">
+                    <img src="/src/assets/images/icons/user.svg" alt="user" />
+                </div>
+            </div>
             <div className="user">
-                <article className="login__form">
-                    <h3 className="login__form__title">Welcome to cday The best music online</h3>
-                    <h4 className="login__form__secondary-title">Subcribe to our page, is free!</h4>
+                <article className="singup__form">
+                    <h3 className="singup__form__title">Welcome to cday The best music online</h3>
+                    <h4 className="singup__form__secondary-title">Subcribe to our page, is free!</h4>
                     <form className="forminfo">
                         <input type="text" className="form__name" required placeholder="Your name" />
                         <input type="email" className="form__mail" required placeholder="Your e-mail" />
@@ -55,12 +60,10 @@ const Login = () => (
                     </div>
 
                 </article>
-                <div className="user__image">
-                    <img src="/src/assets/images/icons/user.svg" alt="user" />
-                </div>
+                
             </div>
         </div>
     </section>
 )
 
-export default Login;
+export default SingUp;
