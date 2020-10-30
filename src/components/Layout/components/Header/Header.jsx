@@ -1,12 +1,19 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import useUser from '../../hooks/useUser';
+
 import Burguer from '../../../../assets/images/icons/menu-burguer.svg';
 import Search from '../../../../assets/images/icons/search.svg';
 import Arrow from '../../../../assets/images/icons/arrow-left.svg';
 import './Header.scss';
+
 const imgProfile =
   'https://avatars0.githubusercontent.com/u/3347271?s=460&u=ee8da2edec3f538be118fefcab95badee62b18e1&v=4';
 
 const Header = () => {
+  // const isLogged = false;
+  const {isLogged} = useUser();
+
   useEffect(() => {
     const MobileMenu = document.getElementById('MobileMenu');
     const SideMenu = document.getElementById('sidemenu');
@@ -59,13 +66,22 @@ const Header = () => {
           </div>
         </div>
         <div className="profile">
-          <figure className="profile__container">
+          {
+            isLogged
+              ? <Link to='/singup'>
+                Logout
+              </Link>
+              : <Link to='/login'>
+                Login
+              </Link>
+          }
+          {/* <figure className="profile__container">
             <img
               className="profile__container--image"
               src={imgProfile}
               alt="perfil"
             />
-          </figure>
+          </figure> */}
         </div>
       </nav>
     </header>

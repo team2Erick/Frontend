@@ -12,6 +12,7 @@ import FinishSingUp from '../pages/FinishSingUp/FinishSingUp';
 import './App.scss';
 
 import Store, { stateData } from "../store";
+import {UseContextProvider} from '../store/userContext';
 
 const App = () => {
   const [state, setState] = useState(stateData);
@@ -26,21 +27,23 @@ const App = () => {
   };
 
   return (
-    <Store.Provider value={value}>
-      <HashRouter>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/home" exact component={Home} />
-          <Route path="/songs" component={Songs} />
-          <Route path="/albums" component={Albums} />
-          <Route path="/artists" component={Artists} />
-          <Route path="/Favourite" component={Favourite} />
-          <Route path="/signup" component={SingUp} />
-          <Route path="/login" component={Login} />
-          <Route path="/finishsingup" component={FinishSingUp} />
-        </Switch>
-      </HashRouter>
-    </Store.Provider>
+    <UseContextProvider>
+      <Store.Provider value={value}>
+        <HashRouter>
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/home" exact component={Home} />
+            <Route path="/songs" component={Songs} />
+            <Route path="/albums" component={Albums} />
+            <Route path="/artists" component={Artists} />
+            <Route path="/Favourite" component={Favourite} />
+            <Route path="/signup" component={SingUp} />
+            <Route path="/login" component={Login} />
+            <Route path="/finishsingup" component={FinishSingUp} />
+          </Switch>
+        </HashRouter>
+      </Store.Provider>
+    </UseContextProvider>
   );
 };
 

@@ -6,6 +6,7 @@ import Store from '../../store';
 
 const Table = ({ title, playlist }) => {
   const { state, setState} = useContext(Store);
+  console.log(state);
 
   const setPlaylist = (index) => {
     setState({ playlist: MyDatos, playlistTitle: title, indexSong: index });

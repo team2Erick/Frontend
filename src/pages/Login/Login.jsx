@@ -1,14 +1,26 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import useUser from '../../hooks/useUser';
 import './Login.scss';
 
 import api from '../../services/api';
 
 const Login = () => {
-  // [email, setEmail] = useState()
-  // [password, setPassword] = useState()
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [, navigate] = useLocation();
+  const {login, isLogged} = useUser();
 
-  const loginQuery = () => {
+  useEffect(() => {
+    if (isLogged) navigate('/');
+  }, [isLogged]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    login();
+  };
+
+  /* const loginQuery = () => {
     api
       .post('/auth/login', {
         email: 'test',
@@ -17,7 +29,7 @@ const Login = () => {
       .then((response) => {
         console.log(response);
       });
-  };
+  }; */
 
   return (
     <section className="login">
@@ -39,11 +51,21 @@ const Login = () => {
             <h4 className="login__form__secondary-titleform">
               Subcribe to our page, is free!
             </h4>
-            <form className="forminfo">
-              <input type="email" required placeholder="Email" />
-              <input type="password" required placeholder="Password" />
+            <form onSubmit={handleSubmit} className="forminfo">
+              <input
+                type="email"
+                required
+                placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <input
+                type="password"
+                required
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
               <div className="forminfo__separator"></div>
-              <button onClick={loginQuery}>LOG IN</button>
+              <button>LOG IN</button>
             </form>
             <h4>Don´t have an acount? create one <span><Link to="/singup">Sing up</Link></span></h4>
             <div className="inscription">
