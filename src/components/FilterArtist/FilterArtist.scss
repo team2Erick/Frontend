@@ -2,7 +2,6 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  max-width: 1024px;
 }
 
 .filter-container__title h1 {
@@ -26,8 +25,8 @@
 .filter-container__gender {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
   width: 100%;
-  max-width: 1024px;
 }
 
 .filter-container__gender div {
