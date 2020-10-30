@@ -13,7 +13,7 @@ const Table = ({ title, playlist }) => {
 
 
   if (!playlist) return (
-    <div>
+    <div className="musictable">
       <h3>{title}</h3>
       <table>
         <thead>
