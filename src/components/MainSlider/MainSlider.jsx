@@ -2,14 +2,12 @@ import React, { useState, useEffect, useContext } from 'react';
 import sliders from '../datos/Sliders';
 import './MainSlider.scss';
 
-import Store from "../../store"
+import PlayIcon from './img/play.svg';
+import ShareIcon from './img/share.svg';
 
-import PlayIcon from "./img/play.svg"
-import ShareIcon from "./img/share.svg"
+import Store from '../../store';
 
 const MainSlider = ({ sliders }) => {
-
-
   sliders = sliders || [];
 
   var [count, setCount] = useState(0);
@@ -25,8 +23,8 @@ const MainSlider = ({ sliders }) => {
   const { state, setState } = useContext(Store);
 
   const setPlaylist = (index) => {
-    setState({ playlist: items, indexSong: index })
-  }
+    setState({ playlist: items, indexSong: index });
+  };
 
   return (
     <div>

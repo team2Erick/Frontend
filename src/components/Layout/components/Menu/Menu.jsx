@@ -35,7 +35,9 @@ const Menu = () => {
 
   return (
     <section className="container__menu">
-      <button id="closemenu"><img src="/src/assets/images/icons/close.svg"/></button>
+      <button id="closemenu">
+        <img src="/src/assets/images/icons/close.svg" />
+      </button>
       <figure>
         <img src="/src/assets/images/icons/cday-n.svg" alt="icon" />
       </figure>
@@ -44,8 +46,10 @@ const Menu = () => {
           {SidebarItems.map((item, index) => (
             <li
               key={index}
-              className={ item === state.currentPlayList ? 'active' : '' }
-              onClick={() => {setState({ ...state, currentPlayList: item})}}
+              className={item === state.currentPlayList ? 'active' : ''}
+              onClick={() => {
+                setState({ ...state, currentPlayList: item });
+              }}
             >
               <Link to={item.route}>
                 <img src={item.image} className="menu__icon" alt={item.alt} />
@@ -61,8 +65,10 @@ const Menu = () => {
           {MyTracks.map((item, index) => (
             <li
               key={index}
-              className={ item === state.currentPlayList ? 'active' : '' }
-              onClick={() => {setState({ ...state, currentPlayList: item})}}
+              className={item === state.currentPlayList ? 'active' : ''}
+              onClick={() => {
+                setState({ ...state, currentPlayList: item });
+              }}
             >
               <Link to={item.route}>
                 <img src={item.image} className="menu__icon" alt={item.alt} />
@@ -74,10 +80,7 @@ const Menu = () => {
       </div>
       <div className="menu">
         <ul className="menu__list">
-          <li
-            className="new-playlist"
-            onClick={handleModal}
-          >
+          <li className="new-playlist" onClick={handleModal}>
             <div className="newPlaylist">
               <h3 className="menu__subtitle"> New Playlist</h3>
               <img
@@ -92,7 +95,7 @@ const Menu = () => {
               key={index}
               className={item === state.currentPlayList ? 'active' : ''}
               onClick={() => {
-                setState({ ...state, currentPlayList: item })
+                setState({ ...state, currentPlayList: item });
               }}
             >
               <img
@@ -121,7 +124,7 @@ const Menu = () => {
           <Successful
             success={state.success}
             close={() => {
-              setState({ ...state, success: '' })
+              setState({ ...state, success: '' });
             }}
           />
         </ul>

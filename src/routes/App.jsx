@@ -9,18 +9,18 @@ import Favourite from '../pages/Favourite/Favourite';
 import Login from '../pages/Login/Login';
 import SingUp from '../pages/SingUp/SingUp';
 import FinishSingUp from '../pages/FinishSingUp/FinishSingUp';
-
-import {UserContextProvider} from '../store/userContext';
+import Charts from '../components/Charts/Charts';
+// import History from '../pages/History/History';
 
 import './App.scss';
 
-import Store, { stateData } from "../store";
+import Store, { stateData } from '../store';
 
 const App = () => {
   const [state, setState] = useState(stateData);
   const value = {
     state,
-    setState: (data) => {
+    setState: data => {
       setState({
         ...state,
         ...data,
@@ -29,6 +29,7 @@ const App = () => {
   };
 
   return (
+<<<<<<< HEAD
     <UserContextProvider>
       <Store.Provider value={value}>
         <HashRouter>
@@ -46,6 +47,24 @@ const App = () => {
         </HashRouter>
       </Store.Provider>
     </UserContextProvider>
+=======
+    <Store.Provider value={value}>
+      <HashRouter>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/home" exact component={Home} />
+          <Route path="/songs" component={Songs} />
+          <Route path="/albums" component={Albums} />
+          <Route path="/artists" component={Artists} />
+          <Route path="/Favourite" component={Favourite} />
+          <Route path="/signup" component={SingUp} />
+          <Route path="/login" component={Login} />
+          <Route path="/finishsingup" component={FinishSingUp} />
+          <Route path="/charts" component={Charts} />
+        </Switch>
+      </HashRouter>
+    </Store.Provider>
+>>>>>>> develop
   );
 };
 
