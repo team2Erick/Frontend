@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { HashRouter, Switch, Route } from 'react-router-dom';
+
 import Home from '../pages/Home/Home';
 import Songs from '../pages/Songs/Songs';
 import Albums from '../pages/Albums/Albums';
@@ -9,10 +10,11 @@ import Login from '../pages/Login/Login';
 import SingUp from '../pages/SingUp/SingUp';
 import FinishSingUp from '../pages/FinishSingUp/FinishSingUp';
 
+import {UserContextProvider} from '../store/userContext';
+
 import './App.scss';
 
 import Store, { stateData } from "../store";
-import {UseContextProvider} from '../store/userContext';
 
 const App = () => {
   const [state, setState] = useState(stateData);
@@ -27,7 +29,7 @@ const App = () => {
   };
 
   return (
-    <UseContextProvider>
+    <UserContextProvider>
       <Store.Provider value={value}>
         <HashRouter>
           <Switch>
@@ -43,7 +45,7 @@ const App = () => {
           </Switch>
         </HashRouter>
       </Store.Provider>
-    </UseContextProvider>
+    </UserContextProvider>
   );
 };
 
