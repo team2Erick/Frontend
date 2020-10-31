@@ -8,15 +8,29 @@ import Table from '../../components/Table/Table';
 import Store from "../../store"
 
 const Songs = () => {
+  const { state, setState } = useContext(Store);
 
-  const { state, setState } = useContext(Store)
-  const songs = state.search.songs
+  const setSongs = () => {
+    let songs = [...state.search.songs];
 
-  const sliderSongsPercent = songs.length * .4
-  const tableSongsPercent = songs.length * .6
+    let sliderSongs;
+    let tableSongs;
+    let sliderSongsPercent;
 
-  const sliderSongs = songs.splice(0, parseInt(sliderSongsPercent));
-  const tableSongs = songs
+    if (songs.length > 7) {
+      sliderSongsPercent = songs.length * .4;
+      sliderSongs = songs.splice(0, parseInt(sliderSongsPercent));
+      tableSongs = songs;
+    } else {
+      sliderSongs = songs;
+      tableSongs = [];
+    }
+    console.log(sliderSongs);
+    console.log(tableSongs);
+    return { sliderSongs, tableSongs }
+  }
+
+  const { sliderSongs, tableSongs } = setSongs()
 
   return (
     <Layout>
