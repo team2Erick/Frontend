@@ -5,9 +5,9 @@ export default () => {
   const SearchButton = document.getElementById('searchbutton');
   const SearchBar = document.getElementById('searchbar');
   const ExitSearch = document.getElementById('exitsearch');
-  const Profile = document.getElementById('profile');
-  const UserModal = document.getElementById('usermodal');
-  const CloseModalInfo = document.getElementById('closemodalinfo');
+  // const Profile = document.getElementById('profile');
+  // const UserModal = document.getElementById('usermodal');
+  // const CloseModalInfo = document.getElementById('closemodalinfo');
   const Navbar = document.getElementById('navbar');
   const LogoScroll = document.getElementById('logoscroll');
 
@@ -38,7 +38,7 @@ export default () => {
       SearchBar.classList.add('inactive');
     }
   });
-  Profile.addEventListener('click', () => {
+  /* Profile.addEventListener('click', () => {
     if (UserModal.classList.contains('inactive')) {
       UserModal.classList.remove('inactive');
       UserModal.classList.add('active');
@@ -52,7 +52,7 @@ export default () => {
       UserModal.classList.remove('active');
       UserModal.classList.add('inactive');
     }
-  });
+  }); */
   window.addEventListener('scroll', () => {
     if (window.scrollY >= 100) {
       Navbar.classList.remove('navbar');

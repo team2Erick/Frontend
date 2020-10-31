@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import Burguer from '../../../../assets/images/icons/menu-burguer.svg';
 import Search from '../../../../assets/images/icons/search.svg';
 import Arrow from '../../../../assets/images/icons/arrow-left.svg';
@@ -80,23 +80,27 @@ const Header = () => {
           </div>
         </div>
         <div className="profile" id="profile">
-          <figure className="profile__container">
+          <div className="profile__container">
+            <Link to="/signup">Sign Up</Link>
+            <Link to="/login">Login</Link>
+          </div>
+          {/* <figure className="profile__container">
             <img
               className="profile__container--image"
               src={imgProfile}
               alt="perfil"
             />
-          </figure>
+          </figure> */}
         </div>
       </nav>
-      <div className="userinfo inactive" id="usermodal">
+      {/* <div className="userinfo inactive" id="usermodal">
         <button className="userinfo__closeinfo" id="closemodalinfo">
           <img src={CloseInfo} />
         </button>
         <h2>Mauricio Rodriguez</h2>
         <div className="userinfo__separator"></div>
         <h3>Cuenta premium</h3>
-      </div>
+      </div> */}
     </header>
   );
 };
