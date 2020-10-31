@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import './Table.scss';
-import MyDatos from '../../pages/Datos/datos';
 import Favourite from '../../assets/images/icons/favourite.svg';
 import Store from "../../store"
 
@@ -8,7 +7,14 @@ const Table = ({ title, playlist }) => {
   const { state, setState } = useContext(Store);
 
   const setPlaylist = (index) => {
-    setState({ playlist: MyDatos, playlistTitle: title, indexSong: index })
+    console.log(state);
+    setState("player", {
+      playlist: [...playlist],
+      title: title,
+      index: index,
+      play: true
+    })
+
   }
 
   if (!playlist || !playlist[0] || !playlist[0].artist.name) return <></>

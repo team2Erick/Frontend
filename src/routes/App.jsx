@@ -15,16 +15,18 @@ import './App.scss';
 
 import Store, { stateData } from "../store"
 
-
-
 const App = () => {
 
   const [state, setState] = useState(stateData);
   const value = {
-    state, setState: data => {
+    state, setState: (module, data) => {
+
+      var newState = { ...state }
+
+      newState[module] = { ...state[module], ...data }
+
       setState({
-        ...state,
-        ...data
+        ...newState
       })
     }
   };

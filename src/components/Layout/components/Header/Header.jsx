@@ -42,11 +42,9 @@ const Header = () => {
     e.preventDefault();
 
     const songs = await handleSearch(searchText);
-    setState({
-      search: {
-        searchText,
-        songs
-      }
+    setState("search", {
+      searchText,
+      songs
     })
     history.push('/songs')
   }
@@ -68,7 +66,7 @@ const Header = () => {
             <button id="exitsearch"><img src={Arrow} /></button>
             <span>
               <form onSubmit={handleSearchSubmit} action="post">
-                <input value={searchText} onInput={(e) => { setSeachText(e.target.value) }} type="search" placeholder="Search..." />
+                <input value={searchText} onChange={(e) => { setSeachText(e.target.value) }} type="search" placeholder="Search..." />
               </form>
             </span>
           </div>
