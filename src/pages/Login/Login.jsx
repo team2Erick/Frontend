@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import useUser from '../../hooks/useUser';
 
@@ -11,9 +11,10 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { login, isLogged } = useUser;
+  const history = useHistory();
 
   useEffect(() => {
-    if (isLogged) this.props.history.push('/');
+    if (isLogged) history.push('/');
   }, [isLogged]);
 
   const handleSubmit = (e) => {
