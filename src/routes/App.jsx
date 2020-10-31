@@ -19,10 +19,13 @@ const App = () => {
   const [state, setState] = useState(stateData);
   const value = {
     state,
-    setState: data => {
+    setState: (module, data) => {
+      var newState = { ...state };
+
+      newState[module] = { ...state[module], ...data };
+
       setState({
-        ...state,
-        ...data,
+        ...newState,
       });
     },
   };
