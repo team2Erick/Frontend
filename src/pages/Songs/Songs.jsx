@@ -8,10 +8,14 @@ import Tabla from '../../components/Table/Table';
 const Songs = () => {
   return (
     <Layout>
-      <section className="main songs">
-        <ScrollSlider title="Feature Tracks" items={MyDatos} />
-        <Tabla title="Lista de Canciones" />
-      </section>
+      <div className="containers">
+        <div className="container-songs">
+          <section className="main songs">
+            <ScrollSlider title="Feature Tracks" items={MyDatos} />
+            <Tabla title="Lista de Canciones" />
+          </section>
+        </div>
+      </div>
     </Layout>
   );
 };
