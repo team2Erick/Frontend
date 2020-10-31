@@ -4,11 +4,17 @@ import Search from '../../../../assets/images/icons/search.svg';
 import Arrow from '../../../../assets/images/icons/arrow-left.svg';
 import CloseInfo from '../../../../assets/images/icons/close.svg' 
 import Logo from '../../../../assets/images/icons/cday-n.svg'
+import ApiSearch from '../../../../services/apisearch'
 import './Header.scss';
+
+
 const imgProfile =
   'https://avatars0.githubusercontent.com/u/3347271?s=460&u=ee8da2edec3f538be118fefcab95badee62b18e1&v=4';
 
 const Header = () => {
+
+  const [search, setSearch] = React.useState("");
+
   useEffect(()=>{
       const MobileMenu = document.getElementById('MobileMenu');
       const SideMenu = document.getElementById('sidemenu');
@@ -94,9 +100,15 @@ const Header = () => {
         <div className="navbar__search__inputsearch inactive" id="searchbar">
             <button id="exitsearch"><img src={Arrow}/></button>
             <span>
-              <form action="post">
-                 <input type="search" placeholder="Search..."/>
-              </form>
+             
+                 <input type="search" placeholder="Search..."
+                 value={search}
+                  onChange={(e) => {
+                setSearch(e.target.value);
+                console.log(setSearch);
+                }}
+                 />
+              
             </span>
         </div>
         
