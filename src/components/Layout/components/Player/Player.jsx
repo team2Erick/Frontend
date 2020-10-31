@@ -17,66 +17,47 @@ export default () => {
 
 	const { state, setState } = useContext(Store);
 
-	if (state.playlist.length < 1) return <></>
-
-	const [currentTrack, updateCurrentTrack] = useState(state.playlist[state.indexSong])
-
 	useEffect(() => {
-		updateCurrentTrack(state.playlist[state.indexSong])
-	})
+		// state.player.audio.addEventListener("ended", () => {
+		// 	updatePlaying(false)
+		// })
+		// state.player.audio.addEventListener("timeupdate", () => {
+		// 	updateCurrentTime(state.player.audio.currentTime);
+		// })
+		if (!state.player.playlist.length) return
+		if (state.player.audio) state.player.audio.pause()
+		setState("player", { audio: new Audio(state.player.playlist[state.player.index].preview) });
 
-	const [playing, updatePlaying] = useState(false)
-	const [audio, updateAudio] = useState(new Audio(currentTrack.song))
-	const [currentTime, updateCurrentTime] = useState(0)
-
+	}, [state.player.index, state.player.playlist]);
 	useEffect(() => {
-		audio.addEventListener("ended", () => {
-			updatePlaying(false)
-		})
-		audio.addEventListener("timeupdate", () => {
-			updateCurrentTime(audio.currentTime)
-		})
-	}, [audio]);
+		if (!state.player.playlist.length) return
+		state.player.audio.play()
+
+	}, [state.player.audio])
 
 	const playToggle = () => {
-		if (playing) {
-			updatePlaying(false)
-			audio.pause();
+		if (state.player.play) {
+			setState("player", { play: false })
+			state.player.audio.pause();
 		} else {
-			updatePlaying(true)
-			audio.play();
+			setState("player", { play: true })
+			state.player.audio.play();
+		}
+	}
+
+	const next = () => {
+		if (state.player.playlist[state.indexSong + 1]) {
+		}
+	}
+
+	const prev = () => {
+		if (state.player.playlist[state.indexSong - 1]) {
 		}
 	}
 
 	const updateTime = (event) => {
-		updateCurrentTime(event.target.value)
-		audio.currentTime = event.target.value
-	}
-
-	const next = () => {
-
-		if (state.playlist[state.indexSong + 1]) {
-			audio.pause();
-			setState({ indexSong: state.indexSong + 1 })
-			updateCurrentTrack(state.playlist[state.indexSong])
-
-			updatePlaying(false)
-			updateCurrentTime(0)
-			updateAudio(new Audio(currentTrack.song))
-		}
-
-	}
-
-	const prev = () => {
-		if (state.playlist[state.indexSong - 1]) {
-			audio.pause();
-			setState({ indexSong: state.indexSong - 1 })
-			updateCurrentTrack(state.playlist[state.indexSong])
-
-			updatePlaying(false)
-			updateCurrentTime(0)
-			updateAudio(new Audio(currentTrack.song))
-		}
+		updateCurrentTime(event.target.value);
+		state.player.audio.currentTime = event.target.value;
 	}
 
 	const secondsToString = (seconds) => {
@@ -89,26 +70,21 @@ export default () => {
 		second = (second < 10) ? '0' + second : second;
 		return minute + ':' + second;
 	}
-
-
-	const [showPlaylist, setShowPlaylist] = useState(false)
-
+	if (state.player.playlist.length < 1) return <></>;
+	if (!state.player.playlist[0].artist.name) return <></>;
 	return (
 		<div className="player">
-			<Playlist show={showPlaylist} close={() => { setShowPlaylist(false) }} />
+			{/* <Playlist show={showPlaylist} close={() => { setShowPlaylist(false) }} /> */}
 
 			<div className="player__song">
 
-				<div className="player__song__image" style={{
-					background: `url('${currentTrack.image}')`,
-					backgroundSize: 'cover',
-					backgroundPosition: 'center'
-				}}>
-				</div>
+				<img className="player__song__image" src={state.player.playlist[state.player.index].album.cover_small} alt="" />
 				<div className="player__song__content">
-					<strong>{currentTrack.title}</strong>
-					<p>{currentTrack.artist}</p>
-					<img onClick={() => { setShowPlaylist(!showPlaylist) }} src={PlaylistIcon} />
+					<strong>{state.player.playlist[state.player.index].title}</strong>
+					<p>{state.player.playlist[state.player.index].artist.name}</p>
+					<img
+						// onClick={() => { setShowPlaylist(!showPlaylist) }} 
+						src={PlaylistIcon} />
 				</div>
 			</div>
 
@@ -116,16 +92,21 @@ export default () => {
 				<div className="player__controls__buttons">
 
 					<button>
-						<img src={ShuffleIcon} />
+						<img
+							src={ShuffleIcon} />
 					</button>
-					<button onClick={prev}>
+					<button
+					// onClick={prev}
+					>
 						<img src={BackIcon} />
 					</button>
 
 					<button>
-						<div onClick={playToggle} className="play">
+						<div
+							onClick={playToggle}
+							className="play">
 							{
-								playing ? <img src={PauseIcon} /> : <img src={PlayIcon} />
+								state.player.play ? <img src={PauseIcon} /> : <img src={PlayIcon} />
 							}
 						</div>
 					</button>
@@ -141,16 +122,16 @@ export default () => {
 
 				<div className="player__controls__progress">
 					<span>
-						{secondsToString(currentTime)}
+						{/* {secondsToString(currentTime)} */}
 					</span>
 					<input type="range"
-						value={currentTime}
-						max={audio.duration || 0}
+						// max={state.player.audio.duration || 0}
 						className="player__controls__progress__bar"
-						onChange={event => updateTime(event)}
+					// value={currentTime}
+					// onChange={event => updateTime(event)}
 					></input>
 					<span>
-						{secondsToString(audio.duration - currentTime || 0)}
+						{/* {secondsToString(state.player.audio.duration - currentTime || 0)} */}
 					</span>
 				</div>
 
@@ -159,10 +140,10 @@ export default () => {
 			<div className="player__volume">
 				<img src={VolumeIcon} alt="Volume" />
 				<input type="range"
-					value={audio.volume * 100}
+					// value={state.player.audio.volume * 100}
 					max={100}
 					className="player__controls__progress__bar"
-					onChange={event => audio.volume = ((event.target.value / 100).toString())}
+				// onChange={event => state.player.audio.volume = ((event.target.value / 100).toString())}
 				></input>
 			</div>
 
