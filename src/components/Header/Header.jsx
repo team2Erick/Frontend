@@ -6,7 +6,7 @@ import './Header.scss';
 const imgProfile =
   'https://avatars0.githubusercontent.com/u/3347271?s=460&u=ee8da2edec3f538be118fefcab95badee62b18e1&v=4';
 
-  const Header = () => {
+const Header = () => {
   const [keyword, setkeyword] = useState('');
 
   const handleSubmit = (e) => {

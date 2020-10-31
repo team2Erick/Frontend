@@ -14,162 +14,162 @@ import Playlist from './components/Playlist';
 import Store from '../../../../store';
 
 export default () => {
+  const { state, setState } = useContext(Store);
 
+  if (state.playlist.length < 1) return <></>;
+  if (!state.playlist[0].artist.name) return <></>;
 
+  const [currentTrack, updateCurrentTrack] = useState(
+    state.playlist[state.indexSong]
+  );
 
-	const { state, setState } = useContext(Store);
+  useEffect(() => {
+    updateCurrentTrack(state.playlist[state.indexSong]);
+  });
 
-	if (state.playlist.length < 1) return <></>
-	if (!state.playlist[0].artist.name) return <></>
+  const [playing, updatePlaying] = useState(false);
+  const [audio, updateAudio] = useState(new Audio(currentTrack.preview));
+  const [currentTime, updateCurrentTime] = useState(0);
 
+  useEffect(() => {
+    audio.addEventListener('ended', () => {
+      updatePlaying(false);
+    });
+    audio.addEventListener('timeupdate', () => {
+      updateCurrentTime(audio.currentTime);
+    });
+  }, [audio]);
 
-	const [currentTrack, updateCurrentTrack] = useState(state.playlist[state.indexSong]);
+  const playToggle = () => {
+    if (playing) {
+      updatePlaying(false);
+      audio.pause();
+    } else {
+      updatePlaying(true);
+      audio.play();
+    }
+  };
 
-	useEffect(() => {
-		updateCurrentTrack(state.playlist[state.indexSong])
-	})
+  const updateTime = (event) => {
+    updateCurrentTime(event.target.value);
+    audio.currentTime = event.target.value;
+  };
 
-	const [playing, updatePlaying] = useState(false)
-	const [audio, updateAudio] = useState(new Audio(currentTrack.preview))
-	const [currentTime, updateCurrentTime] = useState(0)
+  const next = () => {
+    if (state.playlist[state.indexSong + 1]) {
+      audio.pause();
+      setState({ indexSong: state.indexSong + 1 });
+      updateCurrentTrack(state.playlist[state.indexSong]);
 
-	useEffect(() => {
-		audio.addEventListener("ended", () => {
-			updatePlaying(false)
-		})
-		audio.addEventListener("timeupdate", () => {
-			updateCurrentTime(audio.currentTime)
-		})
-	}, [audio]);
+      updatePlaying(false);
+      updateCurrentTime(0);
+      updateAudio(new Audio(currentTrack.preview));
+    }
+  };
 
-	const playToggle = () => {
-		if (playing) {
-			updatePlaying(false)
-			audio.pause();
-		} else {
-			updatePlaying(true)
-			audio.play();
-		}
-	}
+  const prev = () => {
+    if (state.playlist[state.indexSong - 1]) {
+      audio.pause();
+      setState({ indexSong: state.indexSong - 1 });
+      updateCurrentTrack(state.playlist[state.indexSong]);
 
-	const updateTime = (event) => {
-		updateCurrentTime(event.target.value)
-		audio.currentTime = event.target.value
-	}
+      updatePlaying(false);
+      updateCurrentTime(0);
+      updateAudio(new Audio(currentTrack.preview));
+    }
+  };
 
-	const next = () => {
+  const secondsToString = (seconds) => {
+    seconds = parseInt(seconds);
+    var hour = Math.floor(seconds / 3600);
+    hour = hour < 10 ? '0' + hour : hour;
+    var minute = Math.floor((seconds / 60) % 60);
+    minute = minute < 10 ? '0' + minute : minute;
+    var second = seconds % 60;
+    second = second < 10 ? '0' + second : second;
+    return minute + ':' + second;
+  };
 
-		if (state.playlist[state.indexSong + 1]) {
-			audio.pause();
-			setState({ indexSong: state.indexSong + 1 })
-			updateCurrentTrack(state.playlist[state.indexSong])
+  const [showPlaylist, setShowPlaylist] = useState(false);
 
-			updatePlaying(false)
-			updateCurrentTime(0)
-			updateAudio(new Audio(currentTrack.preview))
-		}
+  return (
+    <div className="player">
+      <Playlist
+        show={showPlaylist}
+        close={() => {
+          setShowPlaylist(false);
+        }}
+      />
 
-	}
+      <div className="player__song">
+        <div
+          className="player__song__image"
+          style={{
+            background: `url('${currentTrack.album.cover_small}')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        ></div>
+        <div className="player__song__content">
+          <strong>{currentTrack.title}</strong>
+          <p>{currentTrack.artist.name}</p>
+          <img
+            onClick={() => {
+              setShowPlaylist(!showPlaylist);
+            }}
+            src={PlaylistIcon}
+          />
+        </div>
+      </div>
 
-	const prev = () => {
-		if (state.playlist[state.indexSong - 1]) {
-			audio.pause();
-			setState({ indexSong: state.indexSong - 1 })
-			updateCurrentTrack(state.playlist[state.indexSong])
+      <div className="player__controls">
+        <div className="player__controls__buttons">
+          <button>
+            <img src={ShuffleIcon} />
+          </button>
+          <button onClick={prev}>
+            <img src={BackIcon} />
+          </button>
 
-			updatePlaying(false)
-			updateCurrentTime(0)
-			updateAudio(new Audio(currentTrack.preview))
-		}
-	}
+          <button>
+            <div onClick={playToggle} className="play">
+              {playing ? <img src={PauseIcon} /> : <img src={PlayIcon} />}
+            </div>
+          </button>
 
-	const secondsToString = (seconds) => {
-		seconds = parseInt(seconds)
-		var hour = Math.floor(seconds / 3600);
-		hour = (hour < 10) ? '0' + hour : hour;
-		var minute = Math.floor((seconds / 60) % 60);
-		minute = (minute < 10) ? '0' + minute : minute;
-		var second = seconds % 60;
-		second = (second < 10) ? '0' + second : second;
-		return minute + ':' + second;
-	}
+          <button onClick={next}>
+            <img src={NextIcon} />
+          </button>
+          <button>
+            <img src={ContinueIcon} />
+          </button>
+        </div>
 
+        <div className="player__controls__progress">
+          <span>{secondsToString(currentTime)}</span>
+          <input
+            type="range"
+            value={currentTime}
+            max={audio.duration || 0}
+            className="player__controls__progress__bar"
+            onChange={(event) => updateTime(event)}
+          ></input>
+          <span>{secondsToString(audio.duration - currentTime || 0)}</span>
+        </div>
+      </div>
 
-	const [showPlaylist, setShowPlaylist] = useState(false)
-
-	return (
-		<div className="player">
-			<Playlist show={showPlaylist} close={() => { setShowPlaylist(false) }} />
-
-			<div className="player__song">
-
-				<div className="player__song__image" style={{
-					background: `url('${currentTrack.album.cover_small}')`,
-					backgroundSize: 'cover',
-					backgroundPosition: 'center'
-				}}>
-				</div>
-				<div className="player__song__content">
-					<strong>{currentTrack.title}</strong>
-					<p>{currentTrack.artist.name}</p>
-					<img onClick={() => { setShowPlaylist(!showPlaylist) }} src={PlaylistIcon} />
-				</div>
-			</div>
-
-			<div className="player__controls">
-				<div className="player__controls__buttons">
-
-					<button>
-						<img src={ShuffleIcon} />
-					</button>
-					<button onClick={prev}>
-						<img src={BackIcon} />
-					</button>
-
-					<button>
-						<div onClick={playToggle} className="play">
-							{
-								playing ? <img src={PauseIcon} /> : <img src={PlayIcon} />
-							}
-						</div>
-					</button>
-
-					<button onClick={next}>
-						<img src={NextIcon} />
-					</button>
-					<button>
-						<img src={ContinueIcon} />
-					</button>
-
-				</div>
-
-				<div className="player__controls__progress">
-					<span>
-						{secondsToString(currentTime)}
-					</span>
-					<input type="range"
-						value={currentTime}
-						max={audio.duration || 0}
-						className="player__controls__progress__bar"
-						onChange={event => updateTime(event)}
-					></input>
-					<span>
-						{secondsToString(audio.duration - currentTime || 0)}
-					</span>
-				</div>
-
-			</div>
-
-			<div className="player__volume">
-				<img src={VolumeIcon} alt="Volume" />
-				<input type="range"
-					value={audio.volume * 100}
-					max={100}
-					className="player__controls__progress__bar"
-					onChange={event => audio.volume = ((event.target.value / 100).toString())}
-				></input>
-			</div>
-
-		</div>
-	);
+      <div className="player__volume">
+        <img src={VolumeIcon} alt="Volume" />
+        <input
+          type="range"
+          value={audio.volume * 100}
+          max={100}
+          className="player__controls__progress__bar"
+          onChange={(event) =>
+            (audio.volume = (event.target.value / 100).toString())
+          }
+        ></input>
+      </div>
+    </div>
+  );
 };

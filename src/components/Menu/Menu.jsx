@@ -43,8 +43,10 @@ const Menu = () => {
           {SidebarItems.map((item) => (
             <li
               key={item}
-              className={ item === state.currentPlayList ? 'active' : '' }
-              onClick={() => {setState({ ...state, currentPlayList: item})}}
+              className={item === state.currentPlayList ? 'active' : ''}
+              onClick={() => {
+                setState({ ...state, currentPlayList: item });
+              }}
             >
               <Link to={item.route}>
                 <img src={item.image} className="menu__icon" alt={item.alt} />
@@ -60,8 +62,10 @@ const Menu = () => {
           {MyTracks.map((item) => (
             <li
               key={item}
-              className={ item === state.currentPlayList ? 'active' : '' }
-              onClick={() => {setState({ ...state, currentPlayList: item})}}
+              className={item === state.currentPlayList ? 'active' : ''}
+              onClick={() => {
+                setState({ ...state, currentPlayList: item });
+              }}
             >
               <Link to={item.route}>
                 <img src={item.image} className="menu__icon" alt={item.alt} />
@@ -73,10 +77,7 @@ const Menu = () => {
       </div>
       <div className="menu">
         <ul className="menu__list">
-          <li
-            className="new-playlist"
-            onClick={handleModal}
-          >
+          <li className="new-playlist" onClick={handleModal}>
             <div className="newPlaylist">
               <h3 className="menu__subtitle"> New Playlist</h3>
               <img
@@ -91,7 +92,7 @@ const Menu = () => {
               key={item}
               className={item === state.currentPlayList ? 'active' : ''}
               onClick={() => {
-                dispatch({ type: 'SET_PLAYLIST', newPlayList: item })
+                dispatch({ type: 'SET_PLAYLIST', newPlayList: item });
               }}
             >
               <img
@@ -113,7 +114,9 @@ const Menu = () => {
                   required
                 />
                 <br />
-                <button type="submit" className="content-wrap__button" >Create</button>
+                <button type="submit" className="content-wrap__button">
+                  Create
+                </button>
               </div>
             </form>
           </Modal>

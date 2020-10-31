@@ -14,7 +14,7 @@ const Albums = () => (
         <div className="album__image">
           <h2>Kamelia</h2>
           <div className="album__image__contentimg">
-            <img src={Singer}/>
+            <img src={Singer} />
           </div>
         </div>
         <div className="album__table">
@@ -22,7 +22,9 @@ const Albums = () => (
           <h1>Around The World</h1>
           <h4>Akcent Feat. Lidia Buble & DDY Nunes</h4>
           <p>
-            The artists we represent are one of the most successful in Romania and also were a huge breakthrough in the international market, topping radio and sales around the world.
+            The artists we represent are one of the most successful in Romania
+            and also were a huge breakthrough in the international market,
+            topping radio and sales around the world.
           </p>
           <Table />
         </div>

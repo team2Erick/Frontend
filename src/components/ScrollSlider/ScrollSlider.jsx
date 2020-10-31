@@ -31,8 +31,16 @@ const ScrollSlider = ({ items, title, rounded }) => {
       <strong className="scroll-slider__title">{title}</strong>
       <div className="scroll-slider">
         {items.map((item, index) => {
-          return <div onClick={() => { setPlaylist(index) }} key={index}>
-            <MusicItem rounded={rounded} item={item} /></div>;
+          return (
+            <div
+              onClick={() => {
+                setPlaylist(index);
+              }}
+              key={index}
+            >
+              <MusicItem rounded={rounded} item={item} />
+            </div>
+          );
         })}
       </div>
     </div>

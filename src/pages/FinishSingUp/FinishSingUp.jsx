@@ -8,7 +8,7 @@ const FinishSingUp = () => (
     <div className="container-fluid">
       <div className="container-flex">
         <FullWidthBanner />
-        <section className="googlesingup" >
+        <section className="googlesingup">
           <div className="googlesingup__section">
             <h1>
               To finish your registration, please, give us this information
@@ -37,7 +37,9 @@ const FinishSingUp = () => (
                 </select>
                 <select name="Country">
                   <option value="Gender">Country:</option>
-                  <option value="United States of America">United States of America</option>
+                  <option value="United States of America">
+                    United States of America
+                  </option>
                   <option value="Canada">Canada</option>
                   <option value="Mexico">Mexico</option>
                   <option value="Colombia">Colombia</option>
@@ -51,7 +53,7 @@ const FinishSingUp = () => (
 
               <div className="googlesingup__photo">
                 <div className="ooglesingup__photo__editicon">
-                  <img src="/src/assets/images/icons/user-edit.svg"/>
+                  <img src="/src/assets/images/icons/user-edit.svg" />
                 </div>
                 <div className="googlesingup__photo__picture">photo</div>
                 <div className="googlesingup__photo__info">

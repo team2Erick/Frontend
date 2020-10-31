@@ -4,11 +4,6 @@ export const stateData = {
   playlist: [],
   indexSong: 0,
   playlistTitle: '',
-<<<<<<< HEAD
-  isFavorite: false,
-};
-
-=======
 
   search: {
     searchText: '',
@@ -16,7 +11,6 @@ export const stateData = {
   },
 };
 
->>>>>>> develop
 export default React.createContext({
   state: stateData,
   setState: () => {},

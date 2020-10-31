@@ -48,7 +48,9 @@ const MainSlider = ({ sliders }) => {
                     PLAY
                     <img src={PlayIcon} alt="" />
                   </div>
-                  <div className="btn"><img src={ShareIcon} alt="" /></div>
+                  <div className="btn">
+                    <img src={ShareIcon} alt="" />
+                  </div>
                 </div>
               </div>
             </div>

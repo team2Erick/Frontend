@@ -16,9 +16,7 @@ const Modal = ({ children, show, close }) => {
         />
         <br />
 
-        <div className="Modal__card__content">
-          {children}
-        </div>
+        <div className="Modal__card__content">{children}</div>
       </div>
     </div>
   );

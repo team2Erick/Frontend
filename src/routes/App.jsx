@@ -20,7 +20,7 @@ const App = () => {
   const [state, setState] = useState(stateData);
   const value = {
     state,
-    setState: data => {
+    setState: (data) => {
       setState({
         ...state,
         ...data,
