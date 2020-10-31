@@ -104,18 +104,25 @@
   display: flex;
   align-items: center;
   &__container {
+    display: flex;
     margin: 0;
-    padding-left: 5px;
+    padding-left: 10px;
     margin-right: 20px;
-    /* &--image {
-      border-radius: $border-radius * 16.66;
-      height: 50px;
-      width: 50px;
-      object-fit: cover;
+    & div {
+      margin-right: 40px;
+      padding: 1px 5px;
+      border-radius: 5px;
+      cursor: pointer;
+      & :hover {
+        // border-top: 2px solid #005ba3;
+        color: $color-acents;
+      }
+      & a {
+        color: $color-grey;
+        font-size: $base-fontSize*1.2;
+        font-weight: 700;
+      }
     }
-    &--account {
-      margin: 0;
-    } */
   }
 }
 

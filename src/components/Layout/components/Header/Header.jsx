@@ -28,7 +28,7 @@ const Header = () => {
   }, [searchText]);
 
   const handleSearch = async (value) => {
-    const searchQuery = await api.get('/music/search', {
+    const searchQuery = await api.get('music/search', {
       params: { search: value },
     });
     return searchQuery.data.data;
@@ -81,8 +81,12 @@ const Header = () => {
         </div>
         <div className="profile" id="profile">
           <div className="profile__container">
-            <Link to="/signup">Sign Up</Link>
-            <Link to="/login">Login</Link>
+            <div>
+              <Link to="/signup">Sign Up</Link>
+            </div>
+            <div>
+              <Link to="/login">Login</Link>
+            </div>
           </div>
           {/* <figure className="profile__container">
             <img
