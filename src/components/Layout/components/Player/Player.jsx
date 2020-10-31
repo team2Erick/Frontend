@@ -15,9 +15,13 @@ import Store from "../../../../store"
 
 export default () => {
 
+
+
 	const { state, setState } = useContext(Store);
 
 	if (state.playlist.length < 1) return <></>
+	if (!state.playlist[0].artist.name) return <></>
+
 
 	const [currentTrack, updateCurrentTrack] = useState(state.playlist[state.indexSong])
 
@@ -26,7 +30,7 @@ export default () => {
 	})
 
 	const [playing, updatePlaying] = useState(false)
-	const [audio, updateAudio] = useState(new Audio(currentTrack.song))
+	const [audio, updateAudio] = useState(new Audio(currentTrack.preview))
 	const [currentTime, updateCurrentTime] = useState(0)
 
 	useEffect(() => {
@@ -62,7 +66,7 @@ export default () => {
 
 			updatePlaying(false)
 			updateCurrentTime(0)
-			updateAudio(new Audio(currentTrack.song))
+			updateAudio(new Audio(currentTrack.preview))
 		}
 
 	}
@@ -75,7 +79,7 @@ export default () => {
 
 			updatePlaying(false)
 			updateCurrentTime(0)
-			updateAudio(new Audio(currentTrack.song))
+			updateAudio(new Audio(currentTrack.preview))
 		}
 	}
 
@@ -100,14 +104,14 @@ export default () => {
 			<div className="player__song">
 
 				<div className="player__song__image" style={{
-					background: `url('${currentTrack.image}')`,
+					background: `url('${currentTrack.album.cover_small}')`,
 					backgroundSize: 'cover',
 					backgroundPosition: 'center'
 				}}>
 				</div>
 				<div className="player__song__content">
 					<strong>{currentTrack.title}</strong>
-					<p>{currentTrack.artist}</p>
+					<p>{currentTrack.artist.name}</p>
 					<img onClick={() => { setShowPlaylist(!showPlaylist) }} src={PlaylistIcon} />
 				</div>
 			</div>
