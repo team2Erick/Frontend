@@ -10,7 +10,7 @@ import Login from '../pages/Login/Login';
 import SingUp from '../pages/SingUp/SingUp';
 import FinishSingUp from '../pages/FinishSingUp/FinishSingUp';
 import Charts from '../components/Charts/Charts';
-// import History from '../pages/History/History';
+import History from '../pages/History/History';
 
 import './App.scss';
 
@@ -20,10 +20,13 @@ const App = () => {
   const [state, setState] = useState(stateData);
   const value = {
     state,
-    setState: (data) => {
+    setState: (module, data) => {
+      var newState = { ...state };
+
+      newState[module] = { ...state[module], ...data };
+
       setState({
-        ...state,
-        ...data,
+        ...newState,
       });
     },
   };

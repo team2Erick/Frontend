@@ -23,9 +23,13 @@ const ScrollSlider = ({ items, title, rounded }) => {
   const { state, setState } = useContext(Store);
 
   const setPlaylist = (index) => {
-    setState({ playlist: items, playlistTitle: title, indexSong: index });
+    setState('player', {
+      playlist: [...items],
+      title: title,
+      index: index,
+      play: true,
+    });
   };
-
   return (
     <div>
       <strong className="scroll-slider__title">{title}</strong>
