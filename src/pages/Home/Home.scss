@@ -14,3 +14,18 @@
     padding-left: 30px;
   }
 }
+  @media screen and (max-width: 700px) {
+.main {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding:20px;
+
+  &__table {
+    padding-left: 30px;
+  }
+}
+  }
+  
