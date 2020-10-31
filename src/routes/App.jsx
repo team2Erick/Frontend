@@ -8,6 +8,8 @@ import Favourite from '../pages/Favourite/Favourite';
 import Login from '../pages/Login/Login';
 import SingUp from '../pages/SingUp/SingUp';
 import FinishSingUp from '../pages/FinishSingUp/FinishSingUp';
+import Charts from '../components/Charts/Charts';
+
 
 import './App.scss';
 
@@ -40,6 +42,7 @@ const App = () => {
           <Route path="/signup" component={SingUp} />
           <Route path="/login" component={Login} />
           <Route path="/finishsingup" component={FinishSingUp} />
+          <Route path="/charts" component={Charts} />
         </Switch>
       </HashRouter>
     </Store.Provider>
