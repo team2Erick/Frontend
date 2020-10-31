@@ -1,14 +1,12 @@
-import React from "react";
+import React from 'react';
 
 export default ({ children }) => {
-
-    return (
-        <>
-            <label>
-                <div class="activator"></div>
-            </label>
-            <input type="file" />
-        </>
-    )
-
-}
+  return (
+    <>
+      <label>
+        <div class="activator"></div>
+      </label>
+      <input type="file" />
+    </>
+  );
+};

@@ -12,17 +12,17 @@ const Successful = ({ success, close }) => {
     };
 
     closeSuccessful();
-    
+
     return () => {
       clearTimeout(closeSuccessful);
-    }
+    };
   }, [success]);
   if (!success) return null;
 
   return (
-  <div className="successcontainer">
-    <div className="success">{success}</div>
-  </div>
+    <div className="successcontainer">
+      <div className="success">{success}</div>
+    </div>
   );
 };
 

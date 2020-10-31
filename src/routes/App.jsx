@@ -9,24 +9,22 @@ import Login from '../pages/Login/Login';
 import SingUp from '../pages/SingUp/SingUp';
 import FinishSingUp from '../pages/FinishSingUp/FinishSingUp';
 import Charts from '../components/Charts/Charts';
-import History from '../pages/History/History';
+// import History from '../pages/History/History';
 
 import './App.scss';
 
-import Store, { stateData } from "../store"
-
-
+import Store, { stateData } from '../store';
 
 const App = () => {
-
   const [state, setState] = useState(stateData);
   const value = {
-    state, setState: data => {
+    state,
+    setState: data => {
       setState({
         ...state,
-        ...data
-      })
-    }
+        ...data,
+      });
+    },
   };
 
   return (
