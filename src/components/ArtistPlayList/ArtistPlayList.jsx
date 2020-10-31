@@ -45,9 +45,181 @@ const ArtistPlayList = () => (
           </div>
         </div>
         <div className="container-artist-play__list">
-          <div className="artist-play__list">
+          {/* <div className="artist-play__list">
             <PlayArtist />
+          </div> */}
+        </div>
+      </div>
+    </div>
+    <div className="container">
+      <div className="artist-item__imgen">
+        <img className="artist-item__img" src={BackArtist} alt="" />
+      </div>
+      <div className="artist-item__details">
+        <div className="artist-profile">
+          <img
+            className="artist-profile__image"
+            src={imgProfile}
+            alt="perfil"
+          />
+        </div>
+        <div className="artist-name__album">
+          <div>ARCENT</div>
+        </div>
+        <div className="artist-name__followers">
+          <div>
+            Followers
+            <br />
+            50,256
           </div>
+        </div>
+        <div className="artist-name__listener">
+          <div>
+            Listener
+            <br />
+            2.4m
+          </div>
+        </div>
+        <div className="artist-name__songs">
+          <div>
+            Songs
+            <br />
+            78
+          </div>
+        </div>
+        <div className="container-artist-play__list">
+          {/* <div className="artist-play__list">
+            <PlayArtist />
+          </div> */}
+        </div>
+      </div>
+    </div>
+    <div className="container">
+      <div className="artist-item__imgen">
+        <img className="artist-item__img" src={BackArtist} alt="" />
+      </div>
+      <div className="artist-item__details">
+        <div className="artist-profile">
+          <img
+            className="artist-profile__image"
+            src={imgProfile}
+            alt="perfil"
+          />
+        </div>
+        <div className="artist-name__album">
+          <div>ARCENT</div>
+        </div>
+        <div className="artist-name__followers">
+          <div>
+            Followers
+            <br />
+            50,256
+          </div>
+        </div>
+        <div className="artist-name__listener">
+          <div>
+            Listener
+            <br />
+            2.4m
+          </div>
+        </div>
+        <div className="artist-name__songs">
+          <div>
+            Songs
+            <br />
+            78
+          </div>
+        </div>
+        <div className="container-artist-play__list">
+          {/* <div className="artist-play__list">
+            <PlayArtist />
+          </div> */}
+        </div>
+      </div>
+    </div>
+    <div className="container">
+      <div className="artist-item__imgen">
+        <img className="artist-item__img" src={BackArtist} alt="" />
+      </div>
+      <div className="artist-item__details">
+        <div className="artist-profile">
+          <img
+            className="artist-profile__image"
+            src={imgProfile}
+            alt="perfil"
+          />
+        </div>
+        <div className="artist-name__album">
+          <div>ARCENT</div>
+        </div>
+        <div className="artist-name__followers">
+          <div>
+            Followers
+            <br />
+            50,256
+          </div>
+        </div>
+        <div className="artist-name__listener">
+          <div>
+            Listener
+            <br />
+            2.4m
+          </div>
+        </div>
+        <div className="artist-name__songs">
+          <div>
+            Songs
+            <br />
+            78
+          </div>
+        </div>
+        <div className="container-artist-play__list">
+          {/* <div className="artist-play__list">
+            <PlayArtist />
+          </div> */}
+        </div>
+      </div>
+    </div>
+    <div className="container">
+      <div className="artist-item__imgen">
+        <img className="artist-item__img" src={BackArtist} alt="" />
+      </div>
+      <div className="artist-item__details">
+        <div className="artist-profile">
+          <img
+            className="artist-profile__image"
+            src={imgProfile}
+            alt="perfil"
+          />
+        </div>
+        <div className="artist-name__album">
+          <div>ARCENT</div>
+        </div>
+        <div className="artist-name__followers">
+          <div>
+            Followers
+            <br />
+            50,256
+          </div>
+        </div>
+        <div className="artist-name__listener">
+          <div>
+            Listener
+            <br />
+            2.4m
+          </div>
+        </div>
+        <div className="artist-name__songs">
+          <div>
+            Songs
+            <br />
+            78
+          </div>
+        </div>
+        <div className="container-artist-play__list">
+          {/* <div className="artist-play__list">
+            <PlayArtist />
+          </div> */}
         </div>
       </div>
     </div>

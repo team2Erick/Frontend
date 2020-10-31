@@ -9,7 +9,7 @@ import Login from '../pages/Login/Login';
 import SingUp from '../pages/SingUp/SingUp';
 import FinishSingUp from '../pages/FinishSingUp/FinishSingUp';
 import Charts from '../components/Charts/Charts';
-
+import History from '../pages/History/History';
 
 import './App.scss';
 
