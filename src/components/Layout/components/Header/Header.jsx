@@ -67,7 +67,7 @@ const Header = () => {
               <form onSubmit={handleSearchSubmit} action="post">
                 <input
                   value={searchText}
-                  onInput={(e) => { setSeachText(e.target.value) }}
+                  onChange={(e) => { setSeachText(e.target.value) }}
                   type="search"
                   placeholder="Search..."
                 />
