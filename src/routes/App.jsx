@@ -8,6 +8,7 @@ import Favourite from '../pages/Favourite/Favourite';
 import Login from '../pages/Login/Login';
 import SingUp from '../pages/SingUp/SingUp';
 import FinishSingUp from '../pages/FinishSingUp/FinishSingUp';
+import History from '../pages/History/History';
 
 import './App.scss';
 

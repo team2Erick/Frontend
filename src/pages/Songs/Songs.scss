@@ -1,3 +1,15 @@
+.containers {
+  overflow: hidden;
+}
+
+.container-songs {
+  overflow: auto;
+  height: 90vh;
+  max-height: 90vh;
+  margin-right: -100px;
+  padding-right: 100px;
+}
+
 .songs {
   background-color: white;
 }
