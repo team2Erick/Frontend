@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './SingUp.scss';
 
-const SingUp = () => {
+import api from '../../services/api';
+
+export default () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [birthdate, setBirthdate] = useState('');
+  const [gender, setGender] = useState('');
+  const [country, setCountry] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
   const signUp = (e) => {
     e.preventDefault();
+
     api
       .post('user/sign-up', {
         name,

@@ -1,21 +1,18 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-
-import SearchBarHandle from './SearchBarHandle';
-
 import Burguer from '../../../../assets/images/icons/menu-burguer.svg';
 import Search from '../../../../assets/images/icons/search.svg';
 import Arrow from '../../../../assets/images/icons/arrow-left.svg';
 import CloseInfo from '../../../../assets/images/icons/close.svg';
 import Logo from '../../../../assets/images/icons/cday-n.svg';
-
-import api from '../../../../services/api';
-import Store from '../../../../store/index';
-
 import './Header.scss';
-
 const imgProfile =
   'https://avatars0.githubusercontent.com/u/3347271?s=460&u=ee8da2edec3f538be118fefcab95badee62b18e1&v=4';
+
+import SearchBarHandle from './SearchBarHandle';
+import api from '../../../../services/api';
+
+import Store from '../../../../store/index';
 
 const Header = () => {
   const history = useHistory();
@@ -41,11 +38,9 @@ const Header = () => {
     e.preventDefault();
 
     const songs = await handleSearch(searchText);
-    setState({
-      search: {
-        searchText,
-        songs,
-      },
+    setState('search', {
+      searchText,
+      songs,
     });
     history.push('/songs');
   };
@@ -54,20 +49,20 @@ const Header = () => {
     <header className="container__header">
       <nav className="navbar" id="navbar">
         <div className="logoscroll" id="logoscroll" style={{ display: 'none' }}>
-          <img src={Logo} alt="logo" />
+          <img src={Logo} />
         </div>
         <div className="navbar__mobile-button">
           <button id="MobileMenu">
-            <img src={Burguer} alt="Menu" />
+            <img src={Burguer} />
           </button>
         </div>
         <div className="navbar__search">
-          <button type="button" id="searchbutton">
+          <button id="searchbutton">
             <img src={Search} />
             <span>Search your entertaiment</span>
           </button>
           <div className="navbar__search__inputsearch inactive" id="searchbar">
-            <button type="button" id="exitsearch">
+            <button id="exitsearch">
               <img src={Arrow} />
             </button>
             <span>

@@ -5,8 +5,8 @@ import './Login.scss';
 import api from '../../services/api';
 
 const Login = () => {
-  // [email, setEmail] = useState();
-  // [password, setPassword] = useState();
+  // [email, setEmail] = useState()
+  // [password, setPassword] = useState()
 
   const loginQuery = () => {
     api
