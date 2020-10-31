@@ -5,6 +5,11 @@ export const stateData = {
     indexSong: 0,
     playlistTitle: "",
 
+    search: {
+        searchText: "",
+        songs: []
+    }
+
 }
 
 export default React.createContext({
