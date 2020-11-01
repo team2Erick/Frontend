@@ -12,9 +12,12 @@ import Store from '../../store';
 const Artists = () => {
   const { state, setState } = useContext(Store);
 
-  useEffect(async () => {
-    const genreQuery = await api.get('/music/genre');
-    setState('genre', { results: genreQuery.data.data });
+  useEffect(() => {
+    const fetch = async () => {
+      const genreQuery = await api.get('/music/genre');
+      setState('genre', { results: genreQuery.data.data });
+    };
+    fetch();
   }, []);
 
   return (
@@ -30,11 +33,13 @@ const Artists = () => {
                 <FilterArtist />
               </div>
               <div className="ScrollSlider">
-               {<ScrollSlider
-                  title="Artist"
-                  items={state.genre.results.songs}
-                  rounded={true}}
-                />
+                {state.genre.results.songs && (
+                  <ScrollSlider
+                    title="Artist"
+                    items={state.genre.results.songs}
+                    rounded={true}
+                  />
+                )}
               </div>
             </div>
           </div>
