@@ -14,6 +14,7 @@ import Store from '../../../../store/index';
 
 const Header = () => {
   const history = useHistory();
+  const isLogged = false;
 
   useEffect(SearchBarHandle);
 
@@ -79,35 +80,19 @@ const Header = () => {
         </div>
         <div className="profile" id="profile">
           <div className="profile__container">
-            {/* <Link to="/signup">Sign Up</Link>
-            {!state.user && '' (
-              ? <Link onClik={logout}>Logoout</Link>
-              : <Link to="/login">Login</Link>
-            )} */}
-            {/* <div>
+            <div>
+              <Link to="/signup">Sign Up</Link>
             </div>
             <div>
-              {state.user.image && (
-                <figure className="profile__container">
-                  <img
-                    className="profile__container--image"
-                    src={state.user.image}
-                    alt="perfil"
-                  />
-                </figure>
+              {isLogged ? (
+                <Link to="/logout">Logout</Link>
+              ) : (
+                <Link to="/login">Login</Link>
               )}
-            </div> */}
+            </div>
           </div>
         </div>
       </nav>
-      {/* <div className="userinfo inactive" id="usermodal">
-        <button className="userinfo__closeinfo" id="closemodalinfo">
-          <img src={CloseInfo} />
-        </button>
-        <h2>Mauricio Rodriguez</h2>
-        <div className="userinfo__separator"></div>
-        <h3>Cuenta premium</h3>
-      </div> */}
     </header>
   );
 };
