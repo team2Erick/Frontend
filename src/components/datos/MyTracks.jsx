@@ -1,8 +1,8 @@
 const MyTracks = [
   {
     image: '/src/assets/images/icons/favourite.svg',
-    alt: 'Favourite',
-    name: 'Favourite',
+    alt: 'Favorite',
+    name: 'Favorites',
     route: '/favourite',
   },
   {
@@ -10,12 +10,6 @@ const MyTracks = [
     alt: 'Recent history',
     name: 'Recent history',
     route: '/history',
-  },
-  {
-    image: '/src/assets/images/icons/download.svg',
-    alt: 'Download Items',
-    name: 'Download Items',
-    route: '/download',
   },
 ];
 

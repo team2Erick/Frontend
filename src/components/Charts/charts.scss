@@ -1,0 +1,66 @@
+.App {
+height: 100%;
+display: flex;
+flex-direction: column;
+background-color:  #ebf1f5;
+}
+
+.slider {
+margin: 50px 50px 0;
+}
+
+
+
+.header {
+display: flex;
+justify-content: center;
+align-items: center;
+border-bottom: 2px solid lightgray;
+}
+
+.charts {
+display: grid;
+grid-template-columns: 275px 190px 180px 560px;
+grid-template-rows: 200px 200px 410px;
+height: 1000 px;
+background-color: white;
+margin: 1% 3%;
+justify-content: space-around;
+border-radius: 4px;
+}
+
+.chart_1 {
+display: grid;
+grid-column: 1 ;
+grid-row: 1;
+}
+
+.chart_2 {
+display: grid;
+grid-column: 4 ;
+grid-row: 1 / span 2;
+}
+
+.chart_3 {
+display: grid;
+grid-column: 2 / span 2 ;
+grid-row: 1 / span 2;
+}
+
+.chart_4 {
+display: grid;
+grid-column: 1 ;
+grid-row: 2 ;
+}
+
+.chart_5 {
+display: grid;
+grid-column: 1 / span 3 ;
+grid-row: 3 ;
+}
+
+.chart_6 {
+display: grid;
+grid-column: 4 / span 1 ;
+grid-row: 3 ;
+}

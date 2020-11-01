@@ -13,26 +13,37 @@
  */
 
 import React, { useContext } from 'react';
+
 import MusicItem from '../MusicItem/MusicItem';
-
 import './ScrollSlider.scss';
+import Store from '../../store/index';
 
-import Store from "../../store"
-const ScrollSlider = ({ items, title, rounded }) => {
-
+const ScrollSlider = ({ items, title, rounded, album }) => {
   const { state, setState } = useContext(Store);
 
   const setPlaylist = (index) => {
-    setState({ playlist: items, playlistTitle: title, indexSong: index })
-  }
-
+    setState('player', {
+      playlist: [...items],
+      title: title,
+      index: index,
+      play: true,
+    });
+  };
   return (
     <div>
       <strong className="scroll-slider__title">{title}</strong>
       <div className="scroll-slider">
         {items.map((item, index) => {
-          return <div onClick={() => { setPlaylist(index) }} key={index}>
-            <MusicItem rounded={rounded} item={item} /></div>;
+          return (
+            <div
+              onClick={() => {
+                setPlaylist(index);
+              }}
+              key={index}
+            >
+              <MusicItem rounded={rounded} item={item} album={album} />
+            </div>
+          );
         })}
       </div>
     </div>

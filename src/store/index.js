@@ -1,15 +1,38 @@
-import React from 'react'
+import React from 'react';
 
 export const stateData = {
-    playlist: [],
-    indexSong: 0,
-    playlistTitle: ""
+    player: {
+        playlist: [],
+        index: 0,
+        title: "",
+        audio: null,
+        play: false,
+        currentTime: 0
+    },
+
+    artist: {
+        name: ""
+    },
+
+    search: {
+        searchText: "",
+        songs: []
+    },
+
+    genre: {
+        results: []
+    },
+
+    user: {
+
+    }
+
 }
 
 export default React.createContext({
 
     state: stateData,
 
-    setState: () => {}
+    setState: () => { }
 
 })

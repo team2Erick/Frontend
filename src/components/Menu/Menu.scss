@@ -1,5 +1,6 @@
 @import '../../assets/styles/lib/variables';
 @import '../../assets/styles/lib/mixins';
+
 .container__menu {
   border-right: $color-border;
 }
@@ -34,7 +35,7 @@ a {
 
 form {
   button {
-    background-color: $color-primary;
+    background-color: red;
     color: white;
     padding: 12.5px 30px;
     border-radius: 25px;
@@ -61,8 +62,8 @@ form {
     margin: 0px auto;
     max-width: 250px;
     text-align: center;
-    button {
-      display: block;
+    &__button {
+      display: inline-block;
     }
   }
 }
