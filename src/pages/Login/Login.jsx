@@ -50,13 +50,15 @@ const Login = () => {
 
         Cockies.set('token', response.data.data.token);
 
-        setMessage('Welcome to CDay, have a good day ;) :p :D');
+        setMessage('Welcome to CDay, have a good day ;)');
         setShowSuccess(true);
 
         const decoded = jwt_decode(response.data.data.token);
-        setState('user', decoded);
 
-        console.log(decoded);
+        setState('user', { ...decoded });
+
+        localStorage.setItem('cday_user', JSON.stringify(decoded));
+
         setTimeout(() => {
           history.push('/');
         }, 2000);

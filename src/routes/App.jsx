@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { HashRouter, Switch, Route } from 'react-router-dom';
 
 import Home from '../pages/Home/Home';
@@ -19,7 +19,10 @@ import './App.scss';
 import Store, { stateData } from '../store';
 
 const App = () => {
-  const [state, setState] = useState(stateData);
+
+  // const [state, setState] = useState(stateData);
+  const { state, setState } = useContext(Store);
+
   const value = {
 
     state,
@@ -35,6 +38,14 @@ const App = () => {
 
     },
   };
+
+  useEffect(() => {
+    if (localStorage.getItem('cday_user')) {
+
+      setState("user", JSON.parse(localStorage.getItem('cday_user')));
+
+    }
+  }, [])
 
   return (
     <Store.Provider value={value}>
