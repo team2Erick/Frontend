@@ -21,7 +21,9 @@
   padding: 1px 5px;
   margin: 6px;
 }
-
+.filter-container__spacetime div:hover{
+  color:red;
+}
 .filter-container__gender {
   display: flex;
   flex-wrap: wrap;
