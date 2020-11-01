@@ -3,11 +3,11 @@
 }
 
 .viewport {
-  overflow: auto;
-  max-height: 350px;
-  height: 100%;
-  margin-right: -100px;
-  padding-right: 100px;
+	overflow: auto;
+	max-height: 300px;
+	height: 100%;
+	margin-right: -100px;
+	padding: 20px;
 }
 
 table {
@@ -19,7 +19,8 @@ table {
   }
 
   td {
-    padding: 10px;
+    padding: 5px;
+    font-size:14px;
   }
   tbody {
     tr {
@@ -31,3 +32,14 @@ table {
     }
   }
 }
+ @media screen and (max-width: 700px) {
+   table{
+     padding:20px;
+     th{
+       font-size:14px;
+     }
+  td {
+    font-size:12px;
+  }
+}
+ }

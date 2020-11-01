@@ -9,6 +9,7 @@ import Favourite from '../pages/Favourite/Favourite';
 import Login from '../pages/Login/Login';
 import SingUp from '../pages/SingUp/SingUp';
 import FinishSingUp from '../pages/FinishSingUp/FinishSingUp';
+import NotFound from '../pages/NotFound/NotFound';
 import Charts from '../components/Charts/Charts';
 import History from '../pages/History/History';
 import Player from '../components/Layout/components/Player/Player';
@@ -40,17 +41,19 @@ const App = () => {
       <Player />
       <HashRouter>
         <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/home" exact component={Home} />
-          <Route path="/songs" component={Songs} />
-          <Route path="/albums" component={Albums} />
-          <Route path="/artists" component={Artists} />
-          <Route path="/Favourite" component={Favourite} />
-          <Route path="/signup" component={SingUp} />
-          <Route path="/login" component={Login} />
-          <Route path="/finishsingup" component={FinishSingUp} />
-          <Route path="/History" component={History} />
-          <Route path="/charts" component={Charts} />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/home" component={Home} />
+          <Route exact path="/songs" component={Songs} />
+          <Route exact path="/albums" component={Albums} />
+          <Route exact path="/artists" component={Artists} />
+          <Route exact path="/Favourite" component={Favourite} />
+          <Route exact path="/signup" component={SingUp} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/finishsingup" component={FinishSingUp} />
+          <Route exact path="/History" component={History} />
+          <Route exact path="/charts" component={Charts} />
+          <Route exact path="/charts" component={Charts} />
+          <Route component={NotFound} />
         </Switch>
       </HashRouter>
     </Store.Provider>
