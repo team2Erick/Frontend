@@ -6,12 +6,13 @@
 }
 
 .container {
-  position: relative;
-  width: 900px;
-  height: 100vh;
-  max-height: 350px;
-  margin-right: 20px;
-  border-radius: 18px;
+	position: relative;
+	width: 900px;
+	height: 100vh;
+	max-height: 350px;
+	margin-bottom: 30px;
+	border-radius: 18px;
+	margin-right: 30px;
 }
 
 .artist-item__imgen {
@@ -40,6 +41,7 @@
   display: grid;
   grid-template-columns: 15% 15% 30% 40%;
   grid-template-rows: 3fr 1fr 1fr;
+  padding:20px;
 }
 
 .artist-profile {
