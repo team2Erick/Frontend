@@ -19,7 +19,7 @@ import MusicItem from '../MusicItem/MusicItem';
 
 import './ScrollSlider.scss';
 
-const ScrollSlider = ({ items, title, rounded }) => {
+const ScrollSlider = ({ items, title, rounded, album }) => {
 
   const { state, setState } = useContext(Store);
 
@@ -37,7 +37,7 @@ const ScrollSlider = ({ items, title, rounded }) => {
       <div className="scroll-slider">
         {items.map((item, index) => {
           return <div onClick={() => { setPlaylist(index) }} key={index}>
-            <MusicItem rounded={rounded} item={item} /></div>;
+            <MusicItem rounded={rounded} item={item} album={album} /></div>;
         })}
       </div>
     </div>
