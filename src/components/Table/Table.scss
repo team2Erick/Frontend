@@ -7,13 +7,10 @@ table {
     padding: 10px;
   }
 
-  td {
-    padding: 10px;
-  }
-
   tbody {
     tr {
       font-size: 14px;
+      line-height: 0.8;
       transition: 0.2s;
       cursor: pointer;
     }
