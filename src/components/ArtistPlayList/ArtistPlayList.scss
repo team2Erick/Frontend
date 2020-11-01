@@ -24,8 +24,8 @@
   width: 900px;
   max-height: 350px;
   height: 100vh;
-  -o-object-fit: cover;
-  object-fit: cover;
+  // -o-object-fit: cover;
+  // object-fit: cover;
   border-radius: 18px;
 }
 
@@ -38,7 +38,7 @@
   right: 0;
   top: 0;
   display: grid;
-  grid-template-columns: 15% 15% 15% 15% 40%;
+  grid-template-columns: 15% 15% 30% 40%;
   grid-template-rows: 3fr 1fr 1fr;
 }
 
@@ -51,7 +51,7 @@
 }
 
 .artist-profile__image {
-  width: 78px;
+  width: 98px;
   border-radius: 50px;
 }
 
@@ -76,17 +76,9 @@
   align-items: center;
 }
 
-.artist-name__listener {
-  display: grid;
-  grid-column: 3;
-  grid-row: 3;
-  justify-content: left;
-  align-items: center;
-}
-
 .artist-name__songs {
   display: grid;
-  grid-column: 4;
+  grid-column: 3;
   grid-row: 3;
   justify-content: left;
   align-items: center;
@@ -102,7 +94,7 @@
   background-color: rgba(6, 12, 21, 0.9);
   border-radius: 10px;
   display: grid;
-  grid-column: 5;
+  grid-column: 4;
   grid-row: 1 / span 3;
 }
 
