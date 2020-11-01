@@ -42,6 +42,7 @@
   grid-template-columns: 15% 15% 30% 40%;
   grid-template-rows: 3fr 1fr 1fr;
   padding:20px;
+  
 }
 
 .artist-profile {
@@ -104,6 +105,59 @@
   display: flex;
   color: white;
 }
- @media screen and (max-width: 700px) {
-    padding: 20px 0;
+@media screen and (max-width: 1200px){
+.artist-item__img{
+  width:500px;
+}
+.artist-profile__image{
+  width:90%;
+}
+}
+@media screen and (max-width: 700px) {
+  .container{
+    padding:20px 0;
+  }
+  .artist-profile__image{
+    width:90%;
+  }
+  .artist-name__album{
+      grid-column: 1;
+      grid-row: 1;
+    }
+  }
+  .artist-item__details {
+    grid-template-columns: 20% 20% 0% 50%;
+    grid-template-rows: 3fr 1fr 1fr;
+    padding: 10px 20px;
+  }
+  .artist-item__img{
+    width:450px;
+  }
+  .artist-name__album {
+    grid-column: 1;
+  }
+  .artist-profile__image{
+    display:none;
+  }
+  .artist-name__followers{
+grid-column: 1;
+  }
+  @media screen and (max-width: 568px) {
+    .artist-item__details {
+      grid-template-columns: 25% 12% 8% 35%;
+      grid-template-rows: 3fr 1fr 1fr;
+      padding: 20px 40px;
+    }
+    .artist-name__followers{
+      display:none;
+    }
+    .artist-name__songs{
+      display:none;
+    }
+    .container-artist-play__list{
+      grid-column: 2;
+    }
+    .artist-play__list div{
+      width: 300px;
+    }
   }

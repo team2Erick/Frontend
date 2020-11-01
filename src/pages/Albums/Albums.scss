@@ -20,7 +20,7 @@
   padding: 40px 20px;
   @media screen and (max-width: 700px) {
     flex-direction: column;
-    padding:20px;
+    padding:0px;
   }
   &__image {
     margin-left: 20px;
@@ -68,7 +68,7 @@
       line-height: 60px;
       @media screen and (max-width: 700px) {
         padding: 0 20px;
-        font-size:40px;
+        font-size:30px;
       }
     }
     @media screen and (max-width: 700px) {
