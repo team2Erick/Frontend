@@ -87,3 +87,8 @@ form {
     text-align: center;
   }
 }
+@media screen and (max-width: 700px){
+  .container__menu button{
+    right:20px;
+  }
+}
