@@ -1,7 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import './Login.scss';
+import Successful from "../../components/Successful/Successful";
 
 import Store from "../../store";
 
@@ -9,12 +10,14 @@ import api from "../../services/api"
 
 const Login = () => {
 
-const { state, setState } = useContext(Store);
+    const { state, setState } = useContext(Store);
+    const [showSuccess, setShowSuccess] = useState(false);
+    const [message, setMessage] = useState("");
 
     const history = useHistory()
 
     useEffect(() => {
-        if (state.user.id) history.push('/')
+        if (state.user.id) history.push('/');
     }, [])
 
     const [email, setEmail] = useState();
@@ -27,13 +30,16 @@ const { state, setState } = useContext(Store);
             email,
             password
         }).then(response => {
-            console.log(response);
+            if (response.data.error) {
+                setMessage(response.data.error);
+                setShowSuccess(true);
+            }
         })
-
 
     }
 
     return (<section className="loginpage">
+        {showSuccess && <Successful success={message} close={() => { setShowSuccess(false) }} />}
         <div className="loginpage__container">
             <div className="presentation">
                 <figure className="loginpage__logo">
