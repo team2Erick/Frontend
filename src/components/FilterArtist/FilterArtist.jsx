@@ -32,26 +32,36 @@ const FilterArtist = () => {
         </div>
       </div>
       <div className="filter-container__gender">
-        <input
+        <button
           value="rock"
           onClick={handleSearch}
           type="button"
           placeholder="rock"
-        />
-        <div>Blues</div>
-        <div>Classical</div>
-        <div>Country</div>
-        <div>Dance</div>
-        <div>Electronic</div>
-        <div>Hip-hop</div>
-        <div>Jazz</div>
-        <div>Latin</div>
-        <div>Metal</div>
-        <div>Party</div>
-        <div>R&B / Sould</div>
-        <div>Reggae / Dancehall</div>
-        <div>Soundtracks</div>
-        <div>World</div>
+        >
+          Rock
+        </button>
+        <button
+          value="Blues"
+          onClick={handleSearch}
+          type="button"
+          placeholder="Blues"
+        >
+          Blues
+        </button>
+        <button>Blues</button>
+        <button>Classical</button>
+        <button>Country</button>
+        <button>Dance</button>
+        <button>Electronic</button>
+        <button>Hip-hop</button>
+        <button>Jazz</button>
+        <button>Latin</button>
+        <button>Metal</button>
+        <button>Party</button>
+        <button>R&B / Sould</button>
+        <button>Reggae / Dancehall</button>
+        <button>Soundtracks</button>
+        <button>World</button>
       </div>
     </div>
   );

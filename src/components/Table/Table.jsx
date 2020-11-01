@@ -1,23 +1,22 @@
 import React, { useContext } from 'react';
 import './Table.scss';
 import Favourite from '../../assets/images/icons/favourite.svg';
-import Store from "../../store"
+import Store from '../../store';
 
-const Table = ({ title, playlist }) => {
+const Table = ({ title, playlist, dense }) => {
   const { state, setState } = useContext(Store);
 
   const setPlaylist = (index) => {
     console.log(state);
-    setState("player", {
+    setState('player', {
       playlist: [...playlist],
       title: title,
       index: index,
-      play: true
-    })
+      play: true,
+    });
+  };
 
-  }
-
-  if (!playlist || !playlist[0] || !playlist[0].artist.name) return <></>
+  if (!playlist || !playlist[0] || !playlist[0].artist.name) return <></>;
   return (
     <div>
       <h3>{title}</h3>
@@ -25,41 +24,44 @@ const Table = ({ title, playlist }) => {
         <thead>
           <tr>
             <th>#</th>
-            <th></th>
-            <th></th>
+            {!dense && <th></th>}
+            {!dense && <th></th>}
             <th>Song</th>
-            <th>Artist</th>
-            <th>Daily Plays</th>
-            <th>Time</th>
-            <th>Option</th>
-            <th></th>
+            {!dense && <th>Artist</th>}
+            {!dense && <th>Time</th>}
           </tr>
         </thead>
         <tbody>
           {playlist.map((item, index) => {
             return (
-              <tr onClick={() => { setPlaylist(index) }} key={item.id}>
+              <tr
+                onClick={() => {
+                  setPlaylist(index);
+                }}
+                key={item.id}
+              >
                 <td>{index + 1}</td>
-                <td>
-                  <img src={item.album.cover_small} alt="favourite" />
-                </td>
-                <td>
-                  <img src={Favourite} alt="favourite" />
-                </td>
+                {!dense && (
+                  <td>
+                    <img src={item.album.cover_small} alt="favourite" />
+                  </td>
+                )}
+                {!dense && (
+                  <td>
+                    <img src={Favourite} alt="favourite" />
+                  </td>
+                )}
+
                 <td>{item.title}</td>
-                <td>{item.artist.name}</td>
-                <td>Daily Plays</td>
-                <td>{item.duration}</td>
-                <td>Option</td>
-                <td></td>
+                {!dense && <td>{item.artist.name}</td>}
+                {!dense && <td>{item.duration}</td>}
               </tr>
-            )
+            );
           })}
         </tbody>
       </table>
     </div>
-  )
-
+  );
 };
 
 export default Table;
