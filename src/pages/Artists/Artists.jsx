@@ -28,12 +28,12 @@ const Artists = () => {
                 <ArtistPlayList />
               </div>
               <div className="FilterArtist">
-                <FilterArtist />
+                <FilterArtist artist={state.genre.results.artist} />
               </div>
               <div className="ScrollSlider">
                 <ScrollSlider
                   title="Artist"
-                  items={state.genre.results}
+                  items={state.genre.results.songs}
                   rounded={true}
                 />
               </div>
