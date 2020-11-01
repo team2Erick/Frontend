@@ -11,6 +11,7 @@ import SingUp from '../pages/SingUp/SingUp';
 import FinishSingUp from '../pages/FinishSingUp/FinishSingUp';
 import Charts from '../components/Charts/Charts';
 import History from '../pages/History/History';
+import Player from '../components/Layout/components/Player/Player';
 
 import './App.scss';
 
@@ -19,7 +20,9 @@ import Store, { stateData } from '../store';
 const App = () => {
   const [state, setState] = useState(stateData);
   const value = {
+
     state,
+
     setState: (module, data) => {
       var newState = { ...state };
 
@@ -28,11 +31,13 @@ const App = () => {
       setState({
         ...newState,
       });
+
     },
   };
 
   return (
     <Store.Provider value={value}>
+      <Player />
       <HashRouter>
         <Switch>
           <Route path="/" exact component={Home} />
