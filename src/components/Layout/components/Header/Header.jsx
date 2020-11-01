@@ -6,8 +6,6 @@ import Arrow from '../../../../assets/images/icons/arrow-left.svg';
 import CloseInfo from '../../../../assets/images/icons/close.svg';
 import Logo from '../../../../assets/images/icons/cday-n.svg';
 import './Header.scss';
-const imgProfile =
-  'https://avatars0.githubusercontent.com/u/3347271?s=460&u=ee8da2edec3f538be118fefcab95badee62b18e1&v=4';
 
 import SearchBarHandle from './SearchBarHandle';
 import api from '../../../../services/api';
@@ -16,7 +14,6 @@ import Store from '../../../../store/index';
 
 const Header = () => {
   const history = useHistory();
-  const isLogged = false;
 
   useEffect(SearchBarHandle);
 
@@ -82,24 +79,25 @@ const Header = () => {
         </div>
         <div className="profile" id="profile">
           <div className="profile__container">
-            <div>
-              <Link to="/signup">Sign Up</Link>
+            {/* <Link to="/signup">Sign Up</Link>
+            {!state.user && '' (
+              ? <Link onClik={logout}>Logoout</Link>
+              : <Link to="/login">Login</Link>
+            )} */}
+            {/* <div>
             </div>
             <div>
-              {isLogged ? (
-                <Link to="/logout">Logout</Link>
-              ) : (
-                <Link to="/login">Login</Link>
+              {state.user.image && (
+                <figure className="profile__container">
+                  <img
+                    className="profile__container--image"
+                    src={state.user.image}
+                    alt="perfil"
+                  />
+                </figure>
               )}
-            </div>
+            </div> */}
           </div>
-          {/* <figure className="profile__container">
-            <img
-              className="profile__container--image"
-              src={imgProfile}
-              alt="perfil"
-            />
-          </figure> */}
         </div>
       </nav>
       {/* <div className="userinfo inactive" id="usermodal">
