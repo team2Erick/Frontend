@@ -1,4 +1,4 @@
-@import '../../../../assets/styles/lib/variables';
+@import "../../../../assets/styles/lib/variables";
 
 .player {
   position: fixed;
@@ -104,6 +104,10 @@
       align-items: center;
       justify-content: center;
 
+      &__bar:focus {
+        outline: none;
+      }
+
       &__bar {
         -webkit-appearance: none;
 
@@ -117,6 +121,16 @@
         height: 3px;
         background: $color-base;
         border: none;
+        transition: 0.2s;
+      }
+
+      :hover > &__bar::-webkit-slider-runnable-track {
+        height: 6px;
+        transition: 0.2s;
+      }
+
+      :hover > &__bar::-webkit-slider-thumb {
+        margin-top: -5px;
       }
 
       &__bar::-webkit-slider-thumb {

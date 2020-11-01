@@ -16,10 +16,9 @@ import React, { useContext } from 'react';
 
 import MusicItem from '../MusicItem/MusicItem';
 import './ScrollSlider.scss';
+import Store from '../../store/index';
 
-import Store from '../../store';
-
-const ScrollSlider = ({ items, title, rounded }) => {
+const ScrollSlider = ({ items, title, rounded, album }) => {
   const { state, setState } = useContext(Store);
 
   const setPlaylist = (index) => {
@@ -42,7 +41,7 @@ const ScrollSlider = ({ items, title, rounded }) => {
               }}
               key={index}
             >
-              <MusicItem rounded={rounded} item={item} />
+              <MusicItem rounded={rounded} item={item} album={album} />
             </div>
           );
         })}

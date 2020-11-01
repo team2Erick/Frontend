@@ -14,6 +14,10 @@ export const stateData = {
     searchText: '',
     songs: [],
   },
+
+  genre: {
+    results: [],
+  },
 };
 
 export default React.createContext({
