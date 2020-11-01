@@ -41,13 +41,13 @@ const Table = ({ title, playlist }) => {
               <tr onClick={() => { setPlaylist(index) }} key={item.id}>
                 <td>{index + 1}</td>
                 <td>
-                  <img src={item.album.cover_small} alt="favourite" />
+                  <img src={item.cover_small} alt="favourite" />
                 </td>
                 <td>
                   <img src={Favourite} alt="favourite" />
                 </td>
                 <td>{item.title}</td>
-                <td>{item.artist.name}</td>
+                <td>{item.name}</td>
                 <td>Daily Plays</td>
                 <td>{item.duration}</td>
                 <td>Option</td>
