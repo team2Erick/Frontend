@@ -41,7 +41,7 @@ const Albums = () => {
                 <h4>// Album</h4>
                 <h1>{albumPrimary.title}</h1>
                 <h4>{albumPrimary.contributors.map(contributors => contributors.name).join(",")}</h4>
-                <Table playlist={albumPrimary.tracks.data} dense={true} />
+                <Table playlist={albumPrimary.tracks.data} hideImage={true} />
               </div>
             </div>
           </section>

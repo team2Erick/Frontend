@@ -3,9 +3,9 @@ import './Table.scss';
 import Favourite from '../../assets/images/icons/favourite.svg';
 import Store from '../../store';
 
-const Table = ({ title, playlist, dense }) => {
+const Table = ({ title, playlist, dense, hideImage }) => {
   const { state, setState } = useContext(Store);
-  console.log(state);
+  console.log(playlist);
 
   const setPlaylist = (index) => {
     console.log(state);
@@ -26,7 +26,7 @@ const Table = ({ title, playlist, dense }) => {
           <tr>
             <th>#</th>
             {!dense && <th></th>}
-            {!dense && <th></th>}
+            {!dense || !hideImage && <th></th>}
             <th>Song</th>
             {!dense && <th>Artist</th>}
             {!dense && <th>Time</th>}
@@ -42,7 +42,7 @@ const Table = ({ title, playlist, dense }) => {
                 key={item.id}
               >
                 <td>{index + 1}</td>
-                {!dense && (
+                {!dense || !hideImage && (
                   <td>
                     <img src={item.album.cover_small} alt="favourite" />
                   </td>
