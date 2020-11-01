@@ -82,6 +82,7 @@ export default () => {
       setState('player', {
         index: state.player.index - 1,
       });
+      // console.log(setState);
     }
   };
   const next = () => {

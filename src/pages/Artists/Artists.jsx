@@ -24,7 +24,7 @@ const Artists = () => {
       <div className="container-Artist-hide-scroll">
         <div className="container-Artist-viewport">
           <div className="artists">
-            <div className="container-artist">  
+            <div className="container-artist">
               <div className="ArtistPlayList">
                 <ArtistPlayList artist={state.genre.results.artists} />
               </div>
