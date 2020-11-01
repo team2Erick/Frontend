@@ -159,3 +159,8 @@
     outline: none;
   }
 }
+@media screen and (max-width: 700px){
+  .profile__container div a{
+  font-size:14px;
+  }
+}
