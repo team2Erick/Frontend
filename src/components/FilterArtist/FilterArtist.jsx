@@ -82,10 +82,6 @@ const FilterArtist = () => {
       id: 466
     },
     {
-      name: "Reggae",
-      id: 144
-    },
-    {
       name: "infantil",
       id: 95
     },
