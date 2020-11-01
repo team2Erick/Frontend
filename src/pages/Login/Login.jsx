@@ -3,6 +3,9 @@ import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import './Login.scss';
 import Successful from "../../components/Successful/Successful";
+import Cockies from "js-cookie"
+
+import jwt from "jsonwebtoken"
 
 import Store from "../../store";
 
@@ -14,7 +17,7 @@ const Login = () => {
     const [showSuccess, setShowSuccess] = useState(false);
     const [message, setMessage] = useState("");
 
-    const history = useHistory()
+    const history = useHistory();
 
     useEffect(() => {
         if (state.user.id) history.push('/');
@@ -26,14 +29,37 @@ const Login = () => {
     const loginQuery = (e) => {
         e.preventDefault()
 
-        api.post("auth/login", {
-            email,
-            password
+        var credentials = btoa(email + ':' + password);
+        var BasicAuth = 'Basic ' + credentials;
+
+        api.post("auth/login", {}, {
+            auth: {
+                username: email,
+                password: password
+            }
         }).then(response => {
             if (response.data.error) {
                 setMessage(response.data.error);
                 setShowSuccess(true);
+                return
             }
+
+            Cockies.set("token", response.data.data.token);
+
+            setMessage("Welcome to CDay, have a good day ;) :p :D");
+            setShowSuccess(true);
+
+            // setState("user", {
+
+            // })
+
+            // TODO jwt 
+
+            const decoded = jwt.verify(token);
+            console.log(decoded);
+            setTimeout(() => {
+                history.push('/');
+            }, 2000);
         })
 
     }
@@ -56,8 +82,8 @@ const Login = () => {
                     <h3 className="loginpage__form__titleform">Welcome to cday The best music online</h3>
                     <h4 className="loginpage__form__secondary-titleform">Subcribe to our page, is free!</h4>
                     <form onSubmit={loginQuery} className="forminfo">
-                        <input type="email" required placeholder="Email" />
-                        <input type="password" required placeholder="Password" />
+                        <input value={email} onChange={(e) => { setEmail(e.target.value) }} type="email" required placeholder="Email" />
+                        <input value={password} onChange={(e) => { setPassword(e.target.value) }} type="password" required placeholder="Password" />
                         <div className="forminfo__separator"></div>
                         <button type="submit">LOG IN</button>
 
