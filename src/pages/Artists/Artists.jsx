@@ -13,7 +13,7 @@ const Artists = () => {
 
   useEffect(() => {
     const fetch = async () => {
-      const genreQuery = await api.get('/music/genre');
+      const genreQuery = await api.get('music/genre');
       setState('genre', { results: genreQuery.data.data });
     };
     fetch();
