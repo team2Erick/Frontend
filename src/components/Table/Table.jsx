@@ -3,9 +3,9 @@ import './Table.scss';
 import Favourite from '../../assets/images/icons/favourite.svg';
 import Store from '../../store';
 
-const Table = ({ title, playlist }) => {
+const Table = ({ title, playlist, dense, hideImage }) => {
   const { state, setState } = useContext(Store);
-  console.log(state);
+  console.log(playlist);
 
   const setPlaylist = (index) => {
     console.log(state);
@@ -25,14 +25,11 @@ const Table = ({ title, playlist }) => {
         <thead>
           <tr>
             <th>#</th>
-            <th></th>
-            <th></th>
+            {!dense && <th></th>}
+            {!dense || !hideImage && <th></th>}
             <th>Song</th>
-            <th>Artist</th>
-            <th>Daily Plays</th>
-            <th>Time</th>
-            <th>Option</th>
-            <th></th>
+            {!dense && <th>Artist</th>}
+            {!dense && <th>Time</th>}
           </tr>
         </thead>
         <tbody>
@@ -45,18 +42,20 @@ const Table = ({ title, playlist }) => {
                 key={item.id}
               >
                 <td>{index + 1}</td>
-                <td>
-                  <img src={item.album.cover_small} alt="favourite" />
-                </td>
-                <td>
-                  <img src={Favourite} alt="favourite" />
-                </td>
+                {!dense || !hideImage && (
+                  <td>
+                    <img src={item.album.cover_small} alt="favourite" />
+                  </td>
+                )}
+                {!dense && (
+                  <td>
+                    <img src={Favourite} alt="favourite" />
+                  </td>
+                )}
+
                 <td>{item.title}</td>
-                <td>{item.artist.name}</td>
-                <td>Daily Plays</td>
-                <td>{item.duration}</td>
-                <td>Option</td>
-                <td></td>
+                {!dense && <td>{item.artist.name}</td>}
+                {!dense && <td>{item.duration}</td>}
               </tr>
             );
           })}

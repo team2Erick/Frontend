@@ -2,11 +2,11 @@ import React from 'react';
 import './PlayArtist.scss';
 import Table from '../Table/Table';
 
-const PlayArtist = () => {
+const PlayArtist = ({ title, playlist }) => {
   return (
     <div className="hide-scroll">
       <div className="viewport">
-        <Table title="Lista de Canciones" />
+        <Table playlist={playlist} dense={true} />
       </div>
     </div>
   );

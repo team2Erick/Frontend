@@ -5,11 +5,20 @@ import './Login.scss';
 
 import Store from "../../store";
 
+<<<<<<< HEAD
 
 import api from "../../services/api"
 
 const Login = () => {
     const { state, setState } = useContext(Store);
+=======
+import api from "../../services/api"
+
+const Login = () => {
+
+const { state, setState } = useContext(Store);
+
+>>>>>>> 981d5a629393b20001a0be1522001fd36ab239d3
     const history = useHistory()
     
     useEffect(() => {

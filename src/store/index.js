@@ -10,6 +10,10 @@ export const stateData = {
         currentTime: 0
     },
 
+    artist: {
+        name: ""
+    },
+
     search: {
         searchText: "",
         songs: []
