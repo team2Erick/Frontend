@@ -13,6 +13,10 @@ export const stateData = {
     search: {
         searchText: "",
         songs: []
+    },
+
+    genre:{
+        results: []
     }
 
 }

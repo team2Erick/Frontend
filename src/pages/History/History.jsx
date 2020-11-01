@@ -1,5 +1,5 @@
 import React from 'react';
-import ArtistPlayList from '../../components/ArtistPlayList/ArtistPlayList';
+import ScrollSlider from '../../components/ScrollSlider/ScrollSlider';
 import Tabla from '../../components/Table/Table';
 import MyDatos from '../Datos/datos';
 import Layout from '../../components/Layout/Layout';
@@ -10,8 +10,8 @@ const History = () => (
       <div className="container-Artist-viewport">
         <div className="artists">
           <div className="container-artist">
-            <div className="ArtistPlayList">
-              <ArtistPlayList />
+            <div className="ScrollSlider">
+              <ScrollSlider title="Artist" items={MyDatos} rounded={true} />
             </div>
             <div className="FilterArtist">
               <Tabla title="Lista de Canciones" />
