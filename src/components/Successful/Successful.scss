@@ -1,16 +1,11 @@
-@import '../../assets/styles/lib/variables';
-@import '../../assets/styles/lib/mixins';
+@import "../../assets/styles/lib/variables";
+@import "../../assets/styles/lib/mixins";
 
-.successcontainer {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
 .success {
   -webkit-animation: success 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   animation: success 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  position: absolute;
+  position: fixed;
+  z-index: 100;
   top: 0%;
   left: calc(50% - 175px);
   background: rgba(0, 0, 0, 0.75);

@@ -12,9 +12,9 @@ const Layout = ({ children }) => {
           <Menu />
         </div>
         <div className="layout__mainsection">
-        <Header />
-        {children}
-        <Player />
+          <Header />
+          {children}
+          <Player />
         </div>
       </div>
     </>

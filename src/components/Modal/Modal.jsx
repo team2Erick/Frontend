@@ -1,6 +1,6 @@
 import React from 'react';
 import './Modal.scss';
-import CloseButton from '../../assets/images/icons/close.svg'
+import CloseButton from '../../assets/images/icons/close.svg';
 
 const Modal = ({ children, show, close }) => {
   if (!show) return null;
@@ -16,9 +16,7 @@ const Modal = ({ children, show, close }) => {
         />
         <br />
 
-        <div className="Modal__card__content">
-          {children}
-        </div>
+        <div className="Modal__card__content">{children}</div>
       </div>
     </div>
   );

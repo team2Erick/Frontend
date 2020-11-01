@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export const stateData = {
     player: {
@@ -15,8 +15,12 @@ export const stateData = {
         songs: []
     },
 
-    genre:{
+    genre: {
         results: []
+    },
+
+    user: {
+
     }
 
 }
@@ -25,6 +29,6 @@ export default React.createContext({
 
     state: stateData,
 
-    setState: () => {}
+    setState: () => { }
 
 })

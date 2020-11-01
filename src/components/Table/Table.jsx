@@ -1,23 +1,23 @@
 import React, { useContext } from 'react';
 import './Table.scss';
 import Favourite from '../../assets/images/icons/favourite.svg';
-import Store from "../../store"
+import Store from '../../store';
 
 const Table = ({ title, playlist }) => {
   const { state, setState } = useContext(Store);
+  console.log(state);
 
   const setPlaylist = (index) => {
     console.log(state);
-    setState("player", {
+    setState('player', {
       playlist: [...playlist],
       title: title,
       index: index,
-      play: true
-    })
+      play: true,
+    });
+  };
 
-  }
-
-  if (!playlist || !playlist[0] || !playlist[0].artist.name) return <></>
+  if (!playlist || !playlist[0] || !playlist[0].artist.name) return <></>;
   return (
     <div>
       <h3>{title}</h3>
@@ -38,7 +38,12 @@ const Table = ({ title, playlist }) => {
         <tbody>
           {playlist.map((item, index) => {
             return (
-              <tr onClick={() => { setPlaylist(index) }} key={item.id}>
+              <tr
+                onClick={() => {
+                  setPlaylist(index);
+                }}
+                key={item.id}
+              >
                 <td>{index + 1}</td>
                 <td>
                   <img src={item.cover_small} alt="favourite" />
@@ -53,13 +58,12 @@ const Table = ({ title, playlist }) => {
                 <td>Option</td>
                 <td></td>
               </tr>
-            )
+            );
           })}
         </tbody>
       </table>
     </div>
-  )
-
+  );
 };
 
 export default Table;

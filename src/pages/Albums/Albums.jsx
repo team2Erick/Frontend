@@ -6,11 +6,10 @@ import ScrollSlider from '../../components/ScrollSlider/ScrollSlider';
 import Table from '../../components/Table/Table';
 import Singer from '../../assets/images/singer.jpg';
 
-import api from "../../services/api"
+import api from '../../services/api';
 
 const Albums = () => {
-
-  const [album, setAlbum] = useState([])
+  const [album, setAlbum] = useState([]);
 
   // useEffect(async () => {
   //   const albumQuery = await api.get("/music/album");
@@ -25,8 +24,8 @@ const Albums = () => {
     async function fetchData() {
       const albumQuery = await api.get("/music/album");
     setAlbumPrimary(albumQuery.data.data.splice(0,1))
-      setAlbumRamdom(albumQuery.data.data.sort(() => {return Math.random() - 0.5}))
-  console.log(albumRamdom[0])
+    setAlbumRamdom(albumQuery.data.data.sort(() => {return Math.random() - 0.5}))
+    console.log(albumRamdom[0])
     }
     fetchData()
   }, [])
@@ -42,7 +41,7 @@ const Albums = () => {
           <div className="album__image">
             <h2>Kamelia</h2>
             <div className="album__image__contentimg">
-                 <img src={albumPrimary.artist.picture_big} />
+                 <img src={Singer} />
             </div>
           </div>
           <div className="album__table">
@@ -59,7 +58,7 @@ const Albums = () => {
         )
       }
     </Layout>
-  )
-}
+  );
+};
 
 export default Albums;

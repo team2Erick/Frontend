@@ -5,7 +5,7 @@ import MyDatos from '../../pages/Datos/datos';
 import ScrollSlider from '../../components/ScrollSlider/ScrollSlider';
 import Table from '../../components/Table/Table';
 
-import Store from "../../store"
+import Store from '../../store';
 
 const Songs = () => {
   const { state, setState } = useContext(Store);
@@ -18,7 +18,7 @@ const Songs = () => {
     let sliderSongsPercent;
 
     if (songs.length > 7) {
-      sliderSongsPercent = songs.length * .4;
+      sliderSongsPercent = songs.length * 0.4;
       sliderSongs = songs.splice(0, parseInt(sliderSongsPercent));
       tableSongs = songs;
     } else {
@@ -27,10 +27,10 @@ const Songs = () => {
     }
     console.log(sliderSongs);
     console.log(tableSongs);
-    return { sliderSongs, tableSongs }
-  }
+    return { sliderSongs, tableSongs };
+  };
 
-  const { sliderSongs, tableSongs } = setSongs()
+  const { sliderSongs, tableSongs } = setSongs();
 
   return (
     <Layout>
