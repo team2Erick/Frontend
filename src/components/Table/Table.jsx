@@ -5,8 +5,6 @@ import Store from '../../store';
 
 const Table = ({ title, playlist, dense, hideImage }) => {
   const { state, setState } = useContext(Store);
-  console.log(playlist);
-
   const setPlaylist = (index) => {
     console.log(state);
     setState('player', {

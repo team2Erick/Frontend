@@ -10,7 +10,7 @@ export default ({ show, close }) => {
   return (
     <>
       <Modal show={show} close={close}>
-        <Table title={state.playlistTitle} playlist={state.playlist} />
+        <Table title={state.playlistTitle} playlist={state.player.playlist} />
       </Modal>
     </>
   );
