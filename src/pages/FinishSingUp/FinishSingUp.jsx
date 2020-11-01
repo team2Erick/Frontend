@@ -93,4 +93,4 @@ const FinishSingUp = () => {
     )
 }
 
-export default FinishSingUp
+export default FinishSingUp;

@@ -5,7 +5,7 @@ import './Login.scss';
 
 import Store from "../../store";
 
-const { state, useContext } = useContext(Store);
+const { state, setState } = useContext(Store);
 
 import api from "../../services/api"
 

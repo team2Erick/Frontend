@@ -2,7 +2,6 @@ import React, {useContext, useEffect} from 'react';
 import ArtistPlayList from '../../components/ArtistPlayList/ArtistPlayList';
 import FilterArtist from '../../components/FilterArtist/FilterArtist';
 import ScrollSlider from '../../components/ScrollSlider/ScrollSlider';
-import MyDatos from '../Datos/datos';
 import Layout from '../../components/Layout/Layout';
 import './Artists.scss';
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export const stateData = {
     player: {
@@ -20,7 +20,7 @@ export const stateData = {
     },
 
     user: {
-        
+
     }
 
 }
