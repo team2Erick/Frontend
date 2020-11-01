@@ -5,11 +5,11 @@ import './Login.scss';
 import Successful from "../../components/Successful/Successful";
 import Cockies from "js-cookie"
 
-import jwt from "jsonwebtoken"
-
 import Store from "../../store";
 
 import api from "../../services/api"
+
+import jwt_decode from "jwt-decode";
 
 const Login = () => {
 
@@ -55,7 +55,7 @@ const Login = () => {
 
             // TODO jwt 
 
-            const decoded = jwt.verify(token);
+            var decoded = jwt_decode(response.data.data.token);
             console.log(decoded);
             setTimeout(() => {
                 history.push('/');
