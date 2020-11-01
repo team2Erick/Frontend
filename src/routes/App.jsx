@@ -13,22 +13,21 @@ import History from '../pages/History/History';
 
 import './App.scss';
 
-import Store, { stateData } from "../store"
+import Store, { stateData } from '../store';
 
 const App = () => {
-
   const [state, setState] = useState(stateData);
   const value = {
-    state, setState: (module, data) => {
+    state,
+    setState: (module, data) => {
+      var newState = { ...state };
 
-      var newState = { ...state }
-
-      newState[module] = { ...state[module], ...data }
+      newState[module] = { ...state[module], ...data };
 
       setState({
-        ...newState
-      })
-    }
+        ...newState,
+      });
+    },
   };
 
   return (
@@ -44,6 +43,7 @@ const App = () => {
           <Route path="/signup" component={SingUp} />
           <Route path="/login" component={Login} />
           <Route path="/finishsingup" component={FinishSingUp} />
+          <Route path="/History" component={History} />
           <Route path="/charts" component={Charts} />
         </Switch>
       </HashRouter>
