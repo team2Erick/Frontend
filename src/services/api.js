@@ -1,8 +1,10 @@
 import axios from "axios";
 
+// export const apiPath = "https://cday-music.herokuapp.com/api/"
+ export const apiPath = "http://localhost:3000/api/"
+
 const config = new axios.create({
-    baseURL: 'https://cday-music.herokuapp.com/api/',
-    // baseURL: 'http://localhost:3000/api/',
+    baseURL: apiPath,
 })
 
 export const file = async (endpoint, data) => {

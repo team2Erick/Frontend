@@ -5,24 +5,17 @@ const Successful = ({ success, close }) => {
   useEffect(() => {
     if (!success) return;
 
-    const closeSuccessful = () => {
-      setTimeout(() => {
-        close();
-      }, 1500);
-    };
+    setTimeout(() => {
+      close();
+      console.log("ldld");
+    }, 1500);
 
-    closeSuccessful();
-    
-    return () => {
-      clearTimeout(closeSuccessful);
-    }
-  }, [success]);
-  if (!success) return null;
+  }, []);
+
+  if (!success) return <></>;
 
   return (
-  <div className="successcontainer">
     <div className="success">{success}</div>
-  </div>
   );
 };
 

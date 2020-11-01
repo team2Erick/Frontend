@@ -11,12 +11,6 @@ const MyTracks = [
     name: 'Recent history',
     route: '/history',
   },
-  {
-    image: '/src/assets/images/icons/download.svg',
-    alt: 'Download Items',
-    name: 'Download Items',
-    route: '/download',
-  },
 ];
 
 export default MyTracks;

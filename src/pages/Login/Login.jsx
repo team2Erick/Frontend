@@ -1,19 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react';
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import './Login.scss';
+
+import Store from "../../store";
+
+const { state, useContext } = useContext(Store);
 
 import api from "../../services/api"
 
 const Login = () => {
+    const history = useHistory()
 
-    // [email, setEmail] = useState()
-    // [password, setPassword] = useState()
+    useEffect(() => {
+        if (state.user.id) history.push('/')
+    }, [])
 
-    const loginQuery = () => {
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
 
-        api.post("/auth/login", {
-            email: "test",
-            password: "test"
+    const loginQuery = (e) => {
+        e.preventDefault()
+
+        api.post("auth/login", {
+            email,
+            password
         }).then(response => {
             console.log(response);
         })
@@ -37,11 +48,11 @@ const Login = () => {
                 <article className="loginpage__form">
                     <h3 className="loginpage__form__titleform">Welcome to cday The best music online</h3>
                     <h4 className="loginpage__form__secondary-titleform">Subcribe to our page, is free!</h4>
-                    <form className="forminfo">
+                    <form onSubmit={loginQuery} className="forminfo">
                         <input type="email" required placeholder="Email" />
                         <input type="password" required placeholder="Password" />
                         <div className="forminfo__separator"></div>
-                        <button onClick={loginQuery}>LOG IN</button>
+                        <button type="submit">LOG IN</button>
 
                     </form>
                     <h4>Don´t have an acount? create one <span><Link to="/signup">Sing up</Link></span></h4>
@@ -55,7 +66,7 @@ const Login = () => {
                     </div>
 
                 </article>
-                
+
             </div>
         </div>
     </section>)
