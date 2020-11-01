@@ -14,7 +14,7 @@ const SidebarItems = [
   {
     image: '/src/assets/images/icons/artists.svg',
     alt: 'Artists',
-    name: 'Artists',
+    name: 'Genre',
     route: '/artists',
   },
 ];
