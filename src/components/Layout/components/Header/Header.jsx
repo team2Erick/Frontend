@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory, Link, useRoute } from 'react-router-dom';
 import Burguer from '../../../../assets/images/icons/menu-burguer.svg';
 import Search from '../../../../assets/images/icons/search.svg';
 import Arrow from '../../../../assets/images/icons/arrow-left.svg';
@@ -13,8 +13,9 @@ import api from '../../../../services/api';
 import Store from '../../../../store/index';
 
 const Header = () => {
+  const {isLogged, logout} = useUser()
+
   const history = useHistory();
-  const isLogged = false;
 
   useEffect(SearchBarHandle);
 
@@ -43,6 +44,26 @@ const Header = () => {
     });
     history.push('/songs');
   };
+
+
+  const handleClick = e => {
+    e.preventDefault()
+    logout()
+  }
+
+  const renderLoginButtons = ({isLogged}) => {
+    return isLogged ? (<Link to='#' onClick={handleClick}>Logout</Link>
+    ) : (
+      <>
+        <Link to='/login'>Login</Link>
+        <Link to='/signup'>Sing up</Link>
+    ) </>
+  }
+
+  /* const content = match
+    ? null
+    : renderLoginButtons({isLogged}) */
+
 
   return (
     <header className="container__header">
@@ -80,16 +101,7 @@ const Header = () => {
         </div>
         <div className="profile" id="profile">
           <div className="profile__container">
-            <div>
-              <Link to="/signup">Sign Up</Link>
-            </div>
-            <div>
-              {isLogged ? (
-                <Link to="/logout">Logout</Link>
-              ) : (
-                <Link to="/login">Login</Link>
-              )}
-            </div>
+            {content}
           </div>
         </div>
       </nav>
