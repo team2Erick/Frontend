@@ -1,24 +1,29 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import './Login.scss';
 
 import api from '../../services/api';
 
 const Login = () => {
-  // [email, setEmail] = useState()
-  // [password, setPassword] = useState()
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const loginQuery = () => {
+  const history = useHistory();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
     api
-      .post('/auth/login', {
-        email: 'test',
+      .post('auth/login', {
+        email: 'avila.mauro@gmail.com',
         password: 'test',
       })
       .then((response) => {
-        console.log(response);
+        console.log(response.data);
       });
+    // console.log(`${email}, ${password}`);
+    history.push('/');
   };
-
+  
   return (
     <section className="loginpage">
       <div className="loginpage__container">
@@ -45,12 +50,26 @@ const Login = () => {
             <h4 className="loginpage__form__secondary-titleform">
               Subcribe to our page, is free!
             </h4>
-            <form className="forminfo">
-              <input type="email" required placeholder="Email" />
-              <input type="password" required placeholder="Password" />
+
+            <form onSubmit={handleSubmit} className="forminfo">
+              <input
+                type="email"
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                placeholder="Email"
+                value={email}
+              />
+              <input
+                type="password"
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                placeholder="Password"
+                value={password}
+              />
               <div className="forminfo__separator"></div>
-              <button onClick={loginQuery}>LOG IN</button>
+              <button type="submit">LOG IN</button>
             </form>
+
             <h4>
               Don´t have an acount? create one{' '}
               <span>

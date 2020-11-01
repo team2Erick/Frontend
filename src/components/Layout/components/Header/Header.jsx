@@ -16,6 +16,7 @@ import Store from '../../../../store/index';
 
 const Header = () => {
   const history = useHistory();
+  const isLogged = false;
 
   useEffect(SearchBarHandle);
 
@@ -85,7 +86,11 @@ const Header = () => {
               <Link to="/signup">Sign Up</Link>
             </div>
             <div>
-              <Link to="/login">Login</Link>
+              {isLogged ? (
+                <Link to="/logout">Logout</Link>
+              ) : (
+                <Link to="/login">Login</Link>
+              )}
             </div>
           </div>
           {/* <figure className="profile__container">
