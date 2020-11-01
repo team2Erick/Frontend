@@ -1,9 +1,32 @@
-import React from 'react'
+import React, { useState, useEffect, useContext } from 'react';
 import FullWidthBanner from '../../components/FullWidthBanner/FullWidthBanner'
 import '../Login/login.scss'
 import './FinishSingUp.scss'
+import api from "../../services/api"
+import Store from "../../store/index"
 
-const FinishSingUp = () => (
+
+const FinishSingUp = () => {
+    const [name, setName] = useState("")
+	const [email, setEmail] = useState("")
+	const [birthdate, setBirthdate] = useState("")
+    const [gender, setGender] = useState("")
+    const [country, setCountry] = useState("")
+    const [image, setImage] = useState("")
+
+    const signUp = (e) => {
+		e.preventDefault();
+
+		api.post("user/sign-up", {
+
+			name, email, country, gender, birthdate, image
+
+		}).then(response => {
+			console.log(response);
+		})
+
+	}
+    return (
     <>
     <div className="container-fluid">
         <div className="container-flex">
@@ -12,18 +35,18 @@ const FinishSingUp = () => (
                     <div className="googlesingup__section">
                         <h1>To finish your registration, please, give us this information</h1>
                         <div className="googlesingup__register">
-                            <form className="forminfo">
-                                <input type="text" className="form__name" required placeholder="Your name"/>
-                                <input type="email" className="form__mail" required placeholder="Your e-mail"/>
+                            <form className="forminfo" onSubmit={signUp}>
+                                <input value={name} onChange={(e) => { setName(e.target.value) }} type="text" className="form__name" required placeholder="Your name"/>
+                                <input value={email} onChange={(e) => { setEmail(e.target.value) }}  type="email" className="form__mail" required placeholder="Your e-mail"/>
                                 <div className="form__separator"></div>
                                 <label>your Birthday:</label>
-                                <input type="date"/>
-                                <select name="Gender">
+                                <input value={birthdate} onChange={(e) => { setBirthdate(e.target.value) }}  type="date" required/>
+                                <select value={gender} onChange={(e) => { setGender(e.target.value) }}  name="Gender" required>
                                     <option value="Gender">Gender:</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                 </select>
-                                <select name="Country">
+                                <select  value={country} onChange={(e) => { setCountry(e.target.value) }}  name="Country" required>
                                     <option value="Gender">Country:</option>
                                     <option value="United States of America">United States of America</option>
                                     <option value="Canada">Canada</option>
@@ -43,6 +66,15 @@ const FinishSingUp = () => (
                                     <div className="googlesingup__photo__picture">
                                         photo
                                     </div>
+                                    <div>
+                                        <span>
+                                            <input id="uploadfile" type="file" value={image} onChange={(e) => { setImage(e.target.value) }} required/>
+                                        </span>
+                                        <label htmlFor="uploadfile">
+                                            UPLOAD IMAGE
+                                        </label>
+                                    </div>
+                                    
                                     <div className="googlesingup__photo__info">
                                         <h2>Your name</h2>
                                         <h2>email@gmail.com</h2>
@@ -56,6 +88,7 @@ const FinishSingUp = () => (
     </div>
     
     </>
-)
+    )
+}
 
 export default FinishSingUp

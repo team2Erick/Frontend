@@ -6,9 +6,16 @@ import ScrollSlider from '../../components/ScrollSlider/ScrollSlider';
 import Table from '../../components/Table/Table';
 import Layout from '../../components/Layout/Layout';
 import './Home.scss';
+import api from "../../services/api";
+import Store from "../../store/index"
 
-const Home = () => (
-  <Layout>
+
+
+const Home = () => {
+
+  
+  return (
+    <Layout>
     <main className="main">
       <MainSlider sliders ={Sliders} />
       <ScrollSlider title="Canciones" items={MyDatos} />
@@ -18,6 +25,12 @@ const Home = () => (
       </div>
     </main>
   </Layout>
-);
+  )
+
+
+
+
+  
+};
 
 export default Home;

@@ -5,7 +5,9 @@ import ScrollSlider from '../../components/ScrollSlider/ScrollSlider';
 import MyDatos from '../Datos/datos';
 import Layout from '../../components/Layout/Layout';
 import './Artists.scss';
+import Api from '../../services/api'
 
+const Playlist = Api.data
 /* const playList = [
   {
     image: 'https://homepages.cae.wisc.edu/~ece533/images/pool.png',

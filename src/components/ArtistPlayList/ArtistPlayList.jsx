@@ -45,9 +45,9 @@ const ArtistPlayList = () => (
           </div>
         </div>
         <div className="container-artist-play__list">
-          {/* <div className="artist-play__list">
+          <div className="artist-play__list">
             <PlayArtist />
-          </div> */}
+          </div>
         </div>
       </div>
     </div>
