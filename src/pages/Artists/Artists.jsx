@@ -26,7 +26,7 @@ const Artists = () => {
           <div className="artists">
             <div className="container-artist">  
               <div className="ArtistPlayList">
-                <ArtistPlayList />
+                <ArtistPlayList artist={state.genre.results.artists} />
               </div>
               <div className="FilterArtist">
                 <FilterArtist />
