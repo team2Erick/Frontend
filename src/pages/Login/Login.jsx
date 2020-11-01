@@ -5,13 +5,13 @@ import './Login.scss';
 
 import Store from "../../store";
 
-const { state, setState } = useContext(Store);
 
 import api from "../../services/api"
 
 const Login = () => {
+    const { state, setState } = useContext(Store);
     const history = useHistory()
-
+    
     useEffect(() => {
         if (state.user.id) history.push('/')
     }, [])
