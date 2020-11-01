@@ -1,14 +1,21 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import './Login.scss';
+import Successful from '../../components/Successful/Successful';
+import Cockies from 'js-cookie';
 
 import Store from '../../store';
 
 import api from '../../services/api';
 
+import jwt_decode from 'jwt-decode';
+
 const Login = () => {
   const { state, setState } = useContext(Store);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [message, setMessage] = useState('');
+
   const history = useHistory();
 
   useEffect(() => {
@@ -21,18 +28,56 @@ const Login = () => {
   const loginQuery = (e) => {
     e.preventDefault();
 
+    var credentials = btoa(email + ':' + password);
+    var BasicAuth = 'Basic ' + credentials;
+
     api
-      .post('auth/login', {
-        email,
-        password,
-      })
+      .post(
+        'auth/login',
+        {},
+        {
+          auth: {
+            username: email,
+            password: password,
+          },
+        }
+      )
       .then((response) => {
-        console.log(response);
+        if (response.data.error) {
+          setMessage(response.data.error);
+          setShowSuccess(true);
+          return;
+        }
+
+        Cockies.set('token', response.data.data.token);
+
+        setMessage('Welcome to CDay, have a good day ;) :p :D');
+        setShowSuccess(true);
+
+        // setState("user", {
+
+        // })
+
+        // TODO jwt
+
+        var decoded = jwt_decode(response.data.data.token);
+        console.log(decoded);
+        setTimeout(() => {
+          history.push('/');
+        }, 2000);
       });
   };
 
   return (
     <section className="loginpage">
+      {showSuccess && (
+        <Successful
+          success={message}
+          close={() => {
+            setShowSuccess(false);
+          }}
+        />
+      )}
       <div className="loginpage__container">
         <div className="presentation">
           <figure className="loginpage__logo">
@@ -58,8 +103,24 @@ const Login = () => {
               Subcribe to our page, is free!
             </h4>
             <form onSubmit={loginQuery} className="forminfo">
-              <input type="email" required placeholder="Email" />
-              <input type="password" required placeholder="Password" />
+              <input
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+                type="email"
+                required
+                placeholder="Email"
+              />
+              <input
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+                type="password"
+                required
+                placeholder="Password"
+              />
               <div className="forminfo__separator"></div>
               <button type="submit">LOG IN</button>
             </form>
@@ -91,5 +152,4 @@ const Login = () => {
     </section>
   );
 };
-
 export default Login;

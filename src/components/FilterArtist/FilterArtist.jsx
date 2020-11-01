@@ -12,12 +12,100 @@ const FilterArtist = () => {
     api;
   }, [searchText]);
 
-  const handleSearch = async (e) => {
-    const searchQuery = await api.get('/music/search', {
-      params: { search: e.target.value },
+  const handleSearch = async (genre) => {
+
+    console.log(genre);
+    const genreQuery = await api.get('music/genre', {
+      params: {
+        genre
+      }
     });
-    setState('genre', { results: searchQuery.data.data });
+    setState('genre', { results: genreQuery.data.data });
   };
+
+
+  const filters = [
+    {
+      name: "Pop",
+      id: 132
+    },
+    {
+      name: "Rap/Hip Hop",
+      id: 116
+    },
+    {
+      name: "Reggaetón",
+      id: 122
+    },
+    {
+      name: "Musica de la india",
+      id: 81
+    },
+    {
+      name: "Rock",
+      id: 152
+    },
+    {
+      name: "Dance",
+      id: 113
+    },
+    {
+      name: "musica Brasileña",
+      id: 75
+    },
+    {
+      name: "R&B",
+      id: 165
+    },
+    {
+      name: "Alternativo",
+      id: 85
+    },
+    {
+      name: "Electro",
+      id: 106
+    },
+    {
+      name: "Música religiosa",
+      id: 186
+    },
+    {
+      name: "musica africana",
+      id: 2
+    },
+    {
+      name: "Latino",
+      id: 197
+    },
+    {
+      name: "Folk",
+      id: 466
+    },
+    {
+      name: "infantil",
+      id: 95
+    },
+    {
+      name: "cumbia",
+      id: 71
+    },
+    {
+      name: "Reggae",
+      id: 144
+    },
+    {
+      name: "Jazz",
+      id: 129
+    },
+    {
+      name: "blues",
+      id: 153
+    },
+    {
+      name: "Música tradicional mexicana",
+      id: 65
+    },
+  ]
 
   return (
     <div className="filter-container">
@@ -32,38 +120,17 @@ const FilterArtist = () => {
         </div>
       </div>
       <div className="filter-container__gender">
-        <button
-          value="rock"
-          onClick={handleSearch}
-          type="button"
-          placeholder="rock"
-        >
-          Rock
-        </button>
-        <button
-          value="Blues"
-          onClick={handleSearch}
-          type="button"
-          placeholder="Blues"
-        >
-          Blues
-        </button>
-        <button>Blues</button>
-        <button>Classical</button>
-        <button>Country</button>
-        <button>Dance</button>
-        <button>Electronic</button>
-        <button>Hip-hop</button>
-        <button>Jazz</button>
-        <button>Latin</button>
-        <button>Metal</button>
-        <button>Party</button>
-        <button>R&B / Sould</button>
-        <button>Reggae / Dancehall</button>
-        <button>Soundtracks</button>
-        <button>World</button>
+        {filters.map(genre => {
+          return (<button
+            key={genre.id}
+            onClick={() => { handleSearch(genre) }}
+            type="button"
+          >
+            {genre.name.toUpperCase()}
+          </button>)
+        })}
       </div>
-    </div>
+    </div >
   );
 };
 export default FilterArtist;
