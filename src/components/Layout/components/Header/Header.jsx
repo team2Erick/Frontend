@@ -13,7 +13,7 @@ import api from '../../../../services/api';
 import Store from '../../../../store/index';
 
 const Header = () => {
-  const {isLogged, logout} = useUser()
+  // const { isLogged, logout } = useUser()
 
   const history = useHistory();
 
@@ -51,13 +51,14 @@ const Header = () => {
     logout()
   }
 
-  const renderLoginButtons = ({isLogged}) => {
+  const renderLoginButtons = ({ isLogged }) => {
     return isLogged ? (<Link to='#' onClick={handleClick}>Logout</Link>
     ) : (
-      <>
-        <Link to='/login'>Login</Link>
-        <Link to='/signup'>Sing up</Link>
-    ) </>
+        <>
+          <Link to='/login'>Login</Link>
+          <Link to='/signup'>Sing up</Link>
+        </>
+      )
   }
 
   /* const content = match
@@ -101,7 +102,7 @@ const Header = () => {
         </div>
         <div className="profile" id="profile">
           <div className="profile__container">
-            {content}
+            {/* {content} */}
           </div>
         </div>
       </nav>
