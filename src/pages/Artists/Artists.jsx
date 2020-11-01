@@ -31,11 +31,13 @@ const Artists = () => {
                 <FilterArtist artist={state.genre.results.artist} />
               </div>
               <div className="ScrollSlider">
-                <ScrollSlider
-                  title="Artist"
-                  items={state.genre.results.songs}
-                  rounded={true}
-                />
+                {state.genre.results.songs && (
+                  <ScrollSlider
+                    title="Artist"
+                    items={state.genre.results.songs}
+                    rounded={true}
+                  />
+                )}
               </div>
             </div>
           </div>
