@@ -30,8 +30,17 @@
 a {
   text-decoration: none;
 }
+.menu__list {
+  // border: 1px solid red;
+}
 .menu__list li {
   margin-bottom: 10px;
+  img {
+    width: 23px;
+    height: 23px;
+    object-fit: contain;
+  }
+
   a {
     color: $color-grey;
   }
@@ -87,8 +96,8 @@ form {
     text-align: center;
   }
 }
-@media screen and (max-width: 700px){
-  .container__menu button{
-    right:20px;
+@media screen and (max-width: 700px) {
+  .container__menu button {
+    right: 20px;
   }
 }

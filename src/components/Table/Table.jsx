@@ -1,10 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import './Table.scss';
 import Favourite from '../../assets/images/icons/favourite.svg';
+import PlayIcon from '../Layout/components/Player/img/play-icon.svg';
 import Store from '../../store';
+import api from "../../services/api"
 
 const Table = ({ title, playlist, dense, hideImage }) => {
   const { state, setState } = useContext(Store);
+
+  const { FavouriteItem, setFavorite } = useState([])
+
   const setPlaylist = (index) => {
     console.log(state);
     setState('player', {
@@ -15,6 +20,23 @@ const Table = ({ title, playlist, dense, hideImage }) => {
     });
   };
 
+  const handleFavorite = async (value) => {
+    const FavouriteItem = await api.post('music/favorite/' + state.user.id, { name: value, })
+
+    console.log(FavouriteItem);
+  };
+
+  const hadleFavoriteSubmit = async (e) => {
+    e.preventDefault();
+
+    const favorites = await handleFavorite(FavouriteItem);
+    setState('favorites', {
+      FavoriteItem,
+      favorites
+    });
+
+  }
+
   if (!playlist || !playlist[0] || !playlist[0].artist.name) return <></>;
   return (
     <div>
@@ -23,6 +45,7 @@ const Table = ({ title, playlist, dense, hideImage }) => {
         <thead>
           <tr>
             <th>#</th>
+            <th></th>
             {!dense && <th></th>}
             {!dense || !hideImage && <th></th>}
             <th>Song</th>
@@ -34,15 +57,26 @@ const Table = ({ title, playlist, dense, hideImage }) => {
           {playlist.map((item, index) => {
             return (
               <tr
-                onClick={() => {
-                  setPlaylist(index);
-                }}
+
                 key={item.id}
               >
                 <td>{index + 1}</td>
+                <td>
+                  <button className="favoritesbutton"
+                    onClick={() => {
+                      setPlaylist(index);
+                    }}><img src={PlayIcon} />
+                  </button>
+                </td>
                 {!dense && (
                   <td>
-                    <img src={Favourite} />
+                    <button className="favoritesbutton"
+                      value={item.id}
+                      onChange={(e) => {
+                        handleFavorite(e.target.value);
+                      }}><img src={Favourite} />
+                    </button>
+
                   </td>
                 )}
                 {!dense || !hideImage && (

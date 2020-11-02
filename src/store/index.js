@@ -27,8 +27,11 @@ export const stateData = {
   },
 
   user,
-
-  newPlaylist: {
+ 
+ favorites: {
+        id : []
+    },
+    newPlaylist: {
 
   },
 };

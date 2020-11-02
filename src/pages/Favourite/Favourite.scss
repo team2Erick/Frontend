@@ -3,6 +3,7 @@
   grid-template-columns: minmax(auto, 1024px);
   display: grid;
   justify-content: center;
+  width:100%;
 }
 .container-playlistFav {
   grid-template-columns: repeat(4, 1fr);
