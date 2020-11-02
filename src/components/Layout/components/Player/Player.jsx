@@ -144,9 +144,7 @@ export default () => {
 
       <div className="player__controls">
         <div className="player__controls__buttons">
-          <button>
-            <img src={ShuffleIcon} />
-          </button>
+
           <button onClick={prev}>
             <img src={BackIcon} />
           </button>
@@ -164,9 +162,7 @@ export default () => {
           <button onClick={next}>
             <img src={NextIcon} />
           </button>
-          <button>
-            <img src={ContinueIcon} />
-          </button>
+
         </div>
         {state.player.audio && (
           <div className="player__controls__progress">
