@@ -32,13 +32,14 @@ const Artists = () => {
                 <FilterArtist />
               </div>
               <div className="ScrollSlider">
-                {state.genre.results.songs && (
+                {state.genre.results.songs ? (
                   <ScrollSlider
                     title="Artist"
                     items={state.genre.results.songs}
                     rounded={true}
                   />
-                )}
+                ) : (<><iframe src="https://giphy.com/embed/3o6ZtjyRUVKL0tQVpu" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><span>Cargando...</span></>)
+                }
               </div>
             </div>
           </div>
