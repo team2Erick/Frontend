@@ -1,7 +1,6 @@
 import React from 'react';
 import Header from './components/Header/Header';
 import Menu from './components/Menu/Menu';
-import Player from './components/Player/Player';
 import './layout.scss';
 
 const Layout = ({ children }) => {
@@ -14,7 +13,6 @@ const Layout = ({ children }) => {
         <div className="layout__mainsection">
           <Header />
           {children}
-          <Player />
         </div>
       </div>
     </>

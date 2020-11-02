@@ -13,8 +13,6 @@ import api from '../../../../services/api';
 import Store from '../../../../store/index';
 
 const Header = () => {
-  const {isLogged, logout} = useUser()
-
   const history = useHistory();
 
   useEffect(SearchBarHandle);
@@ -23,9 +21,9 @@ const Header = () => {
 
   const [searchText, setSeachText] = useState('');
 
-  useEffect(() => {
-    api;
-  }, [searchText]);
+  // useEffect(() => {
+  //   api;
+  // }, [searchText]);
 
   const handleSearch = async (value) => {
     const searchQuery = await api.get('music/search', {
@@ -51,6 +49,7 @@ const Header = () => {
     logout()
   }
 
+<<<<<<< HEAD
   const renderLoginButtons = ({isLogged}) => {
     return isLogged ? (<Link to='#' onClick={handleClick}>Logout</Link>
     ) : (
@@ -60,11 +59,25 @@ const Header = () => {
     ) </>
     )
   }
+=======
+  // const renderLoginButtons = ({ isLogged }) => {
+  //   return isLogged ? (<Link to='#' onClick={handleClick}>Logout</Link>
+  //   ) : (
+  //       <>
+  //         <Link to='/login'>Login</Link>
+  //         <Link to='/signup'>Sing up</Link>
+  //       </>
+  //     )
+  // }
+>>>>>>> c5e93ea98acb88b7b7a86da444d188dd14835538
 
   /* const content = match
     ? null
     : renderLoginButtons({isLogged}) */
 
+  useEffect(() => {
+    console.log(state);
+  }, [])
 
   return (
     <header className="container__header">
@@ -102,7 +115,16 @@ const Header = () => {
         </div>
         <div className="profile" id="profile">
           <div className="profile__container">
-            {content}
+            <div>
+              <Link to="/signup">Sign Up</Link>
+            </div>
+            <div>
+              {state.user.id ? (
+                <Link to="/logout">Logout</Link>
+              ) : (
+                  <Link to="/login">Login</Link>
+                )}
+            </div>
           </div>
         </div>
       </nav>

@@ -10,7 +10,7 @@ import PlaylistIcon from './img/playlist-icon.svg';
 import './Player.scss';
 
 import Playlist from './components/Playlist';
-
+import api from "../../../../services/api"
 import Store from '../../../../store';
 
 export default () => {
@@ -22,7 +22,7 @@ export default () => {
 
   useEffect(() => {
     // on new song
-
+    console.log(state.user);
     if (!state.player.playlist.length) return;
     if (state.player.audio) state.player.audio.pause();
     setState('player', {
@@ -53,7 +53,12 @@ export default () => {
   const sendPlay = () => {
     setPlaySended((value) => {
       if (!value) {
-        console.log('play');
+
+        // api.post("music/play", {
+        //   user,
+        //   trackId,
+        //   song
+        // })
 
         return true;
       } else {
@@ -146,8 +151,8 @@ export default () => {
               {state.player.play ? (
                 <img src={PauseIcon} />
               ) : (
-                <img src={PlayIcon} />
-              )}
+                  <img src={PlayIcon} />
+                )}
             </div>
           </button>
 
