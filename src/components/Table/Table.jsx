@@ -42,12 +42,12 @@ const Table = ({ title, playlist, dense, hideImage }) => {
                 <td>{index + 1}</td>
                 {!dense && (
                   <td>
-                    <img src={item.album.cover_small} alt="favourite" />
+                    <img src={Favourite} />
                   </td>
                 )}
                 {!dense || !hideImage && (
                   <td>
-                    <img src={Favourite} alt="favourite" />
+                    <img src={item.album.cover_small} alt="favourite" />
                   </td>
                 )}
 

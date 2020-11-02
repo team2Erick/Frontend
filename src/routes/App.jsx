@@ -32,10 +32,14 @@ const App = () => {
 
       newState[module] = { ...state[module], ...data };
 
-      setState({
-        ...newState,
+      setState((currentState) => {
+        return {
+          ...currentState,
+          ...newState
+        }
       });
 
+      return { ...newState }
     },
   };
 
@@ -45,7 +49,7 @@ const App = () => {
       setState("user", JSON.parse(localStorage.getItem('cday_user')));
 
     }
-  }, [])
+  }, [state])
 
   return (
     <Store.Provider value={value}>

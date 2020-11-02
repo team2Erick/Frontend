@@ -22,7 +22,7 @@ export default () => {
 
   useEffect(() => {
     // on new song
-
+    console.log(state.user);
     if (!state.player.playlist.length) return;
     if (state.player.audio) state.player.audio.pause();
     setState('player', {
