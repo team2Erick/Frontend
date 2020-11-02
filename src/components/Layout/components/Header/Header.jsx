@@ -1,13 +1,11 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory, Link, useRoute } from 'react-router-dom';
 import Burguer from '../../../../assets/images/icons/menu-burguer.svg';
 import Search from '../../../../assets/images/icons/search.svg';
 import Arrow from '../../../../assets/images/icons/arrow-left.svg';
 import CloseInfo from '../../../../assets/images/icons/close.svg';
 import Logo from '../../../../assets/images/icons/cday-n.svg';
 import './Header.scss';
-const imgProfile =
-  'https://avatars0.githubusercontent.com/u/3347271?s=460&u=ee8da2edec3f538be118fefcab95badee62b18e1&v=4';
 
 import SearchBarHandle from './SearchBarHandle';
 import api from '../../../../services/api';
@@ -16,7 +14,6 @@ import Store from '../../../../store/index';
 
 const Header = () => {
   const history = useHistory();
-  const isLogged = false;
 
   useEffect(SearchBarHandle);
 
@@ -24,9 +21,9 @@ const Header = () => {
 
   const [searchText, setSeachText] = useState('');
 
-  useEffect(() => {
-    api;
-  }, [searchText]);
+  // useEffect(() => {
+  //   api;
+  // }, [searchText]);
 
   const handleSearch = async (value) => {
     const searchQuery = await api.get('music/search', {
@@ -45,6 +42,29 @@ const Header = () => {
     });
     history.push('/songs');
   };
+
+
+  const handleClick = e => {
+    e.preventDefault()
+    logout()
+  }
+
+  // const renderLoginButtons = ({ isLogged }) => {
+  //   return isLogged ? (<Link to='#' onClick={handleClick}>Logout</Link>
+  //   ) : (
+  //       <>
+  //         <Link to='/login'>Login</Link>
+  //         <Link to='/signup'>Sing up</Link>
+  //       </>
+  //     )
+  // }
+
+  /* const content = match
+    ? null
+    : renderLoginButtons({isLogged}) */
+
+
+  console.log(state.user);
 
   return (
     <header className="container__header">
@@ -86,30 +106,15 @@ const Header = () => {
               <Link to="/signup">Sign Up</Link>
             </div>
             <div>
-              {isLogged ? (
+              {state.user.id ? (
                 <Link to="/logout">Logout</Link>
               ) : (
-                <Link to="/login">Login</Link>
-              )}
+                  <Link to="/login">Login</Link>
+                )}
             </div>
           </div>
-          {/* <figure className="profile__container">
-            <img
-              className="profile__container--image"
-              src={imgProfile}
-              alt="perfil"
-            />
-          </figure> */}
         </div>
       </nav>
-      {/* <div className="userinfo inactive" id="usermodal">
-        <button className="userinfo__closeinfo" id="closemodalinfo">
-          <img src={CloseInfo} />
-        </button>
-        <h2>Mauricio Rodriguez</h2>
-        <div className="userinfo__separator"></div>
-        <h3>Cuenta premium</h3>
-      </div> */}
     </header>
   );
 };

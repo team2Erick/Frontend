@@ -27,9 +27,8 @@ const Login = () => {
 
   const loginQuery = (e) => {
     e.preventDefault();
-
-    var credentials = btoa(email + ':' + password);
-    var BasicAuth = 'Basic ' + credentials;
+    // var credentials = btoa(email + ':' + password);
+    // var BasicAuth = 'Basic ' + credentials;
 
     api
       .post(
@@ -51,17 +50,15 @@ const Login = () => {
 
         Cockies.set('token', response.data.data.token);
 
-        setMessage('Welcome to CDay, have a good day ;) :p :D');
+        setMessage('Welcome to CDay, have a good day ;)');
         setShowSuccess(true);
 
-        // setState("user", {
+        const decoded = jwt_decode(response.data.data.token);
 
-        // })
+        setState('user', { ...decoded });
 
-        // TODO jwt
+        localStorage.setItem('cday_user', JSON.stringify(decoded));
 
-        var decoded = jwt_decode(response.data.data.token);
-        console.log(decoded);
         setTimeout(() => {
           history.push('/');
         }, 2000);
@@ -102,6 +99,7 @@ const Login = () => {
             <h4 className="loginpage__form__secondary-titleform">
               Subcribe to our page, is free!
             </h4>
+
             <form onSubmit={loginQuery} className="forminfo">
               <input
                 value={email}
@@ -124,6 +122,7 @@ const Login = () => {
               <div className="forminfo__separator"></div>
               <button type="submit">LOG IN</button>
             </form>
+
             <h4>
               Don´t have an acount? create one{' '}
               <span>
