@@ -1,12 +1,13 @@
 import React, { useContext, useState, useEffect } from 'react';
 import './Table.scss';
 import Favourite from '../../assets/images/icons/favourite.svg';
+import PlayIcon from '../Layout/components/Player/img/play-icon.svg';
 import Store from '../../store';
-import { apiPath } from 'services/api';
+import api from "../../services/api"
 
 const Table = ({ title, playlist, dense, hideImage }) => {
   const { state, setState } = useContext(Store);
-  console.log(playlist);
+
   const { FavouriteItem, setFavorite } = useState([])
 
   const setPlaylist = (index) => {
@@ -20,8 +21,10 @@ const Table = ({ title, playlist, dense, hideImage }) => {
   };
 
   const handleFavorite = async (value) => {
-    const FavouriteItem = await api.post('music/favorite',{value})
-  };  
+    const FavouriteItem = await api.post('music/favorite/' + state.user.id, { name: value, })
+
+    console.log(FavouriteItem);
+  };
 
   const hadleFavoriteSubmit = async (e) => {
     e.preventDefault();
@@ -42,6 +45,7 @@ const Table = ({ title, playlist, dense, hideImage }) => {
         <thead>
           <tr>
             <th>#</th>
+            <th></th>
             {!dense && <th></th>}
             {!dense || !hideImage && <th></th>}
             <th>Song</th>
@@ -53,21 +57,26 @@ const Table = ({ title, playlist, dense, hideImage }) => {
           {playlist.map((item, index) => {
             return (
               <tr
-                onClick={() => {
-                  setPlaylist(index);
-                }}
+
                 key={item.id}
               >
                 <td>{index + 1}</td>
+                <td>
+                  <button className="favoritesbutton"
+                    onClick={() => {
+                      setPlaylist(index);
+                    }}><img src={PlayIcon} />
+                  </button>
+                </td>
                 {!dense && (
                   <td>
-                  <button className="favoritesbutton"
+                    <button className="favoritesbutton"
                       value={item.id}
                       onChange={(e) => {
-                      setFavorite(e.target.value);
-                  }}><img src={Favourite} />
+                        handleFavorite(e.target.value);
+                      }}><img src={Favourite} />
                     </button>
-                    
+
                   </td>
                 )}
                 {!dense || !hideImage && (
