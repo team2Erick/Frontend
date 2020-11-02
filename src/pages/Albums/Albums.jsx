@@ -14,20 +14,24 @@ const Albums = () => {
   const [albumPrimary, setAlbumPrimary] = useState({});
 
   useEffect(() => {
+    let mounted = true;
     async function fetchData() {
       const albumQuery = await api.get("/music/album");
       setAlbumPrimary(albumQuery.data.data.splice(0, 1)[0])
       setAlbumRamdom(albumQuery.data.data.sort(() => { return Math.random() - 0.5 }))
       console.log(albumRamdom[0])
     }
-    fetchData()
+    if (mounted) {
+      fetchData()
+    }
+    return () => mounted = false;
   }, [])
 
 
   return (
     <Layout>
       {
-        albumRamdom.length > 0 && (
+        albumRamdom.length > 0 ? (
           <section className="main albums">
             <ScrollSlider title="Featured Tracks" items={albumRamdom} album={true} />
             <div className="album">
@@ -45,7 +49,7 @@ const Albums = () => {
               </div>
             </div>
           </section>
-        )
+        ) : (<>Cargando...</>)
       }
     </Layout>
   );

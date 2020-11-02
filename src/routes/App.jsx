@@ -20,8 +20,7 @@ import Store, { stateData } from '../store';
 
 const App = () => {
 
-  // const [state, setState] = useState(stateData);
-  const { state, setState } = useContext(Store);
+  const [state, setState] = useState(stateData);
 
   const value = {
 
@@ -32,21 +31,16 @@ const App = () => {
 
       newState[module] = { ...state[module], ...data };
 
-      setState({
-        ...newState,
+      setState((currentState) => {
+        return {
+          ...currentState,
+          ...newState
+        }
       });
 
+      return { ...newState }
     },
   };
-
-  useEffect(() => {
-    if (localStorage.getItem('cday_user')) {
-
-      setState("user", JSON.parse(localStorage.getItem('cday_user')));
-
-    }
-  }, [])
-
   return (
     <Store.Provider value={value}>
       <Player />

@@ -10,59 +10,57 @@ import Store from '../../store';
 import api from '../../services/api';
 
 import jwt_decode from 'jwt-decode';
+export default () => {
+  const history = useHistory();
 
-const Login = () => {
   const { state, setState } = useContext(Store);
+
   const [showSuccess, setShowSuccess] = useState(false);
   const [message, setMessage] = useState('');
-
-  const history = useHistory();
 
   useEffect(() => {
     if (state.user.id) history.push('/');
   }, []);
 
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const loginQuery = (e) => {
+  const loginQuery = async (e) => {
     e.preventDefault();
-    // var credentials = btoa(email + ':' + password);
-    // var BasicAuth = 'Basic ' + credentials;
 
-    api
-      .post(
-        'auth/login',
-        {},
-        {
-          auth: {
-            username: email,
-            password: password,
-          },
-        }
-      )
-      .then((response) => {
-        if (response.data.error) {
-          setMessage(response.data.error);
-          setShowSuccess(true);
-          return;
-        }
+    const response = await api.post(
+      'auth/login',
+      {},
+      {
+        auth: {
+          username: email,
+          password: password,
+        },
+      }
+    );
 
-        Cockies.set('token', response.data.data.token);
+    if (response.data.error) {
+      setMessage(response.data.error);
+      setShowSuccess(true);
+      return;
+    }
 
-        setMessage('Welcome to CDay, have a good day ;)');
-        setShowSuccess(true);
+    Cockies.set('token', response.data.data.token);
 
-        const decoded = jwt_decode(response.data.data.token);
+    setMessage('Welcome to CDay, have a good day ;)');
+    setShowSuccess(true);
 
-        setState('user', { ...decoded });
+    const decoded = jwt_decode(response.data.data.token);
 
-        localStorage.setItem('cday_user', JSON.stringify(decoded));
+    const data = { ...decoded, id: decoded.sub };
 
-        setTimeout(() => {
-          history.push('/');
-        }, 2000);
-      });
+    localStorage.setItem('cday_user', JSON.stringify(data));
+
+    setState('user', data);
+
+    setTimeout(() => {
+      history.push('/');
+    }, 2000);
   };
 
   return (
@@ -151,4 +149,3 @@ const Login = () => {
     </section>
   );
 };
-export default Login;

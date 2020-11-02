@@ -63,8 +63,9 @@ const Header = () => {
     ? null
     : renderLoginButtons({isLogged}) */
 
-
-  console.log(state.user);
+  useEffect(() => {
+    console.log(state);
+  }, [])
 
   return (
     <header className="container__header">
