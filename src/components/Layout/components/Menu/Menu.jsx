@@ -4,23 +4,31 @@ import Modal from '../../../Modal/Modal';
 import Successful from '../../../Successful/Successful';
 import './Menu.scss';
 
+import DiscoverIcon from '../../../../assets/images/icons/discover.svg'
+import AlbumsIcon from '../../../../assets/images/icons/albums.svg'
+import ArtistsIcon from '../../../../assets/images/icons/artists.svg'
+
+import FavoriteIcon from '../../../../assets/images/icons/favourite-grey.svg'
+import RecentHistory from '../../../../assets/images/icons/history.svg'
+
+
 
 const SidebarItems = [
 
   {
-    image: '../../../../assets/images/icons/discover.svg',
+    image: DiscoverIcon,
     alt: 'discover',
     name: 'Discover',
     route: '/',
   },
   {
-    image: '../../../../assets/images/icons/albums.svg',
+    image: AlbumsIcon,
     alt: 'Albums',
     name: 'Albums',
     route: '/albums',
   },
   {
-    image: '../../../../assets/images/icons/artists.svg',
+    image: ArtistsIcon,
     alt: 'Artists',
     name: 'Genre',
     route: '/artists',
@@ -29,13 +37,13 @@ const SidebarItems = [
 
 const MyTracks = [
   {
-    image: '../../../../assets/images/icons/favourite-grey.svg',
+    image: FavoriteIcon,
     alt: 'Favorite',
     name: 'Favorites',
     route: '/favourite',
   },
   {
-    image: '../../../../assets/images/icons/history.svg',
+    image: RecentHistory,
     alt: 'Recent history',
     name: 'Recent history',
     route: '/history',
