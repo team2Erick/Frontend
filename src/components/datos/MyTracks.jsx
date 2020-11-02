@@ -1,6 +1,6 @@
 const MyTracks = [
   {
-    image: '/src/assets/images/icons/favourite.svg',
+    image: '/src/assets/images/icons/favourite-grey.svg',
     alt: 'Favorite',
     name: 'Favorites',
     route: '/favourite',

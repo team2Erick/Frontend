@@ -49,20 +49,6 @@ const Header = () => {
     logout()
   }
 
-  // const renderLoginButtons = ({ isLogged }) => {
-  //   return isLogged ? (<Link to='#' onClick={handleClick}>Logout</Link>
-  //   ) : (
-  //       <>
-  //         <Link to='/login'>Login</Link>
-  //         <Link to='/signup'>Sing up</Link>
-  //       </>
-  //     )
-  // }
-
-  /* const content = match
-    ? null
-    : renderLoginButtons({isLogged}) */
-
   useEffect(() => {
     console.log(state);
   }, [])
@@ -103,10 +89,10 @@ const Header = () => {
         </div>
         <div className="profile" id="profile">
           <div className="profile__container">
-            <div>
+            <div className="singbutton">
               <Link to="/signup">Sign Up</Link>
             </div>
-            <div>
+            <div className="loginbutton">
               {state.user.id ? (
                 <Link to="/logout">Logout</Link>
               ) : (

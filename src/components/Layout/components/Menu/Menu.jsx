@@ -95,7 +95,7 @@ const Menu = () => {
               key={index}
               className={item === state.currentPlayList ? 'active' : ''}
               onClick={() => {
-                setState({ ...state, currentPlayList: item });
+                setState({ state, currentPlayList: item });
               }}
             >
               <img

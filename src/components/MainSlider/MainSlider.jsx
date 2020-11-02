@@ -22,8 +22,9 @@ const MainSlider = ({ sliders }) => {
 
   const { state, setState } = useContext(Store);
 
-  const setPlaylist = (index) => {
-    setState({ playlist: items, indexSong: index });
+  const setPlay = (index) => {
+    console.log(index);
+    setState("player", { playlist: [...sliders], index: index, play: true });
   };
 
   return (
@@ -35,22 +36,22 @@ const MainSlider = ({ sliders }) => {
               className="main-slider"
               key={index}
               style={{
-                background: `url(${slider.image})`,
+                background: `url(${slider.album.cover_big})`,
                 backgroundSize: 'cover',
               }}
             >
               <div className="main-slider__content">
                 <span className="main-slider__subtitle">// TRENDING</span>
                 <strong className="main-slider__title">{slider.title}</strong>
-                <span className="main-slider__artist">-{slider.artist}</span>
+                <span className="main-slider__artist">-{slider.artist.name}</span>
                 <div className="main-slider__buttons">
-                  <div className="btn" style={{ marginRight: '10px' }}>
+                  <div onClick={() => {
+                    setPlay(index)
+                  }} className="btn" style={{ marginRight: '10px' }}>
                     PLAY
                     <img src={PlayIcon} alt="" />
                   </div>
-                  <div className="btn">
-                    <img src={ShareIcon} alt="" />
-                  </div>
+
                 </div>
               </div>
             </div>
