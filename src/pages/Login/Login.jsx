@@ -54,11 +54,11 @@ export default () => {
 
     const decoded = jwt_decode(response.data.data.token);
 
-    console.log("decoded", setState('user', { ...decoded }));
+    const data = { ...decoded, id: decoded.sub }
 
-    localStorage.setItem('cday_user', JSON.stringify(decoded));
+    localStorage.setItem('cday_user', JSON.stringify(data));
 
-    setState("user", decoded)
+    setState("user", data)
 
     setTimeout(() => {
       history.push('/');
