@@ -4,11 +4,15 @@ import Favourite from '../../assets/images/icons/favourite.svg';
 import PlayIcon from '../Layout/components/Player/img/play-icon.svg';
 import Store from '../../store';
 import api from "../../services/api"
+import Successful from "../../components/Successful/Successful";
 
 const Table = ({ title, playlist, dense, hideImage }) => {
   const { state, setState } = useContext(Store);
 
   const { FavouriteItem, setFavorite } = useState([])
+
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [message, setMessage] = useState('');
 
   const setPlaylist = (index) => {
     console.log(state);
@@ -21,25 +25,17 @@ const Table = ({ title, playlist, dense, hideImage }) => {
   };
 
   const handleFavorite = async (value) => {
-    const FavouriteItem = await api.post('music/favorite/' + state.user.id, { name: value, })
-
-    console.log(FavouriteItem);
+    const FavouriteItem = await api.post('usermusic/add-favorites/' + state.user.id,
+      { favorites: value })
+    setMessage(FavouriteItem.data.data.System)
+    setShowSuccess(true)
   };
 
-  const hadleFavoriteSubmit = async (e) => {
-    e.preventDefault();
-
-    const favorites = await handleFavorite(FavouriteItem);
-    setState('favorites', {
-      FavoriteItem,
-      favorites
-    });
-
-  }
 
   if (!playlist || !playlist[0] || !playlist[0].artist.name) return <></>;
   return (
     <div>
+      {showSuccess && <Successful success={message} close={() => { setShowSuccess(false) }} />}
       <h3>{title}</h3>
       <table>
         <thead>
@@ -71,9 +67,8 @@ const Table = ({ title, playlist, dense, hideImage }) => {
                 {!dense && (
                   <td>
                     <button className="favoritesbutton"
-                      value={item.id}
-                      onChange={(e) => {
-                        handleFavorite(e.target.value);
+                      onClick={(e) => {
+                        handleFavorite(item.id);
                       }}><img src={Favourite} />
                     </button>
 
