@@ -3,7 +3,11 @@
   grid-template-columns: minmax(auto, 1024px);
   display: grid;
   justify-content: center;
+<<<<<<< HEAD
   width:100%;
+=======
+  width: 100%;
+>>>>>>> ab49613e772e00fccba5b5ed066c8b68c0312f11
 }
 .container-playlistFav {
   grid-template-columns: repeat(4, 1fr);
@@ -11,9 +15,9 @@
   grid-row-gap: 5em;
   display: grid;
 }
- @media screen and (max-width: 700px) {
-   .container-favourite {
-  justify-content: left;
-  padding:30px;
+@media screen and (max-width: 700px) {
+  .container-favourite {
+    justify-content: left;
+    padding: 30px;
+  }
 }
- }
