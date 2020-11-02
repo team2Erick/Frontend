@@ -22,23 +22,22 @@ const ScrollSlider = ({ items, title, rounded, album }) => {
   const { state, setState } = useContext(Store);
 
   const setPlaylist = (index) => {
+    var playlist = []
 
+    if (album) {
 
-    items = items.map((items) => {
-      return items.tracks
-    })
-
-    var newItems = []
-
-    items.forEach(element => {
-      element.forEach(el => {
-        newItems.push(el)
-      })
-    });
-
+      items.forEach(element => {
+        console.log();
+        element.tracks.data.forEach(el => {
+          playlist.push(el)
+        })
+      });
+    } else {
+      playlist = items
+    }
 
     setState('player', {
-      playlist: [...newItems],
+      playlist,
       title: title,
       index: index,
       play: true,

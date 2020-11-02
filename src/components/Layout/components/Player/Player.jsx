@@ -123,11 +123,13 @@ export default () => {
       />
 
       <div className="player__song">
-        <img
-          className="player__song__image"
-          src={state.player.playlist[state.player.index].album.cover_small}
-          alt=""
-        />
+        {state.player.playlist[state.player.index].album &&
+          <img
+            className="player__song__image"
+            src={state.player.playlist[state.player.index].album.cover_small}
+            alt=""
+          />
+        }
         <div className="player__song__content">
           <strong>{state.player.playlist[state.player.index].title}</strong>
           <p>{state.player.playlist[state.player.index].artist.name}</p>

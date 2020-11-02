@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import ScrollSlider from '../../components/ScrollSlider/ScrollSlider';
-import Tabla from '../../components/Table/Table';
+import Table from '../../components/Table/Table';
 import MyDatos from '../Datos/datos';
 import Layout from '../../components/Layout/Layout';
 
@@ -16,9 +16,12 @@ const History = () => {
     const response = await api.get('music/history', {
       params: { user: state.user.id },
     });
-    console.log(response);
-    setHistory(response.data.data);
-    console.log(response.data.data);
+
+    var data = response.data.data.map(item => {
+      return item.song
+    })
+
+    setHistory(data);
   };
 
   useEffect(() => {
@@ -31,11 +34,8 @@ const History = () => {
         <div className="container-Artist-viewport">
           <div className="artists">
             <div className="container-artist">
-              <div className="ScrollSlider">
-                <ScrollSlider title="Artist" items={MyDatos} rounded={true} />
-              </div>
               <div className="FilterArtist">
-                <Tabla title="Lista de Canciones" />
+                <Table title="Lista de Canciones" playlist={history} />
               </div>
             </div>
           </div>
