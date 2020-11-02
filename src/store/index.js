@@ -25,6 +25,9 @@ export const stateData = {
 
     user: {
 
+    },
+    favorites: {
+        id : []
     }
 
 }

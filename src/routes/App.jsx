@@ -47,7 +47,6 @@ const App = () => {
           <Route exact path="/finishsingup" component={FinishSingUp} />
           <Route exact path="/History" component={History} />
           <Route exact path="/charts" component={Charts} />
-          <Route exact path="/charts" component={Charts} />
           <Route component={NotFound} />
         </Switch>
       </HashRouter>

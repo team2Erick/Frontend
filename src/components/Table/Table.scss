@@ -1,3 +1,5 @@
+@import '../../assets/styles/lib/variables';
+
 table {
   width: 100%;
   //   border: 1px solid blue;
@@ -32,14 +34,22 @@ table {
   height: 100%;
   overflow: hidden;
   overflow-x: scroll;
-  padding:20px;
+  padding: 20px;
 }
-  @media screen and (max-width: 700px) {
-.musictable {
-  padding:10px;
-}
-.musictable
-{
-  padding:20px;
-}
+@media screen and (max-width: 700px) {
+  .musictable {
+    padding: 10px;
   }
+  .musictable {
+    padding: 20px;
+  }
+}
+
+.favoritesbutton {
+  background-color: $color-grey;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
