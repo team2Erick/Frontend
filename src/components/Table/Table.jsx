@@ -59,20 +59,20 @@ const Table = ({ title, playlist, dense, hideImage }) => {
                 key={item.id}
               >
                 <td>{index + 1}</td>
-                {!dense || !hideImage && (
-                  <td>
-                    <img src={item.album.cover_small} alt="favourite" />
-                  </td>
-                )}
                 {!dense && (
                   <td>
-                    <button className="favoritesbutton"
+                  <button className="favoritesbutton"
                       value={item.id}
                       onChange={(e) => {
                       setFavorite(e.target.value);
-                  }}
-                    >
-                      <img src={Favourite} alt="favourite" /></button>
+                  }}><img src={Favourite} />
+                    </button>
+                    
+                  </td>
+                )}
+                {!dense || !hideImage && (
+                  <td>
+                    <img src={item.album.cover_small} alt="favourite" />
                   </td>
                 )}
 

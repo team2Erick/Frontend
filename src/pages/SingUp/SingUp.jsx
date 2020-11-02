@@ -47,6 +47,7 @@ export default () => {
 
 
 		file("user/sign-up", data).then((response) => {
+
 			if (response.data.error) {
 				setMessage(response.data.error)
 				setShowSuccess(true)
@@ -59,7 +60,6 @@ export default () => {
 			setTimeout(() => {
 				history.push('/login')
 			}, 1000);
-
 
 		})
 

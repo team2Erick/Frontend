@@ -10,7 +10,7 @@ import PlaylistIcon from './img/playlist-icon.svg';
 import './Player.scss';
 
 import Playlist from './components/Playlist';
-
+import api from "../../../../services/api"
 import Store from '../../../../store';
 
 export default () => {
@@ -22,7 +22,7 @@ export default () => {
 
   useEffect(() => {
     // on new song
-
+    console.log(state.user);
     if (!state.player.playlist.length) return;
     if (state.player.audio) state.player.audio.pause();
     setState('player', {
@@ -41,6 +41,7 @@ export default () => {
     state.player.audio.play();
     state.player.audio.addEventListener('timeupdate', () => {
       setCurrentTime((value) => {
+        // if listen 60% about song, set a play
         if (value > state.player.audio.duration * 0.6) sendPlay();
         return state.player.audio.currentTime;
       });
@@ -51,9 +52,16 @@ export default () => {
   }, [state.player.audio]);
 
   const sendPlay = () => {
-    setPlaySended((value) => {
+    setPlaySended(async (value) => {
       if (!value) {
-        console.log('play');
+
+        const response = await api.post("music/play", {
+          user: state.user.id,
+          trackId: state.player.playlist[state.player.index].id,
+          song: state.player.playlist[state.player.index]
+        })
+
+        console.log(response.data.data);
 
         return true;
       } else {
@@ -77,6 +85,7 @@ export default () => {
       setState('player', {
         index: state.player.index - 1,
       });
+      // console.log(setState);
     }
   };
   const next = () => {
@@ -145,8 +154,8 @@ export default () => {
               {state.player.play ? (
                 <img src={PauseIcon} />
               ) : (
-                <img src={PlayIcon} />
-              )}
+                  <img src={PlayIcon} />
+                )}
             </div>
           </button>
 

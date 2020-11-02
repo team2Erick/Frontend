@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { HashRouter, Switch, Route } from 'react-router-dom';
 
 import Home from '../pages/Home/Home';
@@ -12,28 +12,38 @@ import FinishSingUp from '../pages/FinishSingUp/FinishSingUp';
 import NotFound from '../pages/NotFound/NotFound';
 import Charts from '../components/Charts/Charts';
 import History from '../pages/History/History';
+import Player from '../components/Layout/components/Player/Player';
 
 import './App.scss';
 
 import Store, { stateData } from '../store';
 
 const App = () => {
+
   const [state, setState] = useState(stateData);
+
   const value = {
+
     state,
+
     setState: (module, data) => {
       var newState = { ...state };
 
       newState[module] = { ...state[module], ...data };
 
-      setState({
-        ...newState,
+      setState((currentState) => {
+        return {
+          ...currentState,
+          ...newState
+        }
       });
+
+      return { ...newState }
     },
   };
-
   return (
     <Store.Provider value={value}>
+      <Player />
       <HashRouter>
         <Switch>
           <Route exact path="/" component={Home} />
