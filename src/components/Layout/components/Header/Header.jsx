@@ -49,32 +49,6 @@ const Header = () => {
     logout()
   }
 
-<<<<<<< HEAD
-  const renderLoginButtons = ({isLogged}) => {
-    return isLogged ? (<Link to='#' onClick={handleClick}>Logout</Link>
-    ) : (
-      <>
-        <Link to='/login'>Login</Link>
-        <Link to='/signup'>Sing up</Link>
-    ) </>
-    )
-  }
-=======
-  // const renderLoginButtons = ({ isLogged }) => {
-  //   return isLogged ? (<Link to='#' onClick={handleClick}>Logout</Link>
-  //   ) : (
-  //       <>
-  //         <Link to='/login'>Login</Link>
-  //         <Link to='/signup'>Sing up</Link>
-  //       </>
-  //     )
-  // }
->>>>>>> c5e93ea98acb88b7b7a86da444d188dd14835538
-
-  /* const content = match
-    ? null
-    : renderLoginButtons({isLogged}) */
-
   useEffect(() => {
     console.log(state);
   }, [])
