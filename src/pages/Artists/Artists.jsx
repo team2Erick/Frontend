@@ -38,7 +38,7 @@ const Artists = () => {
                     items={state.genre.results.songs}
                     rounded={true}
                   />
-                ) : (<><iframe src="https://giphy.com/embed/3o6ZtjyRUVKL0tQVpu" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><span>Cargando...</span></>)
+                ) : (<>Cargando...</>)
                 }
               </div>
             </div>

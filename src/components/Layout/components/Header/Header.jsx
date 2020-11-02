@@ -49,7 +49,6 @@ const Header = () => {
     logout()
   }
 
-
   useEffect(() => {
     console.log(state);
   }, [])
