@@ -10,7 +10,7 @@ import './Header.scss';
 import SearchBarHandle from './SearchBarHandle';
 import api from '../../../../services/api';
 
-import Store from '../../../../store/index';
+import Store, { stateData } from '../../../../store/index';
 
 const Header = () => {
   const history = useHistory();
@@ -65,7 +65,7 @@ const Header = () => {
 
   useEffect(() => {
     console.log(state);
-  }, [])
+  }, []);
 
   return (
     <header className="container__header">
@@ -110,8 +110,8 @@ const Header = () => {
               {state.user.id ? (
                 <Link to="/logout">Logout</Link>
               ) : (
-                  <Link to="/login">Login</Link>
-                )}
+                <Link to="/login">Login</Link>
+              )}
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import SidebarItems from '../../../../components/datos/SidebarItems';
 import MyTracks from '../../../../components/datos/MyTracks';
 import Modal from '../../../Modal/Modal';
@@ -7,6 +7,7 @@ import Successful from '../../../Successful/Successful';
 import './Menu.scss';
 
 const Menu = () => {
+  const history = useHistory();
   const [state, setState] = useState({
     currentPlayList: 'home',
     modal: false,
@@ -51,10 +52,14 @@ const Menu = () => {
                 setState({ ...state, currentPlayList: item });
               }}
             >
+            {/* {state.user.id ? ( */}
               <Link to={item.route}>
                 <img src={item.image} className="menu__icon" alt={item.alt} />
                 {item.name}
               </Link>
+              {/* ) : ( */}
+              {/*   history.push('/login')
+              )} */}
             </li>
           ))}
         </ul>
