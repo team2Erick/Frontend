@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import MyTracks from '../../../../components/datos/MyTracks';
 import Modal from '../../../Modal/Modal';
 import Successful from '../../../Successful/Successful';
 import './Menu.scss';
