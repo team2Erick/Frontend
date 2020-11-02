@@ -58,6 +58,7 @@ const Header = () => {
         <Link to='/login'>Login</Link>
         <Link to='/signup'>Sing up</Link>
     ) </>
+    )
   }
 
   /* const content = match
