@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import FullWidthBanner from '../../components/FullWidthBanner/FullWidthBanner';
-import '../Login/login.scss';
+import '../Login/Login.scss';
 import './FinishSingUp.scss';
 import { file } from "../../services/api";
 import Store from "../../store/index";

@@ -1,10 +1,55 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import SidebarItems from '../../../../components/datos/SidebarItems';
-import MyTracks from '../../../../components/datos/MyTracks';
 import Modal from '../../../Modal/Modal';
 import Successful from '../../../Successful/Successful';
 import './Menu.scss';
+
+import DiscoverIcon from '../../../../assets/images/icons/discover.svg'
+import AlbumsIcon from '../../../../assets/images/icons/albums.svg'
+import ArtistsIcon from '../../../../assets/images/icons/artists.svg'
+
+import FavoriteIcon from '../../../../assets/images/icons/favourite-grey.svg'
+import RecentHistory from '../../../../assets/images/icons/history.svg'
+
+
+
+const SidebarItems = [
+
+  {
+    image: DiscoverIcon,
+    alt: 'discover',
+    name: 'Discover',
+    route: '/',
+  },
+  {
+    image: AlbumsIcon,
+    alt: 'Albums',
+    name: 'Albums',
+    route: '/albums',
+  },
+  {
+    image: ArtistsIcon,
+    alt: 'Artists',
+    name: 'Genre',
+    route: '/artists',
+  },
+];
+
+const MyTracks = [
+  {
+    image: FavoriteIcon,
+    alt: 'Favorite',
+    name: 'Favorites',
+    route: '/favourite',
+  },
+  {
+    image: RecentHistory,
+    alt: 'Recent history',
+    name: 'Recent history',
+    route: '/history',
+  },
+];
+
 
 const Menu = () => {
   const [state, setState] = useState({
@@ -99,7 +144,7 @@ const Menu = () => {
               }}
             >
               <img
-                src="/src/assets/images/icons/newPlaylist.svg"
+                src="../../../../assets/images/icons/newPlaylist.svg"
                 className="menu__icon"
                 alt="New Playlist"
               />
