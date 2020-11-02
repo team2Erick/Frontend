@@ -45,10 +45,16 @@ table {
 }
 
 .favoritesbutton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: $color-grey;
   border: none;
   border-radius: 50%;
   width: 30px;
   height: 30px;
   cursor: pointer;
+  img {
+    width: 20px;
+  }
 }
