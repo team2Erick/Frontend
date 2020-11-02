@@ -1,27 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import './Table.scss';
 import Favourite from '../../assets/images/icons/favourite.svg';
 import Store from '../../store';
-import api from '../../services/api'
-
-
+import { apiPath } from 'services/api';
 
 const Table = ({ title, playlist, dense, hideImage }) => {
   const { state, setState } = useContext(Store);
   console.log(playlist);
-  const {favoriteItem, setFavoriteItem} = useState([])
-
-  useEffect(() => {
-    api;
-  }, [favoriteItem]);
- 
-  useEffect(() => {
-    const setFavoriteItem = async (value) => {
-      const favoriteItem  = await api.post('usermusic/favorites/', {params: {id: value}});
-    };
-    setFavoriteItem();
-  }, []);
-  
+  const { FavouriteItem, setFavorite } = useState([])
 
   const setPlaylist = (index) => {
     console.log(state);
@@ -32,7 +18,21 @@ const Table = ({ title, playlist, dense, hideImage }) => {
       play: true,
     });
   };
-  
+
+  const handleFavorite = async (value) => {
+    const FavouriteItem = await api.post('music/favorite',{value})
+  };  
+
+  const hadleFavoriteSubmit = async (e) => {
+    e.preventDefault();
+
+    const favorites = await handleFavorite(FavouriteItem);
+    setState('favorites', {
+      FavoriteItem,
+      favorites
+    });
+
+  }
 
   if (!playlist || !playlist[0] || !playlist[0].artist.name) return <></>;
   return (
@@ -56,7 +56,7 @@ const Table = ({ title, playlist, dense, hideImage }) => {
                 onClick={() => {
                   setPlaylist(index);
                 }}
-                key={item.id} 
+                key={item.id}
               >
                 <td>{index + 1}</td>
                 {!dense || !hideImage && (
@@ -66,11 +66,13 @@ const Table = ({ title, playlist, dense, hideImage }) => {
                 )}
                 {!dense && (
                   <td>
-                    <button value={item.id} className="favoritesbutton" onChange={(e) => {
-                    setFavoriteItem(e.target.value);
-                  }}>
-                      <img src={Favourite} alt="favourite" />
-                    </button>
+                    <button className="favoritesbutton"
+                      value={item.id}
+                      onChange={(e) => {
+                      setFavorite(e.target.value);
+                  }}
+                    >
+                      <img src={Favourite} alt="favourite" /></button>
                   </td>
                 )}
 

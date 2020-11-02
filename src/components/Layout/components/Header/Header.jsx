@@ -82,10 +82,10 @@ const Header = () => {
         </div>
         <div className="profile" id="profile">
           <div className="profile__container">
-            <div>
+            <div className="singbutton">
               <Link to="/signup">Sign Up</Link>
             </div>
-            <div>
+            <div className="loginbutton">
               {isLogged ? (
                 <Link to="/logout">Logout</Link>
               ) : (
