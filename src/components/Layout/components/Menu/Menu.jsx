@@ -4,6 +4,10 @@ import SidebarItems from '../../../../components/datos/SidebarItems';
 import MyTracks from '../../../../components/datos/MyTracks';
 import Modal from '../../../Modal/Modal';
 import Successful from '../../../Successful/Successful';
+import Logo from '../../../../assets/images/icons/cday-n.svg'
+import CloseIcon from '../../../../assets/images/icons/close.svg'
+import NewPlayList from '../../../../assets/images/icons/newPlaylist.svg'
+import PlayList from '../../../../assets/images/icons/playlist.svg'
 import './Menu.scss';
 
 const Menu = () => {
@@ -36,10 +40,10 @@ const Menu = () => {
   return (
     <section className="container__menu">
       <button id="closemenu">
-        <img src="/src/assets/images/icons/close.svg" />
+        <img src={CloseIcon} />
       </button>
       <figure>
-        <img src="/src/assets/images/icons/cday-n.svg" alt="icon" />
+        <img src={Logo} alt="icon" />
       </figure>
       <div className="menu">
         <ul className="menu__list">
@@ -84,7 +88,7 @@ const Menu = () => {
             <div className="newPlaylist">
               <h3 className="menu__subtitle"> New Playlist</h3>
               <img
-                src="/src/assets/images/icons/playlist.svg"
+                src={PlayList}
                 className="menu__icon"
                 alt="Plus"
               />
@@ -99,7 +103,7 @@ const Menu = () => {
               }}
             >
               <img
-                src="/src/assets/images/icons/newPlaylist.svg"
+                src={NewPlayList}
                 className="menu__icon"
                 alt="New Playlist"
               />

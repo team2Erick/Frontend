@@ -1,3 +1,5 @@
+import albums from '../../assets/images/icons/albums.svg'
+
 const SidebarItems = [
   {
     image: '/src/assets/images/icons/discover.svg',
