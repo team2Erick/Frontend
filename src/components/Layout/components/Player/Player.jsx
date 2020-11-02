@@ -41,6 +41,7 @@ export default () => {
     state.player.audio.play();
     state.player.audio.addEventListener('timeupdate', () => {
       setCurrentTime((value) => {
+        // if listen 60% about song, set a play
         if (value > state.player.audio.duration * 0.6) sendPlay();
         return state.player.audio.currentTime;
       });
@@ -51,14 +52,16 @@ export default () => {
   }, [state.player.audio]);
 
   const sendPlay = () => {
-    setPlaySended((value) => {
+    setPlaySended(async (value) => {
       if (!value) {
 
-        // api.post("music/play", {
-        //   user,
-        //   trackId,
-        //   song
-        // })
+        const response = await api.post("music/play", {
+          user: state.user.id,
+          trackId: state.player.playlist[state.player.index].id,
+          song: state.player.playlist[state.player.index]
+        })
+
+        console.log(response.data.data);
 
         return true;
       } else {

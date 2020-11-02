@@ -31,7 +31,7 @@ const Albums = () => {
   return (
     <Layout>
       {
-        albumRamdom.length > 0 && (
+        albumRamdom.length > 0 ? (
           <section className="main albums">
             <ScrollSlider title="Featured Tracks" items={albumRamdom} album={true} />
             <div className="album">
@@ -49,7 +49,7 @@ const Albums = () => {
               </div>
             </div>
           </section>
-        )
+        ) : (<>Cargando...</>)
       }
     </Layout>
   );
