@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useHistory, Link, useRoute } from 'react-router-dom';
 import Burguer from '../../../../assets/images/icons/menu-burguer.svg';
-import Search from '../../../../assets/images/icons/search.svg';
+import Search from '../../../../assets/images/icons/Search.svg';
 import Arrow from '../../../../assets/images/icons/arrow-left.svg';
 import CloseInfo from '../../../../assets/images/icons/close.svg';
 import Logo from '../../../../assets/images/icons/cday-n.svg';
@@ -49,20 +49,6 @@ const Header = () => {
     logout()
   }
 
-  // const renderLoginButtons = ({ isLogged }) => {
-  //   return isLogged ? (<Link to='#' onClick={handleClick}>Logout</Link>
-  //   ) : (
-  //       <>
-  //         <Link to='/login'>Login</Link>
-  //         <Link to='/signup'>Sing up</Link>
-  //       </>
-  //     )
-  // }
-
-  /* const content = match
-    ? null
-    : renderLoginButtons({isLogged}) */
-
   useEffect(() => {
     console.log(state);
   }, []);
@@ -103,10 +89,10 @@ const Header = () => {
         </div>
         <div className="profile" id="profile">
           <div className="profile__container">
-            <div>
+            <div className="singbutton">
               <Link to="/signup">Sign Up</Link>
             </div>
-            <div>
+            <div className="loginbutton">
               {state.user.id ? (
                 <Link to="/logout">Logout</Link>
               ) : (

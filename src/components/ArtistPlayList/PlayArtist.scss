@@ -3,11 +3,9 @@
 }
 
 .viewport {
-	overflow: auto;
+	overflow: hidden;
 	max-height: 300px;
 	height: 100%;
-	margin-right: -100px;
-	padding: 20px;
 }
 
 table {
@@ -32,8 +30,7 @@ table {
     }
   }
 }
-
- @media screen and (max-width: 700px) {
+@media screen and (max-width: 700px) {
    table{
      padding:20px;
      th{
@@ -45,17 +42,28 @@ table {
   .viewport{
     padding:0;
   }
+}
 @media screen and (max-width: 568px) {
   table{
-    padding:20px;
+    padding:0px;
     th{
       font-size:14px;
     }
  td {
    font-size:12px;
  }
+table td img{
+  display:none;
+  padding:0;
+}
+.viewport{
+  padding:0;
 }
 }
-   }
-  }
-  
+@media screen and (min-width: 568px) {
+  .ArtistPlayList{
+    padding:0;
+}
+}
+}
+}

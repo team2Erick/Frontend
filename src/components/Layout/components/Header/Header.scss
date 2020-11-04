@@ -81,7 +81,7 @@
       span {
         padding-left: 10px;
         @media screen and (max-width: 700px) {
-          display:none;
+          display: none;
         }
       }
     }
@@ -110,7 +110,7 @@
     padding-left: 10px;
     margin-right: 20px;
     & div {
-      margin-right: 40px;
+      // margin-right: 40px;
       padding: 1px 5px;
       border-radius: 5px;
       cursor: pointer;
@@ -120,9 +120,9 @@
         // text-decoration: underline;
       }
       & a {
-        color: $color-grey;
-        font-size: $base-fontSize*1.2;
-        font-weight: 700;
+        color: white;
+        font-size: $base-fontSize * 1;
+        font-weight: 400;
       }
     }
   }
@@ -160,8 +160,42 @@
     outline: none;
   }
 }
-@media screen and (max-width: 700px){
-  .profile__container div a{
-  font-size:14px;
+@media screen and (max-width: 700px) {
+  .profile__container div a {
+    font-size: 14px;
+  }
+}
+.singbutton {
+  margin-right: 0;
+  a {
+    color: white;
+    font-size: 10px;
+    padding: 5px 20px;
+    background: $color-primary;
+    border-radius: 5px;
+  }
+  a:hover {
+    border: 1px solid $color-primary;
+    padding: 5px 20px;
+    color: $color-primary !important;
+    background: none;
+    border-radius: 5px;
+    transition: 0.5s;
+  }
+}
+.loginbutton {
+  a {
+    font-size: 10px;
+    border: 1px solid $color-primary;
+    padding: 5px 20px;
+    color: $color-primary !important;
+    background: none;
+    border-radius: 5px;
+  }
+  a:hover {
+    color: white !important;
+    background: $color-primary;
+    border-radius: 5px;
+    transition: 5s;
   }
 }

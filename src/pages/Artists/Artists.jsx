@@ -32,13 +32,14 @@ const Artists = () => {
                 <FilterArtist />
               </div>
               <div className="ScrollSlider">
-                {state.genre.results.songs && (
+                {state.genre.results.songs ? (
                   <ScrollSlider
                     title="Artist"
                     items={state.genre.results.songs}
                     rounded={true}
                   />
-                )}
+                ) : (<>Cargando...</>)
+                }
               </div>
             </div>
           </div>

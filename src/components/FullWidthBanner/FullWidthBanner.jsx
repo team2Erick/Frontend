@@ -1,5 +1,5 @@
 import React from 'react';
-import './fullWidthBanner.scss';
+import './FullWidthBanner.scss';
 
 const FullWidthBanner = () => (
   <header className="fullwidthbanner">
