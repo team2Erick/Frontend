@@ -1,5 +1,8 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { useHistory, Link, useRoute } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
+
+import SearchBarHandle from './SearchBarHandle';
+
 import Burguer from '../../../../assets/images/icons/menu-burguer.svg';
 import Search from '../../../../assets/images/icons/Search.svg';
 import Arrow from '../../../../assets/images/icons/arrow-left.svg';
@@ -7,9 +10,7 @@ import CloseInfo from '../../../../assets/images/icons/close.svg';
 import Logo from '../../../../assets/images/icons/cday-n.svg';
 import './Header.scss';
 
-import SearchBarHandle from './SearchBarHandle';
 import api from '../../../../services/api';
-
 import Store, { stateData } from '../../../../store/index';
 
 const Header = () => {
@@ -43,11 +44,10 @@ const Header = () => {
     history.push('/songs');
   };
 
-
   const handleClick = e => {
-    e.preventDefault()
-    logout()
-  }
+    e.preventDefault();
+    logout();
+  };
 
   useEffect(() => {
     console.log(state);

@@ -1,8 +1,11 @@
 import React from 'react';
 
-const user = localStorage.getItem("cday_user") ? JSON.parse(localStorage.getItem("cday_user")) : {}
-console.log(localStorage.getItem("cday_user"));
-console.log(JSON.parse(localStorage.getItem("cday_user")));
+const user = localStorage.getItem('cday_user')
+  ? localStorage.getItem('cday_user')
+  : {};
+console.log(localStorage.getItem('cday_user'));
+// console.log(JSON.parse(localStorage.getItem('cday_user')));
+
 export const stateData = {
   player: {
     playlist: [],
@@ -27,16 +30,14 @@ export const stateData = {
   },
 
   user,
- 
- favorites: {
-        id : []
-    },
-    newPlaylist: {
 
+  favorites: {
+    id: [],
   },
+  newPlaylist: {},
 };
 
 export default React.createContext({
   state: stateData,
-  setState: () => { },
+  setState: () => {},
 });
