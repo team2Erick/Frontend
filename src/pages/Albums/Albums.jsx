@@ -16,41 +16,56 @@ const Albums = () => {
   useEffect(() => {
     let mounted = true;
     async function fetchData() {
-      const albumQuery = await api.get("/music/album");
-      setAlbumPrimary(albumQuery.data.data.splice(0, 1)[0])
-      setAlbumRamdom(albumQuery.data.data.sort(() => { return Math.random() - 0.5 }))
-      console.log(albumRamdom[0])
+      const albumQuery = await api.get('/music/album');
+      setAlbumPrimary(albumQuery.data.data.splice(0, 1)[0]);
+      setAlbumRamdom(
+        albumQuery.data.data.sort(() => {
+          return Math.random() - 0.5;
+        })
+      );
+      console.log(albumRamdom[0]);
     }
     if (mounted) {
-      fetchData()
+      fetchData();
     }
-    return () => mounted = false;
-  }, [])
-
+    return () => (mounted = false);
+  }, []);
 
   return (
     <Layout>
-      {
-        albumRamdom.length > 0 ? (
-          <section className="main albums">
-            <ScrollSlider title="Featured Tracks" items={albumRamdom} album={true} />
-            <div className="album">
-              <div className="album__image">
-                <h2>{albumPrimary.artist.name}</h2>
-                <div className="album__image__contentimg">
-                  <img src={albumPrimary.artist.picture_big} />
-                </div>
-              </div>
-              <div className="album__table">
-                <h4>// Album</h4>
-                <h1>{albumPrimary.title}</h1>
-                <h4>{albumPrimary.contributors.map(contributors => contributors.name).join(",")}</h4>
-                <Table playlist={albumPrimary.tracks.data} hideImage={true} album={true} />
+      {albumRamdom.length > 0 ? (
+        <section className="main albums">
+          <ScrollSlider
+            title="Featured Tracks"
+            items={albumRamdom}
+            album={true}
+          />
+          <div className="album">
+            <div className="album__image">
+              <h2>{albumPrimary.artist.name}</h2>
+              <div className="album__image__contentimg">
+                <img src={albumPrimary.artist.picture_big} />
               </div>
             </div>
-          </section>
-        ) : (<>Cargando...</>)
-      }
+            <div className="album__table">
+              <h4>// Album</h4>
+              <h1>{albumPrimary.title}</h1>
+              <h4>
+                {albumPrimary.contributors
+                  .map((contributors) => contributors.name)
+                  .join(',')}
+              </h4>
+              <Table
+                playlist={albumPrimary.tracks.data}
+                hideImage={true}
+                album={true}
+              />
+            </div>
+          </div>
+        </section>
+      ) : (
+        <>Cargando...</>
+      )}
     </Layout>
   );
 };

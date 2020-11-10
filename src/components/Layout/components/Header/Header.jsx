@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, useCallback } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 
 import SearchBarHandle from './SearchBarHandle';
@@ -44,9 +44,17 @@ const Header = () => {
     history.push('/songs');
   };
 
-  const handleClick = e => {
+  const logout = useCallback(() => {
+    window.sessionStorage.removeItem('cday_user');
+    history.push('/');
+    const data = { ...state, id: '' };
+    setState('user', data);
+  }, []);
+
+  const handleClick = (e) => {
     e.preventDefault();
     logout();
+    console.log(state);
   };
 
   useEffect(() => {
@@ -89,16 +97,31 @@ const Header = () => {
         </div>
         <div className="profile" id="profile">
           <div className="profile__container">
-            <div className="singbutton">
-              <Link to="/signup">Sign Up</Link>
-            </div>
-            <div className="loginbutton">
-              {state.user.id ? (
-                <Link to="/logout">Logout</Link>
-              ) : (
-                <Link to="/login">Login</Link>
-              )}
-            </div>
+            {state.user.id ? (
+              <>
+                <div className="profile" id="profile">
+                  <figure className="profile__container">
+                    <img
+                      className="profile__container--image"
+                      src={state.user.image}
+                      alt="perfil"
+                    />
+                  </figure>
+                </div>
+                {state.user.name}
+                <div />
+                <Link to="#" onClick={handleClick}>Logout</Link>
+              </>
+            ) : (
+              <>
+                <div className="singbutton">
+                  <Link to="/signup">Sign Up</Link>
+                </div>
+                <div className="loginbutton">
+                  <Link to="/login">Login</Link>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </nav>

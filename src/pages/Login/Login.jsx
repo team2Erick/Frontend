@@ -47,13 +47,13 @@ export default () => {
     setMessage('Welcome to CDay, have a good day ;)');
     setShowSuccess(true);
 
-    // const decoded = jwt_decode(response.data.data.token);
     const decoded = response.data.data.token;
-    // const data = { ...decoded, id: decoded.sub };
+    const jwt = jwt_decode(decoded);
+    const data = { ...jwt, id: jwt.sub };
 
     window.sessionStorage.setItem('cday_user', JSON.stringify(decoded));
-    localStorage.setItem('cday_user', JSON.stringify(decoded));
-    setState('user', decoded);
+    // localStorage.setItem('cday_user', JSON.stringify(decoded));
+    setState('user', data);
 
     setTimeout(() => {
       history.push('/');

@@ -1,9 +1,9 @@
 import React from 'react';
 
-const user = localStorage.getItem('cday_user')
-  ? localStorage.getItem('cday_user')
+const user = window.sessionStorage.getItem('cday_user')
+  ? window.sessionStorage.getItem('cday_user')
   : {};
-console.log(localStorage.getItem('cday_user'));
+// console.log(window.sessionStorage.getItem('cday_user'));
 // console.log(JSON.parse(localStorage.getItem('cday_user')));
 
 export const stateData = {
