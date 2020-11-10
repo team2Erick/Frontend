@@ -3,8 +3,6 @@ import React from 'react';
 const user = window.sessionStorage.getItem('cday_user')
   ? window.sessionStorage.getItem('cday_user')
   : {};
-// console.log(window.sessionStorage.getItem('cday_user'));
-// console.log(JSON.parse(localStorage.getItem('cday_user')));
 
 export const stateData = {
   player: {
@@ -34,6 +32,7 @@ export const stateData = {
   favorites: {
     id: [],
   },
+
   newPlaylist: {},
 };
 

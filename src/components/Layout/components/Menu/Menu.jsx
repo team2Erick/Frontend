@@ -31,6 +31,12 @@ const SidebarItems = [
     route: '/albums',
   },
   {
+    image: AlbumsIcon,
+    alt: 'Charts',
+    name: 'Charts',
+    route: '/charts',
+  },
+  {
     image: ArtistsIcon,
     alt: 'Artists',
     name: 'Genre',

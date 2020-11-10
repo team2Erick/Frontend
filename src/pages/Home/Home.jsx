@@ -1,26 +1,27 @@
 import React, { useEffect, useState } from 'react';
+
 import MainSlider from '../../components/MainSlider/MainSlider';
-import MyDatos from '../../pages/Datos/datos';
-import Sliders from '../../components/datos/Sliders';
 import ScrollSlider from '../../components/ScrollSlider/ScrollSlider';
 import Table from '../../components/Table/Table';
 import Layout from '../../components/Layout/Layout';
-import './Home.scss';
 import api from '../../services/api';
-import Store from '../../store/index';
+
+// import Store from '../../store';
+
+import './Home.scss';
 
 const Home = () => {
   const [songs, setSongs] = useState([]);
 
+  const getHome = async () => {
+    const response = await api.get('music/discover');
+    // console.log(response.data.data);
+    setSongs(response.data.data);
+  };
+
   useEffect(() => {
     getHome();
   }, []);
-
-  const getHome = async () => {
-    const response = await api.get('music/discover');
-    console.log(response.data.data);
-    setSongs(response.data.data);
-  };
 
   return (
     <Layout>

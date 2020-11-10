@@ -8,10 +8,10 @@ const config = new axios.create({
 });
 
 export const file = async (endpoint, data) => {
-  var formData = new FormData();
+  const formData = new FormData();
 
   Object.keys(data).forEach((el) => {
-    console.log(el, data[el]);
+    // console.log(el, data[el]);
     formData.append(el, data[el]);
   });
 

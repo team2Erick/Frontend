@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import './Albums.scss';
 import MyDatos from '../../pages/Datos/datos';
 import Layout from '../../components/Layout/Layout';
 import ScrollSlider from '../../components/ScrollSlider/ScrollSlider';
 import Table from '../../components/Table/Table';
 import Singer from '../../assets/images/singer.jpg';
+import Store from '../../store';
 
 import api from '../../services/api';
 
@@ -12,6 +14,8 @@ const Albums = () => {
   const [album, setAlbum] = useState([]);
   const [albumRamdom, setAlbumRamdom] = useState([]);
   const [albumPrimary, setAlbumPrimary] = useState({});
+  const { state, setState } = useContext(Store);
+  const history = useHistory();
 
   useEffect(() => {
     let mounted = true;
@@ -33,38 +37,44 @@ const Albums = () => {
 
   return (
     <Layout>
-      {albumRamdom.length > 0 ? (
-        <section className="main albums">
-          <ScrollSlider
-            title="Featured Tracks"
-            items={albumRamdom}
-            album={true}
-          />
-          <div className="album">
-            <div className="album__image">
-              <h2>{albumPrimary.artist.name}</h2>
-              <div className="album__image__contentimg">
-                <img src={albumPrimary.artist.picture_big} />
-              </div>
-            </div>
-            <div className="album__table">
-              <h4>// Album</h4>
-              <h1>{albumPrimary.title}</h1>
-              <h4>
-                {albumPrimary.contributors
-                  .map((contributors) => contributors.name)
-                  .join(',')}
-              </h4>
-              <Table
-                playlist={albumPrimary.tracks.data}
-                hideImage={true}
+      {state.user.id ? (
+        <>
+          {albumRamdom.length > 0 ? (
+            <section className="main albums">
+              <ScrollSlider
+                title="Featured Tracks"
+                items={albumRamdom}
                 album={true}
               />
-            </div>
-          </div>
-        </section>
+              <div className="album">
+                <div className="album__image">
+                  <h2>{albumPrimary.artist.name}</h2>
+                  <div className="album__image__contentimg">
+                    <img src={albumPrimary.artist.picture_big} />
+                  </div>
+                </div>
+                <div className="album__table">
+                  <h4>// Album</h4>
+                  <h1>{albumPrimary.title}</h1>
+                  <h4>
+                    {albumPrimary.contributors
+                      .map((contributors) => contributors.name)
+                      .join(',')}
+                  </h4>
+                  <Table
+                    playlist={albumPrimary.tracks.data}
+                    hideImage={true}
+                    album={true}
+                  />
+                </div>
+              </div>
+            </section>
+          ) : (
+            <>Cargando...</>
+          )}
+        </>
       ) : (
-        <>Cargando...</>
+        history.push('/login')
       )}
     </Layout>
   );
