@@ -67,6 +67,16 @@
     font-weight: bold;
     color: grey;
   }
+
+  &__btn-fav {
+    background: rgba(180, 172, 172, .3);
+    border: 0;
+    border-radius: 50px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    transition: all .3s ease;
+  }
 }
 @media screen and (max-width: 700px) {
 .music-item {

@@ -45,10 +45,12 @@ const Header = () => {
   };
 
   const logout = useCallback(() => {
-    window.sessionStorage.removeItem('cday_user');
+    // window.sessionStorage.removeItem('cday_user');
+    localStorage.removeItem('cday_user');
     history.push('/');
-    const data = { ...state, id: '' };
-    setState('user', data);
+    const deleteIdUser = { id: '' };
+    setState('user', deleteIdUser);
+    console.log(state);
   }, []);
 
   const handleClick = (e) => {
