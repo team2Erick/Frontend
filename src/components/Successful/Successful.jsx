@@ -7,16 +7,13 @@ const Successful = ({ success, close }) => {
 
     setTimeout(() => {
       close();
-      console.log("ldld");
+      console.log('ldld');
     }, 1500);
-
   }, []);
 
   if (!success) return <></>;
 
-  return (
-    <div className="success">{success}</div>
-  );
+  return <div className="success">{success}</div>;
 };
 
 export default Successful;

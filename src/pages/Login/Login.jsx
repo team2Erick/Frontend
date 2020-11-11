@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Redirect, useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import jwt_decode from 'jwt-decode';
+import Jwt_Decode from 'jwt-decode';
 import Cockies from 'js-cookie';
 
 import Successful from '../../components/Successful/Successful';
@@ -48,7 +48,7 @@ export default () => {
     setShowSuccess(true);
 
     const decoded = response.data.data.token;
-    const jwt = jwt_decode(decoded);
+    const jwt = Jwt_Decode(decoded);
     const data = { ...jwt, id: jwt.sub };
 
     // window.sessionStorage.setItem('cday_user', JSON.stringify(decoded));
@@ -58,10 +58,6 @@ export default () => {
     setTimeout(() => {
       history.push('/');
     }, 2000);
-  };
-
-  const handleGoogle = () => {
-    <Redirect to="https://cday-music.herokuapp.com/api/auth/google" />;
   };
 
   return (
@@ -129,7 +125,7 @@ export default () => {
               </span>
             </h4>
             <div className="inscription">
-              <button onClick={handleGoogle}>
+              <button>
                 <img
                   src="/src/assets/images/icons/google-icon.svg"
                   alt="logo google"

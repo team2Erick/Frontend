@@ -15,13 +15,10 @@ import Store, { stateData } from '../../../../store/index';
 
 const Header = () => {
   const history = useHistory();
-
-  useEffect(SearchBarHandle);
-
   const { state, setState } = useContext(Store);
-
   const [searchText, setSeachText] = useState('');
 
+  useEffect(SearchBarHandle);
   // useEffect(() => {
   //   api;
   // }, [searchText]);
@@ -59,9 +56,9 @@ const Header = () => {
     console.log(state);
   };
 
-  useEffect(() => {
+  /* useEffect(() => {
     console.log(state);
-  }, []);
+  }, []); */
 
   return (
     <header className="container__header">
@@ -101,18 +98,27 @@ const Header = () => {
           <div className="profile__container">
             {state.user.id ? (
               <>
-                <div className="profile" id="profile">
-                  <figure className="profile__container">
-                    <img
-                      className="profile__container--image"
-                      src={state.user.image}
-                      alt="perfil"
-                    />
-                  </figure>
-                </div>
-                {state.user.name}
-                <div />
-                <Link to="#" onClick={handleClick}>Logout</Link>
+                <ul className="profile__menu">
+                  <li>
+                    <div>
+                      <figure className="profile__container--fig">
+                        <img
+                          className="profile__container--image"
+                          src={state.user.image}
+                          alt="perfil"
+                        />
+                      </figure>
+                    </div>
+                    <ul>
+                      <li>
+                        <span>{state.user.name}</span>
+                      </li>
+                      <li>
+                        <Link onClick={handleClick}>Logout</Link>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
               </>
             ) : (
               <>
