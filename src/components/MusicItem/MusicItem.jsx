@@ -4,6 +4,8 @@ import Store from '../../store';
 import api from '../../services/api';
 import Successful from '../../components/Successful/Successful';
 import './MusicItem.scss';
+import Heart from '../../assets/images/icons/heart-solid.svg'
+import HeartActive from '../../assets/images/icons/heart-active.svg'
 
 const MusicItem = ({ item, rounded, album }) => {
   const { state, setState } = useContext(Store);
@@ -51,9 +53,10 @@ const MusicItem = ({ item, rounded, album }) => {
             handleClick(item.id);
           }}
         >
-          <span aria-label="Fav-Gif" role="img">
+          <img src={Heart} />
+          {/* <span aria-label="Fav-Gif" role="img">
             ❤️
-          </span>
+          </span> */}
         </button>
       </div>
       <div className="music-item__title">{item.title}</div>

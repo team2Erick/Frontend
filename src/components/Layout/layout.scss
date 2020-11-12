@@ -10,6 +10,7 @@
     border-right: 1px solid $color-border;
     z-index: 1;
     background-color: white;
+    left: -60%;
 
     @media screen and (max-width: 700px) {
       width: 50%;
@@ -38,6 +39,5 @@
 }
 .menuinactive {
   @media screen and (max-width: 700px) {
-    left: -60%;
   }
 }

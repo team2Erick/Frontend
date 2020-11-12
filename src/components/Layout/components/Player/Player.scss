@@ -1,4 +1,4 @@
-@import "../../../../assets/styles/lib/variables";
+@import '../../../../assets/styles/lib/variables';
 
 .player {
   position: fixed;
@@ -11,10 +11,11 @@
   &__song {
     background: rgba(10, 91, 191, 0.8);
     backdrop-filter: blur(5px);
-
-    padding: 20px 40px;
+    padding: 20px 20px;
     display: flex;
-    min-width: 350px;
+    flex-direction: column;
+    min-width: 190px;
+    max-width: 190px;
 
     &__image {
       width: 60px;
@@ -40,6 +41,7 @@
       p {
         margin: 0px;
         color: white;
+        line-height: 16px;
       }
 
       img {
@@ -53,7 +55,7 @@
 
     align-items: center;
     justify-content: center;
-
+    padding: 10px 0;
     background: rgba(5, 5, 5, 0.8);
     backdrop-filter: blur(5px);
     // background: $color-acents;
@@ -101,7 +103,7 @@
     &__progress {
       display: flex;
       color: $color-grey;
-      align-items: center;
+      align-items: flex-end;
       justify-content: center;
 
       &__bar:focus {
@@ -159,5 +161,14 @@
     // min-width: 350px;
     align-items: center;
     justify-content: space-between;
+    height: 100%;
+  }
+}
+
+.player__container {
+  display: flex;
+  width: 100%;
+  @media screen and (max-width: 700px) {
+    flex-direction: column;
   }
 }

@@ -12,8 +12,7 @@ export default () => {
   const LogoScroll = document.getElementById('logoscroll');
 
   MobileMenu.addEventListener('click', () => {
-    if (SideMenu.classList.contains('menuinactive')) {
-      SideMenu.classList.remove('menuinactive');
+    if (SideMenu.classList.contains('layout__menu')) {
       SideMenu.classList.add('menuactive');
     } else {
       SideMenu.classList.remove('menuactive');
@@ -63,8 +62,14 @@ export default () => {
     }
   });
   window.addEventListener('scroll', () => {
-    window.scrollY >= 100
-      ? (LogoScroll.style.display = 'block')
-      : (LogoScroll.style.display = 'none');
+    if (window.scrollY >= 100) {
+      LogoScroll.classList.remove('inactiveEl');
+      LogoScroll.classList.add('activeEl');
+    } else {
+      LogoScroll.classList.remove('activeEl');
+      LogoScroll.classList.add('inactiveEl');
+    }
+    
   });
+  
 };

@@ -239,3 +239,12 @@
     transition: 5s;
   }
 }
+.activeEl {
+  display: block;
+  @media screen and (max-width: 700px) {
+    display: none;
+  }
+}
+.inactiveEl {
+  display: none;
+}

@@ -10,16 +10,15 @@
     width: 160px;
     height: 160px;
     border-radius: 50%;
-    box-shadow: 0px 2px 3px rgba(0, 0, 0, .5);
-    transition: .2s ease;
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+    transition: 0.2s ease;
   }
 
-
-  :hover>&__image {
-    transition: .2s ease;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, .6);
+  :hover > &__image {
+    transition: 0.2s ease;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6);
     margin-top: -10px;
-    filter: brightness(150%)
+    filter: brightness(150%);
   }
 }
 
@@ -36,16 +35,15 @@
     width: 160px;
     height: 160px;
     border-radius: 5px;
-    transition: .2s ease;
+    transition: 0.2s ease;
   }
 
-  :hover>&__image {
-    transition: .2s ease;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, .6);
+  :hover > &__image {
+    transition: 0.2s ease;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6);
     margin-top: -10px;
-    filter: brightness(150%)
+    filter: brightness(150%);
   }
-
 
   &__title {
     font-weight: 500;
@@ -69,26 +67,24 @@
   }
 
   &__btn-fav {
-    background: rgba(180, 172, 172, .3);
-    border: 0;
-    border-radius: 50px;
+    background: none;
+    border: none;
     cursor: pointer;
     width: 30px;
     height: 30px;
-    transition: all .3s ease;
+    transition: all 0.3s ease;
   }
 }
 @media screen and (max-width: 700px) {
-.music-item {
-	display: inline-block;
-	width: 160px;
-	padding-right: 20px;
-  margin:10px;
-	cursor: pointer;
+  .music-item {
+    display: inline-block;
+    width: 160px;
+    padding-right: 20px;
+    margin: 10px;
+    cursor: pointer;
 
-
-  &__title {
-    font-size: 15px;
+    &__title {
+      font-size: 15px;
+    }
   }
-}
 }
