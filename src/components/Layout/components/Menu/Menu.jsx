@@ -1,24 +1,23 @@
 import React, { useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+// import SidebarItems from '../../../../components/datos/SidebarItems';
+// import MyTracks from '../../../../components/datos/MyTracks';
 import Modal from '../../../Modal/Modal';
 import Successful from '../../../Successful/Successful';
-import Logo from '../../../../assets/images/icons/cday-n.svg'
-import CloseIcon from '../../../../assets/images/icons/close.svg'
-import NewPlayList from '../../../../assets/images/icons/newPlaylist.svg'
-import PlayList from '../../../../assets/images/icons/playlist.svg'
+import Logo from '../../../../assets/images/icons/cday-n.svg';
+import CloseIcon from '../../../../assets/images/icons/close.svg';
+import NewPlayList from '../../../../assets/images/icons/newPlaylist.svg';
+import PlayList from '../../../../assets/images/icons/playlist.svg';
 import './Menu.scss';
 
-import DiscoverIcon from '../../../../assets/images/icons/discover.svg'
-import AlbumsIcon from '../../../../assets/images/icons/albums.svg'
-import ArtistsIcon from '../../../../assets/images/icons/artists.svg'
+import DiscoverIcon from '../../../../assets/images/icons/discover.svg';
+import AlbumsIcon from '../../../../assets/images/icons/albums.svg';
+import ArtistsIcon from '../../../../assets/images/icons/artists.svg';
 
-import FavoriteIcon from '../../../../assets/images/icons/favourite-grey.svg'
-import RecentHistory from '../../../../assets/images/icons/history.svg'
-
-
+import FavoriteIcon from '../../../../assets/images/icons/favourite-grey.svg';
+import RecentHistory from '../../../../assets/images/icons/history.svg';
 
 const SidebarItems = [
-
   {
     image: DiscoverIcon,
     alt: 'discover',
@@ -30,6 +29,12 @@ const SidebarItems = [
     alt: 'Albums',
     name: 'Albums',
     route: '/albums',
+  },
+  {
+    image: AlbumsIcon,
+    alt: 'Charts',
+    name: 'Charts',
+    route: '/charts',
   },
   {
     image: ArtistsIcon,
@@ -54,8 +59,8 @@ const MyTracks = [
   },
 ];
 
-
 const Menu = () => {
+  const history = useHistory();
   const [state, setState] = useState({
     currentPlayList: 'home',
     modal: false,
@@ -88,7 +93,9 @@ const Menu = () => {
         <img src={CloseIcon} />
       </button>
       <figure>
-        <img src={Logo} alt="icon" />
+        <Link to="/">
+          <img src={Logo} alt="icon" />
+        </Link>
       </figure>
       <div className="menu">
         <ul className="menu__list">
@@ -100,10 +107,14 @@ const Menu = () => {
                 setState({ ...state, currentPlayList: item });
               }}
             >
+            {/* {state.user.id ? ( */}
               <Link to={item.route}>
                 <img src={item.image} className="menu__icon" alt={item.alt} />
                 {item.name}
               </Link>
+              {/* ) : ( */}
+              {/*   history.push('/login')
+              )} */}
             </li>
           ))}
         </ul>

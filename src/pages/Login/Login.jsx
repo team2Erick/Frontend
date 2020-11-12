@@ -1,20 +1,17 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import './Login.scss';
-import Successful from '../../components/Successful/Successful';
+import Jwt_Decode from 'jwt-decode';
 import Cockies from 'js-cookie';
 
-import Store from '../../store';
-
+import Successful from '../../components/Successful/Successful';
 import api from '../../services/api';
+import Store from '../../store';
+import './Login.scss';
 
-import jwt_decode from 'jwt-decode';
 export default () => {
   const history = useHistory();
-
   const { state, setState } = useContext(Store);
-
   const [showSuccess, setShowSuccess] = useState(false);
   const [message, setMessage] = useState('');
 
@@ -50,12 +47,12 @@ export default () => {
     setMessage('Welcome to CDay, have a good day ;)');
     setShowSuccess(true);
 
-    const decoded = jwt_decode(response.data.data.token);
+    const decoded = response.data.data.token;
+    const jwt = Jwt_Decode(decoded);
+    const data = { ...jwt, id: jwt.sub };
 
-    const data = { ...decoded, id: decoded.sub };
-
-    localStorage.setItem('cday_user', JSON.stringify(data));
-
+    // window.sessionStorage.setItem('cday_user', JSON.stringify(decoded));
+    localStorage.setItem('cday_user', JSON.stringify(decoded));
     setState('user', data);
 
     setTimeout(() => {

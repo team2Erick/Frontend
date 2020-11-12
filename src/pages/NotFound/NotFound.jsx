@@ -7,7 +7,7 @@ import './NotFound.scss';
 const NotFound = () => (
   <>
     <Layout>
-      <div class="content_404">
+      <div className="content_404">
         {/* <h1>ERROR 404</h1> */}
         <img src={elipse} alt="" />
         <div className="content_404-image">
