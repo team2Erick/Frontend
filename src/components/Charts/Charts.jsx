@@ -12,7 +12,7 @@ const subscribers = sdk.createChart({
   showAttribution: false,
 });
 const mostPlayed = sdk.createChart({
-  chartId: '427fb3ef-1c47-461d-a725-02891469ad1a',
+  chartId: '306c2cd6-c0b0-4e90-ad19-764ce7622f8b',
   autoRefresh: true,
   showAttribution: false,
 });
