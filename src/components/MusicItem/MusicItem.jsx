@@ -1,30 +1,59 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Store from '../../store';
+import api from '../../services/api';
+import Successful from '../../components/Successful/Successful';
 import './MusicItem.scss';
 
 const MusicItem = ({ item, rounded, album }) => {
   const { state, setState } = useContext(Store);
   const history = useHistory();
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [message, setMessage] = useState('');
 
   if (!item.artist || !item.artist.name) return <></>;
 
-  const handleClick = () => {
+  const handleClick = async (value) => {
     if (!state.user.id) return history.push('/login');
-    alert(state.user.id);
+    alert(value);
+    const FavouriteItem = await api.post(
+      'usermusic/add-favorites/' + state.user.id,
+      { favorites: value }
+    );
+    setMessage(FavouriteItem.data.data.System);
+    setShowSuccess(true);
   };
 
   return (
     <div>
+      {showSuccess && (
+        <Successful
+          success={message}
+          close={() => {
+            setShowSuccess(false);
+          }}
+        />
+      )}
       <div className={rounded ? 'music-item--rounded' : 'music-item'}>
         <img
-          className={rounded ? 'music-item--rounded__image' : 'music-item__image'}
+          className={
+            rounded ? 'music-item--rounded__image' : 'music-item__image'
+          }
           src={album ? item.cover_medium : item.album.cover_medium}
+          alt="rounded"
         />
       </div>
       <div>
-        <button className="music-item__btn-fav" onClick={handleClick}>
-          <span aria-label="Fav-Gif" role="img">❤️</span>
+        <button
+          type="button"
+          className="music-item__btn-fav"
+          onClick={() => {
+            handleClick(item.id);
+          }}
+        >
+          <span aria-label="Fav-Gif" role="img">
+            ❤️
+          </span>
         </button>
       </div>
       <div className="music-item__title">{item.title}</div>
