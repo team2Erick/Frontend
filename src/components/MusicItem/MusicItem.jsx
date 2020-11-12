@@ -53,10 +53,10 @@ const MusicItem = ({ item, rounded, album }) => {
             handleClick(item.id);
           }}
         >
-          <img src={Heart} />
-          {/* <span aria-label="Fav-Gif" role="img">
+          {/* <img src={Heart} /> */}
+          <span aria-label="Fav-Gif" role="img">
             ❤️
-          </span> */}
+          </span>
         </button>
       </div>
       <div className="music-item__title">{item.title}</div>
