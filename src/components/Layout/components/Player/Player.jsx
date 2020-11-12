@@ -129,8 +129,9 @@ export default () => {
           alt=""
         />
         <div className="player__song__content">
-          <strong>{state.player.playlist[state.player.index].title}</strong>
-          <p>{state.player.playlist[state.player.index].artist.name}</p>
+          
+          <p><strong>{state.player.playlist[state.player.index].title}</strong><br/>
+          {state.player.playlist[state.player.index].artist.name}</p>
           <img
             onClick={() => {
               setShowPlaylist(!showPlaylist);
@@ -139,7 +140,7 @@ export default () => {
           />
         </div>
       </div>
-
+    <div className="player__container">
       <div className="player__controls">
         <div className="player__controls__buttons">
           <button>
@@ -200,6 +201,8 @@ export default () => {
           ></input>
         </div>
       )}
+    </div>
+      
     </div>
   );
 };

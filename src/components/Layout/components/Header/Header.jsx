@@ -56,7 +56,7 @@ const Header = () => {
   return (
     <header className="container__header">
       <nav className="navbar" id="navbar">
-        <div className="logoscroll" id="logoscroll" style={{ display: 'none' }}>
+        <div className="logoscroll inactiveEl" id="logoscroll">
           <img src={Logo} />
         </div>
         <div className="navbar__mobile-button">
