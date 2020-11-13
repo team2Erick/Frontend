@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+// import Jwt_Decode from 'jwt-decode';
+// import Cockies from 'js-cookie';
 
 import Successful from '../../components/Successful/Successful';
 import { apiPath, file } from '../../services/api';
@@ -66,6 +68,10 @@ export default () => {
 
   const updateImage = (e) => {
     setImage(e.target.files[0]);
+  };
+
+  const handleGoogle = async () => {
+    history.push('/');
   };
 
   return (
@@ -199,7 +205,7 @@ export default () => {
             </h4>
             <div className="inscription">
               <a href={apiPath + 'auth/google'}>
-                <button>
+                <button type="button" onClick={handleGoogle}>
                   <img
                     src="/src/assets/images/icons/google-icon.svg"
                     alt="logo google"
