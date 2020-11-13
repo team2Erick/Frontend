@@ -42,7 +42,7 @@ const Header = () => {
   };
 
   const logout = useCallback(() => {
-    // window.sessionStorage.removeItem('cday_user');
+    // window.localStorage.removeItem('cday_user');
     localStorage.removeItem('cday_user');
     history.push('/');
     const deleteIdUser = { id: '' };
@@ -121,15 +121,15 @@ const Header = () => {
                 </ul>
               </>
             ) : (
-              <>
-                <div className="singbutton">
-                  <Link to="/signup">Sign Up</Link>
-                </div>
-                <div className="loginbutton">
-                  <Link to="/login">Login</Link>
-                </div>
-              </>
-            )}
+                <>
+                  <div className="singbutton">
+                    <Link to="/signup">Sign Up</Link>
+                  </div>
+                  <div className="loginbutton">
+                    <Link to="/login">Login</Link>
+                  </div>
+                </>
+              )}
           </div>
         </div>
       </nav>

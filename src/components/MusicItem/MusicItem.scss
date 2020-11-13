@@ -14,7 +14,7 @@
     transition: 0.2s ease;
   }
 
-  :hover > &__image {
+  :hover>&__image {
     transition: 0.2s ease;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6);
     margin-top: -10px;
@@ -38,7 +38,7 @@
     transition: 0.2s ease;
   }
 
-  :hover > &__image {
+  :hover>&__image {
     transition: 0.2s ease;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6);
     margin-top: -10px;
@@ -51,7 +51,8 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    margin-top: 15px;
+    margin: 10px;
+    width: 160px;
 
     white-space: nowrap;
     overflow: hidden;
@@ -60,13 +61,15 @@
 
   &__subtitle {
     font-weight: 400 !important;
-    margin-top: 10px;
+    margin: 10px;
     font-size: 13px;
     font-weight: bold;
     color: grey;
   }
 
   &__btn-fav {
+
+    position: abs;
     background: none;
     border: none;
     cursor: pointer;
@@ -75,6 +78,7 @@
     transition: all 0.3s ease;
   }
 }
+
 @media screen and (max-width: 700px) {
   .music-item {
     display: inline-block;

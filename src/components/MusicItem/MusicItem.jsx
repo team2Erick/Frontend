@@ -45,22 +45,20 @@ const MusicItem = ({ item, rounded, album }) => {
           alt="rounded"
         />
       </div>
-      <div>
-        <button
-          type="button"
-          className="music-item__btn-fav"
-          onClick={() => {
-            handleClick(item.id);
-          }}
-        >
-          {/* <img src={Heart} /> */}
-          <span aria-label="Fav-Gif" role="img">
-            ❤️
-          </span>
-        </button>
-      </div>
       <div className="music-item__title">{item.title}</div>
       <div className="music-item__subtitle">{item.artist.name}</div>
+      <button
+        type="button"
+        className="music-item__btn-fav"
+        onClick={() => {
+          handleClick(item.id);
+        }}
+      >
+        {/* <img src={Heart} /> */}
+        <span aria-label="Fav-Gif" role="img">
+          ❤️
+          </span>
+      </button>
     </div>
   );
 };

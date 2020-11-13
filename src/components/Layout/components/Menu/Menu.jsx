@@ -18,6 +18,7 @@ import ArtistsIcon from '../../../../assets/images/icons/artists.svg';
 
 import FavoriteIcon from '../../../../assets/images/icons/favourite-grey.svg';
 import RecentHistory from '../../../../assets/images/icons/history.svg';
+import PlayIcon from '../Player/img/play-icon.svg';
 
 const SidebarItems = [
   {
@@ -64,6 +65,10 @@ const MyTracks = [
 const Menu = () => {
   const history = useHistory();
 
+  useEffect(() => {
+    getPlaylist()
+  }, [])
+
   const { state, setState } = useContext(Store);
   const [modal, setModal] = useState({
     modal: false,
@@ -100,13 +105,15 @@ const Menu = () => {
       setMessage(itemList.data.data.System);
       setShowSuccess(true);
       handlePlus();
+      getPlaylist()
     } catch (error) {
       console.log(error);
     }
   };
 
-  const getNewPlaylist = async () => {
+  const getPlaylist = async () => {
     const response = await api.get('usermusic/playlist/' + state.user.id);
+    console.log(response.data.data);
     setNewPlaylist(response.data.data);
   };
 
@@ -131,9 +138,9 @@ const Menu = () => {
             <li
               key={item}
               className={item === state.currentPlayList ? 'active' : ''}
-              // onClick={() => {
-              // setState({ ...state, currentPlayList: item });
-              // }}
+            // onClick={() => {
+            // setState({ ...state, currentPlayList: item });
+            // }}
             >
               <Link to={item.route}>
                 <img src={item.image} className="menu__icon" alt={item.alt} />
@@ -150,9 +157,9 @@ const Menu = () => {
             <li
               key={item}
               className={item === state.currentPlayList ? 'active' : ''}
-              // onClick={() => {
-              // setState({ ...state, currentPlayList: item });
-              // }}
+            // onClick={() => {
+            // setState({ ...state, currentPlayList: item });
+            // }}
             >
               <Link to={item.route}>
                 <img src={item.image} className="menu__icon" alt={item.alt} />
@@ -180,8 +187,10 @@ const Menu = () => {
               key={list}
               className={list === state.currentPlayList ? 'active' : ''}
             >
-              {/* <img src={NewPlus} className="menu__icon" alt="New Playlist" /> */}
-              {list.name}
+              <a style={{ "text-transform": "capitalize" }}>
+                <img src={PlayIcon} />
+                {list.name}
+              </a>
             </li>
           ))}
           <Modal show={modal.modal} close={handlePlus}>
@@ -212,7 +221,7 @@ const Menu = () => {
           )}
         </ul>
       </div>
-    </section>
+    </section >
   );
 };
 
