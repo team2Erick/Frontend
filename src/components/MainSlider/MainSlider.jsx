@@ -41,11 +41,11 @@ const MainSlider = ({ sliders }) => {
               }}
             >
               <div className="main-slider__content">
-                <span className="main-slider__subtitle">// TRENDING</span>
-                <strong className="main-slider__title">{slider.title}</strong>
-                <span className="main-slider__artist">
+                <div className="main-slider__subtitle">// TRENDING</div>
+                <div className="main-slider__title">{slider.title}</div>
+                <div className="main-slider__artist">
                   -{slider.artist.name}
-                </span>
+                </div>
                 <div className="main-slider__buttons">
                   <div
                     onClick={() => {

@@ -8,14 +8,19 @@
   display: flex;
   z-index: 2;
 
+  @media (max-width: 900px) {
+    &__song {
+      flex-direction: column;
+      width: 160px;
+    }
+  }
+
   &__song {
     background: rgba(10, 91, 191, 0.8);
     backdrop-filter: blur(5px);
     padding: 20px 20px;
     display: flex;
-    flex-direction: column;
-    min-width: 190px;
-    max-width: 190px;
+    width: 300px;
 
     &__image {
       width: 60px;
@@ -31,6 +36,7 @@
       display: flex;
       border-radius: 5px;
       margin-right: 40px;
+
     }
 
     &__content {
@@ -126,12 +132,12 @@
         transition: 0.2s;
       }
 
-      :hover > &__bar::-webkit-slider-runnable-track {
+      :hover>&__bar::-webkit-slider-runnable-track {
         height: 6px;
         transition: 0.2s;
       }
 
-      :hover > &__bar::-webkit-slider-thumb {
+      :hover>&__bar::-webkit-slider-thumb {
         margin-top: -5px;
       }
 
@@ -168,6 +174,7 @@
 .player__container {
   display: flex;
   width: 100%;
+
   @media screen and (max-width: 700px) {
     flex-direction: column;
   }

@@ -1,8 +1,17 @@
 import React from 'react';
+import Jwt_Decode from 'jwt-decode';
 
-const user = window.sessionStorage.getItem('cday_user')
-  ? window.sessionStorage.getItem('cday_user')
-  : {};
+var user = {}
+
+if (window.localStorage.getItem('cday_user')) {
+  user = Jwt_Decode(window.localStorage.getItem('cday_user'))
+  user = {
+    ...user,
+    id: user.sub
+  };
+}
+
+console.log(user);
 
 export const stateData = {
   player: {
