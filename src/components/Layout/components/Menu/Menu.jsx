@@ -147,7 +147,12 @@ const Menu = () => {
           <li className="new-playlist">
             <div className="newPlaylist">
               <h3 className="menu__subtitle"> New Playlist</h3>
-              <img src={Plus} className="menu__icon" alt="Plus" onClick={handlePlus} />
+              <img
+                src={Plus}
+                className="menu__icon"
+                alt="Plus"
+                onClick={handlePlus}
+              />
             </div>
           </li>
           {newPlaylist.map((list, index) => (
