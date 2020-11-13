@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import './Successful.scss';
 
-const Successful = ({ success, close }) => {
+const Successful = ({ success, close, timeout }) => {
   useEffect(() => {
     if (!success) return;
 
     setTimeout(() => {
       close();
       console.log('ldld');
-    }, 1500);
+    }, timeout || 2000);
   }, []);
 
   if (!success) return <></>;

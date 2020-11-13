@@ -10,7 +10,7 @@ import api from '../../services/api';
 
 const Table = ({ title, playlist, dense, hideImage }) => {
   const { state, setState } = useContext(Store);
-  const { FavoriteItem, setFavorite } = useState([]);
+  // const { FavouriteItem, setFavorite } = useState([]);
   const [showSuccess, setShowSuccess] = useState(false);
   const [message, setMessage] = useState('');
 
@@ -25,11 +25,12 @@ const Table = ({ title, playlist, dense, hideImage }) => {
   };
 
   const handleFavorite = async (value) => {
-    const FavoriteItem = await api.post(
+    alert(value);
+    const FavouriteItem = await api.post(
       'usermusic/add-favorites/' + state.user.id,
       { favorites: value }
     );
-    setMessage(FavoriteItem.data.data.System);
+    setMessage(FavouriteItem.data.data.System);
     setShowSuccess(true);
   };
 
@@ -76,7 +77,7 @@ const Table = ({ title, playlist, dense, hideImage }) => {
                   <td>
                     <button
                       className="favoritesbutton"
-                      onClick={(e) => {
+                      onClick={() => {
                         handleFavorite(item.id);
                       }}
                     >

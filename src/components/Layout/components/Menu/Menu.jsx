@@ -1,13 +1,15 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-// import SidebarItems from '../../../../components/datos/SidebarItems';
-// import MyTracks from '../../../../components/datos/MyTracks';
+
 import Modal from '../../../Modal/Modal';
 import Successful from '../../../Successful/Successful';
+import Store from '../../../../store';
+import api from '../../../../services/api';
+
 import Logo from '../../../../assets/images/icons/cday-n.svg';
 import CloseIcon from '../../../../assets/images/icons/close.svg';
-import NewPlayList from '../../../../assets/images/icons/newPlaylist.svg';
-import PlayList from '../../../../assets/images/icons/playlist.svg';
+import newPlus from '../../../../assets/images/icons/newPlaylist.svg';
+import Plus from '../../../../assets/images/icons/playlist.svg';
 import './Menu.scss';
 
 import DiscoverIcon from '../../../../assets/images/icons/discover.svg';
@@ -61,31 +63,57 @@ const MyTracks = [
 
 const Menu = () => {
   const history = useHistory();
-  const [state, setState] = useState({
-    currentPlayList: 'home',
+
+  const { state, setState } = useContext(Store);
+  const [modal, setModal] = useState({
     modal: false,
-    newPlaylist: {
-      /* rock: new Set(), */
-    },
-    success: '',
   });
+  const [nameList, setNameList] = useState('');
+  const [newPlaylist, setNewPlaylist] = useState([]);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [message, setMessage] = useState('');
 
-  const newPlaylistRef = useRef(null);
-  const newPlaylist = Object.keys(state.newPlaylist);
-
-  const addNewPlaylist = (e) => {
-    e.preventDefault();
-    const list = newPlaylistRef.current.value;
-
-    setState({
-      ...state,
-      modal: false,
-      newPlaylist: { ...state.newPlaylist, [list]: new Set() },
-      success: 'Playlist created successfully!',
-    });
+  const handlePlus = () => {
+    setModal({ ...modal, modal: !modal.modal });
   };
 
-  const handleModal = () => setState({ ...state, modal: !state.modal });
+  const addNewPlaylist = async (e) => {
+    e.preventDefault();
+    if (!state.user.id) {
+      setMessage(
+        'Necesitas ser miembro para crear listas de reproducción',
+        null,
+        4000
+      );
+      setShowSuccess(true);
+      setTimeout(() => {
+        history.push('/login');
+      }, 4000);
+    }
+
+    console.log(state.user.id);
+    try {
+      const itemList = await api.post(
+        'usermusic/create-playlist/' + state.user.id,
+        { name: nameList }
+      );
+      setMessage(itemList.data.data.System);
+      setShowSuccess(true);
+      handlePlus();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getNewPlaylist = async () => {
+    const response = await api.get('usermusic/playlist/' + state.user.id);
+    setNewPlaylist(response.data.data);
+  };
+
+  /* useEffect(() => {
+    getNewPlaylist();
+    console.log(newPlaylist);
+  }, []); */
 
   return (
     <section className="container__menu">
@@ -99,22 +127,18 @@ const Menu = () => {
       </figure>
       <div className="menu">
         <ul className="menu__list">
-          {SidebarItems.map((item, index) => (
+          {SidebarItems.map((item) => (
             <li
-              key={index}
+              key={item}
               className={item === state.currentPlayList ? 'active' : ''}
-              onClick={() => {
-                setState({ ...state, currentPlayList: item });
-              }}
+              // onClick={() => {
+              // setState({ ...state, currentPlayList: item });
+              // }}
             >
-            {/* {state.user.id ? ( */}
               <Link to={item.route}>
                 <img src={item.image} className="menu__icon" alt={item.alt} />
                 {item.name}
               </Link>
-              {/* ) : ( */}
-              {/*   history.push('/login')
-              )} */}
             </li>
           ))}
         </ul>
@@ -122,13 +146,13 @@ const Menu = () => {
       <div className="menu">
         <h3 className="menu__subtitle">My Tracks</h3>
         <ul className="menu__list">
-          {MyTracks.map((item, index) => (
+          {MyTracks.map((item) => (
             <li
-              key={index}
+              key={item}
               className={item === state.currentPlayList ? 'active' : ''}
-              onClick={() => {
-                setState({ ...state, currentPlayList: item });
-              }}
+              // onClick={() => {
+              // setState({ ...state, currentPlayList: item });
+              // }}
             >
               <Link to={item.route}>
                 <img src={item.image} className="menu__icon" alt={item.alt} />
@@ -140,53 +164,52 @@ const Menu = () => {
       </div>
       <div className="menu">
         <ul className="menu__list">
-          <li className="new-playlist" onClick={handleModal}>
+          <li className="new-playlist">
             <div className="newPlaylist">
               <h3 className="menu__subtitle"> New Playlist</h3>
               <img
-                src={PlayList}
+                src={Plus}
                 className="menu__icon"
                 alt="Plus"
+                onClick={handlePlus}
               />
             </div>
           </li>
-          {newPlaylist.map((item, index) => (
+          {newPlaylist.map((list, index) => (
             <li
-              key={index}
-              className={item === state.currentPlayList ? 'active' : ''}
-              onClick={() => {
-                setState({ state, currentPlayList: item });
-              }}
+              key={list}
+              className={list === state.currentPlayList ? 'active' : ''}
             >
-              <img
-                src={NewPlayList}
-                className="menu__icon"
-                alt="New Playlist"
-              />
-              {item}
+              {/* <img src={NewPlus} className="menu__icon" alt="New Playlist" /> */}
+              {list.name}
             </li>
           ))}
-          <Modal show={state.modal} close={handleModal}>
+          <Modal show={modal.modal} close={handlePlus}>
             <form onSubmit={addNewPlaylist}>
               <div className="title">Create a New PlayList</div>
               <div className="content-wrap">
                 <input
                   type="text"
-                  placeholder="My Playlist"
+                  value={nameList}
+                  placeholder="Name list"
+                  onChange={(e) => {
+                    setNameList(e.target.value);
+                  }}
                   required
-                  ref={newPlaylistRef}
                 />
                 <br />
                 <button type="submit">create</button>
               </div>
             </form>
           </Modal>
-          <Successful
-            success={state.success}
-            close={() => {
-              setState({ ...state, success: '' });
-            }}
-          />
+          {showSuccess && (
+            <Successful
+              success={message}
+              close={() => {
+                setShowSuccess(false);
+              }}
+            />
+          )}
         </ul>
       </div>
     </section>

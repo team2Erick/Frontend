@@ -1,37 +1,25 @@
-import React, { useState, useRef, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+
 import SidebarItems from '../datos/SidebarItems';
 import MyTracks from '../datos/MyTracks';
 import Modal from '../Modal/Modal';
 import Successful from '../Successful/Successful';
-import StaticContext from '../../context/StaticContext';
+
+import Store from '../../store';
+
 import './Menu.scss';
 
 const Menu = () => {
-  const { state, dispatch } = useContext(StaticContext);
+  const { state, setState } = useContext(Store);
+  const [newPlaylist, setNewPlaylist] = useState('');
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [message, setMessage] = useState('');
 
-  const [stateMenu, setState] = useState({
-    modal: false,
-    success: '',
-  });
-
-  const newPlaylistRef = useRef(null);
-  const newPlaylist = Object.keys(state.newPlaylist);
-
-  const addNewPlaylist = (e) => {
-    e.preventDefault();
-    const list = newPlaylistRef.current.value;
-
-    dispatch({ type: 'ADD_PLAYLIST', newPlaylist: list });
-
-    setState({
-      ...state,
-      modal: false,
-      success: 'Playlist created successfully!',
-    });
+  const handleModal = () => {
+    setMessage('Welcome to CDay, have a good day ;)');
+    setShowSuccess(true);
   };
-
-  const handleModal = () => setState({ ...stateMenu, modal: !stateMenu.modal });
 
   return (
     <section className="container__menu">
@@ -88,13 +76,7 @@ const Menu = () => {
             </div>
           </li>
           {newPlaylist.map((item) => (
-            <li
-              key={item}
-              className={item === state.currentPlayList ? 'active' : ''}
-              onClick={() => {
-                dispatch({ type: 'SET_PLAYLIST', newPlayList: item });
-              }}
-            >
+            <li>
               <img
                 src="/src/assets/images/icons/newPlaylist.svg"
                 className="menu__icon"
@@ -103,29 +85,34 @@ const Menu = () => {
               {item}
             </li>
           ))}
-          <Modal show={stateMenu.modal} close={handleModal}>
+          <Modal show={show} close={close}>
             <form onSubmit={addNewPlaylist}>
               <div className="title">Create a New PlayList</div>
               <div className="content-wrap">
                 <input
                   type="text"
+                  value={newPlaylist}
+                  onChange={(e) => {
+                    setNewPlaylist(e.target.value);
+                  }}
                   placeholder="My Playlist"
-                  ref={newPlaylistRef}
                   required
                 />
                 <br />
-                <button type="submit" className="content-wrap__button">
+                <button type="submit">
                   Create
                 </button>
               </div>
             </form>
           </Modal>
-          <Successful
-            success={stateMenu.success}
-            close={() => {
-              setState({ ...stateMenu, success: '' });
-            }}
-          />
+          {showSuccess && (
+            <Successful
+              success={message}
+              close={() => {
+                setShowSuccess(false);
+              }}
+            />
+          )}
         </ul>
       </div>
     </section>
