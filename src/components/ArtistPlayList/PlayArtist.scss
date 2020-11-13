@@ -3,9 +3,10 @@
 }
 
 .viewport {
-	overflow: hidden;
-	max-height: 300px;
-	height: 100%;
+  overflow: scroll;
+  max-height: 300px;
+  height: 100%;
+  width: 100%;
 }
 
 table {
@@ -18,7 +19,7 @@ table {
 
   td {
     padding: 7px;
-    font-size:14px;
+    font-size: 14px;
   }
   tbody {
     tr {
@@ -31,39 +32,39 @@ table {
   }
 }
 @media screen and (max-width: 700px) {
-   table{
-     padding:20px;
-     th{
-       font-size:14px;
-     }
-  td {
-    font-size:12px;
-  }
-  .viewport{
-    padding:0;
+  table {
+    padding: 20px;
+    th {
+      font-size: 14px;
+    }
+    td {
+      font-size: 12px;
+    }
+    .viewport {
+      padding: 0;
+    }
   }
 }
 @media screen and (max-width: 568px) {
-  table{
-    padding:0px;
-    th{
-      font-size:14px;
+  table {
+    padding: 0px;
+    th {
+      font-size: 14px;
     }
- td {
-   font-size:12px;
- }
-table td img{
-  display:none;
-  padding:0;
-}
-.viewport{
-  padding:0;
-}
+    td {
+      font-size: 12px;
+    }
+    table td img {
+      display: none;
+      padding: 0;
+    }
+    .viewport {
+      padding: 0;
+    }
+  }
 }
 @media screen and (min-width: 568px) {
-  .ArtistPlayList{
-    padding:0;
-}
-}
-}
+  .ArtistPlayList {
+    padding: 0;
+  }
 }
