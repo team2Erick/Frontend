@@ -62,6 +62,8 @@ const MyTracks = [
 ];
 
 const Menu = () => {
+  const history = useHistory();
+
   const { state, setState } = useContext(Store);
   const [modal, setModal] = useState({
     modal: false,
@@ -75,14 +77,32 @@ const Menu = () => {
     setModal({ ...modal, modal: !modal.modal });
   };
 
-  const addNewPlaylist = async () => {
-    alert(nameList);
-    const itemList = await api.post(
-      'usermusic/create-playlist/' + state.user.id,
-      { name: nameList }
-    );
-    setMessage(itemList.data.data.System);
-    setShowSuccess(true);
+  const addNewPlaylist = async (e) => {
+    e.preventDefault();
+    if (!state.user.id) {
+      setMessage(
+        'Necesitas ser miembro para crear listas de reproducción',
+        null,
+        4000
+      );
+      setShowSuccess(true);
+      setTimeout(() => {
+        history.push('/login');
+      }, 4000);
+    }
+
+    console.log(state.user.id);
+    try {
+      const itemList = await api.post(
+        'usermusic/create-playlist/' + state.user.id,
+        { name: nameList }
+      );
+      setMessage(itemList.data.data.System);
+      setShowSuccess(true);
+      handlePlus();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const getNewPlaylist = async () => {
@@ -147,7 +167,12 @@ const Menu = () => {
           <li className="new-playlist">
             <div className="newPlaylist">
               <h3 className="menu__subtitle"> New Playlist</h3>
-              <img src={Plus} className="menu__icon" alt="Plus" onClick={handlePlus} />
+              <img
+                src={Plus}
+                className="menu__icon"
+                alt="Plus"
+                onClick={handlePlus}
+              />
             </div>
           </li>
           {newPlaylist.map((list, index) => (

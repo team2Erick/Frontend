@@ -29,6 +29,8 @@ export default () => {
   const [showSuccess, setShowSuccess] = useState(false);
   const [message, setMessage] = useState('');
 
+  const [loading, setLoading] = useState(false);
+
   const signUp = async (e) => {
     e.preventDefault();
 
@@ -37,6 +39,8 @@ export default () => {
       setShowSuccess(true);
       return;
     }
+
+    setLoading(true);
 
     const data = {
       name,
@@ -50,20 +54,28 @@ export default () => {
 
     // var signupQuery
 
-    file('user/sign-up', data).then((response) => {
-      if (response.data.error) {
-        setMessage(response.data.error);
+    file('user/sign-up', data)
+      .then((response) => {
+        if (response.data.error) {
+          setMessage(response.data.error);
+          setShowSuccess(true);
+          return;
+        }
+
+        setMessage(response.data.data.System);
         setShowSuccess(true);
-        return;
-      }
 
-      setMessage(response.data.data.System);
-      setShowSuccess(true);
+        setTimeout(() => {
+          setLoading(false);
 
-      setTimeout(() => {
-        history.push('/login');
-      }, 1000);
-    });
+          history.push('/login');
+        }, 1000);
+      })
+      .catch(() => {
+        setMessage('Ha ocurrido un error inesperado');
+        setShowSuccess(true);
+        setLoading(false);
+      });
   };
 
   const updateImage = (e) => {
@@ -192,8 +204,8 @@ export default () => {
                   required
                 />
               </span>
-              <label htmlFor="uploadfile">
-                <button type="button">PICK IMAGE</button>
+              <label class="button" htmlFor="uploadfile">
+                PICK IMAGE
               </label>
               <button type="submit">SING UP</button>
             </form>
