@@ -9,6 +9,9 @@ import api from '../../services/api';
 import Store from '../../store';
 import './Login.scss';
 
+import User from '../../assets/images/icons/user.svg'
+import Logo from '../../assets/images/icons/cday.svg'
+
 export default () => {
   const history = useHistory();
   const { state, setState } = useContext(Store);
@@ -73,17 +76,14 @@ export default () => {
       <div className="loginpage__container">
         <div className="presentation">
           <figure className="loginpage__logo">
-            <img src="/src/assets/images/icons/cday.svg" alt="logo cday" />
+            <img src={Logo} alt="logo cday" />
           </figure>
           <h1 className="loginpage__title">
-            Listening and watching anytime, anywhere
+            New day, new music
           </h1>
-          <h4 className="loginpage__secondary-title">
-            The artists we represent are one of the most successful in Romania
-            and also were a huge breakthrough.
-          </h4>
+
           <div className="cel">
-            <img src="/src/assets/images/icons/user.svg" alt="user" />
+            <img src={User} alt="user" />
           </div>
         </div>
         <div className="user">
@@ -124,22 +124,6 @@ export default () => {
                 <Link to="/signup">Sing up</Link>
               </span>
             </h4>
-            <div className="inscription">
-              <button>
-                <img
-                  src="/src/assets/images/icons/google-icon.svg"
-                  alt="logo google"
-                />
-                <span>LOG IN WITH GOOGLE</span>
-              </button>
-              <button>
-                <img
-                  src="/src/assets/images/icons/facebook-icon.svg"
-                  alt="logo facebook"
-                />
-                <span>LOG IN WITH FACEBOOK</span>
-              </button>
-            </div>
           </article>
         </div>
       </div>

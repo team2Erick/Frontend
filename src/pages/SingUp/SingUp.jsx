@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import Successful from '../../components/Successful/Successful';
 import { apiPath, file } from '../../services/api';
 import Store from '../../store';
+import User from '../../assets/images/icons/user.svg'
+import Logo from '../../assets/images/icons/cday.svg'
 
 import './SingUp.scss';
 
@@ -99,15 +101,11 @@ export default () => {
 			<div className="singup__container">
 				<div className="presentationsingup">
 					<figure className="singup__logo">
-						<img src="/src/assets/images/icons/cday.svg" alt="logo cday" />
+						<img src={Logo} alt="logo cday" />
 					</figure>
-					<h1 className="singup__title">Listening anytime, anywhere</h1>
-					<h4 className="singup__secondary-title">
-						The artists we represent are one of the most successful in Romania
-						and also were a huge breakthrough.
-          </h4>
+					<h1 className="singup__title">New day, new Music</h1>
 					<div className="imagesingup">
-						<img src="/src/assets/images/icons/user.svg" alt="user" />
+						<img src={User} alt="user" />
 					</div>
 				</div>
 				<div className="user">
@@ -215,26 +213,6 @@ export default () => {
 								<Link to="/login">Log in</Link>
 							</span>
 						</h4>
-						<div className="inscription">
-							<a href={apiPath + 'auth/google'}>
-								<button type="button" onClick={handleGoogle}>
-									<img
-										src="/src/assets/images/icons/google-icon.svg"
-										alt="logo google"
-									/>
-									<span>SING UP WITH GOOGLE</span>
-								</button>
-							</a>
-							<Link to="/finishsingup">
-								<button>
-									<img
-										src="/src/assets/images/icons/facebook-icon.svg"
-										alt="logo facebook"
-									/>
-									<span>SING UP WITH FACEBOOK</span>
-								</button>
-							</Link>
-						</div>
 					</article>
 				</div>
 			</div>
