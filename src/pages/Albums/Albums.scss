@@ -3,9 +3,11 @@
 @import '../../assets/styles/lib/fullScreenCenter';
 
 .albums {
-  background: linear-gradient(180deg,
-      rgba(244, 249, 255, 0.0001) 0%,
-      #f4f9ff 26.23%);
+  background: linear-gradient(
+    180deg,
+    rgba(244, 249, 255, 0.0001) 0%,
+    #f4f9ff 26.23%
+  );
 
   h2 {
     padding-left: 30px;
@@ -19,6 +21,7 @@
   align-items: flex-start;
   justify-content: flex-start;
   padding: 40px 20px;
+  margin-bottom: 12%;
 
   @media screen and (max-width: 700px) {
     flex-direction: column;

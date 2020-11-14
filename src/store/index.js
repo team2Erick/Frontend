@@ -44,7 +44,9 @@ export const stateData = {
 
   newPlaylist: {},
 
-  playlists: []
+  playlists: {
+    playlist: []
+  }
 
 };
 

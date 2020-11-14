@@ -74,7 +74,6 @@ const Menu = () => {
     modal: false,
   });
   const [nameList, setNameList] = useState('');
-  const [newPlaylist, setNewPlaylist] = useState([]);
   const [showSuccess, setShowSuccess] = useState(false);
   const [message, setMessage] = useState('');
 
@@ -114,8 +113,9 @@ const Menu = () => {
   const getPlaylist = async () => {
     const response = await api.get('usermusic/playlist/' + state.user.id);
     if (response.data.data) {
-
-      setNewPlaylist(response.data.data);
+      setState("playlists", {
+        playlist: response.data.data
+      })
     }
   };
 
@@ -184,7 +184,7 @@ const Menu = () => {
               />
             </div>
           </li>
-          {newPlaylist.map((list, index) => (
+          {state.playlists.playlist.map((list, index) => (
             <li
               key={index}
               className={list === state.currentPlayList ? 'active' : ''}
