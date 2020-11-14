@@ -34,7 +34,7 @@ const MainSlider = ({ sliders }) => {
           return (
             <div
               className="main-slider"
-              key={index}
+              key={`main_slider_${index}`}
               style={{
                 background: `url(${slider.album.cover_big})`,
                 backgroundSize: 'cover',
@@ -52,8 +52,7 @@ const MainSlider = ({ sliders }) => {
                       setPlay(index);
                     }}
                     className="btn"
-                    s
-                    tyle={{ marginRight: '10px' }}
+                    style={{ marginRight: '10px' }}
                   >
                     PLAY
                     <img src={PlayIcon} alt="" />

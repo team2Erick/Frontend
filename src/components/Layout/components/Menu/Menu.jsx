@@ -113,8 +113,9 @@ const Menu = () => {
 
   const getPlaylist = async () => {
     const response = await api.get('usermusic/playlist/' + state.user.id);
-    console.log(response.data.data);
-    setNewPlaylist(response.data.data);
+    if (response.data.data) {
+      setNewPlaylist(response.data.data);
+    }
   };
 
   /* useEffect(() => {
@@ -134,9 +135,9 @@ const Menu = () => {
       </figure>
       <div className="menu">
         <ul className="menu__list">
-          {SidebarItems.map((item) => (
+          {SidebarItems.map((item, index) => (
             <li
-              key={item}
+              key={`list__${index}`}
               className={item === state.currentPlayList ? 'active' : ''}
             // onClick={() => {
             // setState({ ...state, currentPlayList: item });
@@ -153,9 +154,9 @@ const Menu = () => {
       <div className="menu">
         <h3 className="menu__subtitle">My Tracks</h3>
         <ul className="menu__list">
-          {MyTracks.map((item) => (
+          {MyTracks.map((item, index) => (
             <li
-              key={item}
+              key={`tracks__${index}`}
               className={item === state.currentPlayList ? 'active' : ''}
             // onClick={() => {
             // setState({ ...state, currentPlayList: item });
@@ -184,7 +185,7 @@ const Menu = () => {
           </li>
           {newPlaylist.map((list, index) => (
             <li
-              key={list}
+              key={index}
               className={list === state.currentPlayList ? 'active' : ''}
             >
               <a style={{ "text-transform": "capitalize" }}>

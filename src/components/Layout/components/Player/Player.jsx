@@ -129,9 +129,9 @@ export default () => {
           alt=""
         />
         <div className="player__song__content">
-          
-          <p><strong>{state.player.playlist[state.player.index].title}</strong><br/>
-          {state.player.playlist[state.player.index].artist.name}</p>
+
+          <p><strong>{state.player.playlist[state.player.index].title}</strong><br />
+            {state.player.playlist[state.player.index].artist.name}</p>
           <img
             onClick={() => {
               setShowPlaylist(!showPlaylist);
@@ -140,69 +140,69 @@ export default () => {
           />
         </div>
       </div>
-    <div className="player__container">
-      <div className="player__controls">
-        <div className="player__controls__buttons">
-          <button>
-            <img src={ShuffleIcon} />
-          </button>
-          <button onClick={prev}>
-            <img src={BackIcon} />
-          </button>
+      <div className="player__container">
+        <div className="player__controls">
+          <div className="player__controls__buttons">
+            <button>
+              <img src={ShuffleIcon} />
+            </button>
+            <button onClick={prev}>
+              <img src={BackIcon} />
+            </button>
 
-          <button>
-            <div onClick={playToggle} className="play">
-              {state.player.play ? (
-                <img src={PauseIcon} />
-              ) : (
-                  <img src={PlayIcon} />
-                )}
+            <button>
+              <div onClick={playToggle} className="play">
+                {state.player.play ? (
+                  <img src={PauseIcon} />
+                ) : (
+                    <img src={PlayIcon} />
+                  )}
+              </div>
+            </button>
+
+            <button onClick={next}>
+              <img src={NextIcon} />
+            </button>
+            <button>
+              <img src={ContinueIcon} />
+            </button>
+          </div>
+          {state.player.audio && (
+            <div className="player__controls__progress">
+              <span>{secondsToString(currentTime)}</span>
+
+              <input
+                type="range"
+                max={parseInt(state.player.audio.duration) || 0}
+                className="player__controls__progress__bar"
+                value={currentTime}
+                onChange={(event) => updateTime(event)}
+              ></input>
+
+              <span>
+                {secondsToString(state.player.audio.duration - currentTime || 0)}
+              </span>
             </div>
-          </button>
-
-          <button onClick={next}>
-            <img src={NextIcon} />
-          </button>
-          <button>
-            <img src={ContinueIcon} />
-          </button>
+          )}
         </div>
         {state.player.audio && (
-          <div className="player__controls__progress">
-            <span>{secondsToString(currentTime)}</span>
-
+          <div className="player__volume">
+            <img src={VolumeIcon} alt="Volume" />
             <input
               type="range"
-              max={parseInt(state.player.audio.duration)}
+              value={state.player.audio.volume * 100}
+              max={100}
               className="player__controls__progress__bar"
-              value={currentTime}
-              onChange={(event) => updateTime(event)}
+              onChange={(event) =>
+                (state.player.audio.volume = (
+                  event.target.value / 100
+                ).toString())
+              }
             ></input>
-
-            <span>
-              {secondsToString(state.player.audio.duration - currentTime || 0)}
-            </span>
           </div>
         )}
       </div>
-      {state.player.audio && (
-        <div className="player__volume">
-          <img src={VolumeIcon} alt="Volume" />
-          <input
-            type="range"
-            value={state.player.audio.volume * 100}
-            max={100}
-            className="player__controls__progress__bar"
-            onChange={(event) =>
-              (state.player.audio.volume = (
-                event.target.value / 100
-              ).toString())
-            }
-          ></input>
-        </div>
-      )}
-    </div>
-      
+
     </div>
   );
 };
