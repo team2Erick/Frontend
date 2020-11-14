@@ -43,6 +43,9 @@ export const stateData = {
   },
 
   newPlaylist: {},
+
+  playlists: []
+
 };
 
 export default React.createContext({

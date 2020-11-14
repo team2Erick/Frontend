@@ -26,20 +26,24 @@ const Favourite = () => {
   return (
     <Layout>
       {state.user.id ? (
-        <>
-          <section className="main Favourite">
-            <div>
-              <div className="container-favourite">
-                <ul className="container-playlistFav">
-                  <Table title="Favorite" playlist={favoriteItems} />
-                </ul>
+        favoriteItems.length ?
+          (<>
+            <section className="main Favourite">
+              <div>
+                <div className="container-favourite">
+                  <ul className="container-playlistFav">
+                    <Table title="Favorite" playlist={favoriteItems} />
+                  </ul>
+                </div>
               </div>
-            </div>
-          </section>
-        </>
+            </section>
+          </>) :
+          (
+            <div className='center-item-full-screen' >Cargando...</div>
+          )
       ) : (
-        history.push('/login')
-      )}
+          history.push('/login')
+        )}
     </Layout>
   );
 };

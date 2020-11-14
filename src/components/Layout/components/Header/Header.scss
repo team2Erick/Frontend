@@ -192,6 +192,15 @@
 
     & li:hover>ul {
       display: block;
+      border-radius: 5px;
+
+      li {
+        padding: 10px;
+      }
+
+      li:hover {
+        background: rgba(255, 255, 255, .2);
+      }
     }
   }
 }
@@ -250,7 +259,6 @@
 
   a:hover {
     border: 1px solid $color-primary;
-    padding: 5px 20px;
     color: $color-primary !important;
     background: none;
     border-radius: 5px;

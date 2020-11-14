@@ -114,6 +114,7 @@ const Menu = () => {
   const getPlaylist = async () => {
     const response = await api.get('usermusic/playlist/' + state.user.id);
     if (response.data.data) {
+
       setNewPlaylist(response.data.data);
     }
   };

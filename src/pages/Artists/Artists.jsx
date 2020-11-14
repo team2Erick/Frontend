@@ -24,36 +24,39 @@ const Artists = () => {
   return (
     <Layout>
       {state.user.id ? (
-        <>
-          <div className="container-Artist-hide-scroll">
-            <div className="container-Artist-viewport">
-              <div className="artists">
-                <div className="container-artist">
-                  <div className="ArtistPlayList">
-                    <ArtistPlayList artist={state.genre.results.artists} />
-                  </div>
-                  <div className="FilterArtist">
-                    <FilterArtist />
-                  </div>
-                  <div className="ScrollSlider">
-                    {state.genre.results.songs ? (
+        state.genre.results.songs ? (
+          <>
+            <div className="container-Artist-hide-scroll">
+              <div className="container-Artist-viewport">
+                <div className="artists">
+                  <div className="container-artist">
+                    <div className="ArtistPlayList">
+                      <ArtistPlayList artist={state.genre.results.artists} />
+                    </div>
+                    <div className="FilterArtist">
+                      <FilterArtist />
+                    </div>
+                    <div className="ScrollSlider">
+
                       <ScrollSlider
                         title="Artist"
                         items={state.genre.results.songs}
                         rounded={true}
                       />
                     ) : (
-                      <>Cargando...</>
-                    )}
+                      <div className='center-item-full-screen' >Cargando...</div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </>
+          </>
+        ) : (
+            <div className='center-item-full-screen' >Cargando...</div>
+          )
       ) : (
-        history.push('/login')
-      )}
+          history.push('/login')
+        )}
     </Layout>
   );
 };
