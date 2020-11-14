@@ -1,6 +1,8 @@
 import React, { useCallback } from 'react';
 import ChartsEmbedSDK from '@mongodb-js/charts-embed-dom';
 
+import './charts.scss';
+
 const sdk = new ChartsEmbedSDK({
   baseUrl: 'https://charts.mongodb.com/charts-project-0-exnrk',
 });

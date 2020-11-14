@@ -10,7 +10,7 @@ import Store from '../../store';
 const MainSlider = ({ sliders }) => {
   sliders = sliders || [];
 
-  var [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     setInterval(() => {
@@ -34,24 +34,29 @@ const MainSlider = ({ sliders }) => {
           return (
             <div
               className="main-slider"
-              key={index}
+              key={`main_slider_${index}`}
               style={{
                 background: `url(${slider.album.cover_big})`,
                 backgroundSize: 'cover',
               }}
             >
               <div className="main-slider__content">
-                <span className="main-slider__subtitle">// TRENDING</span>
-                <strong className="main-slider__title">{slider.title}</strong>
-                <span className="main-slider__artist">-{slider.artist.name}</span>
+                <div className="main-slider__subtitle">// TRENDING</div>
+                <div className="main-slider__title">{slider.title}</div>
+                <div className="main-slider__artist">
+                  -{slider.artist.name}
+                </div>
                 <div className="main-slider__buttons">
-                  <div onClick={() => {
-                    setPlay(index)
-                  }} className="btn" style={{ marginRight: '10px' }}>
+                  <div
+                    onClick={() => {
+                      setPlay(index);
+                    }}
+                    className="btn"
+                    style={{ marginRight: '10px' }}
+                  >
                     PLAY
                     <img src={PlayIcon} alt="" />
                   </div>
-
                 </div>
               </div>
             </div>

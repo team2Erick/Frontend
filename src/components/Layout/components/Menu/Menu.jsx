@@ -1,24 +1,26 @@
-import React, { useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useContext, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+
 import Modal from '../../../Modal/Modal';
 import Successful from '../../../Successful/Successful';
-import Logo from '../../../../assets/images/icons/cday-n.svg'
-import CloseIcon from '../../../../assets/images/icons/close.svg'
-import NewPlayList from '../../../../assets/images/icons/newPlaylist.svg'
-import PlayList from '../../../../assets/images/icons/playlist.svg'
+import Store from '../../../../store';
+import api from '../../../../services/api';
+
+import Logo from '../../../../assets/images/icons/cday-n.svg';
+import CloseIcon from '../../../../assets/images/icons/close.svg';
+import newPlus from '../../../../assets/images/icons/newPlaylist.svg';
+import Plus from '../../../../assets/images/icons/playlist.svg';
 import './Menu.scss';
 
-import DiscoverIcon from '../../../../assets/images/icons/discover.svg'
-import AlbumsIcon from '../../../../assets/images/icons/albums.svg'
-import ArtistsIcon from '../../../../assets/images/icons/artists.svg'
+import DiscoverIcon from '../../../../assets/images/icons/discover.svg';
+import AlbumsIcon from '../../../../assets/images/icons/albums.svg';
+import ArtistsIcon from '../../../../assets/images/icons/artists.svg';
 
-import FavoriteIcon from '../../../../assets/images/icons/favourite-grey.svg'
-import RecentHistory from '../../../../assets/images/icons/history.svg'
-
-
+import FavoriteIcon from '../../../../assets/images/icons/favourite-grey.svg';
+import RecentHistory from '../../../../assets/images/icons/history.svg';
+import PlayIcon from '../Player/img/play-icon.svg';
 
 const SidebarItems = [
-
   {
     image: DiscoverIcon,
     alt: 'discover',
@@ -61,33 +63,81 @@ const MyTracks = [
   },
 ];
 
-
 const Menu = () => {
-  const [state, setState] = useState({
-    currentPlayList: 'home',
+  const history = useHistory();
+
+  useEffect(() => {
+    getPlaylist()
+  }, [])
+
+  const { state, setState } = useContext(Store);
+  const [modal, setModal] = useState({
     modal: false,
-    newPlaylist: {
-      /* rock: new Set(), */
-    },
-    success: '',
   });
+  const [nameList, setNameList] = useState('');
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [message, setMessage] = useState('');
 
-  const newPlaylistRef = useRef(null);
-  const newPlaylist = Object.keys(state.newPlaylist);
-
-  const addNewPlaylist = (e) => {
-    e.preventDefault();
-    const list = newPlaylistRef.current.value;
-
-    setState({
-      ...state,
-      modal: false,
-      newPlaylist: { ...state.newPlaylist, [list]: new Set() },
-      success: 'Playlist created successfully!',
-    });
+  const handlePlus = () => {
+    setModal({ ...modal, modal: !modal.modal });
   };
 
-  const handleModal = () => setState({ ...state, modal: !state.modal });
+  const addNewPlaylist = async (e) => {
+    e.preventDefault();
+    if (!state.user.id) {
+      setMessage(
+        'Necesitas ser miembro para crear listas de reproducción',
+        null,
+        4000
+      );
+      setShowSuccess(true);
+      setTimeout(() => {
+        history.push('/login');
+      }, 4000);
+    }
+
+    console.log(state.user.id);
+    try {
+      const itemList = await api.post(
+        'usermusic/create-playlist/' + state.user.id,
+        { name: nameList }
+      );
+      setMessage(itemList.data.data.System);
+      setShowSuccess(true);
+      handlePlus();
+      getPlaylist()
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getPlaylist = async () => {
+    const response = await api.get('usermusic/playlist/' + state.user.id);
+    if (response.data.data) {
+      setState("playlists", {
+        playlist: response.data.data
+      })
+    }
+  };
+
+  const handlePlayPlaylist = (playlist) => {
+    var localPlaylist = localStorage.getItem("cday-playlist")
+    if (localPlaylist) {
+      localPlaylist = JSON.parse(localPlaylist);
+      setState("player", {
+        playlist: localPlaylist[playlist._id],
+        index: 0,
+        title: playlist.name,
+        play: true,
+        currentTime: 0,
+      })
+    }
+  }
+
+  /* useEffect(() => {
+    getNewPlaylist();
+    console.log(newPlaylist);
+  }, []); */
 
   return (
     <section className="container__menu">
@@ -95,17 +145,19 @@ const Menu = () => {
         <img src={CloseIcon} />
       </button>
       <figure>
-        <img src={Logo} alt="icon" />
+        <Link to="/">
+          <img src={Logo} alt="icon" />
+        </Link>
       </figure>
       <div className="menu">
         <ul className="menu__list">
           {SidebarItems.map((item, index) => (
             <li
-              key={index}
+              key={`list__${index}`}
               className={item === state.currentPlayList ? 'active' : ''}
-              onClick={() => {
-                setState({ ...state, currentPlayList: item });
-              }}
+            // onClick={() => {
+            // setState({ ...state, currentPlayList: item });
+            // }}
             >
               <Link to={item.route}>
                 <img src={item.image} className="menu__icon" alt={item.alt} />
@@ -120,11 +172,11 @@ const Menu = () => {
         <ul className="menu__list">
           {MyTracks.map((item, index) => (
             <li
-              key={index}
+              key={`tracks__${index}`}
               className={item === state.currentPlayList ? 'active' : ''}
-              onClick={() => {
-                setState({ ...state, currentPlayList: item });
-              }}
+            // onClick={() => {
+            // setState({ ...state, currentPlayList: item });
+            // }}
             >
               <Link to={item.route}>
                 <img src={item.image} className="menu__icon" alt={item.alt} />
@@ -136,56 +188,59 @@ const Menu = () => {
       </div>
       <div className="menu">
         <ul className="menu__list">
-          <li className="new-playlist" onClick={handleModal}>
+          <li className="new-playlist">
             <div className="newPlaylist">
               <h3 className="menu__subtitle"> New Playlist</h3>
               <img
-                src={PlayList}
+                src={Plus}
                 className="menu__icon"
                 alt="Plus"
+                onClick={handlePlus}
               />
             </div>
           </li>
-          {newPlaylist.map((item, index) => (
+          {state.playlists.playlist.map((list, index) => (
             <li
               key={index}
-              className={item === state.currentPlayList ? 'active' : ''}
-              onClick={() => {
-                setState({ state, currentPlayList: item });
-              }}
+              className={list === state.currentPlayList ? 'active' : ''}
             >
-              <img
-                src={NewPlayList}
-                className="menu__icon"
-                alt="New Playlist"
-              />
-              {item}
+              <a onClick={() => {
+                handlePlayPlaylist(list)
+              }} style={{ "textTransform": "capitalize", cursor: "pointer" }}>
+                <img src={PlayIcon} />
+                {list.name}
+              </a>
             </li>
           ))}
-          <Modal show={state.modal} close={handleModal}>
+          <Modal show={modal.modal} close={handlePlus}>
             <form onSubmit={addNewPlaylist}>
               <div className="title">Create a New PlayList</div>
               <div className="content-wrap">
                 <input
                   type="text"
-                  placeholder="My Playlist"
+                  value={nameList}
+                  placeholder="Name list"
+                  onChange={(e) => {
+                    setNameList(e.target.value);
+                  }}
                   required
-                  ref={newPlaylistRef}
                 />
                 <br />
                 <button type="submit">create</button>
               </div>
             </form>
           </Modal>
-          <Successful
-            success={state.success}
-            close={() => {
-              setState({ ...state, success: '' });
-            }}
-          />
+          {showSuccess && (
+            <Successful
+              success={message}
+              close={() => {
+                setShowSuccess(false);
+              }}
+            />
+          )}
         </ul>
       </div>
-    </section>
+    </section >
   );
 };
 

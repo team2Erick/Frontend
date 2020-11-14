@@ -1,4 +1,5 @@
-import React, {useContext, useEffect} from 'react';
+import React, { useContext, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import ArtistPlayList from '../../components/ArtistPlayList/ArtistPlayList';
 import FilterArtist from '../../components/FilterArtist/FilterArtist';
 import ScrollSlider from '../../components/ScrollSlider/ScrollSlider';
@@ -10,6 +11,7 @@ import Store from '../../store';
 
 const Artists = () => {
   const { state, setState } = useContext(Store);
+  const history = useHistory();
 
   useEffect(() => {
     const fetch = async () => {
@@ -21,30 +23,40 @@ const Artists = () => {
 
   return (
     <Layout>
-      <div className="container-Artist-hide-scroll">
-        <div className="container-Artist-viewport">
-          <div className="artists">
-            <div className="container-artist">
-              <div className="ArtistPlayList">
-                <ArtistPlayList artist={state.genre.results.artists} />
-              </div>
-              <div className="FilterArtist">
-                <FilterArtist />
-              </div>
-              <div className="ScrollSlider">
-                {state.genre.results.songs ? (
-                  <ScrollSlider
-                    title="Artist"
-                    items={state.genre.results.songs}
-                    rounded={true}
-                  />
-                ) : (<>Cargando...</>)
-                }
+      {state.user.id ? (
+        state.genre.results.songs ? (
+          <>
+            <div className="container-Artist-hide-scroll">
+              <div className="container-Artist-viewport">
+                <div className="artists">
+                  <div className="container-artist">
+                    <div className="ArtistPlayList">
+                      <ArtistPlayList artist={state.genre.results.artists} />
+                    </div>
+                    <div className="FilterArtist">
+                      <FilterArtist />
+                    </div>
+                    <div className="ScrollSlider">
+
+                      <ScrollSlider
+                        title="Artist"
+                        items={state.genre.results.songs}
+                        rounded={true}
+                      />
+                    ) : (
+                      <div className='center-item-full-screen' >Cargando...</div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
+          </>
+        ) : (
+            <div className='center-item-full-screen' >Cargando...</div>
+          )
+      ) : (
+          history.push('/login')
+        )}
     </Layout>
   );
 };

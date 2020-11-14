@@ -1,8 +1,18 @@
 import React from 'react';
+import Jwt_Decode from 'jwt-decode';
 
-const user = localStorage.getItem("cday_user") ? JSON.parse(localStorage.getItem("cday_user")) : {}
-console.log(localStorage.getItem("cday_user"));
-console.log(JSON.parse(localStorage.getItem("cday_user")));
+var user = {}
+
+if (window.localStorage.getItem('cday_user')) {
+  user = Jwt_Decode(window.localStorage.getItem('cday_user'))
+  user = {
+    ...user,
+    id: user.sub
+  };
+}
+
+console.log(user);
+
 export const stateData = {
   player: {
     playlist: [],
@@ -27,16 +37,20 @@ export const stateData = {
   },
 
   user,
- 
- favorites: {
-        id : []
-    },
-    newPlaylist: {
 
+  favorites: {
+    id: [],
   },
+
+  newPlaylist: {},
+
+  playlists: {
+    playlist: []
+  }
+
 };
 
 export default React.createContext({
   state: stateData,
-  setState: () => { },
+  setState: () => {},
 });

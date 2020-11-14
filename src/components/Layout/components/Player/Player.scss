@@ -1,4 +1,4 @@
-@import "../../../../assets/styles/lib/variables";
+@import '../../../../assets/styles/lib/variables';
 
 .player {
   position: fixed;
@@ -8,19 +8,34 @@
   display: flex;
   z-index: 2;
 
+  @media (max-width: 700px) {
+    &__song {
+      flex-direction: column;
+      width: 160px;
+    }
+  }
+
+
+
   &__song {
     background: rgba(10, 91, 191, 0.8);
     backdrop-filter: blur(5px);
-
-    padding: 20px 40px;
+    padding: 20px 20px;
     display: flex;
-    min-width: 350px;
+    width: 300px;
 
     &__image {
       width: 60px;
       height: 60px;
       border-radius: 5px;
       margin-right: 20px;
+    }
+
+    @media (max-width: 700px) {
+      &__image {
+        width: auto;
+        margin-right: 0px;
+      }
     }
 
     &__container {
@@ -30,6 +45,7 @@
       display: flex;
       border-radius: 5px;
       margin-right: 40px;
+
     }
 
     &__content {
@@ -40,11 +56,26 @@
       p {
         margin: 0px;
         color: white;
+        line-height: 16px;
       }
 
       img {
         cursor: pointer;
       }
+    }
+
+    @media (max-width:700px) {
+      &__content {
+        display: none;
+      }
+    }
+  }
+
+  @media (max-width:700px) {
+
+    &__song {
+      justify-content: center;
+      width: auto;
     }
   }
 
@@ -53,7 +84,7 @@
 
     align-items: center;
     justify-content: center;
-
+    padding: 10px 0;
     background: rgba(5, 5, 5, 0.8);
     backdrop-filter: blur(5px);
     // background: $color-acents;
@@ -101,7 +132,7 @@
     &__progress {
       display: flex;
       color: $color-grey;
-      align-items: center;
+      align-items: flex-end;
       justify-content: center;
 
       &__bar:focus {
@@ -124,12 +155,12 @@
         transition: 0.2s;
       }
 
-      :hover > &__bar::-webkit-slider-runnable-track {
+      :hover>&__bar::-webkit-slider-runnable-track {
         height: 6px;
         transition: 0.2s;
       }
 
-      :hover > &__bar::-webkit-slider-thumb {
+      :hover>&__bar::-webkit-slider-thumb {
         margin-top: -5px;
       }
 
@@ -159,5 +190,21 @@
     // min-width: 350px;
     align-items: center;
     justify-content: space-between;
+    height: 100%;
+  }
+
+  @media (max-width:700px) {
+    &__volume {
+      display: none;
+    }
+  }
+}
+
+.player__container {
+  display: flex;
+  width: 100%;
+
+  @media screen and (max-width: 700px) {
+    flex-direction: column;
   }
 }

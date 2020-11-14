@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { HashRouter, Switch, Route } from 'react-router-dom';
 
 import Home from '../pages/Home/Home';
@@ -19,28 +19,25 @@ import './App.scss';
 import Store, { stateData } from '../store';
 
 const App = () => {
-
   const [state, setState] = useState(stateData);
 
   const value = {
-
     state,
-
     setState: (module, data) => {
-      var newState = { ...state };
-
+      const newState = { ...state };
       newState[module] = { ...state[module], ...data };
 
       setState((currentState) => {
         return {
           ...currentState,
-          ...newState
-        }
+          ...newState,
+        };
       });
 
-      return { ...newState }
+      return { ...newState };
     },
   };
+
   return (
     <Store.Provider value={value}>
       <Player />
