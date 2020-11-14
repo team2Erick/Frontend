@@ -36,6 +36,17 @@ const Albums = () => {
     return () => (mounted = false);
   }, []);
 
+  const buildSongsToTable = (items) => {
+    let newPlaylist = items.tracks.data.map(track => {
+      let newTrack = track
+      newTrack.cover_medium = items.cover_medium
+      newTrack.cover_small = items.cover_small
+      return newTrack
+    })
+
+    return newPlaylist
+  }
+
   return (
     <Layout>
       {state.user.id ? (
@@ -63,7 +74,7 @@ const Albums = () => {
                       .join(',')}
                   </h4>
                   <Table
-                    playlist={albumPrimary.tracks.data}
+                    playlist={buildSongsToTable(albumPrimary)}
                     hideImage={true}
                     album={true}
                   />
@@ -71,7 +82,7 @@ const Albums = () => {
               </div>
             </section>
           ) : (
-              <div className='center-item-full-screen' > Cargando...</div>
+              <div className='center-item-full-screen' >Cargando...</div>
             )}
         </>
       ) : (

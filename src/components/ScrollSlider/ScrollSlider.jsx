@@ -33,12 +33,6 @@ const ScrollSlider = ({ items, title, rounded, album }) => {
       })
 
       playlist = newPlaylist
-      // items.forEach((element) => {
-      //   console.log();
-      //   element.tracks.data.forEach((el) => {
-      //     playlist.push(el);
-      //   });
-      // });
     } else {
       playlist = items;
     }

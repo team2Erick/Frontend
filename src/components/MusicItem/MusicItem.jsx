@@ -4,8 +4,8 @@ import Store from '../../store';
 import api from '../../services/api';
 import Successful from '../../components/Successful/Successful';
 import './MusicItem.scss';
-import Heart from '../../assets/images/icons/heart-solid.svg'
-import HeartActive from '../../assets/images/icons/heart-active.svg'
+import Heart from '../../assets/images/icons/heart-solid.svg';
+import HeartActive from '../../assets/images/icons/heart-active.svg';
 
 const MusicItem = ({ item, rounded, album }) => {
   const { state, setState } = useContext(Store);
@@ -18,7 +18,6 @@ const MusicItem = ({ item, rounded, album }) => {
 
   const handleClick = async (value) => {
     if (!state.user.id) return history.push('/login');
-    alert(value);
     const FavouriteItem = await api.post(
       'usermusic/add-favorites/' + state.user.id,
       { favorites: value }
@@ -27,7 +26,7 @@ const MusicItem = ({ item, rounded, album }) => {
     setShowSuccess(true);
   };
 
-  const HeartLike = liked ? HeartActive : Heart
+  const HeartLike = liked ? HeartActive : Heart;
 
   return (
     <div>
@@ -50,21 +49,23 @@ const MusicItem = ({ item, rounded, album }) => {
       </div>
       <div className="music-item__title">{item.title}</div>
       <div className="music-item__subtitle">{item.artist.name}</div>
-      <button
-        type="button"
-        className="music-item__btn-fav"
-        onClick={() => {
-          handleClick(item.id);
-          setLiked(!liked);
-        }}
-      >
-        <span>
-          <img src={HeartLike} alt="like"/>
-        </span>
-        {/* <span aria-label="Fav-Gif" role="img">
+      {!album && (
+        <button
+          type="button"
+          className="music-item__btn-fav"
+          onClick={() => {
+            handleClick(item.id);
+            setLiked(!liked);
+          }}
+        >
+          <span>
+            <img src={HeartLike} alt="like" />
+          </span>
+          {/* <span aria-label="Fav-Gif" role="img">
           ❤️
-        </span> */}
-      </button>
+          </span> */}
+        </button>
+      )}
     </div>
   );
 };

@@ -25,7 +25,7 @@ const Home = () => {
 
   return (
     <Layout>
-      {songs.length > 0 && (
+      {songs.length > 0 ? (
         <main className="main">
           <MainSlider sliders={songs[0]} />
           <ScrollSlider title="Canciones" items={songs[1]} />
@@ -34,7 +34,9 @@ const Home = () => {
             <Table playlist={songs[2]} />
           </div>
         </main>
-      )}
+      ) : (
+          <div className='center-item-full-screen' >Cargando...</div>
+        )}
     </Layout>
   );
 };
