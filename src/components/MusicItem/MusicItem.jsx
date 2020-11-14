@@ -18,7 +18,6 @@ const MusicItem = ({ item, rounded, album }) => {
 
   const handleClick = async (value) => {
     if (!state.user.id) return history.push('/login');
-    alert(value);
     const FavouriteItem = await api.post(
       'usermusic/add-favorites/' + state.user.id,
       { favorites: value }
@@ -50,7 +49,7 @@ const MusicItem = ({ item, rounded, album }) => {
       </div>
       <div className="music-item__title">{item.title}</div>
       <div className="music-item__subtitle">{item.artist.name}</div>
-      <button
+      {!album && <button
         type="button"
         className="music-item__btn-fav"
         onClick={() => {
@@ -59,12 +58,12 @@ const MusicItem = ({ item, rounded, album }) => {
         }}
       >
         <span>
-          <img src={HeartLike} alt="like"/>
+          <img src={HeartLike} alt="like" />
         </span>
         {/* <span aria-label="Fav-Gif" role="img">
           ❤️
           </span> */}
-      </button>
+      </button>}
     </div>
   );
 };
