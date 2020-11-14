@@ -30,9 +30,11 @@ const Favourite = () => {
           <section className="main Favourite">
             <div>
               <div className="container-favourite">
-                <ul className="container-playlistFav">
-                  <Table title="Favorite" playlist={favoriteItems} />
-                </ul>
+                <div className="container-playlistFav">
+                  <div className="main__table">
+                    <Table title="Favorite" playlist={favoriteItems} />
+                  </div>
+                </div>
               </div>
             </div>
           </section>
