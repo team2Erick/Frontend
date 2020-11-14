@@ -76,7 +76,7 @@ const Table = ({ title, playlist, dense, hideImage }) => {
                     <img src={PlayIcon} />
                   </button>
                 </td>
-                {!dense && (
+                {(!dense || state.user.id) && (
                   <td>
                     <button
                       className="favoritesbutton"

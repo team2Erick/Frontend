@@ -45,6 +45,7 @@ const SidebarItems = [
     name: 'Genre',
     route: '/artists',
   },
+
 ];
 
 const MyTracks = [
