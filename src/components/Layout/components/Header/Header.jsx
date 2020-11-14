@@ -114,7 +114,7 @@ const Header = () => {
                         <span>{state.user.name}</span>
                       </li>
                       <li>
-                        <Link onClick={handleClick}>Logout</Link>
+                        <a onClick={handleClick}>Logout</a>
                       </li>
                     </ul>
                   </li>

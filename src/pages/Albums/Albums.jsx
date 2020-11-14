@@ -21,11 +21,12 @@ const Albums = () => {
     let mounted = true;
     async function fetchData() {
       const albumQuery = await api.get('/music/album');
-      setAlbumPrimary(albumQuery.data.data.splice(0, 1)[0]);
+      var albums = albumQuery.data.data.sort(() => {
+        return Math.random() - 0.5;
+      })
+      setAlbumPrimary(albums.splice(0, 1)[0]);
       setAlbumRamdom(
-        albumQuery.data.data.sort(() => {
-          return Math.random() - 0.5;
-        })
+        albums
       );
       console.log(albumRamdom[0]);
     }
@@ -70,13 +71,14 @@ const Albums = () => {
               </div>
             </section>
           ) : (
-            <>Cargando...</>
-          )}
+              <div className='center-item-full-screen' > Cargando...</div>
+            )}
         </>
       ) : (
-        history.push('/login')
-      )}
-    </Layout>
+          history.push('/login')
+        )
+      }
+    </Layout >
   );
 };
 

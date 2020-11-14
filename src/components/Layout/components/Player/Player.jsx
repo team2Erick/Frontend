@@ -125,7 +125,7 @@ export default () => {
       <div className="player__song">
         <img
           className="player__song__image"
-          src={state.player.playlist[state.player.index].album.cover_small}
+          src={state.player.playlist[state.player.index].cover_small || state.player.playlist[state.player.index].album.cover_small}
           alt=""
         />
         <div className="player__song__content">
