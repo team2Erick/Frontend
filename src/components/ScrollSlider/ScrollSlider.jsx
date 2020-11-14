@@ -25,12 +25,20 @@ const ScrollSlider = ({ items, title, rounded, album }) => {
     let playlist = [];
 
     if (album) {
-      items.forEach((element) => {
-        console.log();
-        element.tracks.data.forEach((el) => {
-          playlist.push(el);
-        });
-      });
+      let newPlaylist = items[index].tracks.data.map(track => {
+        let newTrack = track
+        newTrack.cover_medium = items[index].cover_medium
+        newTrack.cover_small = items[index].cover_small
+        return newTrack
+      })
+
+      playlist = newPlaylist
+      // items.forEach((element) => {
+      //   console.log();
+      //   element.tracks.data.forEach((el) => {
+      //     playlist.push(el);
+      //   });
+      // });
     } else {
       playlist = items;
     }
@@ -38,7 +46,7 @@ const ScrollSlider = ({ items, title, rounded, album }) => {
     setState('player', {
       playlist,
       title: title,
-      index: index,
+      index: 0,
       play: true,
     });
   };

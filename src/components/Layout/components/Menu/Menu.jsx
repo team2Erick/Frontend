@@ -188,7 +188,7 @@ const Menu = () => {
               key={index}
               className={list === state.currentPlayList ? 'active' : ''}
             >
-              <a style={{ "text-transform": "capitalize" }}>
+              <a style={{ "textTransform": "capitalize" }}>
                 <img src={PlayIcon} />
                 {list.name}
               </a>
