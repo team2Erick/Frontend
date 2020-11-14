@@ -57,7 +57,7 @@ const MusicItem = ({ item, rounded, album }) => {
         {/* <img src={Heart} /> */}
         <span aria-label="Fav-Gif" role="img">
           ❤️
-          </span>
+        </span>
       </button>
     </div>
   );
