@@ -119,6 +119,20 @@ const Menu = () => {
     }
   };
 
+  const handlePlayPlaylist = (playlist) => {
+    var localPlaylist = localStorage.getItem("cday-playlist")
+    if (localPlaylist) {
+      localPlaylist = JSON.parse(localPlaylist);
+      setState("player", {
+        playlist: localPlaylist[playlist._id],
+        index: 0,
+        title: playlist.name,
+        play: true,
+        currentTime: 0,
+      })
+    }
+  }
+
   /* useEffect(() => {
     getNewPlaylist();
     console.log(newPlaylist);
@@ -189,7 +203,9 @@ const Menu = () => {
               key={index}
               className={list === state.currentPlayList ? 'active' : ''}
             >
-              <a style={{ "textTransform": "capitalize" }}>
+              <a onClick={() => {
+                handlePlayPlaylist(list)
+              }} style={{ "textTransform": "capitalize", cursor: "pointer" }}>
                 <img src={PlayIcon} />
                 {list.name}
               </a>

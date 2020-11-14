@@ -2,11 +2,14 @@ import React, { useContext, useState, useEffect } from 'react';
 
 import Successful from '../../components/Successful/Successful';
 import './Table.scss';
-import Favourite from '../../assets/images/icons/favourite.svg';
 import PlayIcon from '../Layout/components/Player/img/play-icon.svg';
+
+import AddToPlaylist from "../AddToPlaylist/AddToPlaylist"
 
 import Store from '../../store';
 import api from '../../services/api';
+
+import Heart from "../../assets/images/icons/heart-solid.svg"
 
 const Table = ({ title, playlist, dense, hideImage }) => {
   const { state, setState } = useContext(Store);
@@ -51,6 +54,7 @@ const Table = ({ title, playlist, dense, hideImage }) => {
             <th>#</th>
             <th></th>
             {!dense && <th></th>}
+            <th></th>
             {!dense || (!hideImage && <th></th>)}
             <th>Song</th>
             {!dense && <th>Artist</th>}
@@ -80,10 +84,19 @@ const Table = ({ title, playlist, dense, hideImage }) => {
                         handleFavorite(item.id);
                       }}
                     >
-                      <img src={Favourite} />
+                      <img src={Heart} alt="like" />
                     </button>
                   </td>
                 )}
+                <td>
+                  <button
+                    className="favoritesbutton"
+
+                  >
+                    <AddToPlaylist item={item} />
+                  </button>
+
+                </td>
                 {!dense ||
                   (!hideImage && (
                     <td>

@@ -21,6 +21,10 @@ const Menu = () => {
     setShowSuccess(true);
   };
 
+  const handlePlayPlaylist = (item) => {
+    console.log(item);
+  }
+
   return (
     <section className="container__menu">
       <figure>
@@ -77,12 +81,15 @@ const Menu = () => {
           </li>
           {newPlaylist.map((item) => (
             <li>
-              <img
-                src="/src/assets/images/icons/newPlaylist.svg"
-                className="menu__icon"
-                alt="New Playlist"
-              />
-              {item}
+              <div onClick={() => { handlePlayPlaylist(item) }}>
+                <img
+                  src="/src/assets/images/icons/newPlaylist.svg"
+                  className="menu__icon"
+                  alt="New Playlist"
+                />
+                {item}
+              </div>
+
             </li>
           ))}
           <Modal show={show} close={close}>
