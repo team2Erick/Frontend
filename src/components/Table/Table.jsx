@@ -25,7 +25,6 @@ const Table = ({ title, playlist, dense, hideImage }) => {
   };
 
   const handleFavorite = async (value) => {
-    alert(value);
     const FavouriteItem = await api.post(
       'usermusic/add-favorites/' + state.user.id,
       { favorites: value }
