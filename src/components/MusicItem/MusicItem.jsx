@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Store from '../../store';
 import api from '../../services/api';
@@ -12,6 +12,7 @@ const MusicItem = ({ item, rounded, album }) => {
   const history = useHistory();
   const [showSuccess, setShowSuccess] = useState(false);
   const [message, setMessage] = useState('');
+  const [liked, setLiked] = useState(false);
 
   if (!item.artist || !item.artist.name) return <></>;
 
@@ -25,6 +26,8 @@ const MusicItem = ({ item, rounded, album }) => {
     setMessage(FavouriteItem.data.data.System);
     setShowSuccess(true);
   };
+
+  const HeartLike = liked ? HeartActive : Heart
 
   return (
     <div>
@@ -52,12 +55,15 @@ const MusicItem = ({ item, rounded, album }) => {
         className="music-item__btn-fav"
         onClick={() => {
           handleClick(item.id);
+          setLiked(!liked);
         }}
       >
-        {/* <img src={Heart} /> */}
-        <span aria-label="Fav-Gif" role="img">
+        <span>
+          <img src={HeartLike} alt="like"/>
+        </span>
+        {/* <span aria-label="Fav-Gif" role="img">
           ❤️
-          </span>
+          </span> */}
       </button>
     </div>
   );
