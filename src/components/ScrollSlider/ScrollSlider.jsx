@@ -25,7 +25,14 @@ const ScrollSlider = ({ items, title, rounded, album }) => {
     let playlist = [];
 
     if (album) {
+      let newPlaylist = items[index].tracks.data.map(track => {
+        let newTrack = track
+        newTrack.cover_medium = items[index].cover_medium
+        newTrack.cover_small = items[index].cover_small
+        return newTrack
+      })
 
+      playlist = newPlaylist
     } else {
       playlist = items;
     }
